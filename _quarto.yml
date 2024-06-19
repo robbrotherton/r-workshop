@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "R faculty workshop"
+
+  chapters:
+    - index.qmd
+    - part: "Introduction to R"
+      chapters:
+        - 1_intro-to-r.qmd
+        - 2_syntax.qmd
+        - 3_functions.qmd
+        - 4_data.qmd
+    - part: "Teaching Statistics with R"
+      chapters:
+        - quarto.qmd
+        - problem-sets.qmd
+
+format:
+  html:
+    theme:
+      light: [flatly, custom.scss]
+      dark:  [darkly, custom.scss]
+    link-external-newwindow: true
+  pdf: default
+
+
+
+editor: visual
