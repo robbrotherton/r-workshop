@@ -1,0 +1,42 @@
+# Working with data
+
+## **Data Frames**
+
+R's versions of a spreadsheet in Excel or SPSS is called a DataFrame.
+
+## Importing data
+
+```{r}
+# read.csv()
+```
+
+## Piping
+
+You can string together different operations in a pipeline using the pipe operator: `|>`.[^1_3_working-with-data-1] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `my_data`) and perform a series of operations, first changing its shape using `pivot_longer()`, then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into `ggplot()` to create a graph with a `geom_col()` layer for the geometry.
+
+[^1_3_working-with-data-1]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
+
+```{r}
+#| include: false
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+my_data <- data.frame(a = c(3, 3, 3),
+                      b = c(5, 5, 5))
+```
+
+```{r}
+my_data |> 
+  pivot_longer(everything(),
+               names_to = "condition",
+               values_to = "score") |> 
+  summarize(mean = mean(score),
+            .by = condition) |> 
+  ggplot(aes(x = condition, y = mean)) +
+  geom_col()
+
+```
+
+Et voilà, we have a serviceable graph of group means!
+
+There's a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.

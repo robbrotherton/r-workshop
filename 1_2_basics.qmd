@@ -1,0 +1,111 @@
+# Writing R code
+
+### Using R like a calculator
+
+```{r}
+1 + 1
+
+2 * 2
+
+3^2
+```
+
+### Vectors
+
+```{r}
+c(1, 2, 3, 4, 5)
+
+c(1, 2, "three", 4, 5)
+
+c(1, 2, "3", 4, 5)
+
+mean(c(1, 2, "3", 4, 5))
+```
+
+### Functions
+
+Many of the things we eventually want to do involve functions.
+
+```{r}
+sum(1:5)
+length(1:5)
+mean(1:5)
+sd(1:5)
+var(1:5)
+min(1:5)
+max(1:5)
+```
+
+You can also nest functions inside one another.
+
+```{r}
+sqrt(mean(1:5))
+```
+
+A function generally has one or more "arguments", to which you supply parameters. For example, the `mean()` function's first argument is the set of numbers you want to compute the mean of; in the previous examples `original_numbers` and `doubled_numbers` were the parameters I supplied. You don't necessarily have to type the name of the argument, but it can be helpful. The `seq()` function, for example, produces a sequence of numbers according to three arguments, `from`, `to`, and `by`.
+
+```{r}
+seq(from = 1, to = 10, by = 2)
+```
+
+When you don't type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code:
+
+```{r}
+seq(1, 10, 2)
+```
+
+You can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.
+
+```{r}
+#| eval: false
+?mean
+```
+
+Running the code will bring up the function's help documentation in RStudio's Help pane.
+
+### Assignment
+
+R has a fancy assignment operator: `<-`.[^1_2_basics-1] You assign things to a name by typing something like:
+
+[^1_2_basics-1]: Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)
+
+```{r}
+#| eval: false
+
+name <- thing
+```
+
+The `thing` there might be a set of numbers, an entire dataset, or something else. Giving it a name allows to you perform subsequent operations more easily, and choosing appropriate names makes your code easier to understand.
+
+```{r}
+original_numbers <- 1:10
+original_numbers
+
+doubled_numbers <- original_numbers * 2
+doubled_numbers
+```
+
+Most usefully, we can use these nicely named objects as input to functions.
+
+```{r}
+mean(original_numbers)
+mean(doubled_numbers)
+```
+
+## **Missing Values**
+
+To anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: `NA`.
+
+```{r}
+numbers <- c(1, 2, NA, 4, 5)
+
+mean(numbers)
+
+mean(numbers, na.rm = TRUE)
+
+mean(numbers[!is.na(numbers)])
+```
+
+### Using additional packages
+
+Tidyverse
