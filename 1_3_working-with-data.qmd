@@ -1,9 +1,5 @@
 # Working with data
 
-## **Data Frames**
-
-R's versions of a spreadsheet in Excel or SPSS is called a DataFrame.
-
 ## Importing data
 
 ```{r}
@@ -25,6 +21,8 @@ my_data <- data.frame(a = c(3, 3, 3),
                       b = c(5, 5, 5))
 ```
 
+## Graphs
+
 ```{r}
 my_data |> 
   pivot_longer(everything(),
@@ -40,3 +38,15 @@ my_data |>
 Et voilà, we have a serviceable graph of group means!
 
 There's a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.
+
+## Analyses
+
+### Correlation
+
+### $t$-test
+
+### ANOVA
+
+### Regression
+
+### Mixed-effects

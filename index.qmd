@@ -1,9 +1,29 @@
-# Workshop info {.unnumbered}
+# Workshop plan {.unnumbered}
 
-This is a Quarto website.
+## Day 1: Intro to R
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+### [Intro to R](1_1_intro-to-r.qmd)
 
-```{r}
-1 + 1
-```
+Some notes about the general
+
+### [Basics of writing R code](1_2_basics.qmd)
+
+Syntax, functions, assignment, pipe, data types
+
+### [Working with data](1_3_working-with-data.qmd)
+
+Importing data, cleaning, graphs, analyses
+
+## Day 2: Teaching with R
+
+### General approach
+
+Pedagogy, grading, generative AI
+
+### Tools
+
+Quarto
+
+### Examples
+
+Lab manual, problem sets

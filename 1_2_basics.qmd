@@ -1,5 +1,19 @@
 # Writing R code
 
+## Writing and running code
+
+Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.
+
+```{r}
+
+# comment
+
+# 1 + 1
+
+1 + 1
+
+```
+
 ### Using R like a calculator
 
 ```{r}
@@ -52,6 +66,8 @@ When you don't type the names of the arguments, R matches them by position, so t
 
 ```{r}
 seq(1, 10, 2)
+
+seq(1, 2, 10)
 ```
 
 You can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.
@@ -106,6 +122,6 @@ mean(numbers, na.rm = TRUE)
 mean(numbers[!is.na(numbers)])
 ```
 
-### Using additional packages
+### Data.frames
 
-Tidyverse
+R\'s versions of a spreadsheet in Excel or SPSS is called a data.frame.
