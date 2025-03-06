@@ -4,6 +4,12 @@
 
 ```{r}
 # read.csv()
+foreign::read
+foreign::read.dta("stats_file.dta")
+haven::read
+foreign::read.spss("spss_file.sav")
+
+readxl::read_excel("excel_file.xlsx")
 ```
 
 ## Piping
@@ -38,6 +44,34 @@ my_data |>
 Et voilà, we have a serviceable graph of group means!
 
 There's a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.
+
+### Data cleaning
+
+```{r}
+df |> 
+  filter() |> 
+  mutate(something = case_when(
+    condition ~ new_value,
+    condition ~ new_value,
+    TRUE ~ NA
+    )) |> 
+  drop_na()
+
+
+# example mutations
+# reverse code
+
+# example conditions for case_when
+# something %in% values
+# !something %in% values
+# something > 0
+```
+
+### Data exploration
+
+```{r}
+dplyr::summarize()
+```
 
 ## Analyses
 

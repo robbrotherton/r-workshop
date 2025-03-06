@@ -1,4 +1,5 @@
-# Workshop plan {.unnumbered}
+
+# Workshop overview {.unnumbered}
 
 ## Day 1: Intro to R
 
@@ -27,3 +28,4 @@ Quarto
 ### Examples
 
 Lab manual, problem sets
+

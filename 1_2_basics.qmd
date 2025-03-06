@@ -26,14 +26,56 @@ Writing some code in an .R document does not cause it to be executed automatical
 
 ### Vectors
 
+A vector is a collection of things.
+
 ```{r}
+
+# numeric
 c(1, 2, 3, 4, 5)
 
+1 # is just a vector of length 1
+
+# character
+c("hello", "world")
+
+# logical
+c(TRUE, FALSE)
+
+
+```
+
+### Coercion
+
+```{r}
 c(1, 2, "three", 4, 5)
 
 c(1, 2, "3", 4, 5)
 
 mean(c(1, 2, "3", 4, 5))
+
+# doing math with logicals
+
+c(TRUE, FALSE, FALSE, TRUE, 3)
+
+sum(c(TRUE, TRUE, FALSE, FALSE))
+mean(c(TRUE, TRUE, FALSE, FALSE))
+```
+
+### Factors
+
+```{r}
+
+factor(c("male", "female", "female", "male"))
+```
+
+### Special values
+
+```{r}
+NA
+
+NULL
+
+NaN
 ```
 
 ### Functions
@@ -113,6 +155,9 @@ mean(doubled_numbers)
 To anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: `NA`.
 
 ```{r}
+
+1 + NA
+
 numbers <- c(1, 2, NA, 4, 5)
 
 mean(numbers)
@@ -124,4 +169,23 @@ mean(numbers[!is.na(numbers)])
 
 ### Data.frames
 
-R\'s versions of a spreadsheet in Excel or SPSS is called a data.frame.
+R's versions of a spreadsheet in Excel or SPSS is called a data.frame. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.
+
+```{r}
+df <- data.frame(a = c(1, 2, 3),
+                 b = c("one", "two", "three"),
+                 c = c(1, 2, "3"))
+
+str(df)
+
+```
+
+### Selecting a data.frame column
+
+```{r}
+df$a
+
+mean(df$a)
+
+table(df$b)
+```

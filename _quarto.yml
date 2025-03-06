@@ -12,7 +12,7 @@ book:
         - 1_1_intro-to-r.qmd
         - 1_2_basics.qmd
         - 1_3_working-with-data.qmd
-    - part: "Teaching Statistics with R"
+    - part: "Teaching with R"
       chapters:
         - 2_1_general-approach.qmd
         - 2_2_quarto.qmd
@@ -24,7 +24,8 @@ format:
       light: [flatly, custom.scss]
       dark:  [darkly, custom.scss]
     link-external-newwindow: true
-  pdf: default
+  pdf:
+    toc: false
 
 
 
