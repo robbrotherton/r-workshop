@@ -1,5 +1,12 @@
 # Working with data
 
+### The working directory
+
+```{r}
+getwd()
+
+```
+
 ## Importing data
 
 ```{r}
