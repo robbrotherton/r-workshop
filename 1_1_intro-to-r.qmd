@@ -47,6 +47,8 @@ However there are many common tasks that are a bit tedious or unintuitive to do 
 
 Tidyverse. Actually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.
 
+### Installing packages
+
 ```{r}
 #| eval: false
 
@@ -57,16 +59,9 @@ install.packages("lme4")
 
 Packages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).
 
-However, you must 'activate' the package when you want to use its contents. This must be done every time you have a new 'session'.
+### Using packages
 
-```{r}
-#| eval: false
-library(tidyverse)
-
-library(lme4)
-```
-
-As an alternative, if you are just using one function from a package as a one-off, you can use the double-colon `::` operator in the form `package::function()`, i.e.
+If you are just using one function from a package as a one-off, you can use the double-colon `::` operator in the form `package::function()`, i.e.
 
 ```{r}
 #| eval: false
@@ -74,3 +69,16 @@ As an alternative, if you are just using one function from a package as a one-of
 lme4::lmer(...)
 
 ```
+
+If you will be using a package's functions repeatedly, it can be preferable to activate the entire package using the `library()` function.
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+library(lme4)
+
+lmer(...)
+```
+
+Note that a packed only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `` library()` `` method to activate the package, it must be done every time you have a new 'session' in R.
