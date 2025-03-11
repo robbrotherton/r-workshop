@@ -1,4 +1,4 @@
-# Writing R code
+# R syntax and data structures
 
 ## Writing and running code
 
@@ -24,7 +24,7 @@ Writing some code in an .R document does not cause it to be executed automatical
 3^2
 ```
 
-### Vectors
+## Vectors
 
 A vector is a collection of things.
 
@@ -46,6 +46,8 @@ c(TRUE, FALSE)
 
 ### Coercion
 
+Every element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.
+
 ```{r}
 c(1, 2, "three", 4, 5)
 
@@ -53,6 +55,12 @@ c(1, 2, "3", 4, 5)
 
 mean(c(1, 2, "3", 4, 5))
 
+
+```
+
+Coercion can have some happy consequences. For instance, logical values (`TRUE` and `FALSE`) will be coerced into the numbers 1 and 0. A function that requires numeric input, such as `sum()` or `mean()`, if given logical input, will coerce the vector to numeric.
+
+```{r}
 # doing math with logicals
 
 c(TRUE, FALSE, FALSE, TRUE, 3)
@@ -78,7 +86,7 @@ NULL
 NaN
 ```
 
-### Functions
+## Functions
 
 Many of the things we eventually want to do involve functions.
 
@@ -121,7 +129,7 @@ You can get help with a function (to see what arguments it accepts, for example)
 
 Running the code will bring up the function's help documentation in RStudio's Help pane.
 
-### Assignment
+## Assignment
 
 R has a fancy assignment operator: `<-`.[^1_2_basics-1] You assign things to a name by typing something like:
 
@@ -168,7 +176,7 @@ mean(numbers[!is.na(numbers)])
 
 ```
 
-### Data.frames
+## Data.frames
 
 R's versions of a spreadsheet in Excel or SPSS is called a data.frame. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.
 
