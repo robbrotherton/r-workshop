@@ -1,0 +1,374 @@
+---
+title: "Intro to R Workshop (Student Version)"
+author: Panu and Shivani
+date: 19/10/2022
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Section 1: Introductions (Panu)
+
+- R is a programming language used by statisticians or other professionals who need to deal with data and analytics. 
+
+- R is used to:
+1.	Import data from your computer, websites, databases
+2.	Clean the data by organizing it into matrices, data frames, or tables
+3.	Analyze the data using statistical tests or graphs
+4.	Communicate your results
+
+### R Markdown Introductions
+1. How to open a new RMD file
+2. How to start a new chunk
+3. Knitting
+
+```{r}
+1+1
+2*3
+2/4
+exp(1)
+2^3
+
+log(exp(1)) 
+log(exp(1), base = 10) 
+```
+
+## Section 2: Variable Assignments (Shivani)
+
+```{r}
+#Numeric/Integer
+x <- 5 #in R, <- is the equals sign.
+x
+
+y <- 2*3
+y
+
+#Character(s)
+z <- "Words"
+z
+
+#Question: Can you try to create a character variable containing your name, and
+#let the variable name be name
+
+
+welcome <- "Welcome to this R Workshop!"
+welcome
+
+#Logical
+condition <- TRUE 
+condition
+
+#We can check the class of a variable
+class(x) #introduce functions
+
+
+#How would you check the class of the variables `welcome` and `condition`?
+
+
+```
+
+
+```{r}
+#We can also perform arithmetic on variables
+x+y
+y/2
+x^y
+```
+
+#### Challenging Questions to Consider
+
+What will be the output of the following lines of code?
+
+```{r}
+x+z 
+
+x <- 5
+x <- 7 
+x #what would x be?
+```
+
+
+## Section 3: Data Objects in R (Panu)
+### What's a vector?
+
+```{r}
+1:10
+
+#A vector of numbers
+a <- 1:10
+a
+class(a)
+length(a)
+
+#Question: create a vector of #'s
+b <- c(1,3,5,7,9)
+
+#Where can you see how that vector looks?
+
+b
+
+#We can also create a vector of characters
+day <- c("Sun","Mon","Tue","Wed","Thurs","Fri","Sat")
+day
+
+#What is the class and length of day?
+class(day)
+length(day)
+
+#Question: create a vector of characters that contains your name and 
+#your favorite color
+
+```
+
+```{r}
+#Calculations involving vectors
+a
+a*2
+a+1
+```
+
+
+### How can we subset vectors?
+First, we will be looking at subsetting vectors, and we can do so by using the squarebracket operators.
+
+```{r}
+a <- 2:10
+a
+a[1]
+
+#What would you do if you want to access the fifth element?
+
+
+#Question: What would you do if you want to access the number 9? (Wait)
+
+
+day
+day[1:4]
+# Pause - what if they're not consecutive? Think about something we've learnt before. How does this put indexes into the list?
+
+
+#(Try this out!) What would you do if you want to access 'Thurs' and 'Sat'? (Wait)
+
+
+```
+
+
+
+## Section 4:Loading Data (Shivani)
+
+Instead of creating a data frame from scratch, R can also read in files from your computer.
+
+```{r}
+
+df <- read.csv('tuition_career_pay.csv')
+
+dim(df)#check the dimension of this data frame
+names(df) #this will show you all the column names of our data frame
+
+#View the dataset
+View(df)
+head(df) #Alternatively, we can look at the first 6 rows of the dataframe, click on arrow
+tail(df)
+```
+
+
+### Subsetting Data Frames
+1. Subsetting with numbers and characters
+
+```{r}
+#subsetting by row
+df[1,]
+
+#How would you  do the same for Amherst College (row 13)?
+
+
+#Next, we subset by column. 
+df[,3]
+
+#How would you do the same for state code instead of state?
+
+
+names(df)
+
+# How can we search by column name?
+df[,'name']
+
+#Referencing dataframes using a dollar sign
+df$name
+
+#Finally, we can combine row and column subsetting to get a even smaller range of values
+#What if we want the first and third column of row 1? 
+
+#what about the first item in the name column? 
+df$name[1] # or 
+df[1,"name"]
+
+#referring to column - error
+name
+
+```
+
+## Subsetting with Logical Operators (Panu)
+Some of the logical operators:
+1. `==` will check for equality. 
+
+2. `>` (`<`) and  check for greater than (or less than), just like in math
+
+3. != will check for not equal.
+
+```{r}
+#Boolean(TRUE/FALSE) logic to data frame filtering
+#we can check equality for numbers and characters
+
+# Let's set the value of x
+x<-4
+# Does x meet the following conditions?
+x == 4
+x > 6
+
+txt <- "ERC"
+txt == "ERC"
+txt != "DHC"
+
+```
+
+## Subsetting Data Frames
+```{r}
+
+#Step 1: Come up with the condition - Let's find all the colleges in New York - Logical Flow
+
+condition <- df[, 'state_name'] == "New-York"
+condition
+#Step 2: Subset using the condition (notice how we plug in condition as row )
+
+df[condition,]
+
+#This is easier to do this with the subset function!
+subset(df,state_name=="New-York")
+
+# Question: How would we get all the entries for Barnard  College using the subset function (Wait)
+
+```
+
+```{r}
+#Let's try a different kind of question
+#Task: How do we obtain a list that includes only top 10 colleges (by potential salary) in every state?
+subset(df, rank<=10)
+
+#(Try this!) How would you obtain a list of only top 10 college in the state of California?
+
+```
+
+
+## Section 5: Project Series Introduction (Shivani)
+
+The main research question is: **How much is the college wage premium?**
+
+Four Leading Questions:
+1. What is distribution of early_career_pay? 
+2. We can find out whether attending a private vs public colleges make in difference in early_career_pay (mid_career_pay).
+3. We can fit a linear regression analysis on early_career_pay versus stem_percent where early_career_pay is our response(dependent variable) and stem_percent is our independent variable
+4. Finally, we want to figure out whether college tuition pays off. Is the difference between mid_career_pay and tuition cost positive?
+
+##Summary Statistics (Panu)
+```{r}
+names(df)
+
+#How do we calculate a mean?
+mean(df$make_world_better_percent)
+
+#How can we fix this?
+mean(df$make_world_better_percent,na.rm=TRUE)
+
+#Other summmary statistics for our variable of interest, early career pay
+mean(df$early_career_pay)
+median(df$early_career_pay)
+max(df$early_career_pay)
+min(df$early_career_pay)
+
+summary(df$early_career_pay)
+
+#How can we make a frequency table?
+#With one variable
+table(df$type)
+
+#With two variables (Question: how do we interpret these results?)
+table(df$type,df$state_name)
+```
+
+####(Try this on your own!) Practice Question
+Find a summary statistics table for the variable 
+- mid_career_pay
+
+```{r}
+
+```
+
+
+### Part 0: Data Cleaning (Shivani)
+
+```{r}
+##What if we want to use subset to remove the one college that is For Profit? 
+subset(   )
+
+```
+
+### Part 1: Data Visualization (Shivani)
+
+```{r}
+boxplot(df$early_career_pay)
+boxplot(df$early_career_pay, outline = FALSE,  
+        ylab = 'Early Career Pay(in Dollars)',
+        main = 'Boxplot of Early Career Pay')
+
+hist(df$early_career_pay, xlab = 'Early Career Pay(in Dollars)',
+     ylab = 'Frequency', main = 'Distribution of Early Career Pay') 
+
+```
+
+```{r}
+#We can also create a scatterplot
+plot(df$early_career_pay~df$stem_percent, 
+     xlab = 'Stem Percentage', ylab = 'Early Career Pay',
+     main = 'Relationship between Stem Percentage and Early Career Pay')
+```
+
+#### Comparative plots in R (Panu)
+```{r}
+y <- df$early_career_pay
+x <- df$type
+boxplot(y~x, outline = FALSE, xlab = 'Type of College', 
+        ylab = 'Early Career Pay(in Dollars)',
+        main = 'Distribution of Early Career Pay Based on Type of College')
+```
+
+
+#### Linear Regression 
+We will generate a linear regression model between those two continuous variables, where early career pay will be our response variable(dependent variable) and stem percentage is our independent variable. The function we are going to use is lm() which stands for linear model. 
+
+1. What is a linear regressionn? A dependent variable, and an independent variable. (slide)
+```{r}
+y <- df$early_career_pay
+x <- df$stem_percent
+mod.fit <- lm(y~x)
+summary(mod.fit)
+
+#We won't cover stargazer, but here is some example text if you want to make your regression results
+#look like how they would in a journal
+#install.packages("stargazer")
+library(stargazer)
+stargazer(model1, type="text")
+```
+
+# Creating New Variables from Existing Variables 
+We want to figure out what the difference between mid_career_pay and tuition is. 
+
+```{r}
+df$difference <- df$mid_career_pay - df$in_state_total
+```
+
+
+
+
