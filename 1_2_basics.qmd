@@ -165,6 +165,7 @@ mean(numbers)
 mean(numbers, na.rm = TRUE)
 
 mean(numbers[!is.na(numbers)])
+
 ```
 
 ### Data.frames
@@ -178,6 +179,7 @@ df <- data.frame(a = c(1, 2, 3),
 
 str(df)
 
+summary(df)
 ```
 
 ### Selecting a data.frame column
