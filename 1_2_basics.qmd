@@ -1,3 +1,10 @@
+---
+format: 
+  html: default
+  revealjs: 
+    output-file: 1_2_basics_presentation.html
+---
+
 # R syntax and data structures
 
 ## Writing and running code

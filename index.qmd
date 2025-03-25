@@ -1,3 +1,6 @@
+---
+format: html
+---
 
 # Workshop overview {.unnumbered}
 
@@ -28,4 +31,3 @@ Quarto
 ### Examples
 
 Lab manual, problem sets
-

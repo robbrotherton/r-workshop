@@ -1,56 +1,393 @@
 [
   {
+    "objectID": "2_2_quarto.html",
+    "href": "2_2_quarto.html",
+    "title": "R Faculty Workshop",
+    "section": "",
+    "text": "Benefits of using Quarto over just R.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "2_2_quarto.html"
+    ]
+  },
+  {
+    "objectID": "1_3_working-with-data.html",
+    "href": "1_3_working-with-data.html",
+    "title": "Working with data",
+    "section": "",
+    "text": "getwd()\n\n[1] \"/Users/rbrother/Documents/r-workshop\"\n\n\n\n\n\n\n# read.csv()\n# foreign::read\nforeign::read.dta(\"stats_file.dta\")\nhaven::read\nforeign::read.spss(\"spss_file.sav\")\n\nreadxl::read_excel(\"excel_file.xlsx\")\n\n\n\n\nYou can string together different operations in a pipeline using the pipe operator: |&gt;.1 The result of each line of code gets “piped” into the function on the next line as its first argument. For example, below I take some data (named my_data) and perform a series of operations, first changing its shape using pivot_longer(), then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into ggplot() to create a graph with a geom_col() layer for the geometry.\n\n\n\n\nmy_data |&gt; \n  pivot_longer(everything(),\n               names_to = \"condition\",\n               values_to = \"score\") |&gt; \n  summarize(mean = mean(score),\n            .by = condition) |&gt; \n  ggplot(aes(x = condition, y = mean)) +\n  geom_col()\n\nEt voilà, we have a serviceable graph of group means!\nThere’s a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.\n\n\n\ndf |&gt; \n  filter() |&gt; \n  mutate(something = case_when(\n    condition ~ new_value,\n    condition ~ new_value,\n    TRUE ~ NA\n    )) |&gt; \n  drop_na()\n\n\n# example mutations\n# reverse code\n\n# example conditions for case_when\n# something %in% values\n# !something %in% values\n# something &gt; 0\n\n\n\n\n\ndplyr::summarize()",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Working with data"
+    ]
+  },
+  {
+    "objectID": "1_3_working-with-data.html#importing-data",
+    "href": "1_3_working-with-data.html#importing-data",
+    "title": "Working with data",
+    "section": "",
+    "text": "# read.csv()\n# foreign::read\nforeign::read.dta(\"stats_file.dta\")\nhaven::read\nforeign::read.spss(\"spss_file.sav\")\n\nreadxl::read_excel(\"excel_file.xlsx\")",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Working with data"
+    ]
+  },
+  {
+    "objectID": "1_3_working-with-data.html#piping",
+    "href": "1_3_working-with-data.html#piping",
+    "title": "Working with data",
+    "section": "",
+    "text": "You can string together different operations in a pipeline using the pipe operator: |&gt;.1 The result of each line of code gets “piped” into the function on the next line as its first argument. For example, below I take some data (named my_data) and perform a series of operations, first changing its shape using pivot_longer(), then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into ggplot() to create a graph with a geom_col() layer for the geometry.",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Working with data"
+    ]
+  },
+  {
+    "objectID": "1_3_working-with-data.html#graphs",
+    "href": "1_3_working-with-data.html#graphs",
+    "title": "Working with data",
+    "section": "",
+    "text": "my_data |&gt; \n  pivot_longer(everything(),\n               names_to = \"condition\",\n               values_to = \"score\") |&gt; \n  summarize(mean = mean(score),\n            .by = condition) |&gt; \n  ggplot(aes(x = condition, y = mean)) +\n  geom_col()\n\nEt voilà, we have a serviceable graph of group means!\nThere’s a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.\n\n\n\ndf |&gt; \n  filter() |&gt; \n  mutate(something = case_when(\n    condition ~ new_value,\n    condition ~ new_value,\n    TRUE ~ NA\n    )) |&gt; \n  drop_na()\n\n\n# example mutations\n# reverse code\n\n# example conditions for case_when\n# something %in% values\n# !something %in% values\n# something &gt; 0\n\n\n\n\n\ndplyr::summarize()",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Working with data"
+    ]
+  },
+  {
+    "objectID": "1_3_working-with-data.html#footnotes",
+    "href": "1_3_working-with-data.html#footnotes",
+    "title": "Working with data",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIf you’re looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: %&gt;%. The |&gt; pipe, called the “native” pipe, was only included as a feature of base R relatively recently. Until then, the %&gt;% pipe was provided by an external package (called magrittr. Get it?). In practice the pipes work similarly, so you can often just replace %&gt;% with |&gt; and it’ll work fine, but it’s worth being aware of.↩︎",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Working with data"
+    ]
+  },
+  {
+    "objectID": "1_3_working-with-data_presentation.html#importing-data",
+    "href": "1_3_working-with-data_presentation.html#importing-data",
+    "title": "R Faculty Workshop",
+    "section": "Importing data",
+    "text": "Importing data\n\n# read.csv()\n# foreign::read\nforeign::read.dta(\"stats_file.dta\")\nhaven::read\nforeign::read.spss(\"spss_file.sav\")\n\nreadxl::read_excel(\"excel_file.xlsx\")"
+  },
+  {
+    "objectID": "1_3_working-with-data_presentation.html#piping",
+    "href": "1_3_working-with-data_presentation.html#piping",
+    "title": "R Faculty Workshop",
+    "section": "Piping",
+    "text": "Piping\nYou can string together different operations in a pipeline using the pipe operator: |&gt;.1 The result of each line of code gets “piped” into the function on the next line as its first argument. For example, below I take some data (named my_data) and perform a series of operations, first changing its shape using pivot_longer(), then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into ggplot() to create a graph with a geom_col() layer for the geometry.\nIf you’re looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: %&gt;%. The |&gt; pipe, called the “native” pipe, was only included as a feature of base R relatively recently. Until then, the %&gt;% pipe was provided by an external package (called magrittr. Get it?). In practice the pipes work similarly, so you can often just replace %&gt;% with |&gt; and it’ll work fine, but it’s worth being aware of."
+  },
+  {
+    "objectID": "1_3_working-with-data_presentation.html#graphs",
+    "href": "1_3_working-with-data_presentation.html#graphs",
+    "title": "R Faculty Workshop",
+    "section": "Graphs",
+    "text": "Graphs\n\nmy_data |&gt; \n  pivot_longer(everything(),\n               names_to = \"condition\",\n               values_to = \"score\") |&gt; \n  summarize(mean = mean(score),\n            .by = condition) |&gt; \n  ggplot(aes(x = condition, y = mean)) +\n  geom_col()\n\nEt voilà, we have a serviceable graph of group means!\nThere’s a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code."
+  },
+  {
+    "objectID": "1_3_working-with-data_presentation.html#analyses",
+    "href": "1_3_working-with-data_presentation.html#analyses",
+    "title": "R Faculty Workshop",
+    "section": "Analyses",
+    "text": "Analyses"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "R faculty workshop",
+    "title": "Workshop overview",
     "section": "",
-    "text": "Workshop info\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2",
+    "text": "Some notes about the general\n\n\n\nSyntax, functions, assignment, pipe, data types\n\n\n\nImporting data, cleaning, graphs, analyses\n\n\n\n\n\n\nPedagogy, grading, generative AI\n\n\n\nQuarto\n\n\n\nLab manual, problem sets",
     "crumbs": [
-      "Workshop info"
+      "Workshop overview"
     ]
   },
   {
-    "objectID": "1_intro-to-r.html",
-    "href": "1_intro-to-r.html",
-    "title": "1  Introduction to R and RStudio",
+    "objectID": "index.html#day-1-intro-to-r",
+    "href": "index.html#day-1-intro-to-r",
+    "title": "Workshop overview",
     "section": "",
-    "text": "1.0.1 Wait, what are you talking about?\nThere are a few different names involved here, so to try and clear things up:\nYou can install R/RStudio/Quarto on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.",
+    "text": "Some notes about the general\n\n\n\nSyntax, functions, assignment, pipe, data types\n\n\n\nImporting data, cleaning, graphs, analyses",
     "crumbs": [
-      "Introduction to R",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R and RStudio</span>"
+      "Workshop overview"
     ]
   },
   {
-    "objectID": "1_intro-to-r.html#the-general-workflow",
-    "href": "1_intro-to-r.html#the-general-workflow",
-    "title": "1  Introduction to R and RStudio",
-    "section": "1.1 The general workflow",
-    "text": "1.1 The general workflow\nR is a programming language well-suited to interactive data exploration and analysis. It is widely used for psychological research, which is why we’ll use it as our tool for learning and applying the statistical techniques covered in the lectures.\nIt might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing =AVERAGE(A1:A10). In R you might type mean(my_data$column_a). The specifics of the function names are different, but the basic idea is the same.\n\n1.1.1 RStudio\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\n\nTop-left: Code editor / data viewer\n\nYou will edit your problem set document here\nYou can run code within code chunks by clicking on a line of code and pressing Ctrl/Cmd + Enter on your keyboard, or pressing the green “play” button at the top of the chunk\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree, and when you “Render” your document you will see how it looks as a fully-formatted web page.\n\n\nOnce you start working on problem sets, my recommended workflow is to “Render” your document frequently with “Preview in Viewer Pane” selected. That will give you something like this:\n\n\n\n\n\nYou’ll have the editable problem set .qmd open on the left, and an expanded preview of the rendered document on the right. That should make it easy to see questions and instructions on the right, and add your own code solutions and text on the left, re-rendering as you make changes to see your work reflected in the preview on the right.",
+    "objectID": "index.html#day-2-teaching-with-r",
+    "href": "index.html#day-2-teaching-with-r",
+    "title": "Workshop overview",
+    "section": "",
+    "text": "Pedagogy, grading, generative AI\n\n\n\nQuarto\n\n\n\nLab manual, problem sets",
     "crumbs": [
-      "Introduction to R",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to R and RStudio</span>"
+      "Workshop overview"
     ]
   },
   {
-    "objectID": "2_syntax.html",
-    "href": "2_syntax.html",
-    "title": "2  Syntax",
+    "objectID": "1_2_basics.html",
+    "href": "1_2_basics.html",
+    "title": "R syntax and data structures",
     "section": "",
-    "text": "2.0.1 Assignment\nR has a fancy assignment operator: &lt;-.1 You assign things to a name by typing something like:\nname &lt;- thing\nThe thing there might be a set of numbers, an entire dataset, or something else. Giving it a name allows to you perform subsequent operations more easily, and choosing appropriate names makes your code easier to understand.\noriginal_numbers &lt;- 1:10\noriginal_numbers\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndoubled_numbers &lt;- original_numbers * 2\ndoubled_numbers\n\n [1]  2  4  6  8 10 12 14 16 18 20",
+    "text": "Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.\n\n# comment\n\n# 1 + 1\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n1 + 1\n\n[1] 2\n\n2 * 2\n\n[1] 4\n\n3^2\n\n[1] 9\n\n\n\n\n\n\nA vector is a collection of things.\n\n# numeric\nc(1, 2, 3, 4, 5)\n\n[1] 1 2 3 4 5\n\n1 # is just a vector of length 1\n\n[1] 1\n\n# character\nc(\"hello\", \"world\")\n\n[1] \"hello\" \"world\"\n\n# logical\nc(TRUE, FALSE)\n\n[1]  TRUE FALSE\n\n\n\n\nEvery element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.\n\nc(1, 2, \"three\", 4, 5)\n\n[1] \"1\"     \"2\"     \"three\" \"4\"     \"5\"    \n\nc(1, 2, \"3\", 4, 5)\n\n[1] \"1\" \"2\" \"3\" \"4\" \"5\"\n\nmean(c(1, 2, \"3\", 4, 5))\n\nWarning in mean.default(c(1, 2, \"3\", 4, 5)): argument is not numeric or\nlogical: returning NA\n\n\n[1] NA\n\n\nCoercion can have some happy consequences. For instance, logical values (TRUE and FALSE) will be coerced into the numbers 1 and 0. A function that requires numeric input, such as sum() or mean(), if given logical input, will coerce the vector to numeric.\n\n# doing math with logicals\n\nc(TRUE, FALSE, FALSE, TRUE, 3)\n\n[1] 1 0 0 1 3\n\nsum(c(TRUE, TRUE, FALSE, FALSE))\n\n[1] 2\n\nmean(c(TRUE, TRUE, FALSE, FALSE))\n\n[1] 0.5\n\n\n\n\n\n\nfactor(c(\"male\", \"female\", \"female\", \"male\"))\n\n[1] male   female female male  \nLevels: female male\n\n\n\n\n\n\nNA\n\n[1] NA\n\nNULL\n\nNULL\n\nNaN\n\n[1] NaN\n\n\n\n\n\n\nMany of the things we eventually want to do involve functions.\n\nsum(1:5)\n\n[1] 15\n\nlength(1:5)\n\n[1] 5\n\nmean(1:5)\n\n[1] 3\n\nsd(1:5)\n\n[1] 1.581139\n\nvar(1:5)\n\n[1] 2.5\n\nmin(1:5)\n\n[1] 1\n\nmax(1:5)\n\n[1] 5\n\n\nYou can also nest functions inside one another.\n\nsqrt(mean(1:5))\n\n[1] 1.732051\n\n\nA function generally has one or more “arguments”, to which you supply parameters. For example, the mean() function’s first argument is the set of numbers you want to compute the mean of; in the previous examples original_numbers and doubled_numbers were the parameters I supplied. You don’t necessarily have to type the name of the argument, but it can be helpful. The seq() function, for example, produces a sequence of numbers according to three arguments, from, to, and by.\n\nseq(from = 1, to = 10, by = 2)\n\n[1] 1 3 5 7 9\n\n\nWhen you don’t type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code:\n\nseq(1, 10, 2)\n\n[1] 1 3 5 7 9\n\nseq(1, 2, 10)\n\n[1] 1\n\n\nYou can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.\n\n?mean\n\nRunning the code will bring up the function’s help documentation in RStudio’s Help pane.\n\n\n\nR has a fancy assignment operator: &lt;-.1 You assign things to a name by typing something like:\n\nname &lt;- thing\n\nThe thing there might be a set of numbers, an entire dataset, or something else. Giving it a name allows to you perform subsequent operations more easily, and choosing appropriate names makes your code easier to understand.\n\noriginal_numbers &lt;- 1:10\noriginal_numbers\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndoubled_numbers &lt;- original_numbers * 2\ndoubled_numbers\n\n [1]  2  4  6  8 10 12 14 16 18 20\n\n\nMost usefully, we can use these nicely named objects as input to functions.\n\nmean(original_numbers)\n\n[1] 5.5\n\nmean(doubled_numbers)\n\n[1] 11\n\n\n\n\n\nTo anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: NA.\n\n1 + NA\n\n[1] NA\n\nnumbers &lt;- c(1, 2, NA, 4, 5)\n\nmean(numbers)\n\n[1] NA\n\nmean(numbers, na.rm = TRUE)\n\n[1] 3\n\nmean(numbers[!is.na(numbers)])\n\n[1] 3\n\n\n\n\n\nR’s versions of a spreadsheet in Excel or SPSS is called a data.frame. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.\n\ndf &lt;- data.frame(a = c(1, 2, 3),\n                 b = c(\"one\", \"two\", \"three\"),\n                 c = c(1, 2, \"3\"))\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ a: num  1 2 3\n $ b: chr  \"one\" \"two\" \"three\"\n $ c: chr  \"1\" \"2\" \"3\"\n\nsummary(df)\n\n       a            b                  c            \n Min.   :1.0   Length:3           Length:3          \n 1st Qu.:1.5   Class :character   Class :character  \n Median :2.0   Mode  :character   Mode  :character  \n Mean   :2.0                                        \n 3rd Qu.:2.5                                        \n Max.   :3.0                                        \n\n\n\n\n\ndf$a\n\n[1] 1 2 3\n\nmean(df$a)\n\n[1] 2\n\ntable(df$b)\n\n\n  one three   two \n    1     1     1",
     "crumbs": [
-      "Introduction to R",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+      "Day 1: Intro to R",
+      "R syntax and data structures"
     ]
   },
   {
-    "objectID": "2_syntax.html#footnotes",
-    "href": "2_syntax.html#footnotes",
-    "title": "2  Syntax",
+    "objectID": "1_2_basics.html#writing-and-running-code",
+    "href": "1_2_basics.html#writing-and-running-code",
+    "title": "R syntax and data structures",
     "section": "",
-    "text": "Most other coding languages tend to use a boring = for assignment. Sure it’s nice not having to type an extra character, but there’s a keyboard shortcut to quickly add an &lt;- in RStudio: Option/Alt + -. And philosophically, the &lt;- arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the = arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, = also works for assignment in R.)↩︎\nIf you’re looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: %&gt;%. The |&gt; pipe, called the “native” pipe, was only included as a feature of base R relatively recently. Until then, the %&gt;% pipe was provided by an external package (called magrittr. Get it?). In practice the pipes work similarly, so you can often just replace %&gt;% with |&gt; and it’ll work fine, but it’s worth being aware of.↩︎",
+    "text": "Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.\n\n# comment\n\n# 1 + 1\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n1 + 1\n\n[1] 2\n\n2 * 2\n\n[1] 4\n\n3^2\n\n[1] 9",
     "crumbs": [
-      "Introduction to R",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Syntax</span>"
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics.html#vectors",
+    "href": "1_2_basics.html#vectors",
+    "title": "R syntax and data structures",
+    "section": "",
+    "text": "A vector is a collection of things.\n\n# numeric\nc(1, 2, 3, 4, 5)\n\n[1] 1 2 3 4 5\n\n1 # is just a vector of length 1\n\n[1] 1\n\n# character\nc(\"hello\", \"world\")\n\n[1] \"hello\" \"world\"\n\n# logical\nc(TRUE, FALSE)\n\n[1]  TRUE FALSE\n\n\n\n\nEvery element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.\n\nc(1, 2, \"three\", 4, 5)\n\n[1] \"1\"     \"2\"     \"three\" \"4\"     \"5\"    \n\nc(1, 2, \"3\", 4, 5)\n\n[1] \"1\" \"2\" \"3\" \"4\" \"5\"\n\nmean(c(1, 2, \"3\", 4, 5))\n\nWarning in mean.default(c(1, 2, \"3\", 4, 5)): argument is not numeric or\nlogical: returning NA\n\n\n[1] NA\n\n\nCoercion can have some happy consequences. For instance, logical values (TRUE and FALSE) will be coerced into the numbers 1 and 0. A function that requires numeric input, such as sum() or mean(), if given logical input, will coerce the vector to numeric.\n\n# doing math with logicals\n\nc(TRUE, FALSE, FALSE, TRUE, 3)\n\n[1] 1 0 0 1 3\n\nsum(c(TRUE, TRUE, FALSE, FALSE))\n\n[1] 2\n\nmean(c(TRUE, TRUE, FALSE, FALSE))\n\n[1] 0.5\n\n\n\n\n\n\nfactor(c(\"male\", \"female\", \"female\", \"male\"))\n\n[1] male   female female male  \nLevels: female male\n\n\n\n\n\n\nNA\n\n[1] NA\n\nNULL\n\nNULL\n\nNaN\n\n[1] NaN",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics.html#functions",
+    "href": "1_2_basics.html#functions",
+    "title": "R syntax and data structures",
+    "section": "",
+    "text": "Many of the things we eventually want to do involve functions.\n\nsum(1:5)\n\n[1] 15\n\nlength(1:5)\n\n[1] 5\n\nmean(1:5)\n\n[1] 3\n\nsd(1:5)\n\n[1] 1.581139\n\nvar(1:5)\n\n[1] 2.5\n\nmin(1:5)\n\n[1] 1\n\nmax(1:5)\n\n[1] 5\n\n\nYou can also nest functions inside one another.\n\nsqrt(mean(1:5))\n\n[1] 1.732051\n\n\nA function generally has one or more “arguments”, to which you supply parameters. For example, the mean() function’s first argument is the set of numbers you want to compute the mean of; in the previous examples original_numbers and doubled_numbers were the parameters I supplied. You don’t necessarily have to type the name of the argument, but it can be helpful. The seq() function, for example, produces a sequence of numbers according to three arguments, from, to, and by.\n\nseq(from = 1, to = 10, by = 2)\n\n[1] 1 3 5 7 9\n\n\nWhen you don’t type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code:\n\nseq(1, 10, 2)\n\n[1] 1 3 5 7 9\n\nseq(1, 2, 10)\n\n[1] 1\n\n\nYou can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.\n\n?mean\n\nRunning the code will bring up the function’s help documentation in RStudio’s Help pane.",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics.html#assignment",
+    "href": "1_2_basics.html#assignment",
+    "title": "R syntax and data structures",
+    "section": "",
+    "text": "R has a fancy assignment operator: &lt;-.1 You assign things to a name by typing something like:\n\nname &lt;- thing\n\nThe thing there might be a set of numbers, an entire dataset, or something else. Giving it a name allows to you perform subsequent operations more easily, and choosing appropriate names makes your code easier to understand.\n\noriginal_numbers &lt;- 1:10\noriginal_numbers\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndoubled_numbers &lt;- original_numbers * 2\ndoubled_numbers\n\n [1]  2  4  6  8 10 12 14 16 18 20\n\n\nMost usefully, we can use these nicely named objects as input to functions.\n\nmean(original_numbers)\n\n[1] 5.5\n\nmean(doubled_numbers)\n\n[1] 11",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics.html#missing-values",
+    "href": "1_2_basics.html#missing-values",
+    "title": "R syntax and data structures",
+    "section": "",
+    "text": "To anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: NA.\n\n1 + NA\n\n[1] NA\n\nnumbers &lt;- c(1, 2, NA, 4, 5)\n\nmean(numbers)\n\n[1] NA\n\nmean(numbers, na.rm = TRUE)\n\n[1] 3\n\nmean(numbers[!is.na(numbers)])\n\n[1] 3",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics.html#data.frames",
+    "href": "1_2_basics.html#data.frames",
+    "title": "R syntax and data structures",
+    "section": "",
+    "text": "R’s versions of a spreadsheet in Excel or SPSS is called a data.frame. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.\n\ndf &lt;- data.frame(a = c(1, 2, 3),\n                 b = c(\"one\", \"two\", \"three\"),\n                 c = c(1, 2, \"3\"))\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ a: num  1 2 3\n $ b: chr  \"one\" \"two\" \"three\"\n $ c: chr  \"1\" \"2\" \"3\"\n\nsummary(df)\n\n       a            b                  c            \n Min.   :1.0   Length:3           Length:3          \n 1st Qu.:1.5   Class :character   Class :character  \n Median :2.0   Mode  :character   Mode  :character  \n Mean   :2.0                                        \n 3rd Qu.:2.5                                        \n Max.   :3.0                                        \n\n\n\n\n\ndf$a\n\n[1] 1 2 3\n\nmean(df$a)\n\n[1] 2\n\ntable(df$b)\n\n\n  one three   two \n    1     1     1",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics.html#footnotes",
+    "href": "1_2_basics.html#footnotes",
+    "title": "R syntax and data structures",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nMost other coding languages tend to use a boring = for assignment. Sure it’s nice not having to type an extra character, but there’s a keyboard shortcut to quickly add an &lt;- in RStudio: Option/Alt + -. And philosophically, the &lt;- arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the = arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, = also works for assignment in R.)↩︎",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "R syntax and data structures"
+    ]
+  },
+  {
+    "objectID": "1_2_basics_presentation.html#writing-and-running-code",
+    "href": "1_2_basics_presentation.html#writing-and-running-code",
+    "title": "R Faculty Workshop",
+    "section": "Writing and running code",
+    "text": "Writing and running code\nWriting some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.\n\n# comment\n\n# 1 + 1\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "1_2_basics_presentation.html#vectors",
+    "href": "1_2_basics_presentation.html#vectors",
+    "title": "R Faculty Workshop",
+    "section": "Vectors",
+    "text": "Vectors\nA vector is a collection of things.\n\n# numeric\nc(1, 2, 3, 4, 5)\n\n[1] 1 2 3 4 5\n\n1 # is just a vector of length 1\n\n[1] 1\n\n# character\nc(\"hello\", \"world\")\n\n[1] \"hello\" \"world\"\n\n# logical\nc(TRUE, FALSE)\n\n[1]  TRUE FALSE"
+  },
+  {
+    "objectID": "1_2_basics_presentation.html#functions",
+    "href": "1_2_basics_presentation.html#functions",
+    "title": "R Faculty Workshop",
+    "section": "Functions",
+    "text": "Functions\nMany of the things we eventually want to do involve functions.\n\nsum(1:5)\n\n[1] 15\n\nlength(1:5)\n\n[1] 5\n\nmean(1:5)\n\n[1] 3\n\nsd(1:5)\n\n[1] 1.581139\n\nvar(1:5)\n\n[1] 2.5\n\nmin(1:5)\n\n[1] 1\n\nmax(1:5)\n\n[1] 5\n\n\nYou can also nest functions inside one another.\n\nsqrt(mean(1:5))\n\n[1] 1.732051\n\n\nA function generally has one or more “arguments”, to which you supply parameters. For example, the mean() function’s first argument is the set of numbers you want to compute the mean of; in the previous examples original_numbers and doubled_numbers were the parameters I supplied. You don’t necessarily have to type the name of the argument, but it can be helpful. The seq() function, for example, produces a sequence of numbers according to three arguments, from, to, and by.\n\nseq(from = 1, to = 10, by = 2)\n\n[1] 1 3 5 7 9\n\n\nWhen you don’t type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code:\n\nseq(1, 10, 2)\n\n[1] 1 3 5 7 9\n\nseq(1, 2, 10)\n\n[1] 1\n\n\nYou can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.\n\n?mean\n\nRunning the code will bring up the function’s help documentation in RStudio’s Help pane."
+  },
+  {
+    "objectID": "1_2_basics_presentation.html#assignment",
+    "href": "1_2_basics_presentation.html#assignment",
+    "title": "R Faculty Workshop",
+    "section": "Assignment",
+    "text": "Assignment\nR has a fancy assignment operator: &lt;-.1 You assign things to a name by typing something like:\n\nname &lt;- thing\n\nThe thing there might be a set of numbers, an entire dataset, or something else. Giving it a name allows to you perform subsequent operations more easily, and choosing appropriate names makes your code easier to understand.\n\noriginal_numbers &lt;- 1:10\noriginal_numbers\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ndoubled_numbers &lt;- original_numbers * 2\ndoubled_numbers\n\n [1]  2  4  6  8 10 12 14 16 18 20\n\n\nMost usefully, we can use these nicely named objects as input to functions.\n\nmean(original_numbers)\n\n[1] 5.5\n\nmean(doubled_numbers)\n\n[1] 11\n\n\nMost other coding languages tend to use a boring = for assignment. Sure it’s nice not having to type an extra character, but there’s a keyboard shortcut to quickly add an &lt;- in RStudio: Option/Alt + -. And philosophically, the &lt;- arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the = arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, = also works for assignment in R.)"
+  },
+  {
+    "objectID": "1_2_basics_presentation.html#missing-values",
+    "href": "1_2_basics_presentation.html#missing-values",
+    "title": "R Faculty Workshop",
+    "section": "Missing Values",
+    "text": "Missing Values\nTo anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: NA.\n\n1 + NA\n\n[1] NA\n\nnumbers &lt;- c(1, 2, NA, 4, 5)\n\nmean(numbers)\n\n[1] NA\n\nmean(numbers, na.rm = TRUE)\n\n[1] 3\n\nmean(numbers[!is.na(numbers)])\n\n[1] 3"
+  },
+  {
+    "objectID": "1_2_basics_presentation.html#data.frames",
+    "href": "1_2_basics_presentation.html#data.frames",
+    "title": "R Faculty Workshop",
+    "section": "Data.frames",
+    "text": "Data.frames\nR’s versions of a spreadsheet in Excel or SPSS is called a data.frame. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.\n\ndf &lt;- data.frame(a = c(1, 2, 3),\n                 b = c(\"one\", \"two\", \"three\"),\n                 c = c(1, 2, \"3\"))\n\nstr(df)\n\n'data.frame':   3 obs. of  3 variables:\n $ a: num  1 2 3\n $ b: chr  \"one\" \"two\" \"three\"\n $ c: chr  \"1\" \"2\" \"3\"\n\nsummary(df)\n\n       a            b                  c            \n Min.   :1.0   Length:3           Length:3          \n 1st Qu.:1.5   Class :character   Class :character  \n Median :2.0   Mode  :character   Mode  :character  \n Mean   :2.0                                        \n 3rd Qu.:2.5                                        \n Max.   :3.0"
+  },
+  {
+    "objectID": "1_1_intro-to-r_presentation.html#names",
+    "href": "1_1_intro-to-r_presentation.html#names",
+    "title": "R Faculty Workshop",
+    "section": "Names",
+    "text": "Names\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that makes RStudio\nposit.cloud provides a way of using RStudio in your web browser\n\nLINK TO INSTALLING R APPENDIX. You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely."
+  },
+  {
+    "objectID": "1_1_intro-to-r_presentation.html#the-general-workflow",
+    "href": "1_1_intro-to-r_presentation.html#the-general-workflow",
+    "title": "R Faculty Workshop",
+    "section": "The general workflow",
+    "text": "The general workflow\nR is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.\nIt might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Excel/Sheets by typing =AVERAGE(A1:A10) in a cell of the spreadsheet. In R you might type mean(my_data$column_a) in a code file. The specifics of the function names are different, but the basic idea is the same."
+  },
+  {
+    "objectID": "1_1_intro-to-r_presentation.html#additional-packages",
+    "href": "1_1_intro-to-r_presentation.html#additional-packages",
+    "title": "R Faculty Workshop",
+    "section": "Additional packages",
+    "text": "Additional packages"
+  },
+  {
+    "objectID": "1_1_intro-to-r.html",
+    "href": "1_1_intro-to-r.html",
+    "title": "Introduction to R and RStudio",
+    "section": "",
+    "text": "There are a few different names involved:\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that makes RStudio\nposit.cloud provides a way of using RStudio in your web browser\n\nLINK TO INSTALLING R APPENDIX. You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.\n\n\n\nR is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.\nIt might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Excel/Sheets by typing =AVERAGE(A1:A10) in a cell of the spreadsheet. In R you might type mean(my_data$column_a) in a code file. The specifics of the function names are different, but the basic idea is the same.\n\n\nA major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references but does not modify the source data file (unless you tell it to).\n\n\n\n\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\nTop-left: Code editor / data viewer\n\nOpen, edit, and save code documents\nExecute code within files\nView data\nYou can have multiple ‘tabs’ open at once,\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree\n\n\n\n\n\nWriting some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.\n\n\n\n\nThe R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just ‘base’ R.\nHowever there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R’s strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.\n\n\nActually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.\n\n\n\n\ninstall.packages(\"tidyverse\")\n\ninstall.packages(\"lme4\")\n\nPackages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).\n\n\n\nIf you are just using one function from a package as a one-off, you can use the double-colon :: operator in the form package::function(), i.e.\n\nlme4::lmer(...)\n\nIf you will be using a package’s functions repeatedly, it can be preferable to activate the entire package using the library() function.\n\nlibrary(tidyverse)\n\nlibrary(lme4)\n\nlmer(...)\n\nNote that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the library() method to activate the package, it must be done every time you have a new ‘session’ in R. It is good practice to include all library(...) calls together near the top of your code file.",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Introduction to R and RStudio"
+    ]
+  },
+  {
+    "objectID": "1_1_intro-to-r.html#names",
+    "href": "1_1_intro-to-r.html#names",
+    "title": "Introduction to R and RStudio",
+    "section": "",
+    "text": "There are a few different names involved:\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that makes RStudio\nposit.cloud provides a way of using RStudio in your web browser\n\nLINK TO INSTALLING R APPENDIX. You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Introduction to R and RStudio"
+    ]
+  },
+  {
+    "objectID": "1_1_intro-to-r.html#the-general-workflow",
+    "href": "1_1_intro-to-r.html#the-general-workflow",
+    "title": "Introduction to R and RStudio",
+    "section": "",
+    "text": "R is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.\nIt might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Excel/Sheets by typing =AVERAGE(A1:A10) in a cell of the spreadsheet. In R you might type mean(my_data$column_a) in a code file. The specifics of the function names are different, but the basic idea is the same.\n\n\nA major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references but does not modify the source data file (unless you tell it to).\n\n\n\n\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\nTop-left: Code editor / data viewer\n\nOpen, edit, and save code documents\nExecute code within files\nView data\nYou can have multiple ‘tabs’ open at once,\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree\n\n\n\n\n\nWriting some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Introduction to R and RStudio"
+    ]
+  },
+  {
+    "objectID": "1_1_intro-to-r.html#additional-packages",
+    "href": "1_1_intro-to-r.html#additional-packages",
+    "title": "Introduction to R and RStudio",
+    "section": "",
+    "text": "The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just ‘base’ R.\nHowever there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R’s strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.\n\n\nActually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.\n\n\n\n\ninstall.packages(\"tidyverse\")\n\ninstall.packages(\"lme4\")\n\nPackages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).\n\n\n\nIf you are just using one function from a package as a one-off, you can use the double-colon :: operator in the form package::function(), i.e.\n\nlme4::lmer(...)\n\nIf you will be using a package’s functions repeatedly, it can be preferable to activate the entire package using the library() function.\n\nlibrary(tidyverse)\n\nlibrary(lme4)\n\nlmer(...)\n\nNote that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the library() method to activate the package, it must be done every time you have a new ‘session’ in R. It is good practice to include all library(...) calls together near the top of your code file.",
+    "crumbs": [
+      "Day 1: Intro to R",
+      "Introduction to R and RStudio"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#justify-using-r",
+    "href": "2_1_general-approach_presentation.html#justify-using-r",
+    "title": "R Faculty Workshop",
+    "section": "Justify using R",
+    "text": "Justify using R\nHelps to set expectations. Students see it as worthwhile from the outset."
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#grade-for-effort-rather-than-results",
+    "href": "2_1_general-approach_presentation.html#grade-for-effort-rather-than-results",
+    "title": "R Faculty Workshop",
+    "section": "Grade for effort rather than results",
+    "text": "Grade for effort rather than results\nGrade for effort rather than results."
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#start-with-something-cool.",
+    "href": "2_1_general-approach_presentation.html#start-with-something-cool.",
+    "title": "R Faculty Workshop",
+    "section": "Start with something cool.",
+    "text": "Start with something cool."
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#generative-ai",
+    "href": "2_1_general-approach_presentation.html#generative-ai",
+    "title": "R Faculty Workshop",
+    "section": "Generative AI",
+    "text": "Generative AI"
+  },
+  {
+    "objectID": "2_1_general-approach.html",
+    "href": "2_1_general-approach.html",
+    "title": "General comments",
+    "section": "",
+    "text": "Helps to set expectations. Students see it as worthwhile from the outset.\n\n\n\nGrade for effort rather than results.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General comments"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#justify-using-r",
+    "href": "2_1_general-approach.html#justify-using-r",
+    "title": "General comments",
+    "section": "",
+    "text": "Helps to set expectations. Students see it as worthwhile from the outset.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General comments"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#grade-for-effort-rather-than-results",
+    "href": "2_1_general-approach.html#grade-for-effort-rather-than-results",
+    "title": "General comments",
+    "section": "",
+    "text": "Grade for effort rather than results.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General comments"
+    ]
+  },
+  {
+    "objectID": "2_3_problem-sets.html",
+    "href": "2_3_problem-sets.html",
+    "title": "R Faculty Workshop",
+    "section": "",
+    "text": "How I use Quarto to create problems sets to teach R.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "2_3_problem-sets.html"
     ]
   }
 ]

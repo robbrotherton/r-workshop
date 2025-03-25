@@ -1,3 +1,10 @@
+---
+format: 
+  html: default
+  revealjs: 
+    output-file: 1_3_working-with-data_presentation.html
+---
+
 # Working with data
 
 ### The working directory
@@ -10,8 +17,10 @@ getwd()
 ## Importing data
 
 ```{r}
+#| eval: false
+
 # read.csv()
-foreign::read
+# foreign::read
 foreign::read.dta("stats_file.dta")
 haven::read
 foreign::read.spss("spss_file.sav")
@@ -26,6 +35,7 @@ You can string together different operations in a pipeline using the pipe operat
 [^1_3_working-with-data-1]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
 
 ```{r}
+#| eval: false
 #| include: false
 library(ggplot2)
 library(dplyr)
@@ -37,6 +47,7 @@ my_data <- data.frame(a = c(3, 3, 3),
 ## Graphs
 
 ```{r}
+#| eval: false
 my_data |> 
   pivot_longer(everything(),
                names_to = "condition",
@@ -55,6 +66,7 @@ There's a lot going on there, and the specifics will become clearer as you work 
 ### Data cleaning
 
 ```{r}
+#| eval: false
 df |> 
   filter() |> 
   mutate(something = case_when(
@@ -77,6 +89,7 @@ df |>
 ### Data exploration
 
 ```{r}
+#| eval: false
 dplyr::summarize()
 ```
 

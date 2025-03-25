@@ -1,3 +1,10 @@
+---
+format: 
+  html: default
+  revealjs: 
+    output-file: 2_1_general-approach_presentation.html
+---
+
 # General comments
 
 ## Justify using R
@@ -9,3 +16,5 @@ Helps to set expectations. Students see it as worthwhile from the outset.
 Grade for effort rather than results.
 
 ## Start with something cool.
+
+## Generative AI

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.4.551" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
 
-<title>R faculty workshop</title>
+<title>R Faculty Workshop – intro-to-r</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,43 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./problem-sets.html" rel="next">
-<link href="./4_data.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<!-- htmldependencies:E3FAD763 -->
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,17 +90,22 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating fullcontent">
+<body>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn"
+      data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto.html">Teaching Statistics with R</a></li><li class="breadcrumb-item"><a href="./quarto.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">quarto.html</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" 
+        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -98,7 +119,9 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">R faculty workshop</a> 
+      <a href="/">
+      R Faculty Workshop
+      </a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -113,14 +136,14 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop info</span></a>
+  <a href="/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Introduction to R</span></a>
+ <span class="menu-text">Day 1: Intro to R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -128,26 +151,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1_intro-to-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R and RStudio</span></span></a>
+  <a href="/1_1_intro-to-r.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction to R and RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_syntax.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Syntax</span></span></a>
+  <a href="/1_2_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R syntax and data structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">3_functions.html</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./4_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">4_data.html</span></span></a>
+  <a href="/1_3_working-with-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data</span></a>
   </div>
 </li>
       </ul>
@@ -155,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Teaching Statistics with R</span></a>
+ <span class="menu-text">Day 2: Teaching with R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -163,14 +180,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quarto.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">quarto.html</span></span></a>
+  <a href="/2_1_general-approach.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General comments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./problem-sets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">problem-sets.html</span></span></a>
+  <a href="/2_2_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2_2_quarto.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/2_3_problem-sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2_3_problem-sets.html</span></a>
   </div>
 </li>
       </ul>
@@ -178,20 +201,136 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <div id="quarto-toc-target"></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-
-
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-r-and-rstudio" id="toc-introduction-to-r-and-rstudio">Introduction to R and RStudio</a>
+  <ul>
+  <li><a href="#names" id="toc-names">Names</a></li>
+  <li><a href="#the-general-workflow" id="toc-the-general-workflow">The general workflow</a>
+  <ul>
+  <li><a href="#separation-of-data-and-code" id="toc-separation-of-data-and-code">Separation of data and code</a></li>
+  <li><a href="#rstudio-interface" id="toc-rstudio-interface">RStudio Interface</a></li>
+  <li><a href="#running-code" id="toc-running-code">Running code</a></li>
+  </ul></li>
+  <li><a href="#additional-packages" id="toc-additional-packages">Additional packages</a>
+  <ul>
+  <li><a href="#tidyverse" id="toc-tidyverse">Tidyverse</a></li>
+  <li><a href="#installing-packages" id="toc-installing-packages">Installing packages</a></li>
+  <li><a href="#using-installed-packages" id="toc-using-installed-packages">Using installed packages</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+<section id="introduction-to-r-and-rstudio" class="level1">
+<h1>Introduction to R and RStudio</h1>
+<section id="names" class="level2">
+<h2>Names</h2>
+<p><span>There are a few different names involved:</span></p>
+<ul>
+<li><strong>R</strong> is a coding language for statistics and data analysis</li>
+<li><strong>RStudio</strong> is a software interface for writing and running R code</li>
+<li><strong>Posit</strong> is the name of the company that makes RStudio</li>
+<li><strong>posit.cloud</strong> provides a way of using RStudio in your web browser</li>
+</ul>
+<p>LINK TO INSTALLING R APPENDIX. You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.</p>
+</section>
+<section id="the-general-workflow" class="level2">
+<h2>The general workflow</h2>
+<p>R is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.</p>
+<p>It might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Excel/Sheets by typing <code>=AVERAGE(A1:A10)</code> in a cell of the spreadsheet. In R you might type <code>mean(my_data$column_a)</code> in a code file. The specifics of the function names are different, but the basic idea is the same.</p>
+<section id="separation-of-data-and-code" class="level3">
+<h3>Separation of data and code</h3>
+<p>A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references <strong>but does not modify</strong> the source data file (unless you tell it to).</p>
+</section>
+<section id="rstudio-interface" class="level3">
+<h3>RStudio Interface</h3>
+<p><img src="rstudio-interface-1.png" class="img-fluid" /></p>
+<p>RStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:</p>
+<ul>
+<li>Top-left: Code editor / data viewer
+<ul>
+<li>Open, edit, and save code documents</li>
+<li>Execute code within files</li>
+<li>View data</li>
+<li>You can have multiple ‘tabs’ open at once,</li>
+</ul></li>
+<li>Bottom-left: R console
+<ul>
+<li>You can type code directly and run it by pressing enter.</li>
+<li>You won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out</li>
+</ul></li>
+<li>Top-right: Environment
+<ul>
+<li>As you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.</li>
+<li>You can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane</li>
+</ul></li>
+<li>Bottom-right: Files/folders, Plots, Viewer, help window
+<ul>
+<li>You can navigate the file tree</li>
+</ul></li>
+</ul>
+</section>
+<section id="running-code" class="level3">
+<h3>Running code</h3>
+<p>Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.</p>
+</section>
+</section>
+<section id="additional-packages" class="level2">
+<h2>Additional packages</h2>
+<p>The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just ‘base’ R.</p>
+<p>However there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R’s strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.</p>
+<section id="tidyverse" class="level3">
+<h3>Tidyverse</h3>
+<p>Actually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.</p>
+</section>
+<section id="installing-packages" class="level3">
+<h3>Installing packages</h3>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lme4&quot;</span>)</span></code></pre></div>
+</div>
+<p>Packages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).</p>
+</section>
+<section id="using-installed-packages" class="level3">
+<h3>Using installed packages</h3>
+<p>If you are just using one function from a package as a one-off, you can use the double-colon <code>::</code> operator in the form <code>package::function()</code>, i.e.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lme4<span class="sc">::</span><span class="fu">lmer</span>(...)</span></code></pre></div>
+</div>
+<p>If you will be using a package’s functions repeatedly, it can be preferable to activate the entire package using the <code>library()</code> function.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmer</span>(...)</span></code></pre></div>
+</div>
+<p>Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the <code>library()</code> method to activate the package, it must be done every time you have a new ‘session’ in R. It is good practice to include all <code>library(...)</code> calls together near the top of your code file.</p>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">R Faculty Workshop</span> <span class="hidden" data-render-id="quarto-int-navbar-title">R Faculty Workshop</span> <span class="hidden" data-render-id="quarto-int-next">R syntax and data structures</span> <span class="hidden" data-render-id="quarto-int-prev">Workshop overview</span> <span class="hidden" data-render-id="quarto-int-sidebar:/index.htmlWorkshop-overview">Workshop overview</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">Day 1: Intro to R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/1_1_intro-to-r.htmlIntroduction-to-R-and-RStudio">Introduction to R and RStudio</span> <span class="hidden" data-render-id="quarto-int-sidebar:/1_2_basics.htmlR-syntax-and-data-structures">R syntax and data structures</span> <span class="hidden" data-render-id="quarto-int-sidebar:/1_3_working-with-data.htmlWorking-with-data">Working with data</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2">Day 2: Teaching with R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/2_1_general-approach.htmlGeneral-comments">General comments</span> <span class="hidden" data-render-id="quarto-int-sidebar:/2_2_quarto.html2_2_quarto.html">2_2_quarto.html</span> <span class="hidden" data-render-id="quarto-int-sidebar:/2_3_problem-sets.html2_3_problem-sets.html">2_3_problem-sets.html</span> <span class="hidden" data-render-id="quarto-breadcrumbs-Day-1:-Intro-to-R">Day 1: Intro to R</span> <span class="hidden" data-render-id="quarto-breadcrumbs-Introduction-to-R-and-RStudio">Introduction to R and RStudio</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">R Faculty Workshop</span> <span class="hidden" data-render-id="quarto-twittercardtitle">R Faculty Workshop</span> <span class="hidden" data-render-id="quarto-ogcardtitle">R Faculty Workshop</span> <span class="hidden" data-render-id="quarto-metasitename">R Faculty Workshop</span> <span class="hidden" data-render-id="quarto-twittercarddesc"></span> <span class="hidden" data-render-id="quarto-ogcardddesc"></span></p>
+</div>
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -749,21 +888,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./4_data.html" class="pagination-link" aria-label="4_data.html">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">4_data.html</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./problem-sets.html" class="pagination-link" aria-label="problem-sets.html">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">problem-sets.html</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
+</body>
 
-
-
-</body></html>
+</html>

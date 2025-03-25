@@ -1,1 +1,8 @@
+---
+format: 
+  html: default
+  revealjs: 
+    output-file: 2_2_quarto_presentation.html
+---
 
+Benefits of using Quarto over just R.

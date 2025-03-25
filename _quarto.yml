@@ -1,32 +1,39 @@
 project:
-  type: book
+  type: website
   output-dir: docs
+  pre-render: _render-pdf.R
 
-book:
-  title: "R faculty workshop"
+website:
+  title: "R Faculty Workshop"
 
-  chapters:
-    - index.qmd
-    - part: "Introduction to R"
-      chapters:
-        - 1_1_intro-to-r.qmd
-        - 1_2_basics.qmd
-        - 1_3_working-with-data.qmd
-    - part: "Teaching with R"
-      chapters:
-        - 2_1_general-approach.qmd
-        - 2_2_quarto.qmd
-        - 2_3_problem-sets.qmd
+  sidebar:
+    contents:
+      - index.qmd
+      - section: "Day 1: Intro to R"
+        contents:
+          - 1_1_intro-to-r.qmd
+          - 1_2_basics.qmd
+          - 1_3_working-with-data.qmd
+      - section: "Day 2: Teaching with R"
+        contents:
+          - 2_1_general-approach.qmd
+          - 2_2_quarto.qmd
+          - 2_3_problem-sets.qmd
 
 format:
   html:
+    toc: true
+    format-links: [revealjs]
     theme:
       light: [flatly, custom.scss]
       dark:  [darkly, custom.scss]
     link-external-newwindow: true
   pdf:
     toc: false
+  revealjs:
+    slide-level: 3
 
-
+execute:
+  echo: true
 
 editor: visual
