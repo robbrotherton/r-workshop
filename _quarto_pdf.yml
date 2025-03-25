@@ -16,3 +16,4 @@ book:
 format:
   pdf:
     toc: false
+    df-print: kable

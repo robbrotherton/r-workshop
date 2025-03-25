@@ -30,8 +30,6 @@ format:
       light: [flatly, custom.scss]
       dark:  [darkly, custom.scss]
     link-external-newwindow: true
-  pdf:
-    toc: false
   revealjs:
     slide-level: 3
     code-line-numbers: false
