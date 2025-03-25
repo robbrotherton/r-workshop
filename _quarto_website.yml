@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+  pre-render: _render-pdf.R
+
+website:
+  title: "R Faculty Workshop"
+
+  sidebar:
+    contents:
+      - index.qmd
+      - section: "Day 1: Intro to R"
+        contents:
+          - 1_1_intro-to-r.qmd
+          - 1_2_basics.qmd
+          - 1_3_working-with-data.qmd
+      - section: "Day 2: Teaching with R"
+        contents:
+          - 2_1_general-approach.qmd
+          - 2_2_quarto.qmd
+          - 2_3_problem-sets.qmd
+
+format:
+  html:
+    toc: true
+    df-print: kable
+    code-line-numbers: false
+    format-links: [revealjs]
+    theme:
+      light: [flatly, custom.scss]
+      dark:  [darkly, custom.scss]
+    link-external-newwindow: true
+  pdf:
+    toc: false
+  revealjs:
+    slide-level: 3
+    code-line-numbers: false
+    df-print: kable
+
+execute:
+  echo: true
+
+editor: visual
