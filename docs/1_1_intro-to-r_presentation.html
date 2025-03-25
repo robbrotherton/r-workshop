@@ -403,13 +403,133 @@
 <li><strong>Posit</strong> is the name of the company that makes RStudio</li>
 <li><strong>posit.cloud</strong> provides a way of using RStudio in your web browser</li>
 </ul>
-<p>LINK TO INSTALLING R APPENDIX. You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.</p>
+<p>You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.</p>
 </section>
 
 <section id="the-general-workflow" class="title-slide slide level2 center">
 <h2>The general workflow</h2>
 <p>R is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.</p>
-<p>It might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Excel/Sheets by typing <code>=AVERAGE(A1:A10)</code> in a cell of the spreadsheet. In R you might type <code>mean(my_data$column_a)</code> in a code file. The specifics of the function names are different, but the basic idea is the same.</p>
+</section>
+<section id="manipulating-data" class="slide level3">
+<h3>Manipulating data</h3>
+<div class="columns" style="display: flex; align-items: stretch; align-content: center; text-align: center;">
+<div class="column" style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)">
+<p><img src="images/excel.png" style="height: 50px; margin: 0;"></p>
+<p>Excel Spreadsheet</p>
+<div class="excel-table" style="width: fit-content; margin: auto;">
+<table>
+<tbody>
+<tr class="odd">
+<td>A</td>
+</tr>
+<tr class="even">
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+</tr>
+<tr class="even">
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>=AVERAGE(A2:A6)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);">
+<p><img src="images/r.png" style="height: 50px; margin: 0;"></p>
+<div class="flex">
+<div class="flex-l">
+<p>R Data</p>
+<div class="cell r-table">
+<div class="cell-output-display">
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">A</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-r">
+<p>R Code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data<span class="sc">$</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(data<span class="sc">$</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.581139</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<style type="text/css">
+.excel-table {
+  text-align: right !important;
+  font-size: 0.8em;
+  margin: auto;
+  background: white;
+}
+.excel-table th, .excel-table td {
+  border: 1px solid lightgrey !important;
+}
+.r-table {
+  font-size: 0.8em;
+}
+
+.flex {
+  display: flex;
+}
+.flex-l {
+  width: 30%; 
+  padding-right: 1em;
+}
+.flex-r {
+  border-left: 1px solid grey;
+  padding-left: 0.8em;
+  width: -webkit-fill-available;
+}
+</style>
+</div>
 </section>
 <section id="separation-of-data-and-code" class="slide level3">
 <h3>Separation of data and code</h3>
@@ -426,36 +546,37 @@
 
 <section id="additional-packages" class="title-slide slide level2 center">
 <h2>Additional packages</h2>
-
+<p>The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just ‘base’ R.</p>
+<p>However there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R’s strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.</p>
 </section>
 <section id="tidyverse" class="slide level3">
 <h3>Tidyverse</h3>
-<p>Actually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.</p>
-</section>
+
+<img data-src="images/tidyverse.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="installing-packages" class="slide level3">
 <h3>Installing packages</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="fu">install.packages</span>(<span class="st">"lme4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lme4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Packages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).</p>
 </section>
-<section id="using-installed-packages" class="slide level3">
-<h3>Using installed packages</h3>
+<section id="using-packages" class="slide level3">
+<h3>Using packages</h3>
 <p>If you are just using one function from a package as a one-off, you can use the double-colon <code>::</code> operator in the form <code>package::function()</code>, i.e.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>lme4<span class="sc">::</span><span class="fu">lmer</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>lme4<span class="sc">::</span><span class="fu">lmer</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you will be using a package’s functions repeatedly, it can be preferable to activate the entire package using the <code>library()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">library</span>(lme4)</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="fu">lmer</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">lmer</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the <code>library()</code> method to activate the package, it must be done every time you have a new ‘session’ in R. It is good practice to include all <code>library(...)</code> calls together near the top of your code file.</p>
+<p>Note that a packed only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the <code>library()`</code> method to activate the package, it must be done every time you have a new ‘session’ in R.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

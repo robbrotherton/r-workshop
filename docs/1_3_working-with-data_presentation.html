@@ -398,7 +398,7 @@
 <section id="the-working-directory" class="slide level3">
 <h3>The working directory</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/Users/rbrother/Documents/r-workshop"</code></pre>
 </div>
@@ -407,13 +407,13 @@
 <section id="importing-data" class="title-slide slide level2 center">
 <h2>Importing data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># read.csv()</span></span>
-<span id="cb3-2"><a></a><span class="co"># foreign::read</span></span>
-<span id="cb3-3"><a></a>foreign<span class="sc">::</span><span class="fu">read.dta</span>(<span class="st">"stats_file.dta"</span>)</span>
-<span id="cb3-4"><a></a>haven<span class="sc">::</span>read</span>
-<span id="cb3-5"><a></a>foreign<span class="sc">::</span><span class="fu">read.spss</span>(<span class="st">"spss_file.sav"</span>)</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"excel_file.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv()</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># foreign::read</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>foreign<span class="sc">::</span><span class="fu">read.dta</span>(<span class="st">"stats_file.dta"</span>)</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span>read</span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>foreign<span class="sc">::</span><span class="fu">read.spss</span>(<span class="st">"spss_file.sav"</span>)</span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"excel_file.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -425,14 +425,14 @@
 <section id="graphs" class="title-slide slide level2 center">
 <h2>Graphs</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>my_data <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
-<span id="cb4-3"><a></a>               <span class="at">names_to =</span> <span class="st">"condition"</span>,</span>
-<span id="cb4-4"><a></a>               <span class="at">values_to =</span> <span class="st">"score"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-5"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
-<span id="cb4-6"><a></a>            <span class="at">.by =</span> condition) <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"condition"</span>,</span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> condition) <span class="sc">|&gt;</span> </span>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Et voilà, we have a serviceable graph of group means!</p>
 <p>There’s a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.</p>
@@ -440,29 +440,29 @@
 <section id="data-cleaning" class="slide level3">
 <h3>Data cleaning</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a></a>  <span class="fu">mutate</span>(<span class="at">something =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-4"><a></a>    condition <span class="sc">~</span> new_value,</span>
-<span id="cb5-5"><a></a>    condition <span class="sc">~</span> new_value,</span>
-<span id="cb5-6"><a></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
-<span id="cb5-7"><a></a>    )) <span class="sc">|&gt;</span> </span>
-<span id="cb5-8"><a></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb5-9"><a></a></span>
-<span id="cb5-10"><a></a></span>
-<span id="cb5-11"><a></a><span class="co"># example mutations</span></span>
-<span id="cb5-12"><a></a><span class="co"># reverse code</span></span>
-<span id="cb5-13"><a></a></span>
-<span id="cb5-14"><a></a><span class="co"># example conditions for case_when</span></span>
-<span id="cb5-15"><a></a><span class="co"># something %in% values</span></span>
-<span id="cb5-16"><a></a><span class="co"># !something %in% values</span></span>
-<span id="cb5-17"><a></a><span class="co"># something &gt; 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">something =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>    condition <span class="sc">~</span> new_value,</span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>    condition <span class="sc">~</span> new_value,</span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
+<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span> </span>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a><span class="co"># example mutations</span></span>
+<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a><span class="co"># reverse code</span></span>
+<span id="cb5-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># example conditions for case_when</span></span>
+<span id="cb5-15"><a aria-hidden="true" tabindex="-1"></a><span class="co"># something %in% values</span></span>
+<span id="cb5-16"><a aria-hidden="true" tabindex="-1"></a><span class="co"># !something %in% values</span></span>
+<span id="cb5-17"><a aria-hidden="true" tabindex="-1"></a><span class="co"># something &gt; 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-exploration" class="slide level3">
 <h3>Data exploration</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>dplyr<span class="sc">::</span><span class="fu">summarize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">summarize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 

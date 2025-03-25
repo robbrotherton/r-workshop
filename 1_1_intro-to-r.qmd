@@ -33,7 +33,7 @@ It might seem daunting if you've have no experience with coding, but the basic i
 
 <img src="images/excel.png" style="height: 50px; margin: 0;">
 
-Spreadsheet
+Excel Spreadsheet
 
 ::: {.excel-table style="width: fit-content; margin: auto;"}
 |                 |
@@ -57,7 +57,7 @@ Spreadsheet
 ::: {.flex}
 
 ::: {.flex-l}
-Data
+R Data
 
 ```{r}
 #| echo: false
@@ -71,7 +71,7 @@ data
 :::
 
 ::: {.flex-r}
-Code
+R Code
 
 ```{r}
 
