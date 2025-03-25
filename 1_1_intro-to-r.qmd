@@ -1,7 +1,6 @@
 ---
 format: 
   html: default
-  pdf: default
   revealjs: 
     output-file: 1_1_intro-to-r_presentation.html
 ---
@@ -10,30 +9,122 @@ format:
 
 ## Names
 
-[There are a few different names involved:]{.content-hidden when-format=revealjs}
+[There are a few different names involved:]{.content-hidden when-format="revealjs"}
 
 -   **R** is a coding language for statistics and data analysis
 -   **RStudio** is a software interface for writing and running R code
 -   **Posit** is the name of the company that makes RStudio
 -   **posit.cloud** provides a way of using RStudio in your web browser
 
-LINK TO INSTALLING R APPENDIX. You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.
+You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.
 
 ## The general workflow
 
 R is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.
 
-It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Excel/Sheets by typing `=AVERAGE(A1:A10)` in a cell of the spreadsheet. In R you might type `mean(my_data$column_a)` in a code file. The specifics of the function names are different, but the basic idea is the same.
+### Manipulating data
+
+::: {.content-hidden when-format="revealjs"}
+It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
+:::
+
+::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
+::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
+
+<img src="images/excel.png" style="height: 50px; margin: 0;">
+
+Spreadsheet
+
+::: {.excel-table style="width: fit-content; margin: auto;"}
+|                 |
+|-----------------|
+| A               |
+| 1               |
+| 2               |
+| 3               |
+| 4               |
+| 5               |
+| =AVERAGE(A2:A6) |
+:::
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
+<img src="images/r.png" style="height: 50px; margin: 0;">
+
+::: {.flex}
+
+::: {.flex-l}
+Data
+
+```{r}
+#| echo: false
+#| class: r-table
+
+data <- data.frame(A = 1:5)
+
+data
+
+```
+:::
+
+::: {.flex-r}
+Code
+
+```{r}
+
+mean(data$A)
+
+sum(data$A)
+
+sd(data$A)
+```
+:::
+:::
+
+:::
+:::
+
+```{css, echo = FALSE}
+.excel-table {
+  text-align: right !important;
+  font-size: 0.8em;
+  margin: auto;
+  background: white;
+}
+.excel-table th, .excel-table td {
+  border: 1px solid lightgrey !important;
+}
+.r-table {
+  font-size: 0.8em;
+}
+
+.flex {
+  display: flex;
+}
+.flex-l {
+  width: 30%; 
+  padding-right: 1em;
+}
+.flex-r {
+  border-left: 1px solid grey;
+  padding-left: 0.8em;
+  width: -webkit-fill-available;
+}
+```
+
 
 ### Separation of data and code
 
-A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references __but does not modify__ the source data file (unless you tell it to).
+A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
 
 ### RStudio Interface
 
 ![](rstudio-interface-1.png)
 
-::: {.content-hidden when-format=revealjs}
+::: {.content-hidden when-format="revealjs"}
 RStudio is the interface we'll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:
 
 -   Top-left: Code editor / data viewer
@@ -49,7 +140,6 @@ RStudio is the interface we'll use to write and run R code and see its output. T
     -   You can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane
 -   Bottom-right: Files/folders, Plots, Viewer, help window
     -   You can navigate the file tree
-
 :::
 
 ### Running code
@@ -58,16 +148,17 @@ Writing some code in an .R document does not cause it to be executed automatical
 
 ## Additional packages
 
-::: {.content-hidden when-format=revealjs}
 The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just 'base' R.
 
 However there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R's strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.
 
-:::
-
 ### Tidyverse
 
+![](images/tidyverse.png){fig-align="center"}
+
+::: {.content-hidden when-format="revealjs"}
 Actually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.
+:::
 
 ### Installing packages
 
@@ -81,7 +172,7 @@ install.packages("lme4")
 
 Packages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).
 
-### Using installed packages
+### Using packages
 
 If you are just using one function from a package as a one-off, you can use the double-colon `::` operator in the form `package::function()`, i.e.
 
@@ -103,4 +194,4 @@ library(lme4)
 lmer(...)
 ```
 
-Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `library()` method to activate the package, it must be done every time you have a new 'session' in R. It is good practice to include all `library(...)` calls together near the top of your code file.
+Note that a packed only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `` library()` `` method to activate the package, it must be done every time you have a new 'session' in R.
