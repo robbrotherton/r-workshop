@@ -30,8 +30,7 @@ It might seem daunting if you've have no experience with coding, but the basic i
 
 ::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
 ::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
-
-<img src="images/excel.png" style="height: 50px; margin: 0;">
+<img src="images/excel.png" style="height: 50px; margin: 0;"/>
 
 Excel Spreadsheet
 
@@ -52,11 +51,10 @@ Excel Spreadsheet
 :::
 
 ::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
-<img src="images/r.png" style="height: 50px; margin: 0;">
+<img src="images/r.png" style="height: 50px; margin: 0;"/>
 
-::: {.flex}
-
-::: {.flex-l}
+::: flex
+::: flex-l
 R Data
 
 ```{r}
@@ -70,7 +68,7 @@ data
 ```
 :::
 
-::: {.flex-r}
+::: flex-r
 R Code
 
 ```{r}
@@ -83,7 +81,6 @@ sd(data$A)
 ```
 :::
 :::
-
 :::
 :::
 
@@ -115,7 +112,6 @@ sd(data$A)
 }
 ```
 
-
 ### Separation of data and code
 
 A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
@@ -146,6 +142,12 @@ RStudio is the interface we'll use to write and run R code and see its output. T
 
 Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.
 
+-   Run button at top-right of editor pane <img src="images/run.png" style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;">
+
+-   Command (or Ctrl) ⌘ Return ⏎ (advances cursor to next line)
+
+-   Option (or Alt) ⌥ + Return ⏎ (does not advance cursor)
+
 ## Additional packages
 
 The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just 'base' R.
@@ -174,24 +176,36 @@ Packages only need to be installed on your system once (or once per project in p
 
 ### Using packages
 
+::: {.content-hidden when-format="revealjs"}
 If you are just using one function from a package as a one-off, you can use the double-colon `::` operator in the form `package::function()`, i.e.
+:::
 
 ```{r}
 #| eval: false
+
+# package::function syntax
 
 lme4::lmer(...)
 
 ```
 
+::: {.content-hidden when-format="revealjs"}
 If you will be using a package's functions repeatedly, it can be preferable to activate the entire package using the `library()` function.
+:::
 
 ```{r}
 #| eval: false
-library(tidyverse)
 
+# activate installed packages first with library()
+
+library(tidyverse)
 library(lme4)
+
+# then use functions
 
 lmer(...)
 ```
 
-Note that a packed only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `` library()` `` method to activate the package, it must be done every time you have a new 'session' in R.
+::: {.content-hidden when-format="revealjs"}
+Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `library()` method to activate the package, it must be done every time you have a new 'session' in R.
+:::
