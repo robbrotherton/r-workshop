@@ -1,0 +1,22 @@
+---
+title: "Installing R and RStudio"
+format: html
+---
+
+You can install the necessary software on your own computer for free by following this link:
+
+<https://posit.co/download/rstudio-desktop/>
+
+As the page will tell you, there are 2 separate components to install: R and RStudio. Follow the relevant links, making sure to pick the appropriate version for your operating system (Mac/Windows/Linux) where necessary.
+
+1.  R (the R language itself)
+
+    -   On the download page for this you'll see different links for different operating systems
+
+        -   MacOS: There are different versions of R depending on whether you have a newer Mac with an Apple processor (M1, M2... etc), or an older one with an Intel processor. If you're not sure which you have, search your computer for "system information", which should open some information including which chip your computer has.
+
+        -   Windows: Click the "Download R for Windows" link and look for "install R for the first time"
+
+2.  RStudio (the software interface we use to write and run R code)
+
+    -   Just click the big download button; it should have determined the correct version for you automatically.
