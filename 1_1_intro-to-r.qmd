@@ -28,8 +28,8 @@ R is a programming language well-suited to interactive data exploration and anal
 It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
 :::
 
-::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
-::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
+:::::::::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
+:::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
 <img src="images/excel.png" style="height: 50px; margin: 0;"/>
 
 Excel Spreadsheet
@@ -45,15 +45,15 @@ Excel Spreadsheet
 | 5               |
 | =AVERAGE(A2:A6) |
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
+:::::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
 <img src="images/r.png" style="height: 50px; margin: 0;"/>
 
-::: flex
+::::: flex
 ::: flex-l
 R Data
 
@@ -80,9 +80,9 @@ sum(data$A)
 sd(data$A)
 ```
 :::
-:::
-:::
-:::
+:::::
+::::::
+::::::::::
 
 ```{css, echo = FALSE}
 .excel-table {
@@ -142,7 +142,7 @@ RStudio is the interface we'll use to write and run R code and see its output. T
 
 Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.
 
--   Run button at top-right of editor pane <img src="images/run.png" style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;">
+-   Run button at top-right of editor pane <img src="images/run.png" style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;"/>
 
 -   Command (or Ctrl) ⌘ Return ⏎ (advances cursor to next line)
 
@@ -161,6 +161,10 @@ However there are many common tasks that are a bit tedious or unintuitive to do 
 ::: {.content-hidden when-format="revealjs"}
 Actually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.
 :::
+
+### Specialized analyses
+
+Linear mixed effects models
 
 ### Installing packages
 
@@ -209,3 +213,19 @@ lmer(...)
 ::: {.content-hidden when-format="revealjs"}
 Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `library()` method to activate the package, it must be done every time you have a new 'session' in R.
 :::
+
+## Help!
+
+There is a help documentation page for every function. You can access it by typing a question mark and then the name of the function in the console and hitting Enter/Return:
+
+```{r}
+#| eval: false
+
+?mean
+
+?t.test
+```
+
+Doing so brings up the function documentation in the Help pane in the bottom-right of the RStudio interface.
+
+Alternatively, you can click into the Help pane directly and type a function or topic into the search bar near the top of the pane.
