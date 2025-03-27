@@ -5,4 +5,44 @@ format:
     output-file: 2_2_quarto_presentation.html
 ---
 
-Benefits of using Quarto over just R.
+# Quarto
+
+## What is Quarto?
+
+"**An open-source scientific and technical publishing system"**
+
+Works seamlessly within RStudio
+
+### Formats
+
+-   Single documents
+
+    -   PDF article
+
+    -   HTML article
+
+    -   HTML presentation
+
+-   Collection of documents
+
+    -   Book (html and/or PDF)
+
+    -   Website (html pages, navigation)
+
+## Benefits of using Quarto over just R.
+
+## Working with Quarto documents
+
+### Typing text
+
+Source vs Visual
+
+### Code chunks
+
+```{r}
+
+```
+
+### Rendering
+
+All code gets executed from scratch
