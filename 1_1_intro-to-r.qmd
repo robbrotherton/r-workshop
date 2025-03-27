@@ -28,6 +28,10 @@ R is a programming language well-suited to interactive data exploration and anal
 It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
 :::
 
+### Separation of data and code
+
+A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
+
 :::::::::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
 :::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
 <img src="images/excel.png" style="height: 50px; margin: 0;"/>
@@ -111,10 +115,6 @@ sd(data$A)
   width: -webkit-fill-available;
 }
 ```
-
-### Separation of data and code
-
-A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
 
 ### RStudio Interface
 
