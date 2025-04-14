@@ -46,3 +46,42 @@ Source vs Visual
 ### Rendering
 
 All code gets executed from scratch
+
+## Getting started
+
+### A single document
+
+File \> New File \> Quarto Document
+
+YAML section
+
+``` yaml
+---
+title: "Untitled"
+---
+```
+
+Text.
+
+Code chunks.
+
+```{r}
+# hello!
+```
+
+### A Quarto Project
+
+#### Project Features
+
+The `_quarto.yml` file.
+
+Contains rendering instructions for the entire project, and things that will apply to each file.
+
+``` {.yaml filename="_quarto.yml"}
+project:
+  type: website
+
+format:
+  html:
+    toc: true
+```
