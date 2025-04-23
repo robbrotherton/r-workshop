@@ -20,8 +20,6 @@ You can install R and RStudio on your own computer for free and do things that w
 
 ## The general workflow
 
-R is a programming language well-suited to interactive data exploration and analysis. It is widely used in social science research.
-
 ### Manipulating data
 
 ::: {.content-hidden when-format="revealjs"}
@@ -32,8 +30,8 @@ It might seem daunting if you've have no experience with coding, but the basic i
 
 A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
 
-:::::::::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
-:::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
+::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
+::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
 <img src="images/excel.png" style="height: 50px; margin: 0;"/>
 
 Excel Spreadsheet
@@ -49,15 +47,15 @@ Excel Spreadsheet
 | 5               |
 | =AVERAGE(A2:A6) |
 :::
-::::
+:::
 
 ::: {.column width="5%"}
 :::
 
-:::::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
+::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
 <img src="images/r.png" style="height: 50px; margin: 0;"/>
 
-::::: flex
+::: flex
 ::: flex-l
 R Data
 
@@ -84,9 +82,9 @@ sum(data$A)
 sd(data$A)
 ```
 :::
-:::::
-::::::
-::::::::::
+:::
+:::
+:::
 
 ```{css, echo = FALSE}
 .excel-table {
@@ -138,16 +136,6 @@ RStudio is the interface we'll use to write and run R code and see its output. T
     -   You can navigate the file tree
 :::
 
-### Running code
-
-Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.
-
--   Run button at top-right of editor pane <img src="images/run.png" style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;"/>
-
--   Command (or Ctrl) ⌘ Return ⏎ (advances cursor to next line)
-
--   Option (or Alt) ⌥ + Return ⏎ (does not advance cursor)
-
 ## Additional packages
 
 The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just 'base' R.
@@ -176,7 +164,7 @@ install.packages("tidyverse")
 install.packages("lme4")
 ```
 
-Packages only need to be installed on your system once (or once per project in posit.cloud, since every cloud project represents a brand new virtual system).
+Packages only need to be installed on your system once.
 
 ### Using packages
 
@@ -188,6 +176,10 @@ If you are just using one function from a package as a one-off, you can use the 
 #| eval: false
 
 # package::function syntax
+
+dplyr::filter(...)
+
+tidyr::pivot_longer(...)
 
 lme4::lmer(...)
 

@@ -11,6 +11,12 @@ format:
 
 Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.
 
+-   Run button at top-right of editor pane ![](images/run.png){style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;"}
+
+-   Command (or Ctrl) ⌘ Return ⏎ (advances cursor to next line)
+
+-   Option (or Alt) ⌥ + Return ⏎ (does not advance cursor)
+
 ```{r}
 
 # comment
@@ -18,6 +24,8 @@ Writing some code in an .R document does not cause it to be executed automatical
 # 1 + 1
 
 1 + 1
+
+(-3)^2
 
 ```
 
@@ -50,7 +58,11 @@ c("hello", "world")
 # logical
 c(TRUE, FALSE)
 
+1:5 * c(1, 2)
 
+6 - 1:5
+
+1:5 * 1:5
 ```
 
 ### Coercion
