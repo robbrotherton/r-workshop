@@ -13,6 +13,8 @@ format:
 
 Works seamlessly within RStudio
 
+Next generation version of R Markdown.
+
 ### Formats
 
 -   Single documents

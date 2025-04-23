@@ -11,10 +11,10 @@ format:
 
 Helps to set expectations. Students see it as worthwhile from the outset.
 
-## Grade for effort rather than results
+## Grading
 
 Grade for effort rather than results.
 
-## Start with something cool.
+## Start with something cool
 
 ## Generative AI

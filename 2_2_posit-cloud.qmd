@@ -1,0 +1,27 @@
+---
+title: "2_2_posit-cloud"
+format: html
+---
+
+
+
+## Differences between cloud vs local
+
+Each cloud 'Project' is its own unique system. Additional packages installed in one project will not be.
+
+### Cost
+
+No cost to students. Potentially cost to instructor/department
+
+#### Tiers
+
+Free:
+
+$15/month instructor account.
+
+
+## Assignments
+
+Packages installed in your source version will be already installed in students' copies. Avoids the need for tedious and confusing installation, and occasional errors due to differences across students' hardware/software setups.
+
+Instructor can see all studnets' projects which were derived from the assigment. Can click into students' project and see their work, debug, etc.
