@@ -153,11 +153,29 @@ Actually, the tidyverse package is a container for multiple individual packages.
 
 ### Specialized analyses
 
-E.g. Linear mixed effects models (`lme4`); bootstrapping (`boot`); bayesian models (`brms`).
+E.g....
+
+-   Structural equation modeling (`lavaan`)
+
+-   Meta-analysis (`metafor`)
+
+-   Linear mixed effects models (`lme4`, `simr`)
+
+-   Bootstrapping (`boot`)
+
+-   Bayesian analyses (`brms`, `rstanarm`)
+
+-   Network analyses (`igraph`, `ggraph`, `tidygraph`, `qgraph`, `bootnet`)
+
+-   Language analysis (`tidytext`, `quanteda`)
+
+-   Audio analysis (`tuneR`, `seewave)`
+
+-   Machine learning (`tidymodels`)
 
 ### Additional capabilities
 
-Maps
+E.g. maps (`sf`, `leaflet`)
 
 ```{r}
 library(leaflet)
