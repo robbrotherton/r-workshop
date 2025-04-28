@@ -5,33 +5,38 @@ format:
     output-file: 1_2_basics_presentation.html
 ---
 
+```{=html}
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const toc = document.querySelector('.toc-active');
+  if (toc) {
+    const downloadsHeader = document.createElement('h2');
+    downloadsHeader.innerHTML = 'Resources';
+    toc.insertBefore(downloadsHeader, toc.firstChild);
+
+    const downloadList = document.createElement('ul');
+    toc.insertBefore(downloadList, downloadsHeader.nextSibling);
+
+    const downloadLink = document.createElement('li');
+    downloadLink.innerHTML = '<a href="files/mydata.csv" download><img src="https://www.r-project.org/logo/Rlogo.svg" alt="R logo" style="height:0.8em; vertical-align:baseline; margin-right:0.4em;">R file</a>';
+    downloadList.appendChild(downloadLink);
+  }
+});
+</script>
+```
 # Basics of writing R code
 
-## Start a new Project
+::: callout-note
+## Resources
 
-File \> New Project \> New Directory \> New Project
+Download this file to accompany this section:
+
+-   ![](images/R.png){height="0.8em" style="vertical-align: baseline;"} my_first_r_file.R
+:::
 
 ## Make your first R code file
 
 File \> New File \> R Script. Creates a new, temporary `Untitled.R` file. Give it a meaningful name when you save it.
-
-## The working directory
-
-R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:
-
-`"/Users/robertbrotherton/Documents/r-workshop/my_first_r_file.R"`
-
-Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work!
-
-```{r}
-getwd()
-```
-
-Now whenever you use a function that requires you to point to a file will be looking in that directory. So you can type
-
-```{r}
-read.csv(file = "my_first_r_file.R")
-```
 
 ## Writing and running code
 

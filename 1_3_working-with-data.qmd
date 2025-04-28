@@ -7,12 +7,31 @@ format:
 
 # Working with data
 
-### The working directory
+## Start a new Project
+
+File \> New Project \> New Directory \> New Project
+
+## The working directory
+
+R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:
+
+`"/Users/robertbrotherton/Documents/r-workshop/my_first_r_file.R"`
+
+Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work!
 
 ```{r}
 getwd()
-
 ```
+
+Now whenever you use a function that requires you to point to a file will be looking in that directory. So you can type
+
+```{r}
+#| eval: false
+
+read.csv(file = "my_first_r_file.R")
+```
+
+## Writing and running code
 
 ## Importing data
 
@@ -112,6 +131,7 @@ my_data |>
 ### Correlation
 
 ```{r}
+#| eval: false
 cor(x, y)
 
 cor.test(x, y)
@@ -122,6 +142,7 @@ cor(df)
 ### $t$-test
 
 ```{r}
+#| eval: false
 t.test()
 ```
 
@@ -130,12 +151,14 @@ t.test()
 Sometimes the function that computes a model doesn't tell us everything we typically want to know about that model.
 
 ```{r}
+#| eval: false
 aov(DV ~ IV, data = df)
 ```
 
 It is often useful to assign the model to a name, and the ask for a summary of the model:
 
 ```{r}
+#| eval: false
 model <- aov(DV ~ IV, data = df)
 
 summary(model)
@@ -144,6 +167,7 @@ summary(model)
 ### Regression
 
 ```{r}
+#| eval: false
 regression_model <- lm(DV ~ IV, data = df)
 
 summary(regression_model)
