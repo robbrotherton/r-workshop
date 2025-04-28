@@ -107,18 +107,46 @@ my_data |>
 
 ```
 
-Et voilà, we have a serviceable graph of group means!
-
-There's a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.
-
 ## Data Analysis
 
 ### Correlation
 
+```{r}
+cor(x, y)
+
+cor.test(x, y)
+
+cor(df)
+```
+
 ### $t$-test
+
+```{r}
+t.test()
+```
 
 ### ANOVA
 
+Sometimes the function that computes a model doesn't tell us everything we typically want to know about that model.
+
+```{r}
+aov(DV ~ IV, data = df)
+```
+
+It is often useful to assign the model to a name, and the ask for a summary of the model:
+
+```{r}
+model <- aov(DV ~ IV, data = df)
+
+summary(model)
+```
+
 ### Regression
+
+```{r}
+regression_model <- lm(DV ~ IV, data = df)
+
+summary(regression_model)
+```
 
 ### Mixed-effects

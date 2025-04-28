@@ -3,7 +3,16 @@ title: "2_2_posit-cloud"
 format: html
 ---
 
+## Names
 
+[There are a few different names involved:]{.content-hidden when-format="revealjs"}
+
+-   **R** is a coding language for statistics and data analysis
+-   **RStudio** is a software interface for writing and running R code
+-   **Posit** is the name of the company that makes RStudio
+-   **posit.cloud** provides a way of using RStudio in your web browser
+
+As we've seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to building R into a course.
 
 ## Differences between cloud vs local
 
@@ -17,8 +26,7 @@ No cost to students. Potentially cost to instructor/department
 
 Free:
 
-$15/month instructor account.
-
+\$15/month instructor account.
 
 ## Assignments
 

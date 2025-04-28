@@ -7,16 +7,17 @@ format:
 
 # Introduction to R and RStudio
 
-## Names
+## Why R?
 
-[There are a few different names involved:]{.content-hidden when-format="revealjs"}
+A coding language specialized for statistical computing and data analysis. Free and open-source. (Though there is a cloud-based version which can be paid).
 
--   **R** is a coding language for statistics and data analysis
--   **RStudio** is a software interface for writing and running R code
--   **Posit** is the name of the company that makes RStudio
--   **posit.cloud** provides a way of using RStudio in your web browser
+-   Import data from your computer, websites, databases, via webscraping
 
-You can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely.
+-   Clean and organize data
+
+-   Analyze and visualize the data
+
+-   Communicate the results in various formats (pdf research paper, website, presentation slides)
 
 ## The general workflow
 
@@ -30,8 +31,8 @@ It might seem daunting if you've have no experience with coding, but the basic i
 
 A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
 
-::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
-::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
+:::::::::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
+:::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
 <img src="images/excel.png" style="height: 50px; margin: 0;"/>
 
 Excel Spreadsheet
@@ -47,15 +48,15 @@ Excel Spreadsheet
 | 5               |
 | =AVERAGE(A2:A6) |
 :::
-:::
+::::
 
 ::: {.column width="5%"}
 :::
 
-::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
+:::::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
 <img src="images/r.png" style="height: 50px; margin: 0;"/>
 
-::: flex
+::::: flex
 ::: flex-l
 R Data
 
@@ -82,9 +83,9 @@ sum(data$A)
 sd(data$A)
 ```
 :::
-:::
-:::
-:::
+:::::
+::::::
+::::::::::
 
 ```{css, echo = FALSE}
 .excel-table {

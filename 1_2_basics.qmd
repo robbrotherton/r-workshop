@@ -5,11 +5,37 @@ format:
     output-file: 1_2_basics_presentation.html
 ---
 
-# R syntax and data structures
+# Basics of writing R code
+
+## Start a new Project
+
+File \> New Project \> New Directory \> New Project
+
+## Make your first R code file
+
+File \> New File \> R Script. Creates a new, temporary `Untitled.R` file. Give it a meaningful name when you save it.
+
+## The working directory
+
+R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:
+
+`"/Users/robertbrotherton/Documents/r-workshop/my_first_r_file.R"`
+
+Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work!
+
+```{r}
+getwd()
+```
+
+Now whenever you use a function that requires you to point to a file will be looking in that directory. So you can type
+
+```{r}
+read.csv(file = "my_first_r_file.R")
+```
 
 ## Writing and running code
 
-Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. There are several ways of doing so.
+Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. You can run a single line of code at a time, or a whole section, or an entire script.
 
 -   Run button at top-right of editor pane ![](images/run.png){style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;"}
 
@@ -39,6 +65,8 @@ Writing some code in an .R document does not cause it to be executed automatical
 3^2
 ```
 
+# Data structures
+
 ## Vectors
 
 A vector is a collection of things.
@@ -57,12 +85,20 @@ c("hello", "world")
 
 # logical
 c(TRUE, FALSE)
+```
+
+Doing math with vectors
+
+```{r}
+
+1:5 * 2
 
 1:5 * c(1, 2)
 
 6 - 1:5
 
 1:5 * 1:5
+
 ```
 
 ### Coercion
@@ -76,6 +112,7 @@ c(1, 2, "3", 4, 5)
 
 mean(c(1, 2, "3", 4, 5))
 
+22 < "1"
 
 ```
 
@@ -84,9 +121,10 @@ Coercion can have some happy consequences. For instance, logical values (`TRUE` 
 ```{r}
 # doing math with logicals
 
-c(TRUE, FALSE, FALSE, TRUE, 3)
+c(TRUE, FALSE, FALSE, TRUE, 1)
 
 sum(c(TRUE, TRUE, FALSE, FALSE))
+
 mean(c(TRUE, TRUE, FALSE, FALSE))
 ```
 
@@ -95,6 +133,8 @@ mean(c(TRUE, TRUE, FALSE, FALSE))
 ```{r}
 
 factor(c("male", "female", "female", "male"))
+
+factor(c("medium", "small", "large"), levels = c("small", "medium", "large"), ordered = TRUE)
 ```
 
 ### Special values
@@ -109,7 +149,7 @@ NaN
 
 ## Functions
 
-Many of the things we eventually want to do involve functions.
+Many of the things we eventually want to do involve functions. To use a function, type its name, followed by parentheses. Any arguments you need to specify go inside the parentheses, separated by commas.
 
 ```{r}
 sum(1:5)
