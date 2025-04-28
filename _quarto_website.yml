@@ -27,8 +27,7 @@ format:
     code-line-numbers: false
     format-links: [revealjs]
     theme:
-      light: [flatly, custom.scss]
-      dark:  [darkly, custom.scss]
+      light: [default, custom.scss]
     link-external-newwindow: true
   revealjs:
     slide-level: 3
