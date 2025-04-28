@@ -143,16 +143,6 @@ factor(c("male", "female", "female", "male"))
 factor(c("medium", "small", "large"), levels = c("small", "medium", "large"), ordered = TRUE)
 ```
 
-### Special values
-
-```{r}
-NA
-
-NULL
-
-NaN
-```
-
 ## Functions
 
 Many of the things we eventually want to do involve functions. To use a function, type its name, followed by parentheses. Any arguments you need to specify go inside the parentheses, separated by commas.
@@ -237,8 +227,12 @@ mean(doubled_numbers)
 To anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: `NA`.
 
 ```{r}
+NA
+NaN
+NULL
+Inf
 
-1 + NA
+1
 
 numbers <- c(1, 2, NA, 4, 5)
 
@@ -252,7 +246,9 @@ mean(numbers[!is.na(numbers)])
 
 ## Data.frames
 
-R's versions of a spreadsheet in Excel or SPSS is called a data.frame. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.
+So far we've been working with individual vectors. Sooner of later we're going to want to work with a collection of different sets of numbers: a spreadsheet. R's name for this kind of data structure is a *data.frame*. A data.frame is a collection of vectors; each column is a vector. As a result, different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.
+
+Most commonly we have a data file already (a .csv or maybe an Excel file or some other format) and we read it in to R. However, to get a sense of how these objects work, and how to work with them, we can make one from scratch.
 
 ```{r}
 df <- data.frame(a = c(1, 2, 3),
@@ -268,6 +264,28 @@ summary(df)
 
 ```{r}
 df$a
+
+df["a"]
+
+df[c("a", "b")]
+
+df[1:2,]
+
+df[1, 2]
+
+
+df[df$b == "one",]
+
+df |>
+  dplyr::filter(b == "one") |>
+  dplyr::select(a)
+  
+```
+
+### Doing stuff with data.frames
+
+```{r}
+df$a * 2
 
 mean(df$a)
 
