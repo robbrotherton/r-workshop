@@ -2,11 +2,13 @@ project:
   type: website
   output-dir: docs
   pre-render: _render-pdf.R
+  resources: resources/
+
 
 website:
   title: "R Faculty Workshop"
-
   sidebar:
+    style: floating
     contents:
       - index.qmd
       - section: "Day 1: Intro to R"
@@ -17,8 +19,9 @@ website:
       - section: "Day 2: Teaching with R"
         contents:
           - 2_1_general-approach.qmd
-          - 2_2_quarto.qmd
-          - 2_3_problem-sets.qmd
+          - 2_2_posit-cloud.qmd
+          - 2_3_quarto.qmd
+          - 2_4_problem-sets.qmd
 
 format:
   html:
@@ -26,8 +29,7 @@ format:
     df-print: kable
     code-line-numbers: false
     format-links: [revealjs]
-    theme:
-      light: [default, custom.scss]
+    theme: cosmo
     link-external-newwindow: true
   revealjs:
     slide-level: 3

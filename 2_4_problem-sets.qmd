@@ -5,4 +5,6 @@ format:
     output-file: 2_3_problem-sets_presentation.html
 ---
 
+# Course Materials
+
 How I use Quarto to create problems sets to teach R.

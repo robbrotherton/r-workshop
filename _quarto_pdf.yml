@@ -10,8 +10,9 @@ book:
     - 1_2_basics.qmd
     - 1_3_working-with-data.qmd
     - 2_1_general-approach.qmd
-    - 2_2_quarto.qmd
-    - 2_3_problem-sets.qmd
+    - 2_2_posit-cloud.qmd
+    - 2_3_quarto.qmd
+    - 2_4_problem-sets.qmd
 
 format:
   pdf:
