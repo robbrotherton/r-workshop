@@ -3,9 +3,6 @@ format:
   html: default
   revealjs: 
     output-file: 1_1_intro-to-r_presentation.html
-    
-params:
-  conditional_eval: false
 ---
 
 # Introduction to R and RStudio
@@ -182,6 +179,11 @@ E.g. maps (`sf`, `leaflet`)
 
 ::: {.content-hidden when-format="pdf"}
 ```{r}
+#| echo: false
+
+# showing a cool interactive map here but only works with html output.
+# since i'm rendering the whole site as a pdf as well, this breaks it
+# so let's only run the code when we're not rendering a pdf
 
 rendering_pdf <- any(stringr::str_detect(readLines("_quarto.yml"), 
                                          "type: book"))
