@@ -182,9 +182,13 @@ E.g. maps (`sf`, `leaflet`)
 
 ::: {.content-hidden when-format="pdf"}
 ```{r}
-library(leaflet)
 
-if (params$conditional_eval) {
+rendering_pdf <- any(stringr::str_detect(readLines("_quarto.yml"), 
+                                         "type: book"))
+
+if (!rendering_pdf) {
+  library(leaflet)
+  
   leaflet() |>
   addProviderTiles("NASAGIBS.ViirsEarthAtNight2012") |>
   addMarkers(lng = -73.96339268916061,
