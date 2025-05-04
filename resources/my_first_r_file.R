@@ -2,9 +2,6 @@
 install.packages("tidyverse")
 
 
-# see the current 'working directory'
-getwd()
-
 # vectors
 
 1:5

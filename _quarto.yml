@@ -4,6 +4,7 @@ project:
   pre-render: _render-pdf.R
   resources: resources/
 
+
 website:
   title: "R Faculty Workshop"
   sidebar:
@@ -31,7 +32,7 @@ format:
     theme: cosmo
     link-external-newwindow: true
   revealjs:
-    slide-level: 3
+    slide-level: 4
     code-line-numbers: false
     df-print: kable
 

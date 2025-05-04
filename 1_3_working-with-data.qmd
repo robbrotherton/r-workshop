@@ -7,100 +7,319 @@ format:
 
 # Working with data
 
+::: callout-note
 ## Start a new Project
 
-File \> New Project \> New Directory \> New Project
+In RStudio, click:
 
-## The working directory
+`File > New Project > New Directory > New Project`
+
+Once you have created the Project, save these files into your Project folder:
+
+-   ![](images/R.png){height="0.8em" style="vertical-align: baseline;"} [triplett_analysis.R](resources/triplett_analysis.R){download="triplett_analysis.R"}
+-   ![](images/table-icon.svg){height="0.8em" style="vertical-align: baseline;"} [triplett_data.csv](resources/triplett_data.csv){download="triplett_data.csv"}
+
+Back in RStudio you should see those files appear in the Files pane in the bottom-right. Click `triplett_analysis.R` to open that code file in the Editor pane.
+:::
+
+### The working directory
 
 R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:
 
-`"/Users/robertbrotherton/Documents/r-workshop/my_first_r_file.R"`
+`"/Users/robertbrotherton/Documents/r-workshop/triplett_data.csv"`
 
-Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work!
+Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work, since their folder will likely have different names.
+
+Projects help to overcome these kinds of issues. When working in a project, the 'working directory' is the Project's folder.
 
 ```{r}
 getwd()
 ```
 
-Now whenever you use a function that requires you to point to a file will be looking in that directory. So you can type
+Now whenever you use a function that requires you to point to a file, will be looking in that directory. So you can type
 
 ```{r}
 #| eval: false
 
-read.csv(file = "my_first_r_file.R")
+read_csv(file = "triplett_data.csv")
 ```
 
-## Writing and running code
+And if someone else runs the code on their computer, the file will be found.
+
+## Getting packages ready
+
+Like I said, one of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we'll lean heavily into the `tidyverse` ecosystem. We'll also use a few helpful function from other packages.
+
+The packages will need to be installed once, if they aren't already on your system. Once you have installed them, I recommend turning that code into a comment so it doesn't get executed again by accident.
+
+```{r}
+
+# install.packages(c("tidyverse", "corrplot","effectsize", "lme4", "lmerTest))
+```
+
+Then you can activate the packages with the \`library() function.
+
+```{r}
+library(tidyverse)
+library(effectsize)
+library(corrplot)
+library(lme4)
+```
 
 ## Importing data
 
+R has a built-in function to read data from a .csv (comma-separated values) file like the one you downloaded: `read.csv()`. It works perfectly fine. However the `tidyverse` package `readr` has it's own `read_csv()` function. In practice, they will give identical results, however I prefer to use the `readr::read_csv` since it gives some useful information when you run it.
+
 ```{r}
 #| eval: false
 
-# read.csv()
-# foreign::read
-foreign::read.dta("stats_file.dta")
-haven::read
-foreign::read.spss("spss_file.sav")
+triplett_data <- read_csv("triplett_data.csv")
+```
 
-readxl::read_excel("excel_file.xlsx")
+```{r}
+#| echo: false
+triplett_data <- read_csv("resources/triplett_data.csv")
+```
+
+The raw comma-separated-values data get interpreted as a data.frame object that exists in R's memory with the name `triplett_data`. You can click it's name in your Global Environment to inspect it.
+
+Note that as a data analysis project becomes more complicate it may be useful to keep data files in a subdirectory of the Project folder. If your data was inside a folder named `data_raw` inside your main Project folder, for example, you would change the `file` argument to reflect that path:
+
+```{r}
+#| eval: false
+
+triplett_data <- read_csv("data_raw/triplett_data.csv")
+```
+
+### Working with other data formats
+
+R can import (and write) many other data types, should the need arise.
+
+```{r}
+#| eval: false
+
+# Stata
+haven::read_stata("stata_file.dta")
+
+# SPSS
+haven::read_spss("spss_file.sav")
+
+# SAS
+haven::read_sas("sas_file.sas")
+
+# Excel
+readxl::read_excel("excel_file.xlsx", sheet = "sheet name")
+
 ```
 
 ## Piping
 
-You can string together different operations in a pipeline using the pipe operator: `|>`.[^1] The result of each line of code gets "piped" into the function on the next line as its first argument. For example, below I take some data (named `my_data`) and perform a series of operations, first changing its shape using `pivot_longer()`, then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into `ggplot()` to create a graph with a `geom_col()` layer for the geometry.
+You can string together different operations in a pipeline using the pipe operator: `|>`.[^1] The result of each line of code gets "piped" into the function on the next line as its first argument. That is very handy when a function is expecting a data.frame as its first argument. The `tidyverse` family of packages are all written with this syntax in mind, so they are great for building efficient and eloquent analytic pipelines.
 
 [^1]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
 
 ```{r}
 #| eval: false
-#| include: false
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-
-
-my_data <- data.frame(a = c(3, 3, 3),
-                      b = c(5, 5, 5))
 
 my_data |> 
   filter(a > 3)
 
-# is equavalent to 
+# is equivalent to 
 
 filter(my_data, a > 3)
+```
 
+The real power of this become apparent when you need to conduct a more elaborate sequence of steps. The pipe allows the code to be neatly segmented and readable as a set of instruction from top to bottom.
+
+```{r}
+#| eval: false
+
+my_data |> 
+  filter(a > 3) |> 
+  mutate(c = a + b) |> 
+  select(b, c)
 ```
 
 ## Data cleaning
 
+### Selecting
+
+Sometimes your raw data file has more columns that you need. `dplyr`'s `select()` function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.
+
+```{r}
+#| results: hide
+
+triplett_data |> 
+  select(subject, age, gender)
+
+# you can also rename as you select
+triplett_data |> 
+  select(participant = subject, age, gender)
+```
+
+### Filtering
+
+`select()` allows you to pick which columns you want; `filter()` allows you to pick which rows. Inside the function, you articulate a condition which can either be `TRUE` or `FALSE`. Each row will be checked, and those for which the condition is `TRUE` will be retained while those for which it is `FALSE` are dropped.
+
+```{r}
+triplett_data_subset <- triplett_data |> 
+  filter(group == "A")
+```
+
+You can also specify multiple conditions as necessary. All conditions must evaluate to `TRUE` for a row to be retained.
+
+```{r}
+triplett_data_subset <- triplett_data |> 
+  filter(group == "A", age >= 10)
+```
+
+### Mutating
+
+The `dplyr` function `mutate()` creates new columns or modifies existing columns. The general syntax is to specify the name of the column you want to create or modify, then an equals sign, then the operation which will compute the new values for that column. This will often be a function of existing variables, which you can refer to by name with no quotation marks. You can mutate more than one column at a time by separating the arguments with a comma.
+
+#### Modify an existing column
+
+```{r}
+triplett_data <- triplett_data |> 
+  mutate(gender = factor(gender),
+         group = factor(group))
+```
+
+#### Create a new column
+
+```{r}
+
+triplett_data_recoded <- triplett_data |> 
+  mutate(alone_mean = rowMeans(across(contains("alone"))))
+
+# produces NAs for some participants! oh no! why? can you fix it?
+```
+
+```{r}
+
+triplett_data_recoded <- triplett_data |> 
+  mutate(alone_mean = rowMeans(across(contains("alone")), na.rm = TRUE))
+
+# can you add code to get the mean competition score, and a difference score?
+
+triplett_data_recoded <- triplett_data |> 
+  mutate(alone_mean = rowMeans(across(contains("alone")), na.rm = TRUE),
+         competition_mean = rowMeans(across(contains("competition")), na.rm = TRUE),
+         diff = competition_mean - alone_mean)
+
+```
+
+#### Mutate and `case_when()`
+
+What if you need to create a new variable which differs depending on the value of an existing variable? `case_when()` allows us to articulate a set of conditions, and what value to assign when the condition is met.
+
+```{r}
+triplett_data_recoded <- triplett_data_recoded |> 
+  mutate(effect = case_when(
+    diff < -sd(diff) ~ "improved",
+    diff > sd(diff) ~ "impaired",
+    TRUE ~ "no difference"
+  ))
+```
+
+The conditions are checked in order. The final step, `TRUE ~ "no difference"` is the default value that will be assigned to any row which has not met any of the prior conditions (because `TRUE` will be true of every row).
+
+### Reshaping
+
+Sometimes it is useful to reshape data from wide to long format. The Triplett data in its initial .csv form is wide; each row contains multiple observations from a single participant. It will be helpful to have a long version of this, in which each row corresponds to a single observation.
+
+```{r}
+triplett_long <- triplett_data |> 
+  pivot_longer(contains(c("alone", "competition")),
+               names_to = c("condition", "trial"),
+               names_sep = "_",
+               values_to = "performance")
+```
+
+### Saving cleaned data
+
+Once you have a new version of your data, you may wish to save it as a new file for easy sharing or reuse.
+
+One option is to save it as an R data file. Obviously this is specialized for R and cannot be opened in Excel, for example.
+
 ```{r}
 #| eval: false
-df |> 
-  filter() |> 
-  mutate(something = case_when(
-    condition ~ new_value,
-    condition ~ new_value,
-    TRUE ~ NA
-    )) |> 
-  drop_na()
 
+saveRDS(triplett_long, "triplett_long.RDS")
+```
 
-# example mutations
-# reverse code
+Another option is to save it as a .csv file.
 
-# example conditions for case_when
-# something %in% values
-# !something %in% values
-# something > 0
+```{r}
+#| eval: false
+readr::write_csv(triplett_long, "triplett_long.csv")
 ```
 
 ## Data exploration
 
+### Descriptive statistics
+
+A quick and easy way to get some summary statistics for a data.frame is to use the `summary()` function.
+
 ```{r}
-#| eval: false
-dplyr::summarize()
+triplett_data_recoded |> 
+  select(age, gender, group, alone_mean, competition_mean, diff) |> 
+  summary()
+```
+
+#### Frequencies
+
+```{r}
+
+triplett_data_recoded |> 
+  count(gender, classification) |> 
+  mutate(prop = n / sum(n), .by = gender)
+```
+
+### Summarize
+
+The `dplyr` function `summarize()` is a powerful way of producing summary statistics from a data.frame. Its syntax is similar to that of `mutate()`: you specify the name of a column you would like to create, then an equals sign, then the operation(s) that will compute the desired value, e.g. `mean_score = mean(scores)`.
+
+The difference between `summarize()` and `mutate()` is that `mutate()` modifies the full dataset, whereas `summarize()` produces a new data.frame by reducing the values in the dataset down to a single summary value such as a mean, standard deviation, or whatever other summary statistic you might like to compute.
+
+```{r}
+
+triplett_data_recoded |> 
+  summarize(n = n(), 
+            mean_diff = mean(diff),
+            sd_diff = sd(diff),
+            range = max(diff) - min(diff))
+```
+
+### Summarize by group
+
+`summarize()`'s superpower is it's special argument, `.by`. This lets us specify a grouping variable. Whatever summary statistics you ask for will be computed separately for each level of the grouping variable.
+
+```{r}
+
+triplett_data_recoded |> 
+  summarize(n = n(), 
+            mean_diff = mean(diff),
+            sd_diff = sd(diff),
+            range = max(diff) - min(diff),
+            .by = gender)
+
+triplett_data_recoded |> 
+  summarize(n = n(), 
+            mean_diff = mean(diff),
+            sd_diff = sd(diff),
+            range = max(diff) - min(diff),
+            .by = classification)
+```
+
+### Lots of grouping variables
+
+You can have any number of grouping variables; just collect them together with the `c()` function when using the `.by` argument. Summary statistics will be produced for all combination of the variables that you specify.
+
+```{r}
+triplett_long |> 
+  summarize(average = mean(performance),
+            .by = c(classification, condition, trial, group))
 ```
 
 ## Data Visualization
@@ -109,21 +328,70 @@ dplyr::summarize()
 
 ```{r}
 
+hist(x = triplett_data_recoded$diff)
+
+plot(x = triplett_data_recoded$age, 
+     y = triplett_data_recoded$alone_0)
+
+plot(diff ~ gender, data = triplett_data_recoded)
+
+boxplot(diff ~ classification, data = triplett_data_recoded)
 ```
 
 ### Using `ggplot`
 
-```{r}
-#| eval: false
-my_data |> 
-  pivot_longer(everything(),
-               names_to = "condition",
-               values_to = "score") |> 
-  summarize(mean = mean(score),
-            .by = condition) |> 
-  ggplot(aes(x = condition, y = mean)) +
-  geom_col()
+As usual, there are many ways of visualizing data in R, but the most widely used and flexible is probably the `ggplot2` package. This package isn't built-in to R; someone else created it and made it freely available as an add-on. For packages like that, we have to tell R we want to use them using the `library()` function.
 
+The "gg" in "ggplot" refers to the "grammar of graphics". ggplot works by layering, using the `+` symbol. The first line specifies the name of the data.frame and the 'aesthetics': we want the scores (which are in a column conveniently named `scores` in the data.frame) on the x-axis. Then we add `geom_bar()` as the geometry layer. `geom_bar` is designed to take a set of scores and calculate the frequencies, which become the height of the bars on the $y$-axis (which is why we don't need to explicitly specific a $y$ aesthetic in the `aes()` function.
+
+#### Histogram
+
+```{r}
+
+triplett_data_recoded |> 
+  ggplot(aes(x = diff)) +
+  geom_histogram(bins = 10)
+
+```
+
+#### Scatterplot
+
+For a scatterplot, we would specify both `x` and `y` aesthetics, and use `geom_point()` for the geometry.
+
+```{r}
+triplett_data_recoded |> 
+  ggplot(aes(x = age, y = alone_0)) +
+  geom_point(position = "jitter")
+```
+
+#### Scatterplot with grouping variable
+
+There are other aesthetics beyond `x` and `y`. We can also map data to a `color` or `fill` aesthetic, for example. Let's also add fit lines using the `geom_smooth()` geometry, specifying the method used to compute the lines with `method = "lm"` (for "linear model"). Notice that we get two different lines, distinguished according to the `color` aesthetic. Since we specified that in the initial `ggplot(aes(...))` part, it applies to all subsequent layers of the plot.
+
+```{r}
+triplett_data_recoded |> 
+  ggplot(aes(x = age, y = alone_0, color = gender)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+### Plotting descriptives
+
+```{r}
+triplett_data |> 
+  ggplot(aes(x = factor(age), y = alone_0, color = gender)) +
+  geom_boxplot()
+```
+
+For more complex visuals, it can be useful to combine `summarize()` for computing summary stats with `ggplot` for visualizing the resulting results.
+
+```{r}
+
+triplett_long |> 
+  summarize(performance = mean(performance, na.rm = TRUE), 
+            .by = c(trial, condition)) |> 
+  ggplot(aes(x = trial, y = performance, fill = condition)) +
+  geom_col(position = "dodge")
 ```
 
 ## Data Analysis
@@ -131,46 +399,125 @@ my_data |>
 ### Correlation
 
 ```{r}
-#| eval: false
-cor(x, y)
 
-cor.test(x, y)
+cor.test(triplett_data$age, triplett_data$alone_1)
 
-cor(df)
+cor.test(triplett_data$age, triplett_data$competition_1)
+
+
+triplett_data |> 
+  select(contains("alone"), contains("competition")) |> 
+  cor(use = "pairwise") |> 
+  corrplot::corrplot(method = 'shade')
+```
+
+### $\chi^2$ test
+
+```{r}
+
+# are the genders differently distributed among Triplett's classification categories
+
+chisq.test(x = triplett_data_recoded$classification,
+           y = triplett_data_recoded$gender)
 ```
 
 ### $t$-test
 
+#### Independent-samples
+
+R has a `t.test()` function built in. When the DV is in one column and the IV grouping variable is in another, we can specify a formula using those column names in the generic format `DV ~ IV` (as in, 'compare scores on the DV by the groups of the IV').
+
 ```{r}
-#| eval: false
-t.test()
+
+# is there a difference between the genders?
+
+t.test(alone_0 ~ gender, data = triplett_data)
+
+effectsize::cohens_d(alone_0 ~ gender, data = triplett_data)
+
+```
+
+#### Related-samples
+
+For a related-samples t-test we would generally need wide-format data, where each row of data contains two columns
+
+```{r}
+
+t.test(triplett_data_recoded$alone_mean,
+       triplett_data_recoded$competition_mean,
+       paired = TRUE)
+
+effectsize::cohens_d(triplett_data_recoded$alone_mean,
+       triplett_data_recoded$competition_mean,
+       paired = TRUE)
 ```
 
 ### ANOVA
 
-Sometimes the function that computes a model doesn't tell us everything we typically want to know about that model.
+#### Independent-samples
+
+The `aov()` function computes an ANOVA model. It accepts a `formula` in the form `DV ~ IV`, just like the independent-samples `t.test()` example above.
 
 ```{r}
-#| eval: false
-aov(DV ~ IV, data = df)
+
+aov(diff ~ classification, data = triplett_data_recoded)
+
 ```
 
-It is often useful to assign the model to a name, and the ask for a summary of the model:
+Sometimes, like with `aov()`, the function that computes a model doesn't tell us everything we typically want to know about that model. It is often useful to assign the model to a name, and then ask for a summary of the model:
 
 ```{r}
-#| eval: false
-model <- aov(DV ~ IV, data = df)
 
-summary(model)
+anova <- aov(diff ~ classification, data = triplett_data_recoded)
+
+summary(anova)
+```
+
+#### Related-samples
+
+The `aov()` and `summary()` approach also works for within-participants designs. We just need to articulate the `Error()` term, using a column which uniquely identifies participants, and the grouping variable column.
+
+```{r}
+
+aov(performance ~ condition + Error(subject/condition), data = triplett_long) |> 
+  summary()
+
 ```
 
 ### Regression
 
 ```{r}
-#| eval: false
-regression_model <- lm(DV ~ IV, data = df)
+
+regression_model <- lm(diff ~ age * gender, data = triplett_data_recoded)
 
 summary(regression_model)
+
+broom::tidy(regression_model)
+broom::glance(regression_model)
 ```
 
 ### Mixed-effects
+
+```{r}
+
+lmerTest::lmer(performance ~ condition * age + (1 | subject), 
+           data = triplett_long)
+
+mixed_model <- lmerTest::lmer(performance ~ condition * age + group + (1 | subject), 
+                          data = triplett_long)
+
+summary(mixed_model)
+```
+
+```{r}
+triplett_long |> 
+  mutate(trial = as.integer(trial)) |> 
+  ggplot(aes(x = trial, y = performance, group = subject, color = condition)) +
+  geom_line(alpha = 0.3) +
+  stat_summary(aes(group = condition), fun = mean, geom = "line", size = 1.2, color = "black") +
+  facet_wrap(~condition) +
+  labs(title = "Performance over Trials by Condition",
+       x = "Trial", y = "Reeling Speed (or whatever units)",
+       caption = "Gray lines = individual subjects; bold line = group mean") +
+  theme_minimal()
+```
