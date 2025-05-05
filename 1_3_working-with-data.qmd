@@ -24,6 +24,7 @@ Back in RStudio you should see those files appear in the Files pane in the botto
 
 ### The working directory
 
+::: {.content-hidden when-format="revealjs"}
 R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:
 
 `"/Users/robertbrotherton/Documents/r-workshop/triplett_data.csv"`
@@ -31,12 +32,16 @@ R can access your entire filesystem, so you can access and create files anywhere
 Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work, since their folder will likely have different names.
 
 Projects help to overcome these kinds of issues. When working in a project, the 'working directory' is the Project's folder.
+:::
 
 ```{r}
+# check your current working directory
 getwd()
+
+# should be your project folder
 ```
 
-Now whenever you use a function that requires you to point to a file, will be looking in that directory. So you can type
+Whenever you use a function that requires you to specify a filename, the function will be looking in that directory. So you can type:
 
 ```{r}
 #| eval: false
@@ -44,15 +49,18 @@ Now whenever you use a function that requires you to point to a file, will be lo
 read_csv(file = "triplett_data.csv")
 ```
 
-And if someone else runs the code on their computer, the file will be found.
+...and if the file is in your Project folder it will be found. And if someone else runs the code on their computer, the file will be found as long as it is in their Project folder.
 
 ## Getting packages ready
 
-Like I said, one of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we'll lean heavily into the `tidyverse` ecosystem. We'll also use a few helpful function from other packages.
+::: {.content-hidden when-format="revealjs"}
+One of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we'll lean heavily into the `tidyverse` ecosystem. We'll also use a few helpful function from other packages.
 
 The packages will need to be installed once, if they aren't already on your system. Once you have installed them, I recommend turning that code into a comment so it doesn't get executed again by accident.
+:::
 
 ```{r}
+# install external packages if you don't already have them
 
 # install.packages(c("tidyverse", "corrplot","effectsize", "lme4", "lmerTest))
 ```
@@ -68,12 +76,16 @@ library(lme4)
 
 ## Importing data
 
+::: {.content-hidden when-format="revealjs"}
 R has a built-in function to read data from a .csv (comma-separated values) file like the one you downloaded: `read.csv()`. It works perfectly fine. However the `tidyverse` package `readr` has it's own `read_csv()` function. In practice, they will give identical results, however I prefer to use the `readr::read_csv` since it gives some useful information when you run it.
+:::
 
 ```{r}
 #| eval: false
 
 triplett_data <- read_csv("triplett_data.csv")
+
+# no output, but check your Global Environment
 ```
 
 ```{r}
@@ -81,12 +93,16 @@ triplett_data <- read_csv("triplett_data.csv")
 triplett_data <- read_csv("resources/triplett_data.csv")
 ```
 
+::: {.content-hidden when-format="revealjs"}
 The raw comma-separated-values data get interpreted as a data.frame object that exists in R's memory with the name `triplett_data`. You can click it's name in your Global Environment to inspect it.
 
 Note that as a data analysis project becomes more complicate it may be useful to keep data files in a subdirectory of the Project folder. If your data was inside a folder named `data_raw` inside your main Project folder, for example, you would change the `file` argument to reflect that path:
+:::
 
 ```{r}
 #| eval: false
+
+# if your data was in a subdirectory...
 
 triplett_data <- read_csv("data_raw/triplett_data.csv")
 ```
@@ -114,7 +130,9 @@ readxl::read_excel("excel_file.xlsx", sheet = "sheet name")
 
 ## Piping
 
+::: {.content-hidden when-format="revealjs"}
 You can string together different operations in a pipeline using the pipe operator: `|>`.[^1] The result of each line of code gets "piped" into the function on the next line as its first argument. That is very handy when a function is expecting a data.frame as its first argument. The `tidyverse` family of packages are all written with this syntax in mind, so they are great for building efficient and eloquent analytic pipelines.
+:::
 
 [^1]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
 
@@ -129,10 +147,14 @@ my_data |>
 filter(my_data, a > 3)
 ```
 
-The real power of this become apparent when you need to conduct a more elaborate sequence of steps. The pipe allows the code to be neatly segmented and readable as a set of instruction from top to bottom.
+::: {.content-hidden when-format="revealjs"}
+The real power of this become apparent when you need to conduct a more elaborate sequence of steps. We can pass a data.frame from function to function, modifying it along the way. The pipe allows the code to be neatly segmented and readable as a set of instruction from top to bottom.
+:::
 
 ```{r}
 #| eval: false
+
+# building a more elaborate pipeline
 
 my_data |> 
   filter(a > 3) |> 
@@ -142,7 +164,7 @@ my_data |>
 
 ## Data cleaning
 
-### Selecting
+### `Select`ing columns
 
 Sometimes your raw data file has more columns that you need. `dplyr`'s `select()` function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.
 
@@ -157,7 +179,7 @@ triplett_data |>
   select(participant = subject, age, gender)
 ```
 
-### Filtering
+### `Filter`ing rows
 
 `select()` allows you to pick which columns you want; `filter()` allows you to pick which rows. Inside the function, you articulate a condition which can either be `TRUE` or `FALSE`. Each row will be checked, and those for which the condition is `TRUE` will be retained while those for which it is `FALSE` are dropped.
 
@@ -173,9 +195,11 @@ triplett_data_subset <- triplett_data |>
   filter(group == "A", age >= 10)
 ```
 
-### Mutating
+### `Mutate` some data
 
+::: {.content-hidden when-format="revealjs"}
 The `dplyr` function `mutate()` creates new columns or modifies existing columns. The general syntax is to specify the name of the column you want to create or modify, then an equals sign, then the operation which will compute the new values for that column. This will often be a function of existing variables, which you can refer to by name with no quotation marks. You can mutate more than one column at a time by separating the arguments with a comma.
+:::
 
 #### Modify an existing column
 
@@ -366,7 +390,9 @@ triplett_data_recoded |>
 
 #### Scatterplot with grouping variable
 
+::: {.content-hidden when-format="revealjs"}
 There are other aesthetics beyond `x` and `y`. We can also map data to a `color` or `fill` aesthetic, for example. Let's also add fit lines using the `geom_smooth()` geometry, specifying the method used to compute the lines with `method = "lm"` (for "linear model"). Notice that we get two different lines, distinguished according to the `color` aesthetic. Since we specified that in the initial `ggplot(aes(...))` part, it applies to all subsequent layers of the plot.
+:::
 
 ```{r}
 triplett_data_recoded |> 
@@ -400,11 +426,13 @@ triplett_long |>
 
 ```{r}
 
-cor.test(triplett_data$age, triplett_data$alone_1)
+cor.test(triplett_data$age, triplett_data$alone_0)
 
-cor.test(triplett_data$age, triplett_data$competition_1)
+```
 
+### Lots of correlations
 
+```{r}
 triplett_data |> 
   select(contains("alone"), contains("competition")) |> 
   cor(use = "pairwise") |> 

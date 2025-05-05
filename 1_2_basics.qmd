@@ -19,13 +19,23 @@ After you save it, double click it and it should open in the Editor pane in RStu
 
 ## Writing and running code
 
+::: {.content-hidden when-format="revealjs"}
 Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. You can run a single line of code at a time, or a whole section, or an entire script.
+:::
 
--   Run button at top-right of editor pane ![](images/run.png){style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;"}
+-   One line at a time:
 
--   Command (or Ctrl) ⌘ Return ⏎ (advances cursor to next line)
+    -   Run button at top-right of editor pane ![](images/run.png){style="height: 1em; width: 3.42em; margin: 0; vertical-align: middle;"}
 
--   Option (or Alt) ⌥ + Return ⏎ (does not advance cursor)
+    -   Command (or Ctrl) ⌘ Return ⏎ (advances cursor to next line)
+
+    -   Option (or Alt) ⌥ + Return ⏎ (does not advance cursor)
+
+-   Whole script
+
+    -   Source (runs code, doesn't show output)
+
+    -   Source with Echo (shows output)
 
 ### Let's run some code
 
@@ -83,6 +93,7 @@ R has a fancy assignment operator: `<-`.[^1]
 
 [^1]: Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)
 
+```{=html}
 <style>
   .reveal .slide sup {
   color: white;
@@ -91,6 +102,7 @@ R has a fancy assignment operator: `<-`.[^1]
   display: none;
 }
 </style>
+```
 
 [You assign things to a name by typing something like:]{.content-hidden when-format="revealjs"}
 
@@ -185,7 +197,6 @@ number <- 2
 
 number * 2
 ```
-
 
 ::: {.content-hidden when-format="revealjs"}
 It is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence. You might also run a line of code more than once, modifying an object in a way that you might not intend.
@@ -531,11 +542,20 @@ df <- data.frame(a = c(1, 2, 3),
                  f = factor(c("female", "female", "male")))
 
 str(df)
+```
+
+::: {.content-visible}
+----
+:::
+
+```{r}
+
+# get a quick summary of each column
 
 summary(df)
 ```
 
-### Selecting a data.frame column
+### Selecting and using a data.frame column
 
 ::: {.content-hidden when-format="revealjs"}
 R has many ways of picking out particular columns, rows, and individual values from a data.frame. The most useful is the `$` dollar sign for referring to a column by name. The data.frame we just created has a column named "a", so we can access the single vector that makes up that column by typing:
@@ -547,13 +567,13 @@ df$a
   
 ```
 
-### Doing stuff with data.frames
-
 ::: {.content-hidden when-format="revealjs"}
 Then we can use all the functions, mathematical operations and everything else we've learned about so far to start working with the columns of our data.frame.
 :::
 
 ```{r}
+
+# remember, a data.frame column is a vector like any other
 
 df$a * 2
 
