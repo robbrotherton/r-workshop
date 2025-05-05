@@ -5,7 +5,21 @@ format:
     output-file: 2_1_general-approach_presentation.html
 ---
 
-# General comments
+# General thoughts on teaching with R
+
+::: callout-note
+##  ![](images/posit-cloud-logo.png){style="height: 1em;"} &nbsp;
+
+In this session we'll start working in Posit Cloud. I've created a 'Space' for this workshop. You can join using this link:
+
+<https://posit.cloud/spaces/647833/join?access_code=d044OrLrWY83pbYiQXdsnuYbxO1_vDN_rN1Q7pYx>
+
+I'll link you to the actual R materials in due course.
+:::
+
+## Start with something cool
+
+[posit.cloud/spaces/647833/content/10308914](https://posit.cloud/spaces/647833/content/10308914)
 
 ## Justify using R
 
@@ -17,11 +31,25 @@ The second way in which using R brings tangible benefits is in the value of the 
 
 ## Grading
 
-Students are often daunted. It does not come naturally to all.
+Students are often daunted by the idea of learning R (in conjunction with the statistics/research methods/other course material they are also expected to master). For many it will be their first experience with R, and perhaps with the idea of coding in general. It does not come naturally to all, and can be a source of stress.
 
-Grade for effort rather than results.
+My approach to keeping this manageable and approachable is to **grade for effort** rather than *results*.
 
-## Start with something cool
+In R, there is often more than one way to achieve what you want to achieve. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.
+
+What this means practically is that I employ the following grading scheme:
+
+-   0 points: No submission
+
+-   1 point: Incomplete attempt
+
+-   2 point: Complete, valid attempt
+
+That's it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. Of course, generally students will learn from their mistakes and improve along the way. But it is entirely possible for every student to get full credit for the coding assignments across the semester.
+
+The drawback to this is that it does not differentiate the students who put in great effort, going above and beyond expectations, from those who simply meet the minimum requirements of the assignments. I feel that is a worthwhile trade-off, especially since such efforts can be rewarded as part of a participation grade, for example.
+
+However,
 
 ## Most common problems
 
@@ -29,6 +57,29 @@ cover the problems and challenges that students most often run into, and how the
 
 ## Additional resources
 
-Modern Statistical Methods for Psychology (https://bookdown.org/gregcox7/ims_psych/)
+One of the nice things about R is that many academic users have developed great teaching materials and made them available for free.
+
+-   Danielle Navarro (2019) [Learning Statistics with R](https://learningstatisticswithr.com/book/)
+
+-   Mine Çetinkaya-Rundel and Johanna Hardin (2022) [Modern Statistical Methods for Psychology](https://bookdown.org/gregcox7/ims_psych/)
+
+-   Russell A. Poldrack (2018) [Statistical Thinking for the 21st Century](http://statsthinking21.org/index.html)
 
 ## Generative AI
+
+In its latest version RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code. Here, I typed the comment and the function name, and Copilot completed the function body.
+
+```{r}
+# a function to compute the sum of squared deviations
+sum_square <- function(x) {
+  n <- length(x)
+  mean_x <- mean(x)
+  sum_sq_dev <- sum((x - mean_x)^2)
+  return(sum_sq_dev)
+}
+
+sum_square(c(1, 2, 3, 4, 5))
+
+```
+
+Personally, I

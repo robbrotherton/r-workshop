@@ -9,9 +9,11 @@ format:
 
 ## Why R?
 
-A coding language specialized for statistical computing and data analysis. Free and open-source. (Though there is a cloud-based version which can be paid).
+R is a coding language specialized for statistical computing and data analysis. It is free and open-source (though there is a cloud-based version which can be paid for and can have advantages especially in the classroom).
 
--   Import data from your computer, websites, databases, via webscraping
+Some of R's capabilities:
+
+-   Import and create data files in various formats
 
 -   Clean and organize data
 
@@ -19,12 +21,16 @@ A coding language specialized for statistical computing and data analysis. Free 
 
 -   Communicate the results in various formats (pdf research paper, website, presentation slides)
 
+-   Generate random data, execute functions repeatedly, useful for simulations, bootstrapping etc
+
+-   Other programattic tasks, e.g. web-scraping, using APIs
+
 ## The general workflow
 
 ### Manipulating data
 
 ::: {.content-hidden when-format="revealjs"}
-It might seem daunting if you've have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
+It might seem daunting to learn R if you have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
 :::
 
 ### Separation of data and code
@@ -54,7 +60,7 @@ Excel Spreadsheet
 :::
 
 :::::: {.column style="width: 50%; border: 1px solid rgb(51, 102, 182); border-radius: 1em; padding: 0.8em; background: rgba(51, 102, 182, 0.03);"}
-<img src="images/r.png" style="height: 50px; margin: 0;"/>
+![](images/r-logo.png){style="margin: 0;" width="64"}
 
 ::::: flex
 ::: flex-l

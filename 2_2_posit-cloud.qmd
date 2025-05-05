@@ -1,35 +1,123 @@
 ---
-title: "Posit Cloud"
-format: html
+format: 
+  html: default
+  revealjs: 
+    output-file: 2_2_posit-cloud_presentation.html
 ---
 
-## Names
+# Posit Cloud
 
-[There are a few different names involved:]{.content-hidden when-format="revealjs"}
+## What's what
+
+[We've encountered a few different names at this point. To clarify the ecosystem:]{.content-hidden when-format="revealjs"}
 
 -   **R** is a coding language for statistics and data analysis
 -   **RStudio** is a software interface for writing and running R code
--   **Posit** is the name of the company that makes RStudio
--   **posit.cloud** provides a way of using RStudio in your web browser
+-   **Posit** is the name of the company that develops RStudio (formerly called RStudio, Inc.)
+-   **posit.cloud** is the browser-based version of RStudio, hosted and managed by Posit
 
-As we've seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to building R into a course.
+::: {.content-hidden when-format="revealjs"}
+As we've seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to using R in the classroom. It substantially lowers the barrier to entry; frees us to focus on statistical fluency rather than tool fluency.
+:::
 
-## Differences between cloud vs local
+## Cloud vs local: main differences
 
-Each cloud 'Project' is its own unique system. Additional packages installed in one project will not be.
+::: {.table-small when-format="revealjs"}
+| Feature | Local RStudio | Posit Cloud |
+|---------------------|----------------------|------------------------------|
+| Setup required | Yes — install R + RStudio | None — runs in browser |
+| Platform consistency | Varies by OS (Mac/Win/etc) | Identical for all students |
+| File storage | On user’s machine | In the cloud — per project |
+| Package installation | Manual per machine | Bundled with assignments |
+| Instructor access to work | Only if student sends files | Instructor can directly view projects |
+| Collaboration | Tricky / manual | Easy via shared projects |
+:::
+
+### Downsides / Limitations
+
+-   Must be online: offline work not possible
+
+-   Projects are somewhat slow to launch, even on fast internet (but once it's up and running the experience is virtually identical to local installation)
+
+-   Limited compute resources: not great for giant datasets, heavy ML or large simulations
+
+-   Free tier may throttle or limit use if you go over project/hour quotas
 
 ### Cost
 
-No cost to students. Potentially cost to instructor/department
+No cost to students. Potentially cost to instructor/department.
 
-#### Tiers
+::: {.table-smaller when-format="revealjs"}
+| Tier: | Free | Instructor (pay per compute hour) | Instructor (pay per student) |
+|----|----|----|----|
+| Cost | \$0 | \$15/month up to 300 compute hours, \$0.10 per hour over 300 | \$15 per instructor + \$5 per student per month |
+| Compute hours included | 25 (once you reach the cap, you can no longer open or create projects during your current month) | 300 (pay for overage) | Unlimited |
+| Shared Spaces | 1 shared space with up to 5 members and 10 content items in the space | Unlimited | Unlimited |
+| Projects | 25 | Unlimited | Unlimited |
+:::
 
-Free:
+<style>
 
-\$15/month instructor account.
+.slide .table-small {
 
-## Assignments
+font-size: 0.7em;
 
-Packages installed in your source version will be already installed in students' copies. Avoids the need for tedious and confusing installation, and occasional errors due to differences across students' hardware/software setups.
+}
 
-Instructor can see all studnets' projects which were derived from the assigment. Can click into students' project and see their work, debug, etc.
+.slide .table-smaller {
+
+font-size: 0.5em;
+
+}
+
+</style>
+
+## Projects and assignments
+
+### Projects (cloud vs local)
+
+Projects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.
+
+Locally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.
+
+Any cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.
+
+### Assignments
+
+Any posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an **Assignment**. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.
+
+#### Instructor workflow:
+
+-   Create a Space for your course (potentially a new Space each semester)
+
+-   Create a Project with all required files and packages
+
+-   Convert it to an Assignment
+
+-   Invite students to join the Space
+
+-   Share the Assignment link with students (or they can see it listed in the Space)
+
+-   Each student gets their own private copy when they click into it
+
+#### You (the instructor) can:
+
+-   View their copies
+
+-   Open their Projects directly
+
+-   Run/debug their code
+
+-   Leave feedback in-line
+
+#### Benefits:
+
+-   No setup required by students
+
+-   No broken paths, version mismatches, or install errors
+
+-   Packages installed in your source version will be already installed in students' copies
+
+-   See all student work in one place
+
+-   Effortless sharing of starter code, datasets, templates
