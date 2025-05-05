@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R Faculty Workshop</title>
+<title>working-with-data – R Faculty Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -69,12 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -103,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -141,13 +139,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_1_intro-to-r.html">Day 1: Intro to R</a></li><li class="breadcrumb-item"><a href="./1_3_working-with-data.html">Working with data</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -160,9 +158,6 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">R Faculty Workshop</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -180,9 +175,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 1: Intro to R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -196,7 +191,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./1_2_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R syntax and data structures</span></a>
+ <span class="menu-text">Basics of writing R code</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -209,9 +204,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 2: Teaching with R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -224,14 +219,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_2_quarto.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2_2_quarto.html</span></a>
+  <a href="./2_2_posit-cloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Posit Cloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_3_problem-sets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2_3_problem-sets.html</span></a>
+  <a href="./2_3_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_4_problem-sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Materials</span></a>
   </div>
 </li>
       </ul>
@@ -249,16 +250,38 @@ window.Quarto = {
   <li><a href="#working-with-data" id="toc-working-with-data" class="nav-link active" data-scroll-target="#working-with-data">Working with data</a>
   <ul class="collapse">
   <li><a href="#the-working-directory" id="toc-the-working-directory" class="nav-link" data-scroll-target="#the-working-directory">The working directory</a></li>
-  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
-  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping</a></li>
-  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs">Graphs</a>
+  <li><a href="#getting-packages-ready" id="toc-getting-packages-ready" class="nav-link" data-scroll-target="#getting-packages-ready">Getting packages ready</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a>
   <ul class="collapse">
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data cleaning</a></li>
-  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data exploration</a></li>
+  <li><a href="#working-with-other-data-formats" id="toc-working-with-other-data-formats" class="nav-link" data-scroll-target="#working-with-other-data-formats">Working with other data formats</a></li>
   </ul></li>
-  <li><a href="#analyses" id="toc-analyses" class="nav-link" data-scroll-target="#analyses">Analyses</a>
+  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data cleaning</a>
+  <ul class="collapse">
+  <li><a href="#selecting-columns" id="toc-selecting-columns" class="nav-link" data-scroll-target="#selecting-columns"><code>Select</code>ing columns</a></li>
+  <li><a href="#filtering-rows" id="toc-filtering-rows" class="nav-link" data-scroll-target="#filtering-rows"><code>Filter</code>ing rows</a></li>
+  <li><a href="#mutate-some-data" id="toc-mutate-some-data" class="nav-link" data-scroll-target="#mutate-some-data"><code>Mutate</code> some data</a></li>
+  <li><a href="#reshaping" id="toc-reshaping" class="nav-link" data-scroll-target="#reshaping">Reshaping</a></li>
+  <li><a href="#saving-cleaned-data" id="toc-saving-cleaned-data" class="nav-link" data-scroll-target="#saving-cleaned-data">Saving cleaned data</a></li>
+  </ul></li>
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data exploration</a>
+  <ul class="collapse">
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a></li>
+  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize">Summarize</a></li>
+  <li><a href="#summarize-by-group" id="toc-summarize-by-group" class="nav-link" data-scroll-target="#summarize-by-group">Summarize by group</a></li>
+  <li><a href="#lots-of-grouping-variables" id="toc-lots-of-grouping-variables" class="nav-link" data-scroll-target="#lots-of-grouping-variables">Lots of grouping variables</a></li>
+  </ul></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a>
+  <ul class="collapse">
+  <li><a href="#using-built-in-plots" id="toc-using-built-in-plots" class="nav-link" data-scroll-target="#using-built-in-plots">Using built in <code>plot</code>s</a></li>
+  <li><a href="#using-ggplot" id="toc-using-ggplot" class="nav-link" data-scroll-target="#using-ggplot">Using <code>ggplot</code></a></li>
+  <li><a href="#plotting-descriptives" id="toc-plotting-descriptives" class="nav-link" data-scroll-target="#plotting-descriptives">Plotting descriptives</a></li>
+  </ul></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a>
   <ul class="collapse">
   <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a></li>
+  <li><a href="#lots-of-correlations" id="toc-lots-of-correlations" class="nav-link" data-scroll-target="#lots-of-correlations">Lots of correlations</a></li>
+  <li><a href="#chi2-test" id="toc-chi2-test" class="nav-link" data-scroll-target="#chi2-test"><span class="math inline">\(\chi^2\)</span> test</a></li>
   <li><a href="#t-test" id="toc-t-test" class="nav-link" data-scroll-target="#t-test"><span class="math inline">\(t\)</span>-test</a></li>
   <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova">ANOVA</a></li>
   <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
@@ -269,97 +292,1349 @@ window.Quarto = {
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="1_3_working-with-data_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_1_intro-to-r.html">Day 1: Intro to R</a></li><li class="breadcrumb-item"><a href="./1_3_working-with-data.html">Working with data</a></li></ol></nav></header>
 
 
 
 
 <section id="working-with-data" class="level1">
 <h1>Working with data</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Start a new Project
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In RStudio, click:</p>
+<p><code>File &gt; New Project &gt; New Directory &gt; New Project</code></p>
+<p>Once you have created the Project, save these files into your Project folder:</p>
+<ul>
+<li><img src="images/R.png" style="vertical-align: baseline;;height:0.8em"> <a href="resources/triplett_analysis.R" download="triplett_analysis.R">triplett_analysis.R</a></li>
+<li><img src="images/table-icon.svg" style="vertical-align: baseline;;height:0.8em"> <a href="resources/triplett_data.csv" download="triplett_data.csv">triplett_data.csv</a></li>
+</ul>
+<p>Back in RStudio you should see those files appear in the Files pane in the bottom-right. Click <code>triplett_analysis.R</code> to open that code file in the Editor pane.</p>
+</div>
+</div>
 <section id="the-working-directory" class="level3">
 <h3 class="anchored" data-anchor-id="the-working-directory">The working directory</h3>
+<p>R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:</p>
+<p><code>"/Users/robertbrotherton/Documents/r-workshop/triplett_data.csv"</code></p>
+<p>Another big drawback is that if you share your code for someone else to run on their own computer, the filepaths will not work, since their folder will likely have different names.</p>
+<p>Projects help to overcome these kinds of issues. When working in a project, the ‘working directory’ is the Project’s folder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check your current working directory</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/Users/rbrother/Documents/r-workshop"</code></pre>
+<pre><code>[1] "/Users/robertbrotherton/Documents/r-workshop"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># should be your project folder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Whenever you use a function that requires you to specify a filename, the function will be looking in that directory. So you can type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"triplett_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>…and if the file is in your Project folder it will be found. And if someone else runs the code on their computer, the file will be found as long as it is in their Project folder.</p>
+</section>
+<section id="getting-packages-ready" class="level2">
+<h2 class="anchored" data-anchor-id="getting-packages-ready">Getting packages ready</h2>
+<p>One of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we’ll lean heavily into the <code>tidyverse</code> ecosystem. We’ll also use a few helpful function from other packages.</p>
+<p>The packages will need to be installed once, if they aren’t already on your system. Once you have installed them, I recommend turning that code into a comment so it doesn’t get executed again by accident.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install external packages if you don't already have them</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("tidyverse", "corrplot","effectsize", "lme4", "lmerTest))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then you can activate the packages with the `library() function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>corrplot 0.95 loaded</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix
+
+Attaching package: 'Matrix'
+
+The following objects are masked from 'package:tidyr':
+
+    expand, pack, unpack</code></pre>
 </div>
 </div>
 </section>
 <section id="importing-data" class="level2">
 <h2 class="anchored" data-anchor-id="importing-data">Importing data</h2>
+<p>R has a built-in function to read data from a .csv (comma-separated values) file like the one you downloaded: <code>read.csv()</code>. It works perfectly fine. However the <code>tidyverse</code> package <code>readr</code> has it’s own <code>read_csv()</code> function. In practice, they will give identical results, however I prefer to use the <code>readr::read_csv</code> since it gives some useful information when you run it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv()</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># foreign::read</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>foreign<span class="sc">::</span><span class="fu">read.dta</span>(<span class="st">"stats_file.dta"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span>read</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>foreign<span class="sc">::</span><span class="fu">read.spss</span>(<span class="st">"spss_file.sav"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"excel_file.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"triplett_data.csv"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># no output, but check your Global Environment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 40 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): subject, gender, group, classification
+dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>The raw comma-separated-values data get interpreted as a data.frame object that exists in R’s memory with the name <code>triplett_data</code>. You can click it’s name in your Global Environment to inspect it.</p>
+<p>Note that as a data analysis project becomes more complicate it may be useful to keep data files in a subdirectory of the Project folder. If your data was inside a folder named <code>data_raw</code> inside your main Project folder, for example, you would change the <code>file</code> argument to reflect that path:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if your data was in a subdirectory...</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data_raw/triplett_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="working-with-other-data-formats" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-other-data-formats">Working with other data formats</h3>
+<p>R can import (and write) many other data types, should the need arise.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stata</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_stata</span>(<span class="st">"stata_file.dta"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># SPSS</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_spss</span>(<span class="st">"spss_file.sav"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># SAS</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_sas</span>(<span class="st">"sas_file.sas"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Excel</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"excel_file.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"sheet name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="piping" class="level2">
 <h2 class="anchored" data-anchor-id="piping">Piping</h2>
-<p>You can string together different operations in a pipeline using the pipe operator: <code>|&gt;</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The result of each line of code gets “piped” into the function on the next line as its first argument. For example, below I take some data (named <code>my_data</code>) and perform a series of operations, first changing its shape using <code>pivot_longer()</code>, then creating summary statistics for the mean and standard deviation separately by a grouping-variable, then I pipe the summary statistics into <code>ggplot()</code> to create a graph with a <code>geom_col()</code> layer for the geometry.</p>
-</section>
-<section id="graphs" class="level2">
-<h2 class="anchored" data-anchor-id="graphs">Graphs</h2>
+<p>You can string together different operations in a pipeline using the pipe operator: <code>|&gt;</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The result of each line of code gets “piped” into the function on the next line as its first argument. That is very handy when a function is expecting a data.frame as its first argument. The <code>tidyverse</code> family of packages are all written with this syntax in mind, so they are great for building efficient and eloquent analytic pipelines.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"condition"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"score"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> condition) <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(a <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is equivalent to </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(my_data, a <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Et voilà, we have a serviceable graph of group means!</p>
-<p>There’s a lot going on there, and the specifics will become clearer as you work on the problem sets. But using the pipe operator this way can make for relatively readable code.</p>
-<section id="data-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h3>
+<p>The real power of this become apparent when you need to conduct a more elaborate sequence of steps. We can pass a data.frame from function to function, modifying it along the way. The pipe allows the code to be neatly segmented and readable as a set of instruction from top to bottom.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">something =</span> <span class="fu">case_when</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    condition <span class="sc">~</span> new_value,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    condition <span class="sc">~</span> new_value,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">|&gt;</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># example mutations</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse code</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># example conditions for case_when</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># something %in% values</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># !something %in% values</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># something &gt; 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># building a more elaborate pipeline</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(a <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c =</span> a <span class="sc">+</span> b) <span class="sc">|&gt;</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(b, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="data-exploration" class="level3">
-<h3 class="anchored" data-anchor-id="data-exploration">Data exploration</h3>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h2>
+<section id="selecting-columns" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-columns"><code>Select</code>ing columns</h3>
+<p>Sometimes your raw data file has more columns that you need. <code>dplyr</code>’s <code>select()</code> function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">summarize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, age, gender)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also rename as you select</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">participant =</span> subject, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="filtering-rows" class="level3">
+<h3 class="anchored" data-anchor-id="filtering-rows"><code>Filter</code>ing rows</h3>
+<p><code>select()</code> allows you to pick which columns you want; <code>filter()</code> allows you to pick which rows. Inside the function, you articulate a condition which can either be <code>TRUE</code> or <code>FALSE</code>. Each row will be checked, and those for which the condition is <code>TRUE</code> will be retained while those for which it is <code>FALSE</code> are dropped.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>triplett_data_subset <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can also specify multiple conditions as necessary. All conditions must evaluate to <code>TRUE</code> for a row to be retained.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>triplett_data_subset <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"A"</span>, age <span class="sc">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutate-some-data" class="level3">
+<h3 class="anchored" data-anchor-id="mutate-some-data"><code>Mutate</code> some data</h3>
+<p>The <code>dplyr</code> function <code>mutate()</code> creates new columns or modifies existing columns. The general syntax is to specify the name of the column you want to create or modify, then an equals sign, then the operation which will compute the new values for that column. This will often be a function of existing variables, which you can refer to by name with no quotation marks. You can mutate more than one column at a time by separating the arguments with a comma.</p>
+<section id="modify-an-existing-column" class="level4">
+<h4 class="anchored" data-anchor-id="modify-an-existing-column">Modify an existing column</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">factor</span>(gender),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">group =</span> <span class="fu">factor</span>(group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-new-column" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-new-column">Create a new column</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alone_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>))))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># produces NAs for some participants! oh no! why? can you fix it?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alone_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># can you add code to get the mean competition score, and a difference score?</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alone_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">competition_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"competition"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">diff =</span> competition_mean <span class="sc">-</span> alone_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutate-and-case_when" class="level4">
+<h4 class="anchored" data-anchor-id="mutate-and-case_when">Mutate and <code>case_when()</code></h4>
+<p>What if you need to create a new variable which differs depending on the value of an existing variable? <code>case_when()</code> allows us to articulate a set of conditions, and what value to assign when the condition is met.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">effect =</span> <span class="fu">case_when</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    diff <span class="sc">&lt;</span> <span class="sc">-</span><span class="fu">sd</span>(diff) <span class="sc">~</span> <span class="st">"improved"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    diff <span class="sc">&gt;</span> <span class="fu">sd</span>(diff) <span class="sc">~</span> <span class="st">"impaired"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"no difference"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The conditions are checked in order. The final step, <code>TRUE ~ "no difference"</code> is the default value that will be assigned to any row which has not met any of the prior conditions (because <code>TRUE</code> will be true of every row).</p>
+</section>
+</section>
+<section id="reshaping" class="level3">
+<h3 class="anchored" data-anchor-id="reshaping">Reshaping</h3>
+<p>Sometimes it is useful to reshape data from wide to long format. The Triplett data in its initial .csv form is wide; each row contains multiple observations from a single participant. It will be helpful to have a long version of this, in which each row corresponds to a single observation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>triplett_long <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"alone"</span>, <span class="st">"competition"</span>)),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"trial"</span>),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"performance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="saving-cleaned-data" class="level3">
+<h3 class="anchored" data-anchor-id="saving-cleaned-data">Saving cleaned data</h3>
+<p>Once you have a new version of your data, you may wish to save it as a new file for easy sharing or reuse.</p>
+<p>One option is to save it as an R data file. Obviously this is specialized for R and cannot be opened in Excel, for example.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(triplett_long, <span class="st">"triplett_long.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Another option is to save it as a .csv file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(triplett_long, <span class="st">"triplett_long.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="analyses" class="level2">
-<h2 class="anchored" data-anchor-id="analyses">Analyses</h2>
+<section id="data-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration">Data exploration</h2>
+<section id="descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h3>
+<p>A quick and easy way to get some summary statistics for a data.frame is to use the <code>summary()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, gender, group, alone_mean, competition_mean, diff) <span class="sc">|&gt;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      age        gender group    alone_mean    competition_mean
+ Min.   : 8.00   f:26   A:20   Min.   :27.67   Min.   :27.20   
+ 1st Qu.:10.75   m:14   B:20   1st Qu.:34.04   1st Qu.:33.05   
+ Median :11.00                 Median :39.22   Median :36.98   
+ Mean   :11.50                 Mean   :39.48   Mean   :37.41   
+ 3rd Qu.:13.00                 3rd Qu.:44.62   3rd Qu.:41.43   
+ Max.   :17.00                 Max.   :57.13   Max.   :50.73   
+      diff        
+ Min.   :-6.4000  
+ 1st Qu.:-4.1250  
+ Median :-1.7417  
+ Mean   :-2.0694  
+ 3rd Qu.: 0.1625  
+ Max.   : 2.0000  </code></pre>
+</div>
+</div>
+<section id="frequencies" class="level4">
+<h4 class="anchored" data-anchor-id="frequencies">Frequencies</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, classification) <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">.by =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">gender</th>
+<th style="text-align: left;">classification</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">prop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">little affected</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.2307692</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.1923077</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">0.5769231</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">little affected</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.2857143</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.3571429</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.3571429</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summarize" class="level3">
+<h3 class="anchored" data-anchor-id="summarize">Summarize</h3>
+<p>The <code>dplyr</code> function <code>summarize()</code> is a powerful way of producing summary statistics from a data.frame. Its syntax is similar to that of <code>mutate()</code>: you specify the name of a column you would like to create, then an equals sign, then the operation(s) that will compute the desired value, e.g.&nbsp;<code>mean_score = mean(scores)</code>.</p>
+<p>The difference between <code>summarize()</code> and <code>mutate()</code> is that <code>mutate()</code> modifies the full dataset, whereas <code>summarize()</code> produces a new data.frame by reducing the values in the dataset down to a single summary value such as a mean, standard deviation, or whatever other summary statistic you might like to compute.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean_diff</th>
+<th style="text-align: right;">sd_diff</th>
+<th style="text-align: right;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">-2.069417</td>
+<td style="text-align: right;">2.475617</td>
+<td style="text-align: right;">8.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize-by-group" class="level3">
+<h3 class="anchored" data-anchor-id="summarize-by-group">Summarize by group</h3>
+<p><code>summarize()</code>’s superpower is it’s special argument, <code>.by</code>. This lets us specify a grouping variable. Whatever summary statistics you ask for will be computed separately for each level of the grouping variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff),</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">gender</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean_diff</th>
+<th style="text-align: right;">sd_diff</th>
+<th style="text-align: right;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">f</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">-2.631795</td>
+<td style="text-align: right;">2.602639</td>
+<td style="text-align: right;">8.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">m</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">-1.025000</td>
+<td style="text-align: right;">1.884777</td>
+<td style="text-align: right;">6.05</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff),</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> classification)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">classification</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean_diff</th>
+<th style="text-align: right;">sd_diff</th>
+<th style="text-align: right;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">-3.841667</td>
+<td style="text-align: right;">1.825137</td>
+<td style="text-align: right;">6.550000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.530000</td>
+<td style="text-align: right;">1.346344</td>
+<td style="text-align: right;">3.850000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">-1.124333</td>
+<td style="text-align: right;">1.494226</td>
+<td style="text-align: right;">4.793333</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="lots-of-grouping-variables" class="level3">
+<h3 class="anchored" data-anchor-id="lots-of-grouping-variables">Lots of grouping variables</h3>
+<p>You can have any number of grouping variables; just collect them together with the <code>c()</code> function when using the <code>.by</code> argument. Summary statistics will be produced for all combination of the variables that you specify.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(performance),</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(classification, condition, trial, group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">classification</th>
+<th style="text-align: left;">condition</th>
+<th style="text-align: left;">trial</th>
+<th style="text-align: left;">group</th>
+<th style="text-align: right;">average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">47.49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">42.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">38.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">41.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">39.28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">36.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">48.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">45.68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">42.78</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">39.82</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">41.20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">39.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated positively</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">40.84</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">39.72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">39.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">43.32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">41.48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">37.40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">39.08</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">36.48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">34.76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">34.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">36.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">36.44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stimulated adversely</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">31.80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">30.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">31.52</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">30.24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">31.56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">31.32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">39.44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">33.64</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">32.16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">alone</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">32.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">32.84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">32.96</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">little affected</td>
+<td style="text-align: left;">competition</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
+<section id="using-built-in-plots" class="level3">
+<h3 class="anchored" data-anchor-id="using-built-in-plots">Using built in <code>plot</code>s</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>age, </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> triplett_data_recoded<span class="sc">$</span>alone_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-26-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(diff <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-26-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-26-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="using-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="using-ggplot">Using <code>ggplot</code></h3>
+<p>As usual, there are many ways of visualizing data in R, but the most widely used and flexible is probably the <code>ggplot2</code> package. This package isn’t built-in to R; someone else created it and made it freely available as an add-on. For packages like that, we have to tell R we want to use them using the <code>library()</code> function.</p>
+<p>The “gg” in “ggplot” refers to the “grammar of graphics”. ggplot works by layering, using the <code>+</code> symbol. The first line specifies the name of the data.frame and the ‘aesthetics’: we want the scores (which are in a column conveniently named <code>scores</code> in the data.frame) on the x-axis. Then we add <code>geom_bar()</code> as the geometry layer. <code>geom_bar</code> is designed to take a set of scores and calculate the frequencies, which become the height of the bars on the <span class="math inline">\(y\)</span>-axis (which is why we don’t need to explicitly specific a <span class="math inline">\(y\)</span> aesthetic in the <code>aes()</code> function.</p>
+<section id="histogram" class="level4">
+<h4 class="anchored" data-anchor-id="histogram">Histogram</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> diff)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatterplot" class="level4">
+<h4 class="anchored" data-anchor-id="scatterplot">Scatterplot</h4>
+<p>For a scatterplot, we would specify both <code>x</code> and <code>y</code> aesthetics, and use <code>geom_point()</code> for the geometry.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> alone_0)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatterplot-with-grouping-variable" class="level4">
+<h4 class="anchored" data-anchor-id="scatterplot-with-grouping-variable">Scatterplot with grouping variable</h4>
+<p>There are other aesthetics beyond <code>x</code> and <code>y</code>. We can also map data to a <code>color</code> or <code>fill</code> aesthetic, for example. Let’s also add fit lines using the <code>geom_smooth()</code> geometry, specifying the method used to compute the lines with <code>method = "lm"</code> (for “linear model”). Notice that we get two different lines, distinguished according to the <code>color</code> aesthetic. Since we specified that in the initial <code>ggplot(aes(...))</code> part, it applies to all subsequent layers of the plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> alone_0, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plotting-descriptives" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-descriptives">Plotting descriptives</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(age), <span class="at">y =</span> alone_0, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For more complex visuals, it can be useful to combine <code>summarize()</code> for computing summary stats with <code>ggplot</code> for visualizing the resulting results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">performance =</span> <span class="fu">mean</span>(performance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(trial, condition)) <span class="sc">|&gt;</span> </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trial, <span class="at">y =</span> performance, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
 <section id="correlation" class="level3">
 <h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(triplett_data<span class="sc">$</span>age, triplett_data<span class="sc">$</span>alone_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  triplett_data$age and triplett_data$alone_0
+t = -3.2537, df = 38, p-value = 0.002394
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.6794952 -0.1817032
+sample estimates:
+       cor 
+-0.4667911 </code></pre>
+</div>
+</div>
+</section>
+<section id="lots-of-correlations" class="level3">
+<h3 class="anchored" data-anchor-id="lots-of-correlations">Lots of correlations</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>), <span class="fu">contains</span>(<span class="st">"competition"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"pairwise"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  corrplot<span class="sc">::</span><span class="fu">corrplot</span>(<span class="at">method =</span> <span class="st">'shade'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="chi2-test" class="level3">
+<h3 class="anchored" data-anchor-id="chi2-test"><span class="math inline">\(\chi^2\)</span> test</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># are the genders differently distributed among Triplett's classification categories</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>classification,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> triplett_data_recoded<span class="sc">$</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(x = triplett_data_recoded$classification, y =
+triplett_data_recoded$gender): Chi-squared approximation may be incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  triplett_data_recoded$classification and triplett_data_recoded$gender
+X-squared = 1.978, df = 2, p-value = 0.3719</code></pre>
+</div>
+</div>
 </section>
 <section id="t-test" class="level3">
 <h3 class="anchored" data-anchor-id="t-test"><span class="math inline">\(t\)</span>-test</h3>
+<section id="independent-samples" class="level4">
+<h4 class="anchored" data-anchor-id="independent-samples">Independent-samples</h4>
+<p>R has a <code>t.test()</code> function built in. When the DV is in one column and the IV grouping variable is in another, we can specify a formula using those column names in the generic format <code>DV ~ IV</code> (as in, ‘compare scores on the DV by the groups of the IV’).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># is there a difference between the genders?</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(alone_0 <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  alone_0 by gender
+t = 2.9599, df = 31.645, p-value = 0.005788
+alternative hypothesis: true difference in means between group f and group m is not equal to 0
+95 percent confidence interval:
+  2.315627 12.551406
+sample estimates:
+mean in group f mean in group m 
+       45.41923        37.98571 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(alone_0 <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Cohens_d</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.9234365</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.2360446</td>
+<td style="text-align: right;">1.599793</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="related-samples" class="level4">
+<h4 class="anchored" data-anchor-id="related-samples">Related-samples</h4>
+<p>For a related-samples t-test we would generally need wide-format data, where each row of data contains two columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(triplett_data_recoded<span class="sc">$</span>alone_mean,</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>       triplett_data_recoded<span class="sc">$</span>competition_mean,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  triplett_data_recoded$alone_mean and triplett_data_recoded$competition_mean
+t = 5.2868, df = 39, p-value = 5.048e-06
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 1.277676 2.861157
+sample estimates:
+mean difference 
+       2.069417 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(triplett_data_recoded<span class="sc">$</span>alone_mean,</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>       triplett_data_recoded<span class="sc">$</span>competition_mean,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>For paired samples, 'repeated_measures_d()' provides more options.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Cohens_d</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.8359196</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.4710662</td>
+<td style="text-align: right;">1.192793</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="anova" class="level3">
 <h3 class="anchored" data-anchor-id="anova">ANOVA</h3>
+<section id="independent-samples-1" class="level4">
+<h4 class="anchored" data-anchor-id="independent-samples-1">Independent-samples</h4>
+<p>The <code>aov()</code> function computes an ANOVA model. It accepts a <code>formula</code> in the form <code>DV ~ IV</code>, just like the independent-samples <code>t.test()</code> example above.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+   aov(formula = diff ~ classification, data = triplett_data_recoded)
+
+Terms:
+                classification Residuals
+Sum of Squares       139.31890  99.69957
+Deg. of Freedom              2        37
+
+Residual standard error: 1.641518
+Estimated effects may be unbalanced</code></pre>
+</div>
+</div>
+<p>Sometimes, like with <code>aov()</code>, the function that computes a model doesn’t tell us everything we typically want to know about that model. It is often useful to assign the model to a name, and then ask for a summary of the model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+classification  2  139.3   69.66   25.85 9.44e-08 ***
+Residuals      37   99.7    2.69                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="related-samples-1" class="level4">
+<h4 class="anchored" data-anchor-id="related-samples-1">Related-samples</h4>
+<p>The <code>aov()</code> and <code>summary()</code> approach also works for within-participants designs. We just need to articulate the <code>Error()</code> term, using a column which uniquely identifies participants, and the grouping variable column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(performance <span class="sc">~</span> condition <span class="sc">+</span> <span class="fu">Error</span>(subject<span class="sc">/</span>condition), <span class="at">data =</span> triplett_long) <span class="sc">|&gt;</span> </span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Error: subject
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+condition  1     22   21.85   0.092  0.763
+Residuals 38   8993  236.65               
+
+Error: subject:condition
+          Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+condition  1  242.2   242.2   27.84 5.22e-06 ***
+Residuals 39  339.3     8.7                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Error: Within
+           Df Sum Sq Mean Sq F value Pr(&gt;F)
+Residuals 161   2346   14.57               </code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="regression" class="level3">
 <h3 class="anchored" data-anchor-id="regression">Regression</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>regression_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(diff <span class="sc">~</span> age <span class="sc">*</span> gender, <span class="at">data =</span> triplett_data_recoded)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = diff ~ age * gender, data = triplett_data_recoded)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7626 -1.8964 -0.0238  1.7587  5.0268 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  -5.4370     2.8466  -1.910   0.0641 .
+age           0.2456     0.2457   0.999   0.3243  
+genderm       3.2319     6.1234   0.528   0.6009  
+age:genderm  -0.1442     0.5236  -0.275   0.7846  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.412 on 36 degrees of freedom
+Multiple R-squared:  0.1238,    Adjusted R-squared:  0.05075 
+F-statistic: 1.695 on 3 and 36 DF,  p-value: 0.1854</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(regression_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-5.4369621</td>
+<td style="text-align: right;">2.8465542</td>
+<td style="text-align: right;">-1.9100153</td>
+<td style="text-align: right;">0.0641236</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0.2455702</td>
+<td style="text-align: right;">0.2457286</td>
+<td style="text-align: right;">0.9993555</td>
+<td style="text-align: right;">0.3242927</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">genderm</td>
+<td style="text-align: right;">3.2318877</td>
+<td style="text-align: right;">6.1234287</td>
+<td style="text-align: right;">0.5277905</td>
+<td style="text-align: right;">0.6008830</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age:genderm</td>
+<td style="text-align: right;">-0.1442141</td>
+<td style="text-align: right;">0.5235967</td>
+<td style="text-align: right;">-0.2754298</td>
+<td style="text-align: right;">0.7845609</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(regression_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.1237728</td>
+<td style="text-align: right;">0.0507539</td>
+<td style="text-align: right;">2.411975</td>
+<td style="text-align: right;">1.695078</td>
+<td style="text-align: right;">0.1853631</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-89.86817</td>
+<td style="text-align: right;">189.7363</td>
+<td style="text-align: right;">198.1807</td>
+<td style="text-align: right;">209.4345</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">40</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
 <section id="mixed-effects" class="level3">
 <h3 class="anchored" data-anchor-id="mixed-effects">Mixed-effects</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>lmerTest<span class="sc">::</span><span class="fu">lmer</span>(performance <span class="sc">~</span> condition <span class="sc">*</span> age <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> subject), </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> triplett_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML ['lmerModLmerTest']
+Formula: performance ~ condition * age + (1 | subject)
+   Data: triplett_long
+REML criterion at convergence: 1406.319
+Random effects:
+ Groups   Name        Std.Dev.
+ subject  (Intercept) 5.109   
+ Residual             3.667   
+Number of obs: 241, groups:  subject, 40
+Fixed Effects:
+             (Intercept)      conditioncompetition                       age  
+                 61.8905                   -4.6967                   -1.9463  
+conditioncompetition:age  
+                  0.2281  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>mixed_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(performance <span class="sc">~</span> condition <span class="sc">*</span> age <span class="sc">+</span> group <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> subject), </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> triplett_long)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mixed_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: performance ~ condition * age + group + (1 | subject)
+   Data: triplett_long
+
+REML criterion at convergence: 1403
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.1757 -0.6269 -0.1108  0.4602  3.4458 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ subject  (Intercept) 26.52    5.150   
+ Residual             13.44    3.667   
+Number of obs: 241, groups:  subject, 40
+
+Fixed effects:
+                         Estimate Std. Error       df t value Pr(&gt;|t|)    
+(Intercept)               61.8434     5.7664  41.4686  10.725 1.57e-13 ***
+conditioncompetition      -4.6886     3.1964 199.8308  -1.467  0.14399    
+age                       -1.9923     0.5002  41.3136  -3.983  0.00027 ***
+groupB                     1.1393     1.7148  37.1406   0.664  0.51056    
+conditioncompetition:age   0.2287     0.2753 199.8510   0.831  0.40713    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) cndtnc age    groupB
+cndtncmpttn -0.236                     
+age         -0.977  0.230              
+groupB      -0.013  0.005 -0.138       
+cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trial =</span> <span class="fu">as.integer</span>(trial)) <span class="sc">|&gt;</span> </span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trial, <span class="at">y =</span> performance, <span class="at">group =</span> subject, <span class="at">color =</span> condition)) <span class="sc">+</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">group =</span> condition), <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>condition) <span class="sc">+</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Performance over Trials by Condition"</span>,</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Trial"</span>, <span class="at">y =</span> <span class="st">"Reeling Speed (or whatever units)"</span>,</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Gray lines = individual subjects; bold line = group mean"</span>) <span class="sc">+</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 39 rows containing non-finite outside the scale range
+(`stat_summary()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 19 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -393,150 +1668,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -552,18 +1683,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -595,7 +1715,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -603,7 +1743,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -705,7 +1845,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
