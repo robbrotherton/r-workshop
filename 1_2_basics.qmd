@@ -299,7 +299,7 @@ sqrt(mean(seq(1, 10, 2)))
 
 ### Getting help with functions
 
-Remember, you can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.
+You can get help with a function (to see what arguments it accepts, for example) by typing a question mark followed by the function name (without parentheses) in your console.
 
 ```{r}
 #| eval: false
@@ -544,8 +544,9 @@ df <- data.frame(a = c(1, 2, 3),
 str(df)
 ```
 
-::: {.content-visible}
-----
+::: content-visible
+
+------------------------------------------------------------------------
 :::
 
 ```{r}

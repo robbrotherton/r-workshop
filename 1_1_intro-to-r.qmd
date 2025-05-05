@@ -1,6 +1,7 @@
 ---
 format: 
-  html: default
+  html: 
+    lightbox: true
   revealjs: 
     output-file: 1_1_intro-to-r_presentation.html
 ---
@@ -9,7 +10,9 @@ format:
 
 ## Why R?
 
+::: {.content-hidden when-format="revealjs"}
 R is a coding language specialized for statistical computing and data analysis. It is free and open-source (though there is a cloud-based version which can be paid for and can have advantages especially in the classroom).
+:::
 
 Some of R's capabilities:
 
@@ -23,19 +26,17 @@ Some of R's capabilities:
 
 -   Generate random data, execute functions repeatedly, useful for simulations, bootstrapping etc
 
--   Other programattic tasks, e.g. web-scraping, using APIs
+-   Other programmatic tasks, e.g. web-scraping, using APIs
 
 ## The general workflow
 
-### Manipulating data
+### Separation of data and code
 
 ::: {.content-hidden when-format="revealjs"}
 It might seem daunting to learn R if you have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing `=AVERAGE(A1:A10)`. In R you might type `mean(my_data$column_a)`. The specifics of the function names are different, but the basic idea is the same.
-:::
-
-### Separation of data and code
 
 A major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references **but does not modify** the source data file (unless you tell it to).
+:::
 
 :::::::::: {.columns style="display: flex; align-items: stretch; align-content: center; text-align: center;"}
 :::: {.column style="width: 45%; border: 1px solid rgb(45, 105, 55); border-radius: 1em; padding: 0.8em; background: rgba(45, 105, 55, 0.03)"}
@@ -123,7 +124,7 @@ sd(data$A)
 
 ### RStudio Interface
 
-![](rstudio-interface-1.png)
+![](images/rstudio.png){width="100%"}
 
 ::: {.content-hidden when-format="revealjs"}
 RStudio is the interface we'll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:
@@ -141,25 +142,35 @@ RStudio is the interface we'll use to write and run R code and see its output. T
     -   You can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane
 -   Bottom-right: Files/folders, Plots, Viewer, help window
     -   You can navigate the file tree
+    -   And get Help with functions
+    -   As well as seeing plots and other kinds of output
 :::
 
 ## Additional packages
 
+::: {.content-hidden when-format="revealjs"}
 The R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just 'base' R.
 
 However there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R's strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.
+:::
+
+::: {.content-visible when-format="revealjs"}
+"**Base-R**" and its extended ecosystem
+:::
 
 ### Tidyverse
 
 ![](images/tidyverse.png){fig-align="center"}
 
 ::: {.content-hidden when-format="revealjs"}
-Actually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.
+The tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic, and are widely used for data analysis. `readr` handles importing data, `dplyr` and `tidyr` have many functions for data cleaning and manipulation, `stringr`, `lubridate`, and `forcats` are specialized for working with text, dates, and categorical variables respectively; `ggplot2` makes graphs; and `tidymodels` is for modelling.
 :::
 
 ### Specialized analyses
 
-E.g....
+::: {.content-hidden when-format="revealjs"}
+The extended ecosystem includes packages specialized for almost any kind of analysis you can think of. To give a few examples...
+:::
 
 -   Structural equation modeling (`lavaan`)
 
@@ -169,7 +180,7 @@ E.g....
 
 -   Bootstrapping (`boot`)
 
--   Bayesian analyses (`brms`, `rstanarm`)
+-   Bayesian models (`brms`, `rstanarm`)
 
 -   Network analyses (`igraph`, `ggraph`, `tidygraph`, `qgraph`, `bootnet`)
 
@@ -182,6 +193,19 @@ E.g....
 ### Additional capabilities
 
 E.g. maps (`sf`, `leaflet`)
+
+```{r}
+#| eval: false
+
+library(leaflet)
+  
+  leaflet() |>
+  addProviderTiles("NASAGIBS.ViirsEarthAtNight2012") |>
+  addMarkers(lng = -73.96339268916061,
+             lat = 40.80949994182454, 
+             popup = "Hello from Barnard!")
+
+```
 
 ::: {.content-hidden when-format="pdf"}
 ```{r}
@@ -258,19 +282,3 @@ lmer(...)
 ::: {.content-hidden when-format="revealjs"}
 Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `library()` method to activate the package, it must be done every time you have a new 'session' in R.
 :::
-
-## Help!
-
-There is a help documentation page for every function. You can access it by typing a question mark and then the name of the function in the console and hitting Enter/Return:
-
-```{r}
-#| eval: false
-
-?mean
-
-?t.test
-```
-
-Doing so brings up the function documentation in the Help pane in the bottom-right of the RStudio interface.
-
-Alternatively, you can click into the Help pane directly and type a function or topic into the search bar near the top of the pane.
