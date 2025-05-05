@@ -8,7 +8,7 @@ format:
 # General thoughts on teaching with R
 
 ::: callout-note
-##  ![](images/posit-cloud-logo.png){style="height: 1em;"} &nbsp;
+## ![](images/posit-cloud-logo.png){style="height: 1em;"}  
 
 In this session we'll start working in Posit Cloud. I've created a 'Space' for this workshop. You can join using this link:
 
@@ -23,21 +23,33 @@ I'll link you to the actual R materials in due course.
 
 ## Justify using R
 
-Helps to set expectations. Students see it as worthwhile from the outset.
+-   Skill Development: Proficiency in R is increasingly sought after in both academic and industry settings, enhancing students' career prospects. See : <https://r4stats.com/articles/popularity/>
 
-Pedagogically, using R can facilitate students' understanding of fundamental statistical concepts and applied analytic techniques. While having students simultaneously learn statistical concepts and a coding language is challenging, my experience to date shows that it is not only possible, but that the coding elements can be used to reinforce students' understanding of the conceptual side. As compared to other statistics software, such as SPSS, R has many features that make it especially well-suited for teaching. I have students use R to demonstrate basic concepts of probability and sampling, as well as running basic and advanced analyses. Equations that are introduced in class using paper and pencil can be adapted into R code and turned into custom functions, forming a concrete link between the underlying mathematical procedures and their computational implementation. By the time students are making use of built-in functions to perform sophisticated analyses they understand how the computer is applying the same mathematical procedures they have learned in class. This keeps the focus on understanding and applying the statistical concepts, rather than merely learning the correct sequence of buttons to press on a graphical user interface.
+-   Reproducibility: R promotes transparent and reproducible research practices, aligning with open science principles.
 
-The second way in which using R brings tangible benefits is in the value of the skills it imparts. For social-scientists-in-training, R is a tool they will likely encounter at some point. The main alternative, SPSS, has been declining in popularity while R has been increasing. Beyond academia, the number of jobs which list R as a desirable or required skill vastly outnumber those which require SPSS ( Muenchen, 2023 ). In part, R's popularity is a result of it being freely available and easily extensible, making data-analytic tasks easier. Resulting analyses are inherently documented and reproducible, which has made R code files a common format for sharing analysis scripts alongside open-access data (on psyArXiV, for example). Using R allows instructors not only to offer training in a cutting-edge tool which students can use for scholarly projects, but to make students aware of the broader context in which such analytic tools exist. This is in line with the Thinking Technologically and Digitally requirement's goal of helping "instill in students the confidence to make decisions about the adoption and use of current and future technologies in a critical and creative manner."
+-   Cost-Effectiveness: R is free and open-source, making it accessible to all students regardless of financial resources.
+
+-   Conceptual Understanding: Coding statistical procedures reinforces comprehension of underlying concepts. For example, writing functions to compute z-scores or simulate sampling distributions deepens understanding.
+
+Requiring students to learn both statistical concepts (or research methods or whatever) *and* coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset.
 
 ## Grading
 
-Students are often daunted by the idea of learning R (in conjunction with the statistics/research methods/other course material they are also expected to master). For many it will be their first experience with R, and perhaps with the idea of coding in general. It does not come naturally to all, and can be a source of stress.
+::: {.content-hidden when-format="revealjs"}
+Learning R can be challenging, especially for students new to programming. In R, there is often more than one way to do things. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.
+:::
 
-My approach to keeping this manageable and approachable is to **grade for effort** rather than *results*.
+```{=html}
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code</p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/589068687669243905?ref_src=twsrc%5Etfw">April 17, 2015</a></blockquote>
+```
 
-In R, there is often more than one way to achieve what you want to achieve. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.
+To foster a supportive learning environment:
 
-What this means practically is that I employ the following grading scheme:
+-   Effort-Based Grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.
+
+-   Feedback-Oriented: Provide constructive feedback to guide improvement, focusing on the learning process over the final product.
+
+My grading scheme:
 
 -   0 points: No submission
 
@@ -45,19 +57,35 @@ What this means practically is that I employ the following grading scheme:
 
 -   2 point: Complete, valid attempt
 
-That's it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. Of course, generally students will learn from their mistakes and improve along the way. But it is entirely possible for every student to get full credit for the coding assignments across the semester.
+::: {.content-hidden when-format="revealjs"}
+That's it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. It is entirely possible for every student to get full credit for the coding assignments across the semester, even if they never get a single correct answer–as long as they try. Of course, generally students will learn from their mistakes and improve along the way.
 
 The drawback to this is that it does not differentiate the students who put in great effort, going above and beyond expectations, from those who simply meet the minimum requirements of the assignments. I feel that is a worthwhile trade-off, especially since such efforts can be rewarded as part of a participation grade, for example.
-
-However,
+:::
 
 ## Most common problems
 
-cover the problems and challenges that students most often run into, and how these can be avoided or even turned into learning opportunities.
+Students often encounter specific hurdles when learning R:
+
+-   Annoying technical problems: Forgetting to install or load necessary packages leads to errors.
+
+-   Syntax Errors: Missing commas, parentheses, or quotation marks are common. Encourage the use of RStudio's syntax highlighting and error messages to identify issues.
+
+-   Understanding Data Structures: Differentiating between vectors, data frames, and lists can be confusing. Use analogies and visual aids to clarify these concepts.
+
+-   Annoying technical problems: Forgetting to install or load necessary packages leads to errors.
+
+-   Function Arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.
+
+To address these challenges:
+
+-   Incremental Learning: Introduce concepts gradually, building upon previous knowledge.
+
+-   Active Practice: Incorporate hands-on exercises that allow students to apply new skills immediately.
 
 ## Additional resources
 
-One of the nice things about R is that many academic users have developed great teaching materials and made them available for free.
+One of the nice things about R is that many academic users have developed great teaching materials and made them available for free. A few examples:
 
 -   Danielle Navarro (2019) [Learning Statistics with R](https://learningstatisticswithr.com/book/)
 
@@ -71,15 +99,13 @@ In its latest version RStudio has Github Copilot, an LLM interface, built-in. It
 
 ```{r}
 # a function to compute the sum of squared deviations
-sum_square <- function(x) {
+sum_squares <- function(x) {
   n <- length(x)
   mean_x <- mean(x)
   sum_sq_dev <- sum((x - mean_x)^2)
   return(sum_sq_dev)
 }
 
-sum_square(c(1, 2, 3, 4, 5))
+sum_squares(c(1, 2, 3, 4, 5))
 
 ```
-
-Personally, I

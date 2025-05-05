@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -79,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_1_general-approach.html">General comments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_1_general-approach.html">General thoughts on teaching with R</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -151,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_1_general-approach.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">General comments</span></a>
+ <span class="menu-text">General thoughts on teaching with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -168,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_4_problem-sets.html" class="sidebar-item-text sidebar-link">
+  <a href="./2_4_course-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Materials</span></a>
   </div>
 </li>
@@ -184,11 +218,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#general-comments" id="toc-general-comments" class="nav-link active" data-scroll-target="#general-comments">General comments</a>
+  <li><a href="#general-thoughts-on-teaching-with-r" id="toc-general-thoughts-on-teaching-with-r" class="nav-link active" data-scroll-target="#general-thoughts-on-teaching-with-r">General thoughts on teaching with R</a>
   <ul class="collapse">
+  <li><a href="#start-with-something-cool" id="toc-start-with-something-cool" class="nav-link" data-scroll-target="#start-with-something-cool">Start with something cool</a></li>
   <li><a href="#justify-using-r" id="toc-justify-using-r" class="nav-link" data-scroll-target="#justify-using-r">Justify using R</a></li>
   <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
-  <li><a href="#start-with-something-cool" id="toc-start-with-something-cool" class="nav-link" data-scroll-target="#start-with-something-cool">Start with something cool</a></li>
   <li><a href="#most-common-problems" id="toc-most-common-problems" class="nav-link" data-scroll-target="#most-common-problems">Most common problems</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional resources</a></li>
   <li><a href="#generative-ai" id="toc-generative-ai" class="nav-link" data-scroll-target="#generative-ai">Generative AI</a></li>
@@ -197,37 +231,102 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_1_general-approach_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_1_general-approach.html">General comments</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_1_general-approach.html">General thoughts on teaching with R</a></li></ol></nav></header>
 
 
 
 
-<section id="general-comments" class="level1">
-<h1>General comments</h1>
+<section id="general-thoughts-on-teaching-with-r" class="level1">
+<h1>General thoughts on teaching with R</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="images/posit-cloud-logo.png" class="img-fluid" style="height: 1em;"> &nbsp;
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this session we’ll start working in Posit Cloud. I’ve created a ‘Space’ for this workshop. You can join using this link:</p>
+<p><a href="https://posit.cloud/spaces/647833/join?access_code=d044OrLrWY83pbYiQXdsnuYbxO1_vDN_rN1Q7pYx" class="uri">https://posit.cloud/spaces/647833/join?access_code=d044OrLrWY83pbYiQXdsnuYbxO1_vDN_rN1Q7pYx</a></p>
+<p>I’ll link you to the actual R materials in due course.</p>
+</div>
+</div>
+<section id="start-with-something-cool" class="level2">
+<h2 class="anchored" data-anchor-id="start-with-something-cool">Start with something cool</h2>
+<p><a href="https://posit.cloud/spaces/647833/content/10308914">posit.cloud/spaces/647833/content/10308914</a></p>
+</section>
 <section id="justify-using-r" class="level2">
 <h2 class="anchored" data-anchor-id="justify-using-r">Justify using R</h2>
-<p>Helps to set expectations. Students see it as worthwhile from the outset.</p>
-<p>Pedagogically, using R can facilitate students’ understanding of fundamental statistical concepts and applied analytic techniques. While having students simultaneously learn statistical concepts and a coding language is challenging, my experience to date shows that it is not only possible, but that the coding elements can be used to reinforce students’ understanding of the conceptual side. As compared to other statistics software, such as SPSS, R has many features that make it especially well-suited for teaching. I have students use R to demonstrate basic concepts of probability and sampling, as well as running basic and advanced analyses. Equations that are introduced in class using paper and pencil can be adapted into R code and turned into custom functions, forming a concrete link between the underlying mathematical procedures and their computational implementation. By the time students are making use of built-in functions to perform sophisticated analyses they understand how the computer is applying the same mathematical procedures they have learned in class. This keeps the focus on understanding and applying the statistical concepts, rather than merely learning the correct sequence of buttons to press on a graphical user interface.</p>
-<p>The second way in which using R brings tangible benefits is in the value of the skills it imparts. For social-scientists-in-training, R is a tool they will likely encounter at some point. The main alternative, SPSS, has been declining in popularity while R has been increasing. Beyond academia, the number of jobs which list R as a desirable or required skill vastly outnumber those which require SPSS ( Muenchen, 2023 ). In part, R’s popularity is a result of it being freely available and easily extensible, making data-analytic tasks easier. Resulting analyses are inherently documented and reproducible, which has made R code files a common format for sharing analysis scripts alongside open-access data (on psyArXiV, for example). Using R allows instructors not only to offer training in a cutting-edge tool which students can use for scholarly projects, but to make students aware of the broader context in which such analytic tools exist. This is in line with the Thinking Technologically and Digitally requirement’s goal of helping “instill in students the confidence to make decisions about the adoption and use of current and future technologies in a critical and creative manner.”</p>
+<ul>
+<li><p>Skill Development: Proficiency in R is increasingly sought after in both academic and industry settings, enhancing students’ career prospects. See : <a href="https://r4stats.com/articles/popularity/" class="uri">https://r4stats.com/articles/popularity/</a></p></li>
+<li><p>Reproducibility: R promotes transparent and reproducible research practices, aligning with open science principles.</p></li>
+<li><p>Cost-Effectiveness: R is free and open-source, making it accessible to all students regardless of financial resources.</p></li>
+<li><p>Conceptual Understanding: Coding statistical procedures reinforces comprehension of underlying concepts. For example, writing functions to compute z-scores or simulate sampling distributions deepens understanding.</p></li>
+</ul>
+<p>Requiring students to learn both statistical concepts (or research methods or whatever) <em>and</em> coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset.</p>
 </section>
 <section id="grading" class="level2">
 <h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>Students are often daunted. It does not come naturally to all.</p>
-<p>Grade for effort rather than results.</p>
-</section>
-<section id="start-with-something-cool" class="level2">
-<h2 class="anchored" data-anchor-id="start-with-something-cool">Start with something cool</h2>
+<p>Learning R can be challenging, especially for students new to programming. In R, there is often more than one way to do things. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.</p>
+<blockquote class="twitter-tweet blockquote"><p lang="en" dir="ltr">The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code</p>— Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/589068687669243905?ref_src=twsrc%5Etfw">April 17, 2015</a></blockquote>
+<p>To foster a supportive learning environment:</p>
+<ul>
+<li><p>Effort-Based Grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.</p></li>
+<li><p>Feedback-Oriented: Provide constructive feedback to guide improvement, focusing on the learning process over the final product.</p></li>
+</ul>
+<p>My grading scheme:</p>
+<ul>
+<li><p>0 points: No submission</p></li>
+<li><p>1 point: Incomplete attempt</p></li>
+<li><p>2 point: Complete, valid attempt</p></li>
+</ul>
+<p>That’s it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. It is entirely possible for every student to get full credit for the coding assignments across the semester, even if they never get a single correct answer–as long as they try. Of course, generally students will learn from their mistakes and improve along the way.</p>
+<p>The drawback to this is that it does not differentiate the students who put in great effort, going above and beyond expectations, from those who simply meet the minimum requirements of the assignments. I feel that is a worthwhile trade-off, especially since such efforts can be rewarded as part of a participation grade, for example.</p>
 </section>
 <section id="most-common-problems" class="level2">
 <h2 class="anchored" data-anchor-id="most-common-problems">Most common problems</h2>
-<p>cover the problems and challenges that students most often run into, and how these can be avoided or even turned into learning opportunities.</p>
+<p>Students often encounter specific hurdles when learning R:</p>
+<ul>
+<li><p>Annoying technical problems: Forgetting to install or load necessary packages leads to errors.</p></li>
+<li><p>Syntax Errors: Missing commas, parentheses, or quotation marks are common. Encourage the use of RStudio’s syntax highlighting and error messages to identify issues.</p></li>
+<li><p>Understanding Data Structures: Differentiating between vectors, data frames, and lists can be confusing. Use analogies and visual aids to clarify these concepts.</p></li>
+<li><p>Annoying technical problems: Forgetting to install or load necessary packages leads to errors.</p></li>
+<li><p>Function Arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.</p></li>
+</ul>
+<p>To address these challenges:</p>
+<ul>
+<li><p>Incremental Learning: Introduce concepts gradually, building upon previous knowledge.</p></li>
+<li><p>Active Practice: Incorporate hands-on exercises that allow students to apply new skills immediately.</p></li>
+</ul>
 </section>
 <section id="additional-resources" class="level2">
 <h2 class="anchored" data-anchor-id="additional-resources">Additional resources</h2>
-<p>Modern Statistical Methods for Psychology (https://bookdown.org/gregcox7/ims_psych/)</p>
+<p>One of the nice things about R is that many academic users have developed great teaching materials and made them available for free. A few examples:</p>
+<ul>
+<li><p>Danielle Navarro (2019) <a href="https://learningstatisticswithr.com/book/">Learning Statistics with R</a></p></li>
+<li><p>Mine Çetinkaya-Rundel and Johanna Hardin (2022) <a href="https://bookdown.org/gregcox7/ims_psych/">Modern Statistical Methods for Psychology</a></p></li>
+<li><p>Russell A. Poldrack (2018) <a href="http://statsthinking21.org/index.html">Statistical Thinking for the 21st Century</a></p></li>
+</ul>
 </section>
 <section id="generative-ai" class="level2">
 <h2 class="anchored" data-anchor-id="generative-ai">Generative AI</h2>
+<p>In its latest version RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code. Here, I typed the comment and the function name, and Copilot completed the function body.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a function to compute the sum of squared deviations</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sum_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  mean_x <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  sum_sq_dev <span class="ot">&lt;-</span> <span class="fu">sum</span>((x <span class="sc">-</span> mean_x)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sum_sq_dev)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sum_squares</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
 
 
 </section>

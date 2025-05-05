@@ -8,11 +8,11 @@ format: html
 
 ### [Intro to R](1_1_intro-to-r.qmd)
 
-Some notes about the general
+Some notes about R and its ecosystem in general
 
 ### [Basics of writing R code](1_2_basics.qmd)
 
-Syntax, functions, assignment, pipe, data types
+Syntax, data types, assignment, functions
 
 ### [Working with data](1_3_working-with-data.qmd)
 
@@ -20,14 +20,18 @@ Importing data, cleaning, graphs, analyses
 
 ## Day 2: Teaching with R
 
-### General approach
+### [General thoughts on teaching with R](2_1_general-approach.qmd)
 
 Pedagogy, grading, generative AI
 
-### Tools
+### [Posit Cloud](2_2_posit-cloud.qmd)
 
-Quarto
+A web-based version of RStudio
 
-### Examples
+### [Quarto](2_3_quarto.qmd)
 
-Lab manual, problem sets
+An alternative document format with advantages for teaching
+
+### [Example course materials](2_4_course-materials.qmd)
+
+Examples of how I use R and these additional tools in Statistics and Labs

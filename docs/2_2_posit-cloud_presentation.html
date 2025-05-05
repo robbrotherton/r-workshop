@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <title>R Faculty Workshop – quarto</title>
+  <title>R Faculty Workshop – posit-cloud</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -27,71 +27,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -192,142 +127,194 @@
 
 
 <section>
-<section id="quarto" class="title-slide slide level1 center">
-<h1>Quarto</h1>
+<section id="posit-cloud" class="title-slide slide level1 center">
+<h1>Posit Cloud</h1>
 
 </section>
-<section id="what-is-quarto" class="title-slide slide level2 center">
-<h2>What is Quarto?</h2>
-<p>“<strong>An open-source scientific and technical publishing system”</strong></p>
-<p>Works seamlessly within RStudio</p>
-<p>Next generation version of R Markdown.</p>
-<p>Provides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.</p>
-</section>
-<section id="output-formats" class="title-slide slide level3 center">
-<h3>Output formats</h3>
+<section id="whats-what" class="title-slide slide level2 center">
+<h2>What’s what</h2>
 <ul>
-<li><p>Single documents</p>
-<ul>
-<li><p>PDF article</p></li>
-<li><p>Word document</p></li>
-<li><p>HTML article</p></li>
-<li><p>HTML presentation</p></li>
-</ul></li>
-<li><p>Collection of documents</p>
-<ul>
-<li><p>Book (html and/or PDF)</p></li>
-<li><p>Website (html pages, navigation)</p></li>
-</ul></li>
+<li><strong>R</strong> is a coding language for statistics and data analysis</li>
+<li><strong>RStudio</strong> is a software interface for writing and running R code</li>
+<li><strong>Posit</strong> is the name of the company that develops RStudio (formerly called RStudio, Inc.)</li>
+<li><strong>posit.cloud</strong> is the browser-based version of RStudio, hosted and managed by Posit</li>
 </ul>
 </section>
 
-<section id="benefits-of-using-quarto-over-just-r" class="title-slide slide level3 center">
-<h3>Benefits of using Quarto over just R</h3>
+<section id="cloud-vs-local-main-differences" class="title-slide slide level2 center">
+<h2>Cloud vs local: main differences</h2>
+<div class="table-small" data-when-format="revealjs">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 30%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Local RStudio</th>
+<th>Posit Cloud</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Setup required</td>
+<td>Yes — install R + RStudio</td>
+<td>None — runs in browser</td>
+</tr>
+<tr class="even">
+<td>Platform consistency</td>
+<td>Varies by OS (Mac/Win/etc)</td>
+<td>Identical for all students</td>
+</tr>
+<tr class="odd">
+<td>File storage</td>
+<td>On user’s machine</td>
+<td>In the cloud — per project</td>
+</tr>
+<tr class="even">
+<td>Package installation</td>
+<td>Manual per machine</td>
+<td>Bundled with assignments</td>
+</tr>
+<tr class="odd">
+<td>Instructor access to work</td>
+<td>Only if student sends files</td>
+<td>Instructor can directly view projects</td>
+</tr>
+<tr class="even">
+<td>Collaboration</td>
+<td>Tricky / manual</td>
+<td>Easy via shared projects</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="downsides-limitations" class="title-slide slide level3 center">
+<h3>Downsides / Limitations</h3>
 <ul>
-<li><p>Reproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.</p></li>
-<li><p>Engaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.</p></li>
-<li><p>Efficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.</p></li>
-<li><p>Professional Reporting: Generate publication-ready reports and presentations directly from your analyses.</p></li>
+<li><p>Must be online: offline work not possible</p></li>
+<li><p>Projects are somewhat slow to launch, even on fast internet (but once it’s up and running the experience is virtually identical to local installation)</p></li>
+<li><p>Limited compute resources: not great for giant datasets, heavy ML or large simulations</p></li>
+<li><p>Free tier may throttle or limit use if you go over project/hour quotas</p></li>
 </ul>
 </section>
 
-
-<section id="working-with-quarto-documents" class="title-slide slide level2 center">
-<h2>Working with Quarto documents</h2>
-
-</section>
-
-<section id="getting-started" class="title-slide slide level2 center">
-<h2>Getting started</h2>
-
-</section>
-<section id="a-single-document" class="title-slide slide level3 center">
-<h3>A single document</h3>
-<p>File &gt; New File &gt; Quarto Document</p>
-<p>YAML section</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Untitled"</span></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Text.</p>
-<p>Code chunks.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># hello!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="cost" class="title-slide slide level3 center">
+<h3>Cost</h3>
+<p>No cost to students. Potentially cost to instructor/department.</p>
+<div class="table-smaller" data-when-format="revealjs">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tier:</th>
+<th>Free</th>
+<th>Instructor (pay per compute hour)</th>
+<th>Instructor (pay per student)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cost</td>
+<td>$0</td>
+<td>$15/month up to 300 compute hours, $0.10 per hour over 300</td>
+<td>$15 per instructor + $5 per student per month</td>
+</tr>
+<tr class="even">
+<td>Compute hours included</td>
+<td>25 (once you reach the cap, you can no longer open or create projects during your current month)</td>
+<td>300 (pay for overage)</td>
+<td>Unlimited</td>
+</tr>
+<tr class="odd">
+<td>Shared Spaces</td>
+<td>1 shared space with up to 5 members and 10 content items in the space</td>
+<td>Unlimited</td>
+<td>Unlimited</td>
+</tr>
+<tr class="even">
+<td>Projects</td>
+<td>25</td>
+<td>Unlimited</td>
+<td>Unlimited</td>
+</tr>
+</tbody>
+</table>
 </div>
-</section>
+<style>
 
-<section id="typing-text" class="title-slide slide level3 center">
-<h3>Typing text</h3>
-<p>Source vs Visual</p>
-</section>
+.slide .table-small {
 
-<section id="code-chunks" class="title-slide slide level3 center">
-<h3>Code chunks</h3>
+font-size: 0.7em;
 
-</section>
+}
 
-<section id="rendering" class="title-slide slide level3 center">
-<h3>Rendering</h3>
-<p>Use the “Render” button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.</p>
-</section>
+.slide .table-smaller {
 
-<section id="a-quarto-project" class="title-slide slide level3 center">
-<h3>A Quarto Project</h3>
+font-size: 0.5em;
 
-</section>
-<section id="project-features" class="slide level4">
-<h4>Project Features</h4>
-<p>The <code>_quarto.yml</code> file.</p>
-<p>Contains rendering instructions for the entire project, and things that will apply to each file.</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>_quarto.yml</strong></pre>
-</div>
-<div class="sourceCode" id="cb3" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+}
+
+</style>
 </section>
 
 
-<section id="advanced-features" class="title-slide slide level2 center">
-<h2>Advanced Features</h2>
+<section id="projects-and-assignments" class="title-slide slide level2 center">
+<h2>Projects and assignments</h2>
 
 </section>
-<section id="citations-and-references" class="title-slide slide level3 center">
-<h3>Citations and References</h3>
-<p>Manage bibliographies using .bib files.</p>
-<p>Insert citations using <span class="citation" data-cites="citation_key">@citation_key</span>.</p>
-<p>Automatically generate reference sections.</p>
+<section id="projects-cloud-vs-local" class="title-slide slide level3 center">
+<h3>Projects (cloud vs local)</h3>
+<p>Projects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.</p>
+<p>Locally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.</p>
+<p>Any cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.</p>
 </section>
 
-<section id="cross-referencing" class="title-slide slide level3 center">
-<h3>Cross-referencing</h3>
-<p>Label figures and tables for easy cross-referencing within the text.</p>
-<p>An image can be give an ID when inserted, e.g.</p>
-<pre><code>![The R Logo](images/r-logo.png){#fig-logo}</code></pre>
-
-<img data-src="images/r-logo.png" class="r-stretch quarto-figure-center" id="fig-logo"><p class="caption">
-Figure&nbsp;1: The R Logo
-</p><p>Typing “<code>As shown in @fig-logo, R has a perfectly pleasant logo."</code> becomes:</p>
-<p>As shown in <a href="#/fig-logo" class="quarto-xref">Figure&nbsp;1</a>, R has a perfectly pleasant logo.</p>
+<section id="assignments" class="title-slide slide level3 center">
+<h3>Assignments</h3>
+<p>Any posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an <strong>Assignment</strong>. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.</p>
 </section>
-
-
-<section id="additional-resources" class="title-slide slide level2 center">
-<h2>Additional Resources</h2>
+<section id="instructor-workflow" class="slide level4">
+<h4>Instructor workflow:</h4>
 <ul>
-<li><a href="https://quarto.org/docs/get-started/hello/rstudio.html">Tutorial: Hello, Quarto</a></li>
-<li><a href="https://quarto.org/docs/">Quarto Official</a><a href="https://quarto.org/docs/guide/">Documentation</a></li>
-<li><a href="https://carpentries-incubator.github.io/reproducible-publications-quarto/">Carpentries: Reproducible Publications with Quarto</a></li>
-<li><a href="https://quarto.org/docs/manuscripts/">Quarto Manuscripts</a></li>
-<li><a href="https://quarto.org/docs/gallery/">Quarto Gallery (Examples)</a></li>
+<li><p>Create a Space for your course (potentially a new Space each semester)</p></li>
+<li><p>Create a Project with all required files and packages</p></li>
+<li><p>Convert it to an Assignment</p></li>
+<li><p>Invite students to join the Space</p></li>
+<li><p>Share the Assignment link with students (or they can see it listed in the Space)</p></li>
+<li><p>Each student gets their own private copy when they click into it</p></li>
+</ul>
+</section>
+<section id="you-the-instructor-can" class="slide level4">
+<h4>You (the instructor) can:</h4>
+<ul>
+<li><p>View their copies</p></li>
+<li><p>Open their Projects directly</p></li>
+<li><p>Run/debug their code</p></li>
+<li><p>Leave feedback in-line</p></li>
+</ul>
+</section>
+<section id="benefits" class="slide level4">
+<h4>Benefits:</h4>
+<ul>
+<li><p>No setup required by students</p></li>
+<li><p>No broken paths, version mismatches, or install errors</p></li>
+<li><p>Packages installed in your source version will be already installed in students’ copies</p></li>
+<li><p>See all student work in one place</p></li>
+<li><p>Effortless sharing of starter code, datasets, templates</p></li>
 </ul>
 
 
 </section>
+
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -544,44 +531,6 @@ Figure&nbsp;1: The R Logo
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

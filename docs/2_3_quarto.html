@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_1_general-approach.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">General comments</span></a>
+ <span class="menu-text">General thoughts on teaching with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_4_problem-sets.html" class="sidebar-item-text sidebar-link">
+  <a href="./2_4_course-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Materials</span></a>
   </div>
 </li>
@@ -222,20 +222,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-is-quarto" id="toc-what-is-quarto" class="nav-link" data-scroll-target="#what-is-quarto">What is Quarto?</a>
   <ul class="collapse">
-  <li><a href="#formats" id="toc-formats" class="nav-link" data-scroll-target="#formats">Formats</a></li>
+  <li><a href="#output-formats" id="toc-output-formats" class="nav-link" data-scroll-target="#output-formats">Output formats</a></li>
+  <li><a href="#benefits-of-using-quarto-over-just-r" id="toc-benefits-of-using-quarto-over-just-r" class="nav-link" data-scroll-target="#benefits-of-using-quarto-over-just-r">Benefits of using Quarto over just R</a></li>
   </ul></li>
-  <li><a href="#benefits-of-using-quarto-over-just-r." id="toc-benefits-of-using-quarto-over-just-r." class="nav-link" data-scroll-target="#benefits-of-using-quarto-over-just-r.">Benefits of using Quarto over just R.</a></li>
-  <li><a href="#working-with-quarto-documents" id="toc-working-with-quarto-documents" class="nav-link" data-scroll-target="#working-with-quarto-documents">Working with Quarto documents</a>
-  <ul class="collapse">
-  <li><a href="#typing-text" id="toc-typing-text" class="nav-link" data-scroll-target="#typing-text">Typing text</a></li>
-  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code chunks</a></li>
-  <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering">Rendering</a></li>
-  </ul></li>
+  <li><a href="#working-with-quarto-documents" id="toc-working-with-quarto-documents" class="nav-link" data-scroll-target="#working-with-quarto-documents">Working with Quarto documents</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a>
   <ul class="collapse">
   <li><a href="#a-single-document" id="toc-a-single-document" class="nav-link" data-scroll-target="#a-single-document">A single document</a></li>
+  <li><a href="#typing-text" id="toc-typing-text" class="nav-link" data-scroll-target="#typing-text">Typing text</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks">Code chunks</a></li>
+  <li><a href="#rendering" id="toc-rendering" class="nav-link" data-scroll-target="#rendering">Rendering</a></li>
   <li><a href="#a-quarto-project" id="toc-a-quarto-project" class="nav-link" data-scroll-target="#a-quarto-project">A Quarto Project</a></li>
   </ul></li>
+  <li><a href="#advanced-features" id="toc-advanced-features" class="nav-link" data-scroll-target="#advanced-features">Advanced Features</a>
+  <ul class="collapse">
+  <li><a href="#citations-and-references" id="toc-citations-and-references" class="nav-link" data-scroll-target="#citations-and-references">Citations and References</a></li>
+  <li><a href="#cross-referencing" id="toc-cross-referencing" class="nav-link" data-scroll-target="#cross-referencing">Cross-referencing</a></li>
+  </ul></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_2_quarto_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
@@ -253,12 +257,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>“<strong>An open-source scientific and technical publishing system”</strong></p>
 <p>Works seamlessly within RStudio</p>
 <p>Next generation version of R Markdown.</p>
-<section id="formats" class="level3">
-<h3 class="anchored" data-anchor-id="formats">Formats</h3>
+<p>Provides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.</p>
+<section id="output-formats" class="level3">
+<h3 class="anchored" data-anchor-id="output-formats">Output formats</h3>
 <ul>
 <li><p>Single documents</p>
 <ul>
 <li><p>PDF article</p></li>
+<li><p>Word document</p></li>
 <li><p>HTML article</p></li>
 <li><p>HTML presentation</p></li>
 </ul></li>
@@ -269,23 +275,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
+<section id="benefits-of-using-quarto-over-just-r" class="level3">
+<h3 class="anchored" data-anchor-id="benefits-of-using-quarto-over-just-r">Benefits of using Quarto over just R</h3>
+<ul>
+<li><p>Reproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.</p></li>
+<li><p>Engaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.</p></li>
+<li><p>Efficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.</p></li>
+<li><p>Professional Reporting: Generate publication-ready reports and presentations directly from your analyses.</p></li>
+</ul>
 </section>
-<section id="benefits-of-using-quarto-over-just-r." class="level2">
-<h2 class="anchored" data-anchor-id="benefits-of-using-quarto-over-just-r.">Benefits of using Quarto over just R.</h2>
 </section>
 <section id="working-with-quarto-documents" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-quarto-documents">Working with Quarto documents</h2>
-<section id="typing-text" class="level3">
-<h3 class="anchored" data-anchor-id="typing-text">Typing text</h3>
-<p>Source vs Visual</p>
-</section>
-<section id="code-chunks" class="level3">
-<h3 class="anchored" data-anchor-id="code-chunks">Code chunks</h3>
-</section>
-<section id="rendering" class="level3">
-<h3 class="anchored" data-anchor-id="rendering">Rendering</h3>
-<p>All code gets executed from scratch</p>
-</section>
 </section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
@@ -301,6 +302,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hello!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="typing-text" class="level3">
+<h3 class="anchored" data-anchor-id="typing-text">Typing text</h3>
+<p>Source vs Visual</p>
+</section>
+<section id="code-chunks" class="level3">
+<h3 class="anchored" data-anchor-id="code-chunks">Code chunks</h3>
+</section>
+<section id="rendering" class="level3">
+<h3 class="anchored" data-anchor-id="rendering">Rendering</h3>
+<p>Use the “Render” button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.</p>
 </section>
 <section id="a-quarto-project" class="level3">
 <h3 class="anchored" data-anchor-id="a-quarto-project">A Quarto Project</h3>
@@ -319,10 +331,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
 </section>
+</section>
+<section id="advanced-features" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-features">Advanced Features</h2>
+<section id="citations-and-references" class="level3">
+<h3 class="anchored" data-anchor-id="citations-and-references">Citations and References</h3>
+<p>Manage bibliographies using .bib files.</p>
+<p>Insert citations using <span class="citation" data-cites="citation_key">@citation_key</span>.</p>
+<p>Automatically generate reference sections.</p>
+</section>
+<section id="cross-referencing" class="level3">
+<h3 class="anchored" data-anchor-id="cross-referencing">Cross-referencing</h3>
+<p>Label figures and tables for easy cross-referencing within the text.</p>
+<p>An image can be give an ID when inserted, e.g.</p>
+<pre><code>![The R Logo](images/r-logo.png){#fig-logo}</code></pre>
+<div id="fig-logo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/r-logo.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-logo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: The R Logo
+</figcaption>
+</figure>
+</div>
+<p>Typing “<code>As shown in @fig-logo, R has a perfectly pleasant logo."</code> becomes:</p>
+<p>As shown in <a href="#fig-logo" class="quarto-xref">Figure&nbsp;1</a>, R has a perfectly pleasant logo.</p>
+</section>
+</section>
+<section id="additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<ul>
+<li><a href="https://quarto.org/docs/get-started/hello/rstudio.html">Tutorial: Hello, Quarto</a></li>
+<li><a href="https://quarto.org/docs/">Quarto Official</a><a href="https://quarto.org/docs/guide/">Documentation</a></li>
+<li><a href="https://carpentries-incubator.github.io/reproducible-publications-quarto/">Carpentries: Reproducible Publications with Quarto</a></li>
+<li><a href="https://quarto.org/docs/manuscripts/">Quarto Manuscripts</a></li>
+<li><a href="https://quarto.org/docs/gallery/">Quarto Gallery (Examples)</a></li>
+</ul>
+
+
 </section>
 </section>
 

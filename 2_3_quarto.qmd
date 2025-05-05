@@ -15,11 +15,15 @@ Works seamlessly within RStudio
 
 Next generation version of R Markdown.
 
-### Formats
+Provides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.
+
+### Output formats
 
 -   Single documents
 
     -   PDF article
+
+    -   Word document
 
     -   HTML article
 
@@ -31,23 +35,17 @@ Next generation version of R Markdown.
 
     -   Website (html pages, navigation)
 
-## Benefits of using Quarto over just R.
+### Benefits of using Quarto over just R
+
+-   Reproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.
+
+-   Engaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.
+
+-   Efficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.
+
+-   Professional Reporting: Generate publication-ready reports and presentations directly from your analyses.
 
 ## Working with Quarto documents
-
-### Typing text
-
-Source vs Visual
-
-### Code chunks
-
-```{r}
-
-```
-
-### Rendering
-
-All code gets executed from scratch
 
 ## Getting started
 
@@ -71,6 +69,20 @@ Code chunks.
 # hello!
 ```
 
+### Typing text
+
+Source vs Visual
+
+### Code chunks
+
+```{r}
+#| label: example chunk
+```
+
+### Rendering
+
+Use the "Render" button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.
+
 ### A Quarto Project
 
 #### Project Features
@@ -87,3 +99,37 @@ format:
   html:
     toc: true
 ```
+
+## Advanced Features
+
+### Citations and References
+
+Manage bibliographies using .bib files.
+
+Insert citations using @citation_key.
+
+Automatically generate reference sections.
+
+### Cross-referencing
+
+Label figures and tables for easy cross-referencing within the text.
+
+An image can be give an ID when inserted, e.g.
+
+```         
+![The R Logo](images/r-logo.png){#fig-logo}
+```
+
+![The R Logo](images/r-logo.png){#fig-logo}
+
+Typing "`As shown in @fig-logo, R has a perfectly pleasant logo."` becomes:
+
+As shown in @fig-logo, R has a perfectly pleasant logo.
+
+## Additional Resources
+
+-   [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+-   [Quarto Official ](https://quarto.org/docs/)[Documentation](https://quarto.org/docs/guide/)
+-   [Carpentries: Reproducible Publications with Quarto](https://carpentries-incubator.github.io/reproducible-publications-quarto/)
+-   [Quarto Manuscripts](https://quarto.org/docs/manuscripts/)
+-   [Quarto Gallery (Examples)](https://quarto.org/docs/gallery/)

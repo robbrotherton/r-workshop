@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Posit Cloud – R Faculty Workshop</title>
+<title>posit-cloud – R Faculty Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_1_general-approach.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">General comments</span></a>
+ <span class="menu-text">General thoughts on teaching with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_4_problem-sets.html" class="sidebar-item-text sidebar-link">
+  <a href="./2_4_course-materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Materials</span></a>
   </div>
 </li>
@@ -184,67 +184,210 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#names" id="toc-names" class="nav-link active" data-scroll-target="#names">Names</a></li>
-  <li><a href="#differences-between-cloud-vs-local" id="toc-differences-between-cloud-vs-local" class="nav-link" data-scroll-target="#differences-between-cloud-vs-local">Differences between cloud vs local</a>
+  <li><a href="#posit-cloud" id="toc-posit-cloud" class="nav-link active" data-scroll-target="#posit-cloud">Posit Cloud</a>
   <ul class="collapse">
+  <li><a href="#whats-what" id="toc-whats-what" class="nav-link" data-scroll-target="#whats-what">What’s what</a></li>
+  <li><a href="#cloud-vs-local-main-differences" id="toc-cloud-vs-local-main-differences" class="nav-link" data-scroll-target="#cloud-vs-local-main-differences">Cloud vs local: main differences</a>
+  <ul class="collapse">
+  <li><a href="#downsides-limitations" id="toc-downsides-limitations" class="nav-link" data-scroll-target="#downsides-limitations">Downsides / Limitations</a></li>
   <li><a href="#cost" id="toc-cost" class="nav-link" data-scroll-target="#cost">Cost</a></li>
   </ul></li>
+  <li><a href="#projects-and-assignments" id="toc-projects-and-assignments" class="nav-link" data-scroll-target="#projects-and-assignments">Projects and assignments</a>
+  <ul class="collapse">
+  <li><a href="#projects-cloud-vs-local" id="toc-projects-cloud-vs-local" class="nav-link" data-scroll-target="#projects-cloud-vs-local">Projects (cloud vs local)</a></li>
   <li><a href="#assignments" id="toc-assignments" class="nav-link" data-scroll-target="#assignments">Assignments</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_2_posit-cloud_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_2_posit-cloud.html">Posit Cloud</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Posit Cloud</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_2_posit-cloud.html">Posit Cloud</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="names" class="level2">
-<h2 class="anchored" data-anchor-id="names">Names</h2>
-<p><span>There are a few different names involved:</span></p>
+<section id="posit-cloud" class="level1">
+<h1>Posit Cloud</h1>
+<section id="whats-what" class="level2">
+<h2 class="anchored" data-anchor-id="whats-what">What’s what</h2>
+<p><span>We’ve encountered a few different names at this point. To clarify the ecosystem:</span></p>
 <ul>
 <li><strong>R</strong> is a coding language for statistics and data analysis</li>
 <li><strong>RStudio</strong> is a software interface for writing and running R code</li>
-<li><strong>Posit</strong> is the name of the company that makes RStudio</li>
-<li><strong>posit.cloud</strong> provides a way of using RStudio in your web browser</li>
+<li><strong>Posit</strong> is the name of the company that develops RStudio (formerly called RStudio, Inc.)</li>
+<li><strong>posit.cloud</strong> is the browser-based version of RStudio, hosted and managed by Posit</li>
 </ul>
-<p>As we’ve seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to building R into a course.</p>
+<p>As we’ve seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to using R in the classroom. It substantially lowers the barrier to entry; frees us to focus on statistical fluency rather than tool fluency.</p>
 </section>
-<section id="differences-between-cloud-vs-local" class="level2">
-<h2 class="anchored" data-anchor-id="differences-between-cloud-vs-local">Differences between cloud vs local</h2>
-<p>Each cloud ‘Project’ is its own unique system. Additional packages installed in one project will not be.</p>
+<section id="cloud-vs-local-main-differences" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-vs-local-main-differences">Cloud vs local: main differences</h2>
+<div class="table-small" data-when-format="revealjs">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 30%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Local RStudio</th>
+<th>Posit Cloud</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Setup required</td>
+<td>Yes — install R + RStudio</td>
+<td>None — runs in browser</td>
+</tr>
+<tr class="even">
+<td>Platform consistency</td>
+<td>Varies by OS (Mac/Win/etc)</td>
+<td>Identical for all students</td>
+</tr>
+<tr class="odd">
+<td>File storage</td>
+<td>On user’s machine</td>
+<td>In the cloud — per project</td>
+</tr>
+<tr class="even">
+<td>Package installation</td>
+<td>Manual per machine</td>
+<td>Bundled with assignments</td>
+</tr>
+<tr class="odd">
+<td>Instructor access to work</td>
+<td>Only if student sends files</td>
+<td>Instructor can directly view projects</td>
+</tr>
+<tr class="even">
+<td>Collaboration</td>
+<td>Tricky / manual</td>
+<td>Easy via shared projects</td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="downsides-limitations" class="level3">
+<h3 class="anchored" data-anchor-id="downsides-limitations">Downsides / Limitations</h3>
+<ul>
+<li><p>Must be online: offline work not possible</p></li>
+<li><p>Projects are somewhat slow to launch, even on fast internet (but once it’s up and running the experience is virtually identical to local installation)</p></li>
+<li><p>Limited compute resources: not great for giant datasets, heavy ML or large simulations</p></li>
+<li><p>Free tier may throttle or limit use if you go over project/hour quotas</p></li>
+</ul>
+</section>
 <section id="cost" class="level3">
 <h3 class="anchored" data-anchor-id="cost">Cost</h3>
-<p>No cost to students. Potentially cost to instructor/department</p>
-<section id="tiers" class="level4">
-<h4 class="anchored" data-anchor-id="tiers">Tiers</h4>
-<p>Free:</p>
-<p>$15/month instructor account.</p>
+<p>No cost to students. Potentially cost to instructor/department.</p>
+<div class="table-smaller" data-when-format="revealjs">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tier:</th>
+<th>Free</th>
+<th>Instructor (pay per compute hour)</th>
+<th>Instructor (pay per student)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cost</td>
+<td>$0</td>
+<td>$15/month up to 300 compute hours, $0.10 per hour over 300</td>
+<td>$15 per instructor + $5 per student per month</td>
+</tr>
+<tr class="even">
+<td>Compute hours included</td>
+<td>25 (once you reach the cap, you can no longer open or create projects during your current month)</td>
+<td>300 (pay for overage)</td>
+<td>Unlimited</td>
+</tr>
+<tr class="odd">
+<td>Shared Spaces</td>
+<td>1 shared space with up to 5 members and 10 content items in the space</td>
+<td>Unlimited</td>
+<td>Unlimited</td>
+</tr>
+<tr class="even">
+<td>Projects</td>
+<td>25</td>
+<td>Unlimited</td>
+<td>Unlimited</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+
+.slide .table-small {
+
+font-size: 0.7em;
+
+}
+
+.slide .table-smaller {
+
+font-size: 0.5em;
+
+}
+
+</style>
 </section>
 </section>
+<section id="projects-and-assignments" class="level2">
+<h2 class="anchored" data-anchor-id="projects-and-assignments">Projects and assignments</h2>
+<section id="projects-cloud-vs-local" class="level3">
+<h3 class="anchored" data-anchor-id="projects-cloud-vs-local">Projects (cloud vs local)</h3>
+<p>Projects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.</p>
+<p>Locally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.</p>
+<p>Any cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.</p>
 </section>
-<section id="assignments" class="level2">
-<h2 class="anchored" data-anchor-id="assignments">Assignments</h2>
-<p>Packages installed in your source version will be already installed in students’ copies. Avoids the need for tedious and confusing installation, and occasional errors due to differences across students’ hardware/software setups.</p>
-<p>Instructor can see all studnets’ projects which were derived from the assigment. Can click into students’ project and see their work, debug, etc.</p>
+<section id="assignments" class="level3">
+<h3 class="anchored" data-anchor-id="assignments">Assignments</h3>
+<p>Any posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an <strong>Assignment</strong>. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.</p>
+<section id="instructor-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="instructor-workflow">Instructor workflow:</h4>
+<ul>
+<li><p>Create a Space for your course (potentially a new Space each semester)</p></li>
+<li><p>Create a Project with all required files and packages</p></li>
+<li><p>Convert it to an Assignment</p></li>
+<li><p>Invite students to join the Space</p></li>
+<li><p>Share the Assignment link with students (or they can see it listed in the Space)</p></li>
+<li><p>Each student gets their own private copy when they click into it</p></li>
+</ul>
+</section>
+<section id="you-the-instructor-can" class="level4">
+<h4 class="anchored" data-anchor-id="you-the-instructor-can">You (the instructor) can:</h4>
+<ul>
+<li><p>View their copies</p></li>
+<li><p>Open their Projects directly</p></li>
+<li><p>Run/debug their code</p></li>
+<li><p>Leave feedback in-line</p></li>
+</ul>
+</section>
+<section id="benefits" class="level4">
+<h4 class="anchored" data-anchor-id="benefits">Benefits:</h4>
+<ul>
+<li><p>No setup required by students</p></li>
+<li><p>No broken paths, version mismatches, or install errors</p></li>
+<li><p>Packages installed in your source version will be already installed in students’ copies</p></li>
+<li><p>See all student work in one place</p></li>
+<li><p>Effortless sharing of starter code, datasets, templates</p></li>
+</ul>
 
 
+</section>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

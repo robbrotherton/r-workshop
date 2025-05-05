@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>problem-sets – R Faculty Workshop</title>
+<title>course-materials – R Faculty Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_4_problem-sets.html">Course Materials</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_4_course-materials.html">Course Materials</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -151,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./2_1_general-approach.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">General comments</span></a>
+ <span class="menu-text">General thoughts on teaching with R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_4_problem-sets.html" class="sidebar-item-text sidebar-link active">
+  <a href="./2_4_course-materials.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Course Materials</span></a>
   </div>
 </li>
@@ -184,21 +184,67 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-materials" id="toc-course-materials" class="nav-link active" data-scroll-target="#course-materials">Course Materials</a></li>
+  <li><a href="#course-materials" id="toc-course-materials" class="nav-link active" data-scroll-target="#course-materials">Course Materials</a>
+  <ul class="collapse">
+  <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a></li>
+  <li><a href="#labs" id="toc-labs" class="nav-link" data-scroll-target="#labs">Labs</a></li>
+  </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_3_problem-sets_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_4_course-materials_presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_4_problem-sets.html">Course Materials</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./2_1_general-approach.html">Day 2: Teaching with R</a></li><li class="breadcrumb-item"><a href="./2_4_course-materials.html">Course Materials</a></li></ol></nav></header>
 
 
 
 
 <section id="course-materials" class="level1">
 <h1>Course Materials</h1>
-<p>How I use Quarto to create problems sets to teach R.</p>
+<section id="statistics" class="level2">
+<h2 class="anchored" data-anchor-id="statistics">Statistics</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+PSYC BC1101 Materials
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>My Statistics materials are online here:</p>
+<p><a href="https://robbrotherton.github.io/bc1101/" class="uri">https://robbrotherton.github.io/bc1101/</a></p>
+</div>
+</div>
+<p>Structure of recitation:</p>
+<ul>
+<li><p>I talk through a topic hands-on for around 10 or 15 minutes, noting the new functions and ideas students will encounter, how they map on to content we covered in lectures, and flagging up potential sticking points in advance.</p></li>
+<li><p>Then I let students continue working. I encourage them to work independently, to collaborate, and/or to seek help from me or their TA as and when the need arises.</p></li>
+<li><p>The students are working in a single Quarto document for each problem set. The doc contains Instructional blocks and questions with space for students to answer using text and/or code. Instructions contain hints that show the general structure of the solution; students adapt those hints to get the final solution.</p></li>
+<li><p>Feedback: Following submission of their attempt, students receive full, detailed feedback noting both what they did well and what they could have done differently.</p></li>
+</ul>
+</section>
+<section id="labs" class="level2">
+<h2 class="anchored" data-anchor-id="labs">Labs</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Social lab materials
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>My Social lab manual is online here:</p>
+<p><a href="https://robbrotherton.github.io/bc2137/" class="uri">https://robbrotherton.github.io/bc2137/</a></p>
+</div>
+</div>
+<p>For my labs, I have put my materials together as a Quarto website. Every lab session has its own page (including the syllabus on the site’s home page).</p>
+<p>In conjunction with that, I have a posit.cloud Project containing the required data files, and report templates.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

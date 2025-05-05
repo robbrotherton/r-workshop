@@ -4,92 +4,321 @@
     "href": "2_2_posit-cloud.html",
     "title": "Posit Cloud",
     "section": "",
-    "text": "There are a few different names involved:\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that makes RStudio\nposit.cloud provides a way of using RStudio in your web browser\n\nAs we’ve seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to building R into a course.",
+    "text": "We’ve encountered a few different names at this point. To clarify the ecosystem:\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that develops RStudio (formerly called RStudio, Inc.)\nposit.cloud is the browser-based version of RStudio, hosted and managed by Posit\n\nAs we’ve seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to using R in the classroom. It substantially lowers the barrier to entry; frees us to focus on statistical fluency rather than tool fluency.\n\n\n\n\n\n\n\n\n\n\n\n\nFeature\nLocal RStudio\nPosit Cloud\n\n\n\n\nSetup required\nYes — install R + RStudio\nNone — runs in browser\n\n\nPlatform consistency\nVaries by OS (Mac/Win/etc)\nIdentical for all students\n\n\nFile storage\nOn user’s machine\nIn the cloud — per project\n\n\nPackage installation\nManual per machine\nBundled with assignments\n\n\nInstructor access to work\nOnly if student sends files\nInstructor can directly view projects\n\n\nCollaboration\nTricky / manual\nEasy via shared projects\n\n\n\n\n\n\n\nMust be online: offline work not possible\nProjects are somewhat slow to launch, even on fast internet (but once it’s up and running the experience is virtually identical to local installation)\nLimited compute resources: not great for giant datasets, heavy ML or large simulations\nFree tier may throttle or limit use if you go over project/hour quotas\n\n\n\n\nNo cost to students. Potentially cost to instructor/department.\n\n\n\n\n\n\n\n\n\n\nTier:\nFree\nInstructor (pay per compute hour)\nInstructor (pay per student)\n\n\n\n\nCost\n$0\n$15/month up to 300 compute hours, $0.10 per hour over 300\n$15 per instructor + $5 per student per month\n\n\nCompute hours included\n25 (once you reach the cap, you can no longer open or create projects during your current month)\n300 (pay for overage)\nUnlimited\n\n\nShared Spaces\n1 shared space with up to 5 members and 10 content items in the space\nUnlimited\nUnlimited\n\n\nProjects\n25\nUnlimited\nUnlimited\n\n\n\n\n\n\n\n\n\n\n\nProjects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.\nLocally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.\nAny cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.\n\n\n\nAny posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an Assignment. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.\n\n\n\nCreate a Space for your course (potentially a new Space each semester)\nCreate a Project with all required files and packages\nConvert it to an Assignment\nInvite students to join the Space\nShare the Assignment link with students (or they can see it listed in the Space)\nEach student gets their own private copy when they click into it\n\n\n\n\n\nView their copies\nOpen their Projects directly\nRun/debug their code\nLeave feedback in-line\n\n\n\n\n\nNo setup required by students\nNo broken paths, version mismatches, or install errors\nPackages installed in your source version will be already installed in students’ copies\nSee all student work in one place\nEffortless sharing of starter code, datasets, templates",
     "crumbs": [
       "Day 2: Teaching with R",
       "Posit Cloud"
     ]
   },
   {
-    "objectID": "2_2_posit-cloud.html#names",
-    "href": "2_2_posit-cloud.html#names",
+    "objectID": "2_2_posit-cloud.html#whats-what",
+    "href": "2_2_posit-cloud.html#whats-what",
     "title": "Posit Cloud",
     "section": "",
-    "text": "There are a few different names involved:\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that makes RStudio\nposit.cloud provides a way of using RStudio in your web browser\n\nAs we’ve seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to building R into a course.",
+    "text": "We’ve encountered a few different names at this point. To clarify the ecosystem:\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that develops RStudio (formerly called RStudio, Inc.)\nposit.cloud is the browser-based version of RStudio, hosted and managed by Posit\n\nAs we’ve seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to using R in the classroom. It substantially lowers the barrier to entry; frees us to focus on statistical fluency rather than tool fluency.",
     "crumbs": [
       "Day 2: Teaching with R",
       "Posit Cloud"
     ]
   },
   {
-    "objectID": "2_2_posit-cloud.html#differences-between-cloud-vs-local",
-    "href": "2_2_posit-cloud.html#differences-between-cloud-vs-local",
+    "objectID": "2_2_posit-cloud.html#cloud-vs-local-main-differences",
+    "href": "2_2_posit-cloud.html#cloud-vs-local-main-differences",
     "title": "Posit Cloud",
-    "section": "Differences between cloud vs local",
-    "text": "Differences between cloud vs local\nEach cloud ‘Project’ is its own unique system. Additional packages installed in one project will not be.\n\nCost\nNo cost to students. Potentially cost to instructor/department\n\nTiers\nFree:\n$15/month instructor account.",
+    "section": "",
+    "text": "Feature\nLocal RStudio\nPosit Cloud\n\n\n\n\nSetup required\nYes — install R + RStudio\nNone — runs in browser\n\n\nPlatform consistency\nVaries by OS (Mac/Win/etc)\nIdentical for all students\n\n\nFile storage\nOn user’s machine\nIn the cloud — per project\n\n\nPackage installation\nManual per machine\nBundled with assignments\n\n\nInstructor access to work\nOnly if student sends files\nInstructor can directly view projects\n\n\nCollaboration\nTricky / manual\nEasy via shared projects\n\n\n\n\n\n\n\nMust be online: offline work not possible\nProjects are somewhat slow to launch, even on fast internet (but once it’s up and running the experience is virtually identical to local installation)\nLimited compute resources: not great for giant datasets, heavy ML or large simulations\nFree tier may throttle or limit use if you go over project/hour quotas\n\n\n\n\nNo cost to students. Potentially cost to instructor/department.\n\n\n\n\n\n\n\n\n\n\nTier:\nFree\nInstructor (pay per compute hour)\nInstructor (pay per student)\n\n\n\n\nCost\n$0\n$15/month up to 300 compute hours, $0.10 per hour over 300\n$15 per instructor + $5 per student per month\n\n\nCompute hours included\n25 (once you reach the cap, you can no longer open or create projects during your current month)\n300 (pay for overage)\nUnlimited\n\n\nShared Spaces\n1 shared space with up to 5 members and 10 content items in the space\nUnlimited\nUnlimited\n\n\nProjects\n25\nUnlimited\nUnlimited",
     "crumbs": [
       "Day 2: Teaching with R",
       "Posit Cloud"
     ]
   },
   {
-    "objectID": "2_2_posit-cloud.html#assignments",
-    "href": "2_2_posit-cloud.html#assignments",
+    "objectID": "2_2_posit-cloud.html#projects-and-assignments",
+    "href": "2_2_posit-cloud.html#projects-and-assignments",
     "title": "Posit Cloud",
-    "section": "Assignments",
-    "text": "Assignments\nPackages installed in your source version will be already installed in students’ copies. Avoids the need for tedious and confusing installation, and occasional errors due to differences across students’ hardware/software setups.\nInstructor can see all studnets’ projects which were derived from the assigment. Can click into students’ project and see their work, debug, etc.",
+    "section": "",
+    "text": "Projects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.\nLocally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.\nAny cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.\n\n\n\nAny posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an Assignment. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.\n\n\n\nCreate a Space for your course (potentially a new Space each semester)\nCreate a Project with all required files and packages\nConvert it to an Assignment\nInvite students to join the Space\nShare the Assignment link with students (or they can see it listed in the Space)\nEach student gets their own private copy when they click into it\n\n\n\n\n\nView their copies\nOpen their Projects directly\nRun/debug their code\nLeave feedback in-line\n\n\n\n\n\nNo setup required by students\nNo broken paths, version mismatches, or install errors\nPackages installed in your source version will be already installed in students’ copies\nSee all student work in one place\nEffortless sharing of starter code, datasets, templates",
     "crumbs": [
       "Day 2: Teaching with R",
       "Posit Cloud"
     ]
   },
   {
-    "objectID": "0_installing.html",
-    "href": "0_installing.html",
-    "title": "Installing R and RStudio",
-    "section": "",
-    "text": "You can install the necessary software on your own computer for free by following this link:\nhttps://posit.co/download/rstudio-desktop/\nAs the page will tell you, there are 2 separate components to install: R and RStudio. Follow the relevant links, making sure to pick the appropriate version for your operating system (Mac/Windows/Linux) where necessary.\n\nR (the R language itself)\n\nOn the download page for this you’ll see different links for different operating systems\n\nMacOS: There are different versions of R depending on whether you have a newer Mac with an Apple processor (M1, M2… etc), or an older one with an Intel processor. If you’re not sure which you have, search your computer for “system information”, which should open some information including which chip your computer has.\nWindows: Click the “Download R for Windows” link and look for “install R for the first time”\n\n\nRStudio (the software interface we use to write and run R code)\n\nJust click the big download button; it should have determined the correct version for you automatically."
+    "objectID": "2_2_posit-cloud_presentation.html#whats-what",
+    "href": "2_2_posit-cloud_presentation.html#whats-what",
+    "title": "R Faculty Workshop",
+    "section": "What’s what",
+    "text": "What’s what\n\nR is a coding language for statistics and data analysis\nRStudio is a software interface for writing and running R code\nPosit is the name of the company that develops RStudio (formerly called RStudio, Inc.)\nposit.cloud is the browser-based version of RStudio, hosted and managed by Posit"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Workshop overview",
-    "section": "",
-    "text": "Some notes about the general\n\n\n\nSyntax, functions, assignment, pipe, data types\n\n\n\nImporting data, cleaning, graphs, analyses\n\n\n\n\n\n\nPedagogy, grading, generative AI\n\n\n\nQuarto\n\n\n\nLab manual, problem sets",
-    "crumbs": [
-      "Workshop overview"
-    ]
+    "objectID": "2_2_posit-cloud_presentation.html#cloud-vs-local-main-differences",
+    "href": "2_2_posit-cloud_presentation.html#cloud-vs-local-main-differences",
+    "title": "R Faculty Workshop",
+    "section": "Cloud vs local: main differences",
+    "text": "Cloud vs local: main differences\n\n\n\n\n\n\n\n\n\nFeature\nLocal RStudio\nPosit Cloud\n\n\n\n\nSetup required\nYes — install R + RStudio\nNone — runs in browser\n\n\nPlatform consistency\nVaries by OS (Mac/Win/etc)\nIdentical for all students\n\n\nFile storage\nOn user’s machine\nIn the cloud — per project\n\n\nPackage installation\nManual per machine\nBundled with assignments\n\n\nInstructor access to work\nOnly if student sends files\nInstructor can directly view projects\n\n\nCollaboration\nTricky / manual\nEasy via shared projects"
   },
   {
-    "objectID": "index.html#day-1-intro-to-r",
-    "href": "index.html#day-1-intro-to-r",
-    "title": "Workshop overview",
-    "section": "",
-    "text": "Some notes about the general\n\n\n\nSyntax, functions, assignment, pipe, data types\n\n\n\nImporting data, cleaning, graphs, analyses",
-    "crumbs": [
-      "Workshop overview"
-    ]
+    "objectID": "2_2_posit-cloud_presentation.html#projects-and-assignments",
+    "href": "2_2_posit-cloud_presentation.html#projects-and-assignments",
+    "title": "R Faculty Workshop",
+    "section": "Projects and assignments",
+    "text": "Projects and assignments"
   },
   {
-    "objectID": "index.html#day-2-teaching-with-r",
-    "href": "index.html#day-2-teaching-with-r",
-    "title": "Workshop overview",
-    "section": "",
-    "text": "Pedagogy, grading, generative AI\n\n\n\nQuarto\n\n\n\nLab manual, problem sets",
-    "crumbs": [
-      "Workshop overview"
-    ]
-  },
-  {
-    "objectID": "2_4_problem-sets.html",
-    "href": "2_4_problem-sets.html",
+    "objectID": "2_4_course-materials.html",
+    "href": "2_4_course-materials.html",
     "title": "Course Materials",
     "section": "",
-    "text": "Course Materials\nHow I use Quarto to create problems sets to teach R.",
+    "text": "PSYC BC1101 Materials\n\n\n\nMy Statistics materials are online here:\nhttps://robbrotherton.github.io/bc1101/\n\n\nStructure of recitation:\n\nI talk through a topic hands-on for around 10 or 15 minutes, noting the new functions and ideas students will encounter, how they map on to content we covered in lectures, and flagging up potential sticking points in advance.\nThen I let students continue working. I encourage them to work independently, to collaborate, and/or to seek help from me or their TA as and when the need arises.\nThe students are working in a single Quarto document for each problem set. The doc contains Instructional blocks and questions with space for students to answer using text and/or code. Instructions contain hints that show the general structure of the solution; students adapt those hints to get the final solution.\nFeedback: Following submission of their attempt, students receive full, detailed feedback noting both what they did well and what they could have done differently.\n\n\n\n\n\n\n\n\n\n\nSocial lab materials\n\n\n\nMy Social lab manual is online here:\nhttps://robbrotherton.github.io/bc2137/\n\n\nFor my labs, I have put my materials together as a Quarto website. Every lab session has its own page (including the syllabus on the site’s home page).\nIn conjunction with that, I have a posit.cloud Project containing the required data files, and report templates.",
     "crumbs": [
       "Day 2: Teaching with R",
       "Course Materials"
     ]
+  },
+  {
+    "objectID": "2_4_course-materials.html#statistics",
+    "href": "2_4_course-materials.html#statistics",
+    "title": "Course Materials",
+    "section": "",
+    "text": "PSYC BC1101 Materials\n\n\n\nMy Statistics materials are online here:\nhttps://robbrotherton.github.io/bc1101/\n\n\nStructure of recitation:\n\nI talk through a topic hands-on for around 10 or 15 minutes, noting the new functions and ideas students will encounter, how they map on to content we covered in lectures, and flagging up potential sticking points in advance.\nThen I let students continue working. I encourage them to work independently, to collaborate, and/or to seek help from me or their TA as and when the need arises.\nThe students are working in a single Quarto document for each problem set. The doc contains Instructional blocks and questions with space for students to answer using text and/or code. Instructions contain hints that show the general structure of the solution; students adapt those hints to get the final solution.\nFeedback: Following submission of their attempt, students receive full, detailed feedback noting both what they did well and what they could have done differently.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Course Materials"
+    ]
+  },
+  {
+    "objectID": "2_4_course-materials.html#labs",
+    "href": "2_4_course-materials.html#labs",
+    "title": "Course Materials",
+    "section": "",
+    "text": "Social lab materials\n\n\n\nMy Social lab manual is online here:\nhttps://robbrotherton.github.io/bc2137/\n\n\nFor my labs, I have put my materials together as a Quarto website. Every lab session has its own page (including the syllabus on the site’s home page).\nIn conjunction with that, I have a posit.cloud Project containing the required data files, and report templates.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Course Materials"
+    ]
+  },
+  {
+    "objectID": "2_4_course-materials_presentation.html#statistics",
+    "href": "2_4_course-materials_presentation.html#statistics",
+    "title": "R Faculty Workshop",
+    "section": "Statistics",
+    "text": "Statistics\n\n\n\n\n\n\nPSYC BC1101 Materials\n\n\nMy Statistics materials are online here:\nhttps://robbrotherton.github.io/bc1101/\n\n\n\nStructure of recitation:\n\nI talk through a topic hands-on for around 10 or 15 minutes, noting the new functions and ideas students will encounter, how they map on to content we covered in lectures, and flagging up potential sticking points in advance.\nThen I let students continue working. I encourage them to work independently, to collaborate, and/or to seek help from me or their TA as and when the need arises.\nThe students are working in a single Quarto document for each problem set. The doc contains Instructional blocks and questions with space for students to answer using text and/or code. Instructions contain hints that show the general structure of the solution; students adapt those hints to get the final solution.\nFeedback: Following submission of their attempt, students receive full, detailed feedback noting both what they did well and what they could have done differently."
+  },
+  {
+    "objectID": "2_4_course-materials_presentation.html#labs",
+    "href": "2_4_course-materials_presentation.html#labs",
+    "title": "R Faculty Workshop",
+    "section": "Labs",
+    "text": "Labs\n\n\n\n\n\n\nSocial lab materials\n\n\nMy Social lab manual is online here:\nhttps://robbrotherton.github.io/bc2137/\n\n\n\nFor my labs, I have put my materials together as a Quarto website. Every lab session has its own page (including the syllabus on the site’s home page).\nIn conjunction with that, I have a posit.cloud Project containing the required data files, and report templates."
+  },
+  {
+    "objectID": "2_1_general-approach.html",
+    "href": "2_1_general-approach.html",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "In this session we’ll start working in Posit Cloud. I’ve created a ‘Space’ for this workshop. You can join using this link:\nhttps://posit.cloud/spaces/647833/join?access_code=d044OrLrWY83pbYiQXdsnuYbxO1_vDN_rN1Q7pYx\nI’ll link you to the actual R materials in due course.\n\n\n\n\nposit.cloud/spaces/647833/content/10308914\n\n\n\n\nSkill Development: Proficiency in R is increasingly sought after in both academic and industry settings, enhancing students’ career prospects. See : https://r4stats.com/articles/popularity/\nReproducibility: R promotes transparent and reproducible research practices, aligning with open science principles.\nCost-Effectiveness: R is free and open-source, making it accessible to all students regardless of financial resources.\nConceptual Understanding: Coding statistical procedures reinforces comprehension of underlying concepts. For example, writing functions to compute z-scores or simulate sampling distributions deepens understanding.\n\nRequiring students to learn both statistical concepts (or research methods or whatever) and coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset.\n\n\n\nLearning R can be challenging, especially for students new to programming. In R, there is often more than one way to do things. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.\nThe only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code— Hadley Wickham (@hadleywickham) April 17, 2015\nTo foster a supportive learning environment:\n\nEffort-Based Grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.\nFeedback-Oriented: Provide constructive feedback to guide improvement, focusing on the learning process over the final product.\n\nMy grading scheme:\n\n0 points: No submission\n1 point: Incomplete attempt\n2 point: Complete, valid attempt\n\nThat’s it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. It is entirely possible for every student to get full credit for the coding assignments across the semester, even if they never get a single correct answer–as long as they try. Of course, generally students will learn from their mistakes and improve along the way.\nThe drawback to this is that it does not differentiate the students who put in great effort, going above and beyond expectations, from those who simply meet the minimum requirements of the assignments. I feel that is a worthwhile trade-off, especially since such efforts can be rewarded as part of a participation grade, for example.\n\n\n\nStudents often encounter specific hurdles when learning R:\n\nAnnoying technical problems: Forgetting to install or load necessary packages leads to errors.\nSyntax Errors: Missing commas, parentheses, or quotation marks are common. Encourage the use of RStudio’s syntax highlighting and error messages to identify issues.\nUnderstanding Data Structures: Differentiating between vectors, data frames, and lists can be confusing. Use analogies and visual aids to clarify these concepts.\nAnnoying technical problems: Forgetting to install or load necessary packages leads to errors.\nFunction Arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.\n\nTo address these challenges:\n\nIncremental Learning: Introduce concepts gradually, building upon previous knowledge.\nActive Practice: Incorporate hands-on exercises that allow students to apply new skills immediately.\n\n\n\n\nOne of the nice things about R is that many academic users have developed great teaching materials and made them available for free. A few examples:\n\nDanielle Navarro (2019) Learning Statistics with R\nMine Çetinkaya-Rundel and Johanna Hardin (2022) Modern Statistical Methods for Psychology\nRussell A. Poldrack (2018) Statistical Thinking for the 21st Century\n\n\n\n\nIn its latest version RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code. Here, I typed the comment and the function name, and Copilot completed the function body.\n\n# a function to compute the sum of squared deviations\nsum_squares &lt;- function(x) {\n  n &lt;- length(x)\n  mean_x &lt;- mean(x)\n  sum_sq_dev &lt;- sum((x - mean_x)^2)\n  return(sum_sq_dev)\n}\n\nsum_squares(c(1, 2, 3, 4, 5))\n\n[1] 10",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#start-with-something-cool",
+    "href": "2_1_general-approach.html#start-with-something-cool",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "posit.cloud/spaces/647833/content/10308914",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#justify-using-r",
+    "href": "2_1_general-approach.html#justify-using-r",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "Skill Development: Proficiency in R is increasingly sought after in both academic and industry settings, enhancing students’ career prospects. See : https://r4stats.com/articles/popularity/\nReproducibility: R promotes transparent and reproducible research practices, aligning with open science principles.\nCost-Effectiveness: R is free and open-source, making it accessible to all students regardless of financial resources.\nConceptual Understanding: Coding statistical procedures reinforces comprehension of underlying concepts. For example, writing functions to compute z-scores or simulate sampling distributions deepens understanding.\n\nRequiring students to learn both statistical concepts (or research methods or whatever) and coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#grading",
+    "href": "2_1_general-approach.html#grading",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "Learning R can be challenging, especially for students new to programming. In R, there is often more than one way to do things. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.\nThe only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code— Hadley Wickham (@hadleywickham) April 17, 2015\nTo foster a supportive learning environment:\n\nEffort-Based Grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.\nFeedback-Oriented: Provide constructive feedback to guide improvement, focusing on the learning process over the final product.\n\nMy grading scheme:\n\n0 points: No submission\n1 point: Incomplete attempt\n2 point: Complete, valid attempt\n\nThat’s it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. It is entirely possible for every student to get full credit for the coding assignments across the semester, even if they never get a single correct answer–as long as they try. Of course, generally students will learn from their mistakes and improve along the way.\nThe drawback to this is that it does not differentiate the students who put in great effort, going above and beyond expectations, from those who simply meet the minimum requirements of the assignments. I feel that is a worthwhile trade-off, especially since such efforts can be rewarded as part of a participation grade, for example.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#most-common-problems",
+    "href": "2_1_general-approach.html#most-common-problems",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "Students often encounter specific hurdles when learning R:\n\nAnnoying technical problems: Forgetting to install or load necessary packages leads to errors.\nSyntax Errors: Missing commas, parentheses, or quotation marks are common. Encourage the use of RStudio’s syntax highlighting and error messages to identify issues.\nUnderstanding Data Structures: Differentiating between vectors, data frames, and lists can be confusing. Use analogies and visual aids to clarify these concepts.\nAnnoying technical problems: Forgetting to install or load necessary packages leads to errors.\nFunction Arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.\n\nTo address these challenges:\n\nIncremental Learning: Introduce concepts gradually, building upon previous knowledge.\nActive Practice: Incorporate hands-on exercises that allow students to apply new skills immediately.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#additional-resources",
+    "href": "2_1_general-approach.html#additional-resources",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "One of the nice things about R is that many academic users have developed great teaching materials and made them available for free. A few examples:\n\nDanielle Navarro (2019) Learning Statistics with R\nMine Çetinkaya-Rundel and Johanna Hardin (2022) Modern Statistical Methods for Psychology\nRussell A. Poldrack (2018) Statistical Thinking for the 21st Century",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach.html#generative-ai",
+    "href": "2_1_general-approach.html#generative-ai",
+    "title": "General thoughts on teaching with R",
+    "section": "",
+    "text": "In its latest version RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code. Here, I typed the comment and the function name, and Copilot completed the function body.\n\n# a function to compute the sum of squared deviations\nsum_squares &lt;- function(x) {\n  n &lt;- length(x)\n  mean_x &lt;- mean(x)\n  sum_sq_dev &lt;- sum((x - mean_x)^2)\n  return(sum_sq_dev)\n}\n\nsum_squares(c(1, 2, 3, 4, 5))\n\n[1] 10",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "General thoughts on teaching with R"
+    ]
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#start-with-something-cool",
+    "href": "2_1_general-approach_presentation.html#start-with-something-cool",
+    "title": "R Faculty Workshop",
+    "section": "Start with something cool",
+    "text": "Start with something cool\nposit.cloud/spaces/647833/content/10308914"
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#justify-using-r",
+    "href": "2_1_general-approach_presentation.html#justify-using-r",
+    "title": "R Faculty Workshop",
+    "section": "Justify using R",
+    "text": "Justify using R\n\nSkill Development: Proficiency in R is increasingly sought after in both academic and industry settings, enhancing students’ career prospects. See : https://r4stats.com/articles/popularity/\nReproducibility: R promotes transparent and reproducible research practices, aligning with open science principles.\nCost-Effectiveness: R is free and open-source, making it accessible to all students regardless of financial resources.\nConceptual Understanding: Coding statistical procedures reinforces comprehension of underlying concepts. For example, writing functions to compute z-scores or simulate sampling distributions deepens understanding.\n\nRequiring students to learn both statistical concepts (or research methods or whatever) and coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset."
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#grading",
+    "href": "2_1_general-approach_presentation.html#grading",
+    "title": "R Faculty Workshop",
+    "section": "Grading",
+    "text": "Grading\nThe only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code— Hadley Wickham (@hadleywickham) April 17, 2015\nTo foster a supportive learning environment:\n\nEffort-Based Grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.\nFeedback-Oriented: Provide constructive feedback to guide improvement, focusing on the learning process over the final product.\n\nMy grading scheme:\n\n0 points: No submission\n1 point: Incomplete attempt\n2 point: Complete, valid attempt"
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#most-common-problems",
+    "href": "2_1_general-approach_presentation.html#most-common-problems",
+    "title": "R Faculty Workshop",
+    "section": "Most common problems",
+    "text": "Most common problems\nStudents often encounter specific hurdles when learning R:\n\nAnnoying technical problems: Forgetting to install or load necessary packages leads to errors.\nSyntax Errors: Missing commas, parentheses, or quotation marks are common. Encourage the use of RStudio’s syntax highlighting and error messages to identify issues.\nUnderstanding Data Structures: Differentiating between vectors, data frames, and lists can be confusing. Use analogies and visual aids to clarify these concepts.\nAnnoying technical problems: Forgetting to install or load necessary packages leads to errors.\nFunction Arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.\n\nTo address these challenges:\n\nIncremental Learning: Introduce concepts gradually, building upon previous knowledge.\nActive Practice: Incorporate hands-on exercises that allow students to apply new skills immediately."
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#additional-resources",
+    "href": "2_1_general-approach_presentation.html#additional-resources",
+    "title": "R Faculty Workshop",
+    "section": "Additional resources",
+    "text": "Additional resources\nOne of the nice things about R is that many academic users have developed great teaching materials and made them available for free. A few examples:\n\nDanielle Navarro (2019) Learning Statistics with R\nMine Çetinkaya-Rundel and Johanna Hardin (2022) Modern Statistical Methods for Psychology\nRussell A. Poldrack (2018) Statistical Thinking for the 21st Century"
+  },
+  {
+    "objectID": "2_1_general-approach_presentation.html#generative-ai",
+    "href": "2_1_general-approach_presentation.html#generative-ai",
+    "title": "R Faculty Workshop",
+    "section": "Generative AI",
+    "text": "Generative AI\nIn its latest version RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code. Here, I typed the comment and the function name, and Copilot completed the function body.\n\n# a function to compute the sum of squared deviations\nsum_squares &lt;- function(x) {\n  n &lt;- length(x)\n  mean_x &lt;- mean(x)\n  sum_sq_dev &lt;- sum((x - mean_x)^2)\n  return(sum_sq_dev)\n}\n\nsum_squares(c(1, 2, 3, 4, 5))\n\n[1] 10"
+  },
+  {
+    "objectID": "2_3_quarto.html",
+    "href": "2_3_quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "“An open-source scientific and technical publishing system”\nWorks seamlessly within RStudio\nNext generation version of R Markdown.\nProvides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.\n\n\n\nSingle documents\n\nPDF article\nWord document\nHTML article\nHTML presentation\n\nCollection of documents\n\nBook (html and/or PDF)\nWebsite (html pages, navigation)\n\n\n\n\n\n\nReproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.\nEngaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.\nEfficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.\nProfessional Reporting: Generate publication-ready reports and presentations directly from your analyses.\n\n\n\n\n\n\n\n\n\n\nFile &gt; New File &gt; Quarto Document\nYAML section\n---\ntitle: \"Untitled\"\n---\nText.\nCode chunks.\n\n# hello!\n\n\n\n\nSource vs Visual\n\n\n\n\n\n\nUse the “Render” button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.\n\n\n\n\n\nThe _quarto.yml file.\nContains rendering instructions for the entire project, and things that will apply to each file.\n\n\n_quarto.yml\n\nproject:\n  type: website\n\nformat:\n  html:\n    toc: true\n\n\n\n\n\n\n\n\nManage bibliographies using .bib files.\nInsert citations using @citation_key.\nAutomatically generate reference sections.\n\n\n\nLabel figures and tables for easy cross-referencing within the text.\nAn image can be give an ID when inserted, e.g.\n![The R Logo](images/r-logo.png){#fig-logo}\n\n\n\n\n\n\nFigure 1: The R Logo\n\n\n\nTyping “As shown in @fig-logo, R has a perfectly pleasant logo.\" becomes:\nAs shown in Figure 1, R has a perfectly pleasant logo.\n\n\n\n\n\nTutorial: Hello, Quarto\nQuarto OfficialDocumentation\nCarpentries: Reproducible Publications with Quarto\nQuarto Manuscripts\nQuarto Gallery (Examples)",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "2_3_quarto.html#what-is-quarto",
+    "href": "2_3_quarto.html#what-is-quarto",
+    "title": "Quarto",
+    "section": "",
+    "text": "“An open-source scientific and technical publishing system”\nWorks seamlessly within RStudio\nNext generation version of R Markdown.\nProvides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.\n\n\n\nSingle documents\n\nPDF article\nWord document\nHTML article\nHTML presentation\n\nCollection of documents\n\nBook (html and/or PDF)\nWebsite (html pages, navigation)\n\n\n\n\n\n\nReproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.\nEngaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.\nEfficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.\nProfessional Reporting: Generate publication-ready reports and presentations directly from your analyses.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "2_3_quarto.html#getting-started",
+    "href": "2_3_quarto.html#getting-started",
+    "title": "Quarto",
+    "section": "",
+    "text": "File &gt; New File &gt; Quarto Document\nYAML section\n---\ntitle: \"Untitled\"\n---\nText.\nCode chunks.\n\n# hello!\n\n\n\n\nSource vs Visual\n\n\n\n\n\n\nUse the “Render” button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.\n\n\n\n\n\nThe _quarto.yml file.\nContains rendering instructions for the entire project, and things that will apply to each file.\n\n\n_quarto.yml\n\nproject:\n  type: website\n\nformat:\n  html:\n    toc: true",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "2_3_quarto.html#advanced-features",
+    "href": "2_3_quarto.html#advanced-features",
+    "title": "Quarto",
+    "section": "",
+    "text": "Manage bibliographies using .bib files.\nInsert citations using @citation_key.\nAutomatically generate reference sections.\n\n\n\nLabel figures and tables for easy cross-referencing within the text.\nAn image can be give an ID when inserted, e.g.\n![The R Logo](images/r-logo.png){#fig-logo}\n\n\n\n\n\n\nFigure 1: The R Logo\n\n\n\nTyping “As shown in @fig-logo, R has a perfectly pleasant logo.\" becomes:\nAs shown in Figure 1, R has a perfectly pleasant logo.",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "2_3_quarto.html#additional-resources",
+    "href": "2_3_quarto.html#additional-resources",
+    "title": "Quarto",
+    "section": "",
+    "text": "Tutorial: Hello, Quarto\nQuarto OfficialDocumentation\nCarpentries: Reproducible Publications with Quarto\nQuarto Manuscripts\nQuarto Gallery (Examples)",
+    "crumbs": [
+      "Day 2: Teaching with R",
+      "Quarto"
+    ]
+  },
+  {
+    "objectID": "2_2_quarto_presentation.html#what-is-quarto",
+    "href": "2_2_quarto_presentation.html#what-is-quarto",
+    "title": "R Faculty Workshop",
+    "section": "What is Quarto?",
+    "text": "What is Quarto?\n“An open-source scientific and technical publishing system”\nWorks seamlessly within RStudio\nNext generation version of R Markdown.\nProvides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents."
+  },
+  {
+    "objectID": "2_2_quarto_presentation.html#working-with-quarto-documents",
+    "href": "2_2_quarto_presentation.html#working-with-quarto-documents",
+    "title": "R Faculty Workshop",
+    "section": "Working with Quarto documents",
+    "text": "Working with Quarto documents"
+  },
+  {
+    "objectID": "2_2_quarto_presentation.html#getting-started",
+    "href": "2_2_quarto_presentation.html#getting-started",
+    "title": "R Faculty Workshop",
+    "section": "Getting started",
+    "text": "Getting started"
+  },
+  {
+    "objectID": "2_2_quarto_presentation.html#advanced-features",
+    "href": "2_2_quarto_presentation.html#advanced-features",
+    "title": "R Faculty Workshop",
+    "section": "Advanced Features",
+    "text": "Advanced Features"
+  },
+  {
+    "objectID": "2_2_quarto_presentation.html#additional-resources",
+    "href": "2_2_quarto_presentation.html#additional-resources",
+    "title": "R Faculty Workshop",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nTutorial: Hello, Quarto\nQuarto OfficialDocumentation\nCarpentries: Reproducible Publications with Quarto\nQuarto Manuscripts\nQuarto Gallery (Examples)"
   },
   {
     "objectID": "1_2_basics.html",
@@ -244,7 +473,7 @@
     "href": "1_1_intro-to-r_presentation.html#why-r",
     "title": "R Faculty Workshop",
     "section": "Why R?",
-    "text": "Why R?\nA coding language specialized for statistical computing and data analysis. Free and open-source. (Though there is a cloud-based version which can be paid).\n\nImport data from your computer, websites, databases, via webscraping\nClean and organize data\nAnalyze and visualize the data\nCommunicate the results in various formats (pdf research paper, website, presentation slides)"
+    "text": "Why R?\nR is a coding language specialized for statistical computing and data analysis. It is free and open-source (though there is a cloud-based version which can be paid for and can have advantages especially in the classroom).\nSome of R’s capabilities:\n\nImport and create data files in various formats\nClean and organize data\nAnalyze and visualize the data\nCommunicate the results in various formats (pdf research paper, website, presentation slides)\nGenerate random data, execute functions repeatedly, useful for simulations, bootstrapping etc\nOther programattic tasks, e.g. web-scraping, using APIs"
   },
   {
     "objectID": "1_1_intro-to-r_presentation.html#the-general-workflow",
@@ -272,7 +501,7 @@
     "href": "1_1_intro-to-r.html",
     "title": "Introduction to R and RStudio",
     "section": "",
-    "text": "A coding language specialized for statistical computing and data analysis. Free and open-source. (Though there is a cloud-based version which can be paid).\n\nImport data from your computer, websites, databases, via webscraping\nClean and organize data\nAnalyze and visualize the data\nCommunicate the results in various formats (pdf research paper, website, presentation slides)\n\n\n\n\n\n\nIt might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing =AVERAGE(A1:A10). In R you might type mean(my_data$column_a). The specifics of the function names are different, but the basic idea is the same.\n\n\n\nA major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references but does not modify the source data file (unless you tell it to).\n\n\n\nExcel Spreadsheet\n\n\n\n\nA\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n=AVERAGE(A2:A6)\n\n\n\n\n\n\n\n\n\n\nR Data\n\n\n\n\n\n\nA\n\n\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n\n\n\n\n\n\nR Code\n\nmean(data$A)\n\n[1] 3\n\nsum(data$A)\n\n[1] 15\n\nsd(data$A)\n\n[1] 1.581139\n\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\nTop-left: Code editor / data viewer\n\nOpen, edit, and save code documents\nExecute code within files\nView data\nYou can have multiple ‘tabs’ open at once,\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree\n\n\n\n\n\n\nThe R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just ‘base’ R.\nHowever there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R’s strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.\n\n\n\n\n\n\n\nActually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.\n\n\n\nE.g….\n\nStructural equation modeling (lavaan)\nMeta-analysis (metafor)\nLinear mixed effects models (lme4, simr)\nBootstrapping (boot)\nBayesian analyses (brms, rstanarm)\nNetwork analyses (igraph, ggraph, tidygraph, qgraph, bootnet)\nLanguage analysis (tidytext, quanteda)\nAudio analysis (tuneR, seewave)\nMachine learning (tidymodels)\n\n\n\n\nE.g. maps (sf, leaflet)\n\n\n\n\n\n\n\n\n\n\ninstall.packages(\"tidyverse\")\n\ninstall.packages(\"lme4\")\n\nPackages only need to be installed on your system once.\n\n\n\nIf you are just using one function from a package as a one-off, you can use the double-colon :: operator in the form package::function(), i.e.\n\n# package::function syntax\n\ndplyr::filter(...)\n\ntidyr::pivot_longer(...)\n\nlme4::lmer(...)\n\nIf you will be using a package’s functions repeatedly, it can be preferable to activate the entire package using the library() function.\n\n# activate installed packages first with library()\n\nlibrary(tidyverse)\nlibrary(lme4)\n\n# then use functions\n\nlmer(...)\n\nNote that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the library() method to activate the package, it must be done every time you have a new ‘session’ in R.\n\n\n\n\nThere is a help documentation page for every function. You can access it by typing a question mark and then the name of the function in the console and hitting Enter/Return:\n\n?mean\n\n?t.test\n\nDoing so brings up the function documentation in the Help pane in the bottom-right of the RStudio interface.\nAlternatively, you can click into the Help pane directly and type a function or topic into the search bar near the top of the pane.",
+    "text": "R is a coding language specialized for statistical computing and data analysis. It is free and open-source (though there is a cloud-based version which can be paid for and can have advantages especially in the classroom).\nSome of R’s capabilities:\n\nImport and create data files in various formats\nClean and organize data\nAnalyze and visualize the data\nCommunicate the results in various formats (pdf research paper, website, presentation slides)\nGenerate random data, execute functions repeatedly, useful for simulations, bootstrapping etc\nOther programattic tasks, e.g. web-scraping, using APIs\n\n\n\n\n\n\nIt might seem daunting to learn R if you have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing =AVERAGE(A1:A10). In R you might type mean(my_data$column_a). The specifics of the function names are different, but the basic idea is the same.\n\n\n\nA major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references but does not modify the source data file (unless you tell it to).\n\n\n\nExcel Spreadsheet\n\n\n\n\nA\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n=AVERAGE(A2:A6)\n\n\n\n\n\n\n\n\n\n\nR Data\n\n\n\n\n\n\nA\n\n\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n\n\n\n\n\n\nR Code\n\nmean(data$A)\n\n[1] 3\n\nsum(data$A)\n\n[1] 15\n\nsd(data$A)\n\n[1] 1.581139\n\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\nTop-left: Code editor / data viewer\n\nOpen, edit, and save code documents\nExecute code within files\nView data\nYou can have multiple ‘tabs’ open at once,\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree\n\n\n\n\n\n\nThe R language has many functions built in. Generally speaking, you can find a way to do pretty much anything you would like to do using just ‘base’ R.\nHowever there are many common tasks that are a bit tedious or unintuitive to do using base R. One of R’s strengths is how extensible it is: anyone can write their own functions, turn the code into an R package, and make that package available to other R users.\n\n\n\n\n\n\n\nActually, the tidyverse package is a container for multiple individual packages. The whole family of tidyverse packages are written with a consistent syntax and logic.\n\n\n\nE.g….\n\nStructural equation modeling (lavaan)\nMeta-analysis (metafor)\nLinear mixed effects models (lme4, simr)\nBootstrapping (boot)\nBayesian analyses (brms, rstanarm)\nNetwork analyses (igraph, ggraph, tidygraph, qgraph, bootnet)\nLanguage analysis (tidytext, quanteda)\nAudio analysis (tuneR, seewave)\nMachine learning (tidymodels)\n\n\n\n\nE.g. maps (sf, leaflet)\n\n\n\n\n\n\n\n\n\n\ninstall.packages(\"tidyverse\")\n\ninstall.packages(\"lme4\")\n\nPackages only need to be installed on your system once.\n\n\n\nIf you are just using one function from a package as a one-off, you can use the double-colon :: operator in the form package::function(), i.e.\n\n# package::function syntax\n\ndplyr::filter(...)\n\ntidyr::pivot_longer(...)\n\nlme4::lmer(...)\n\nIf you will be using a package’s functions repeatedly, it can be preferable to activate the entire package using the library() function.\n\n# activate installed packages first with library()\n\nlibrary(tidyverse)\nlibrary(lme4)\n\n# then use functions\n\nlmer(...)\n\nNote that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the library() method to activate the package, it must be done every time you have a new ‘session’ in R.\n\n\n\n\nThere is a help documentation page for every function. You can access it by typing a question mark and then the name of the function in the console and hitting Enter/Return:\n\n?mean\n\n?t.test\n\nDoing so brings up the function documentation in the Help pane in the bottom-right of the RStudio interface.\nAlternatively, you can click into the Help pane directly and type a function or topic into the search bar near the top of the pane.",
     "crumbs": [
       "Day 1: Intro to R",
       "Introduction to R and RStudio"
@@ -283,7 +512,7 @@
     "href": "1_1_intro-to-r.html#why-r",
     "title": "Introduction to R and RStudio",
     "section": "",
-    "text": "A coding language specialized for statistical computing and data analysis. Free and open-source. (Though there is a cloud-based version which can be paid).\n\nImport data from your computer, websites, databases, via webscraping\nClean and organize data\nAnalyze and visualize the data\nCommunicate the results in various formats (pdf research paper, website, presentation slides)",
+    "text": "R is a coding language specialized for statistical computing and data analysis. It is free and open-source (though there is a cloud-based version which can be paid for and can have advantages especially in the classroom).\nSome of R’s capabilities:\n\nImport and create data files in various formats\nClean and organize data\nAnalyze and visualize the data\nCommunicate the results in various formats (pdf research paper, website, presentation slides)\nGenerate random data, execute functions repeatedly, useful for simulations, bootstrapping etc\nOther programattic tasks, e.g. web-scraping, using APIs",
     "crumbs": [
       "Day 1: Intro to R",
       "Introduction to R and RStudio"
@@ -294,7 +523,7 @@
     "href": "1_1_intro-to-r.html#the-general-workflow",
     "title": "Introduction to R and RStudio",
     "section": "",
-    "text": "It might seem daunting if you’ve have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing =AVERAGE(A1:A10). In R you might type mean(my_data$column_a). The specifics of the function names are different, but the basic idea is the same.\n\n\n\nA major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references but does not modify the source data file (unless you tell it to).\n\n\n\nExcel Spreadsheet\n\n\n\n\nA\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n=AVERAGE(A2:A6)\n\n\n\n\n\n\n\n\n\n\nR Data\n\n\n\n\n\n\nA\n\n\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n\n\n\n\n\n\nR Code\n\nmean(data$A)\n\n[1] 3\n\nsum(data$A)\n\n[1] 15\n\nsd(data$A)\n\n[1] 1.581139\n\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\nTop-left: Code editor / data viewer\n\nOpen, edit, and save code documents\nExecute code within files\nView data\nYou can have multiple ‘tabs’ open at once,\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree",
+    "text": "It might seem daunting to learn R if you have no experience with coding, but the basic idea is that you have some data, like you are familiar with from a regular Excel or Google Sheets spreadsheet, and you perform operations on your data using functions a lot like you would in Excel/Sheets. For example, you might compute an average in Sheets by typing =AVERAGE(A1:A10). In R you might type mean(my_data$column_a). The specifics of the function names are different, but the basic idea is the same.\n\n\n\nA major difference between working with data in Excel vs. R is the separation of data from code. Rather than writing functions to manipulate or analyze data directly in your spreadsheet, code is written in a separate code file, which references but does not modify the source data file (unless you tell it to).\n\n\n\nExcel Spreadsheet\n\n\n\n\nA\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n=AVERAGE(A2:A6)\n\n\n\n\n\n\n\n\n\n\nR Data\n\n\n\n\n\n\nA\n\n\n\n\n1\n\n\n2\n\n\n3\n\n\n4\n\n\n5\n\n\n\n\n\n\n\n\nR Code\n\nmean(data$A)\n\n[1] 3\n\nsum(data$A)\n\n[1] 15\n\nsd(data$A)\n\n[1] 1.581139\n\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio is the interface we’ll use to write and run R code and see its output. The basic interface has 4 panels, each with a few tabs:\n\nTop-left: Code editor / data viewer\n\nOpen, edit, and save code documents\nExecute code within files\nView data\nYou can have multiple ‘tabs’ open at once,\n\nBottom-left: R console\n\nYou can type code directly and run it by pressing enter.\nYou won’t be saving your code as a document like when you type in in the editor, so this is useful for testing something simple out\n\nTop-right: Environment\n\nAs you execute code you may be creating objects like sets of numbers of data.frames. Those objects will appear here.\nYou can click the name of some objects, like data.frames, and it will open a view of the data as a tab in the editor pane\n\nBottom-right: Files/folders, Plots, Viewer, help window\n\nYou can navigate the file tree",
     "crumbs": [
       "Day 1: Intro to R",
       "Introduction to R and RStudio"
@@ -323,173 +552,41 @@
     ]
   },
   {
-    "objectID": "2_2_quarto_presentation.html#what-is-quarto",
-    "href": "2_2_quarto_presentation.html#what-is-quarto",
-    "title": "R Faculty Workshop",
-    "section": "What is Quarto?",
-    "text": "What is Quarto?\n“An open-source scientific and technical publishing system”\nWorks seamlessly within RStudio\nNext generation version of R Markdown."
-  },
-  {
-    "objectID": "2_2_quarto_presentation.html#benefits-of-using-quarto-over-just-r.",
-    "href": "2_2_quarto_presentation.html#benefits-of-using-quarto-over-just-r.",
-    "title": "R Faculty Workshop",
-    "section": "Benefits of using Quarto over just R.",
-    "text": "Benefits of using Quarto over just R."
-  },
-  {
-    "objectID": "2_2_quarto_presentation.html#working-with-quarto-documents",
-    "href": "2_2_quarto_presentation.html#working-with-quarto-documents",
-    "title": "R Faculty Workshop",
-    "section": "Working with Quarto documents",
-    "text": "Working with Quarto documents"
-  },
-  {
-    "objectID": "2_2_quarto_presentation.html#getting-started",
-    "href": "2_2_quarto_presentation.html#getting-started",
-    "title": "R Faculty Workshop",
-    "section": "Getting started",
-    "text": "Getting started"
-  },
-  {
-    "objectID": "2_3_quarto.html",
-    "href": "2_3_quarto.html",
-    "title": "Quarto",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workshop overview",
     "section": "",
-    "text": "“An open-source scientific and technical publishing system”\nWorks seamlessly within RStudio\nNext generation version of R Markdown.\n\n\n\nSingle documents\n\nPDF article\nHTML article\nHTML presentation\n\nCollection of documents\n\nBook (html and/or PDF)\nWebsite (html pages, navigation)\n\n\n\n\n\n\n\n\n\n\n\nSource vs Visual\n\n\n\n\n\n\nAll code gets executed from scratch\n\n\n\n\n\n\nFile &gt; New File &gt; Quarto Document\nYAML section\n---\ntitle: \"Untitled\"\n---\nText.\nCode chunks.\n\n# hello!\n\n\n\n\n\n\nThe _quarto.yml file.\nContains rendering instructions for the entire project, and things that will apply to each file.\n\n\n_quarto.yml\n\nproject:\n  type: website\n\nformat:\n  html:\n    toc: true",
+    "text": "Some notes about R and its ecosystem in general\n\n\n\nSyntax, data types, assignment, functions\n\n\n\nImporting data, cleaning, graphs, analyses\n\n\n\n\n\n\nPedagogy, grading, generative AI\n\n\n\nA web-based version of RStudio\n\n\n\nAn alternative document format with advantages for teaching\n\n\n\nExamples of how I use R and these additional tools in Statistics and Labs",
     "crumbs": [
-      "Day 2: Teaching with R",
-      "Quarto"
+      "Workshop overview"
     ]
   },
   {
-    "objectID": "2_3_quarto.html#what-is-quarto",
-    "href": "2_3_quarto.html#what-is-quarto",
-    "title": "Quarto",
+    "objectID": "index.html#day-1-intro-to-r",
+    "href": "index.html#day-1-intro-to-r",
+    "title": "Workshop overview",
     "section": "",
-    "text": "“An open-source scientific and technical publishing system”\nWorks seamlessly within RStudio\nNext generation version of R Markdown.\n\n\n\nSingle documents\n\nPDF article\nHTML article\nHTML presentation\n\nCollection of documents\n\nBook (html and/or PDF)\nWebsite (html pages, navigation)",
+    "text": "Some notes about R and its ecosystem in general\n\n\n\nSyntax, data types, assignment, functions\n\n\n\nImporting data, cleaning, graphs, analyses",
     "crumbs": [
-      "Day 2: Teaching with R",
-      "Quarto"
+      "Workshop overview"
     ]
   },
   {
-    "objectID": "2_3_quarto.html#working-with-quarto-documents",
-    "href": "2_3_quarto.html#working-with-quarto-documents",
-    "title": "Quarto",
+    "objectID": "index.html#day-2-teaching-with-r",
+    "href": "index.html#day-2-teaching-with-r",
+    "title": "Workshop overview",
     "section": "",
-    "text": "Source vs Visual\n\n\n\n\n\n\nAll code gets executed from scratch",
+    "text": "Pedagogy, grading, generative AI\n\n\n\nA web-based version of RStudio\n\n\n\nAn alternative document format with advantages for teaching\n\n\n\nExamples of how I use R and these additional tools in Statistics and Labs",
     "crumbs": [
-      "Day 2: Teaching with R",
-      "Quarto"
+      "Workshop overview"
     ]
   },
   {
-    "objectID": "2_3_quarto.html#getting-started",
-    "href": "2_3_quarto.html#getting-started",
-    "title": "Quarto",
+    "objectID": "0_installing.html",
+    "href": "0_installing.html",
+    "title": "Installing R and RStudio",
     "section": "",
-    "text": "File &gt; New File &gt; Quarto Document\nYAML section\n---\ntitle: \"Untitled\"\n---\nText.\nCode chunks.\n\n# hello!\n\n\n\n\n\n\nThe _quarto.yml file.\nContains rendering instructions for the entire project, and things that will apply to each file.\n\n\n_quarto.yml\n\nproject:\n  type: website\n\nformat:\n  html:\n    toc: true",
-    "crumbs": [
-      "Day 2: Teaching with R",
-      "Quarto"
-    ]
-  },
-  {
-    "objectID": "2_1_general-approach_presentation.html#justify-using-r",
-    "href": "2_1_general-approach_presentation.html#justify-using-r",
-    "title": "R Faculty Workshop",
-    "section": "Justify using R",
-    "text": "Justify using R\nHelps to set expectations. Students see it as worthwhile from the outset.\nPedagogically, using R can facilitate students’ understanding of fundamental statistical concepts and applied analytic techniques. While having students simultaneously learn statistical concepts and a coding language is challenging, my experience to date shows that it is not only possible, but that the coding elements can be used to reinforce students’ understanding of the conceptual side. As compared to other statistics software, such as SPSS, R has many features that make it especially well-suited for teaching. I have students use R to demonstrate basic concepts of probability and sampling, as well as running basic and advanced analyses. Equations that are introduced in class using paper and pencil can be adapted into R code and turned into custom functions, forming a concrete link between the underlying mathematical procedures and their computational implementation. By the time students are making use of built-in functions to perform sophisticated analyses they understand how the computer is applying the same mathematical procedures they have learned in class. This keeps the focus on understanding and applying the statistical concepts, rather than merely learning the correct sequence of buttons to press on a graphical user interface.\nThe second way in which using R brings tangible benefits is in the value of the skills it imparts. For social-scientists-in-training, R is a tool they will likely encounter at some point. The main alternative, SPSS, has been declining in popularity while R has been increasing. Beyond academia, the number of jobs which list R as a desirable or required skill vastly outnumber those which require SPSS ( Muenchen, 2023 ). In part, R’s popularity is a result of it being freely available and easily extensible, making data-analytic tasks easier. Resulting analyses are inherently documented and reproducible, which has made R code files a common format for sharing analysis scripts alongside open-access data (on psyArXiV, for example). Using R allows instructors not only to offer training in a cutting-edge tool which students can use for scholarly projects, but to make students aware of the broader context in which such analytic tools exist. This is in line with the Thinking Technologically and Digitally requirement’s goal of helping “instill in students the confidence to make decisions about the adoption and use of current and future technologies in a critical and creative manner.”"
-  },
-  {
-    "objectID": "2_1_general-approach_presentation.html#grading",
-    "href": "2_1_general-approach_presentation.html#grading",
-    "title": "R Faculty Workshop",
-    "section": "Grading",
-    "text": "Grading\nStudents are often daunted. It does not come naturally to all.\nGrade for effort rather than results."
-  },
-  {
-    "objectID": "2_1_general-approach_presentation.html#start-with-something-cool",
-    "href": "2_1_general-approach_presentation.html#start-with-something-cool",
-    "title": "R Faculty Workshop",
-    "section": "Start with something cool",
-    "text": "Start with something cool"
-  },
-  {
-    "objectID": "2_1_general-approach_presentation.html#most-common-problems",
-    "href": "2_1_general-approach_presentation.html#most-common-problems",
-    "title": "R Faculty Workshop",
-    "section": "Most common problems",
-    "text": "Most common problems\ncover the problems and challenges that students most often run into, and how these can be avoided or even turned into learning opportunities."
-  },
-  {
-    "objectID": "2_1_general-approach_presentation.html#additional-resources",
-    "href": "2_1_general-approach_presentation.html#additional-resources",
-    "title": "R Faculty Workshop",
-    "section": "Additional resources",
-    "text": "Additional resources\nModern Statistical Methods for Psychology (https://bookdown.org/gregcox7/ims_psych/)"
-  },
-  {
-    "objectID": "2_1_general-approach_presentation.html#generative-ai",
-    "href": "2_1_general-approach_presentation.html#generative-ai",
-    "title": "R Faculty Workshop",
-    "section": "Generative AI",
-    "text": "Generative AI"
-  },
-  {
-    "objectID": "2_1_general-approach.html",
-    "href": "2_1_general-approach.html",
-    "title": "General comments",
-    "section": "",
-    "text": "Helps to set expectations. Students see it as worthwhile from the outset.\nPedagogically, using R can facilitate students’ understanding of fundamental statistical concepts and applied analytic techniques. While having students simultaneously learn statistical concepts and a coding language is challenging, my experience to date shows that it is not only possible, but that the coding elements can be used to reinforce students’ understanding of the conceptual side. As compared to other statistics software, such as SPSS, R has many features that make it especially well-suited for teaching. I have students use R to demonstrate basic concepts of probability and sampling, as well as running basic and advanced analyses. Equations that are introduced in class using paper and pencil can be adapted into R code and turned into custom functions, forming a concrete link between the underlying mathematical procedures and their computational implementation. By the time students are making use of built-in functions to perform sophisticated analyses they understand how the computer is applying the same mathematical procedures they have learned in class. This keeps the focus on understanding and applying the statistical concepts, rather than merely learning the correct sequence of buttons to press on a graphical user interface.\nThe second way in which using R brings tangible benefits is in the value of the skills it imparts. For social-scientists-in-training, R is a tool they will likely encounter at some point. The main alternative, SPSS, has been declining in popularity while R has been increasing. Beyond academia, the number of jobs which list R as a desirable or required skill vastly outnumber those which require SPSS ( Muenchen, 2023 ). In part, R’s popularity is a result of it being freely available and easily extensible, making data-analytic tasks easier. Resulting analyses are inherently documented and reproducible, which has made R code files a common format for sharing analysis scripts alongside open-access data (on psyArXiV, for example). Using R allows instructors not only to offer training in a cutting-edge tool which students can use for scholarly projects, but to make students aware of the broader context in which such analytic tools exist. This is in line with the Thinking Technologically and Digitally requirement’s goal of helping “instill in students the confidence to make decisions about the adoption and use of current and future technologies in a critical and creative manner.”\n\n\n\nStudents are often daunted. It does not come naturally to all.\nGrade for effort rather than results.\n\n\n\n\n\n\ncover the problems and challenges that students most often run into, and how these can be avoided or even turned into learning opportunities.\n\n\n\nModern Statistical Methods for Psychology (https://bookdown.org/gregcox7/ims_psych/)",
-    "crumbs": [
-      "Day 2: Teaching with R",
-      "General comments"
-    ]
-  },
-  {
-    "objectID": "2_1_general-approach.html#justify-using-r",
-    "href": "2_1_general-approach.html#justify-using-r",
-    "title": "General comments",
-    "section": "",
-    "text": "Helps to set expectations. Students see it as worthwhile from the outset.\nPedagogically, using R can facilitate students’ understanding of fundamental statistical concepts and applied analytic techniques. While having students simultaneously learn statistical concepts and a coding language is challenging, my experience to date shows that it is not only possible, but that the coding elements can be used to reinforce students’ understanding of the conceptual side. As compared to other statistics software, such as SPSS, R has many features that make it especially well-suited for teaching. I have students use R to demonstrate basic concepts of probability and sampling, as well as running basic and advanced analyses. Equations that are introduced in class using paper and pencil can be adapted into R code and turned into custom functions, forming a concrete link between the underlying mathematical procedures and their computational implementation. By the time students are making use of built-in functions to perform sophisticated analyses they understand how the computer is applying the same mathematical procedures they have learned in class. This keeps the focus on understanding and applying the statistical concepts, rather than merely learning the correct sequence of buttons to press on a graphical user interface.\nThe second way in which using R brings tangible benefits is in the value of the skills it imparts. For social-scientists-in-training, R is a tool they will likely encounter at some point. The main alternative, SPSS, has been declining in popularity while R has been increasing. Beyond academia, the number of jobs which list R as a desirable or required skill vastly outnumber those which require SPSS ( Muenchen, 2023 ). In part, R’s popularity is a result of it being freely available and easily extensible, making data-analytic tasks easier. Resulting analyses are inherently documented and reproducible, which has made R code files a common format for sharing analysis scripts alongside open-access data (on psyArXiV, for example). Using R allows instructors not only to offer training in a cutting-edge tool which students can use for scholarly projects, but to make students aware of the broader context in which such analytic tools exist. This is in line with the Thinking Technologically and Digitally requirement’s goal of helping “instill in students the confidence to make decisions about the adoption and use of current and future technologies in a critical and creative manner.”",
-    "crumbs": [
-      "Day 2: Teaching with R",
-      "General comments"
-    ]
-  },
-  {
-    "objectID": "2_1_general-approach.html#grading",
-    "href": "2_1_general-approach.html#grading",
-    "title": "General comments",
-    "section": "",
-    "text": "Students are often daunted. It does not come naturally to all.\nGrade for effort rather than results.",
-    "crumbs": [
-      "Day 2: Teaching with R",
-      "General comments"
-    ]
-  },
-  {
-    "objectID": "2_1_general-approach.html#most-common-problems",
-    "href": "2_1_general-approach.html#most-common-problems",
-    "title": "General comments",
-    "section": "",
-    "text": "cover the problems and challenges that students most often run into, and how these can be avoided or even turned into learning opportunities.",
-    "crumbs": [
-      "Day 2: Teaching with R",
-      "General comments"
-    ]
-  },
-  {
-    "objectID": "2_1_general-approach.html#additional-resources",
-    "href": "2_1_general-approach.html#additional-resources",
-    "title": "General comments",
-    "section": "",
-    "text": "Modern Statistical Methods for Psychology (https://bookdown.org/gregcox7/ims_psych/)",
-    "crumbs": [
-      "Day 2: Teaching with R",
-      "General comments"
-    ]
+    "text": "You can install the necessary software on your own computer for free by following this link:\nhttps://posit.co/download/rstudio-desktop/\nAs the page will tell you, there are 2 separate components to install: R and RStudio. Follow the relevant links, making sure to pick the appropriate version for your operating system (Mac/Windows/Linux) where necessary.\n\nR (the R language itself)\n\nOn the download page for this you’ll see different links for different operating systems\n\nMacOS: There are different versions of R depending on whether you have a newer Mac with an Apple processor (M1, M2… etc), or an older one with an Intel processor. If you’re not sure which you have, search your computer for “system information”, which should open some information including which chip your computer has.\nWindows: Click the “Download R for Windows” link and look for “install R for the first time”\n\n\nRStudio (the software interface we use to write and run R code)\n\nJust click the big download button; it should have determined the correct version for you automatically."
   },
   {
     "objectID": "1_3_working-with-data_presentation.html#getting-packages-ready",

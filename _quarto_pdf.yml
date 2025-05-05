@@ -12,7 +12,7 @@ book:
     - 2_1_general-approach.qmd
     - 2_2_posit-cloud.qmd
     - 2_3_quarto.qmd
-    - 2_4_problem-sets.qmd
+    - 2_4_course-materials.qmd
 
 format:
   pdf:
