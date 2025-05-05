@@ -12,7 +12,7 @@ format:
 
 Download this file to accompany this section:
 
--   ![](images/R.png){height="0.8em" style="vertical-align: baseline;"} [my_first_r_file.R](resources/my_first_r_file.R){download="my_first_r_file.R"}
+-   ![](images/r-logo.png){height="0.8em" style="vertical-align: baseline;"} [my_first_r_file.R](resources/my_first_r_file.R){download="my_first_r_file.R"}
 
 After you save it, double click it and it should open in the Editor pane in RStudio.
 :::

@@ -16,7 +16,7 @@ In RStudio, click:
 
 Once you have created the Project, save these files into your Project folder:
 
--   ![](images/R.png){height="0.8em" style="vertical-align: baseline;"} [triplett_analysis.R](resources/triplett_analysis.R){download="triplett_analysis.R"}
+-   ![](images/r-logo.png){height="0.8em" style="vertical-align: baseline;"} [triplett_analysis.R](resources/triplett_analysis.R){download="triplett_analysis.R"}
 -   ![](images/table-icon.svg){height="0.8em" style="vertical-align: baseline;"} [triplett_data.csv](resources/triplett_data.csv){download="triplett_data.csv"}
 
 Back in RStudio you should see those files appear in the Files pane in the bottom-right. Click `triplett_analysis.R` to open that code file in the Editor pane.
