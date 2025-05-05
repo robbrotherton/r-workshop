@@ -27,7 +27,7 @@ Writing some code in an .R document does not cause it to be executed automatical
 
 -   Option (or Alt) ⌥ + Return ⏎ (does not advance cursor)
 
-### My first code
+### Let's run some code
 
 To start getting used to writing and running code, let's use R as a calculator to do some sums.
 
@@ -69,6 +69,7 @@ c(1, 2, 3, 4, 5)
 ### Other common data types
 
 ```{r}
+
 # character
 c("hello", "world")
 
@@ -80,7 +81,16 @@ c(TRUE, FALSE)
 
 R has a fancy assignment operator: `<-`.[^1]
 
-[^1]: [Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)]{.content-hidden when-format="revealjs"}
+[^1]: Most other coding languages tend to use a boring `=` for assignment. Sure it's nice not having to type an extra character, but there's a keyboard shortcut to quickly add an `<-` in RStudio: Option/Alt + `-`. And philosophically, the `<-` arrow conveys the inherent directionality of the assignment operation. The object is assigned to the name; the object and its name are not equal and so the `=` arguably gives a misleading impression of the two things being one and the same. (Also, to let you in on a secret, `=` also works for assignment in R.)
+
+<style>
+  .reveal .slide sup {
+  color: white;
+}
+  .reveal .slide aside .aside-footnotes {
+  display: none;
+}
+</style>
 
 [You assign things to a name by typing something like:]{.content-hidden when-format="revealjs"}
 
@@ -140,12 +150,12 @@ worse name <- "can't have spaces"
 
 ### The Global Environment
 
-![](images/environment.png){fig-align="center" width="50%"}
+![](images/environment.png){fig-align="center" width="80%"}
 
 ::: {.content-hidden when-format="revealjs"}
 When you run the code `numbers <- c(1, 2, 3, 4, 5)` or any other assignment operation, you generally won't see any output in the console. What you will see, however, is something new appear in your Global Environment, the pane in the top-right of the RStudio window. You have brought your named object into being.
 
-Just as easily as you can bring an object into existence, so too can you remove it.
+Just as easily as you can bring an object into existence, so too can you remove it. Clicking the charming little sweeping brush near the top of the Environment pane will remove everything that currently exists from your Environment. It'll even ask if you're sure–a rare instance of compassion on R's part. It's a good habit not to be precious about the objects in your Environment. Your code is the definite record and if the instructions to make something are in there it can always be recreated.
 :::
 
 ```{r}
@@ -162,7 +172,9 @@ rm(list = ls()) # remove everything in the global environment
 
 ### Overwriting
 
+::: {.content-hidden when-format="revealjs"}
 Note that R will allow you to reuse a name that you already assigned something to. It will simply replace the thing that the name refers to. It will not ask if you're sure you want to do that; it won't mention it at all.
+:::
 
 ```{r}
 number <- 1
@@ -174,36 +186,37 @@ number <- 2
 number * 2
 ```
 
-::: {.content-visible when-format="revealjs"}
-----
+
+::: {.content-hidden when-format="revealjs"}
+It is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence. You might also run a line of code more than once, modifying an object in a way that you might not intend.
 :::
-
-Note also that it is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence. You might also run a line of code more than once, modifying an object in a way that you might not intend.
-
-Another source of potential confusion is modifying an object by updating it in place.
 
 ```{r}
 number <- 1
 
-number <- number * 2
+number <- number * 2 # what if you run this a few times?
 
 number
 ```
 
 ## Functions
 
-Many of the things we eventually want to do involve functions. To use a function, type its name, followed by parentheses. Any arguments you need to specify go inside the parentheses, separated by commas.
+Many of the things we eventually want to do involve functions. To use a function, type its name, followed by parentheses. Any inputs or other arguments you need to specify go inside the parentheses.
 
 ```{r}
 
-sum(c(1, 2, 3, 4, 5))
+sum(c(1, 2, 3, 4, 5)) # sum() takes a numeric vector as input
 
 # use sum() to get the total of a vector of numbers of your own
 # run the code and make sure you get the answer you're expecting
 
 ```
 
+### Using functions with named objects
+
+::: {.content-hidden when-format="revealjs"}
 Most usefully, we can use a named object we have created as input to a function. So rather than having to type or copy/paste the original vector `c(1, 2, 3, 4, 5)`, we can give it a name and feed that name into a function that expects a numeric vector as input.
+:::
 
 ```{r}
 numbers <- c(1, 2, 3, 4, 5)
@@ -223,27 +236,47 @@ max(numbers)
 
 ### Function arguments
 
+::: {.content-visible when-format="revealjs"}
+When must you type argument names? Sometimes.
+:::
+
+::: {.content-hidden when-format="revealjs"}
 A function generally has one or more "arguments", to which you supply parameters. For example, the `mean()` function's first argument is the set of numbers you want to compute the mean of.
 
-When there's more than one argument, they are separated by a comma. Arguments usually have names. You don't necessarily have to type the name of the argument, but it can be helpful. The `seq()` function, for example, produces a sequence of numbers according to three arguments, `from`, `to`, and `by`.
+When there's more than one argument, they are separated by a comma. Arguments usually have names. You don't necessarily have to type the name of the argument, because of R's positional matching.
+
+The `seq()` function, for example, produces a sequence of numbers according to three arguments, `from`, `to`, and `by`.
+:::
 
 ```{r}
 seq(from = 1, to = 10, by = 2)
 ```
 
-If you don't type the names of the arguments, R matches them by position, so this gives exactly the same output as the previous line of code because `from`, `to`, and `by` are the first three arguments respectively.
+::: {.content-hidden when-format="revealjs"}
+If you don't type the names of the arguments, and just supply three values, R matches them by position, so this gives exactly the same output as the previous line of code because `from`, `to`, and `by` are the first three arguments respectively.
+:::
 
 ```{r}
 
-seq(1, 10, 2)
+seq(1, 10, 2) # gives same result as above
 
 ```
 
-Suppose we actually wanted a sequence of 6 values. Now we definitely have to type the name at least of the `by` and `length.out` arguments, because positional matching won't work.
+::: {.content-hidden when-format="revealjs"}
+Suppose we actually wanted a sequence of 6 values. We could use the `length.out` argument. Now we definitely have to type the name at least of the `by` and `length.out` arguments, because positional matching won't work.
+:::
 
 ```{r}
-seq(from = 1, by = 2, length.out = 6)
+seq(from = 1, by = 2, length.out = 6) # argument names required
 ```
+
+::: {.content-visible when-format="revealjs"}
+When *should* you type argument names? Also sometimes.
+:::
+
+::: {.content-hidden when-format="revealjs"}
+So when do you type the argument names explicitly? Definitely when you need to, and maybe when you don't: remember someone (including your future self, might eventually want to read and understand your code.
+:::
 
 ### Nesting functions
 
@@ -269,17 +302,21 @@ Running the code will bring up the function's help documentation in RStudio's He
 
 ### Indexing
 
+You can access individual element of a vector by supplying an index within square brackets.
+
 ```{r}
 
 numbers <- c(3, 1, 4, 1, 5, 9)
 
-numbers[1]
+numbers[1] # first element
 
-numbers[c(1, 3)]
+numbers[1:3] # multiple consecutive elements
 
-numbers[1:3]
+# can you pick out the 1st, 3rd, and 5th elements?
 
 ```
+
+Note that R uses 1-indexing: the first element's index is 1. This differs from many other coding languages which are 0-indexed.
 
 ### Doing math with vectors
 
@@ -339,7 +376,7 @@ numbers[numbers > 3]
 
 ## Other important things to know
 
-### Vector coercion  {.incremental}
+### Vector coercion {.incremental}
 
 Every element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.
 
@@ -427,7 +464,7 @@ For ordinal data, where the order of categories matters, we can specify the leve
 
 # with no order specified; levels are listed alphabetically
 
-data <- c("medium", "small", "large", "medium", "large", "large")
+data <- c("medium", "low", "high", "medium", "high", "high")
 
 unordered <- factor(data) 
 
@@ -435,14 +472,26 @@ plot(unordered)
 
 ```
 
+```{r}
+#| echo: false
+
+plot(unordered)
+```
+
 ::: {.content-visible when-format="revealjs"}
-----
+
+------------------------------------------------------------------------
 :::
 
 ```{r}
 ordered <- factor(data, 
-                  levels = c("small", "medium", "large"), 
+                  levels = c("low", "medium", "high"), 
                   ordered = TRUE)
+
+```
+
+```{r}
+#| echo: false
 
 plot(ordered)
 ```
@@ -467,9 +516,11 @@ mean(numbers)
 
 ## Data.frames
 
+::: {.content-hidden when-format="revealjs"}
 So far we've been working with individual vectors. Sooner of later we're going to want to work with a collection of different sets of numbers: a spreadsheet. R's name for this kind of data structure is a *data.frame*. A data.frame is a collection of vectors; each column is a vector. Different columns can have different types (numeric, character, logical, date, etc), but each column will contain a single type of data. All columns must have the same length.
 
 Most commonly we have a data file already (a .csv or maybe an Excel file or some other format) and we read it in to R. However, to get a sense of how these objects work, and how to work with them, we can make one from scratch.
+:::
 
 ```{r}
 df <- data.frame(a = c(1, 2, 3),
@@ -486,7 +537,9 @@ summary(df)
 
 ### Selecting a data.frame column
 
+::: {.content-hidden when-format="revealjs"}
 R has many ways of picking out particular columns, rows, and individual values from a data.frame. The most useful is the `$` dollar sign for referring to a column by name. The data.frame we just created has a column named "a", so we can access the single vector that makes up that column by typing:
+:::
 
 ```{r}
 
@@ -496,7 +549,9 @@ df$a
 
 ### Doing stuff with data.frames
 
+::: {.content-hidden when-format="revealjs"}
 Then we can use all the functions, mathematical operations and everything else we've learned about so far to start working with the columns of our data.frame.
+:::
 
 ```{r}
 
