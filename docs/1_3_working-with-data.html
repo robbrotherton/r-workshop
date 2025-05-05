@@ -255,7 +255,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#working-with-other-data-formats" id="toc-working-with-other-data-formats" class="nav-link" data-scroll-target="#working-with-other-data-formats">Working with other data formats</a></li>
   </ul></li>
-  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping</a></li>
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data cleaning</a>
   <ul class="collapse">
   <li><a href="#selecting-columns" id="toc-selecting-columns" class="nav-link" data-scroll-target="#selecting-columns"><code>Select</code>ing columns</a></li>
@@ -319,6 +318,22 @@ Start a new Project
 <p>Back in RStudio you should see those files appear in the Files pane in the bottom-right. Click <code>triplett_analysis.R</code> to open that code file in the Editor pane.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Triplett (1898)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The data we’re working with here is from Normal Triplett’s 1898 study of social facilitation, in which children played a game winding a flag around a track as fast as they could either alone or in competition with another child.</p>
+<p><img src="images/triplett-machine.gif" class="img-fluid"></p>
+<p><img src="images/triplett-table.gif" class="img-fluid"></p>
+<p><a href="https://robbrotherton.github.io/psychstats/games/triplett/triplett.html">I made a version you can play on your computer here</a>.</p>
+</div>
+</div>
 <section id="the-working-directory" class="level3">
 <h3 class="anchored" data-anchor-id="the-working-directory">The working directory</h3>
 <p>R can access your entire filesystem, so you can access and create files anywhere on your hard drive. It can be a bit tedious to type explicit complete file paths every time you need to read or write a file, however. E.g.:</p>
@@ -341,7 +356,7 @@ Start a new Project
 </section>
 <section id="getting-packages-ready" class="level2">
 <h2 class="anchored" data-anchor-id="getting-packages-ready">Getting packages ready</h2>
-<p>One of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we’ll lean heavily into the <code>tidyverse</code> ecosystem. We’ll also use a few helpful function from other packages.</p>
+<p>One of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we’ll lean heavily into the <code>tidyverse</code> ecosystem. We’ll also use a few helpful functions from other packages.</p>
 <p>The packages will need to be installed once, if they aren’t already on your system. Once you have installed them, I recommend turning that code into a comment so it doesn’t get executed again by accident.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install external packages if you don't already have them</span></span>
@@ -400,7 +415,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
-<p>The raw comma-separated-values data get interpreted as a data.frame object that exists in R’s memory with the name <code>triplett_data</code>. You can click it’s name in your Global Environment to inspect it.</p>
+<p>The raw comma-separated-values data get interpreted as a data.frame object that exists in R’s memory with the name <code>triplett_data</code>. You can click its name in your Global Environment to inspect it.</p>
 <p>Note that as a data analysis project becomes more complicate it may be useful to keep data files in a subdirectory of the Project folder. If your data was inside a folder named <code>data_raw</code> inside your main Project folder, for example, you would change the <code>file</code> argument to reflect that path:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if your data was in a subdirectory...</span></span>
@@ -425,39 +440,28 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 </div>
 </section>
 </section>
-<section id="piping" class="level2">
-<h2 class="anchored" data-anchor-id="piping">Piping</h2>
-<p>You can string together different operations in a pipeline using the pipe operator: <code>|&gt;</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The result of each line of code gets “piped” into the function on the next line as its first argument. That is very handy when a function is expecting a data.frame as its first argument. The <code>tidyverse</code> family of packages are all written with this syntax in mind, so they are great for building efficient and eloquent analytic pipelines.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(a <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is equivalent to </span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(my_data, a <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The real power of this become apparent when you need to conduct a more elaborate sequence of steps. We can pass a data.frame from function to function, modifying it along the way. The pipe allows the code to be neatly segmented and readable as a set of instruction from top to bottom.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># building a more elaborate pipeline</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(a <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c =</span> a <span class="sc">+</span> b) <span class="sc">|&gt;</span> </span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(b, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h2>
 <section id="selecting-columns" class="level3">
 <h3 class="anchored" data-anchor-id="selecting-columns"><code>Select</code>ing columns</h3>
 <p>Sometimes your raw data file has more columns that you need. <code>dplyr</code>’s <code>select()</code> function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, age, gender)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also rename as you select</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">participant =</span> subject, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To drop a column, you can put a minus sign in front of its name. Other columns will be kept.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>classification, <span class="sc">-</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>tidyverse</code> has some helper functions to select columns as well, like <code>starts_with()</code>, <code>contains()</code>.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, age, gender)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also rename as you select</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">participant =</span> subject, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, <span class="fu">contains</span>(<span class="st">"_1"</span>)) <span class="co"># get each subject's first trials</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="filtering-rows" class="level3">
@@ -1641,13 +1645,7 @@ cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>If you’re looking at R code from elsewhere (e.g.&nbsp;looking up help online) you may see a different pipe: <code>%&gt;%</code>. The <code>|&gt;</code> pipe, called the “native” pipe, was only included as a feature of base R relatively recently. Until then, the <code>%&gt;%</code> pipe was provided by an external package (called <code>magrittr</code>. <a href="https://magrittr.tidyverse.org/logo.png">Get it?</a>). In practice the pipes work similarly, so you can often just replace <code>%&gt;%</code> with <code>|&gt;</code> and it’ll work fine, but it’s worth being aware of.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

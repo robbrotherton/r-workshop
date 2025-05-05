@@ -20,7 +20,7 @@ After you save it, double click it and it should open in the Editor pane in RStu
 ## Writing and running code
 
 ::: {.content-hidden when-format="revealjs"}
-Writing some code in an .R document does not cause it to be executed automatically. You need to run the code yourself. You can run a single line of code at a time, or a whole section, or an entire script.
+Writing some code in an .R document (or opening an `.R` file with code already in it) does not cause the code to be executed automatically. You need to run the code yourself. You can run a single line of code at a time, or a whole section, or an entire script.
 :::
 
 -   One line at a time:
@@ -47,7 +47,8 @@ To start getting used to writing and running code, let's use R as a calculator t
 
 (-3)^2
 
-# here's a comment. comments do not get executed even if they contain valid code
+# a line that starts with the # is a comment
+# comments do not get executed even if they contain valid code
 
 # 2 + 2
 
@@ -67,7 +68,7 @@ In R, a *vector* is a collection of values of a single type of data. You can mak
 # numeric
 c(1, 2, 3, 4, 5)
 
-# colon can be used to produce a vector of integers
+# a colon can be used to produce a vector of consecutive integers
 1:5 
 
 5:1
@@ -119,7 +120,7 @@ Almost anything can be assigned to a name. In the example here the vector `c(1, 
 ### Valid names
 
 ::: {.content-hidden when-format="revealjs"}
-The `name` can be almost anything you like; it just can't start with a number or contain spaces or special characters other than `_` (underscore) and `. (period)`. It can have uppercase characters as well as lowercase, but note that when it comes time to use the name later you will need to type it exactly right, including capitalization. So you can make life a little easier for yourself by using a consistent naming convention, ideally avoiding capital letters altogether.
+The `name` can be almost anything you like; it just can't start with a number or contain spaces or special characters other than `_` (underscore) and . (period). No spaces! It can have uppercase characters as well as lowercase, but note that when it comes time to use the name later you will need to type it exactly right, including capitalization. So you can make life a little easier for yourself by using a consistent naming convention, ideally avoiding capital letters altogether.
 :::
 
 ::: {.content-visible when-format="revealjs"}
@@ -139,7 +140,7 @@ good_name <- "fine"
 
 .ValidName <- "works, watch out for the capitals"
 
-long_name_for_a_variable <- "pixels are free, but time is limited"
+long_name_for_a_variable <- "sure, bit long to type though"
 
 ```
 
@@ -167,48 +168,10 @@ worse name <- "can't have spaces"
 ::: {.content-hidden when-format="revealjs"}
 When you run the code `numbers <- c(1, 2, 3, 4, 5)` or any other assignment operation, you generally won't see any output in the console. What you will see, however, is something new appear in your Global Environment, the pane in the top-right of the RStudio window. You have brought your named object into being.
 
-Just as easily as you can bring an object into existence, so too can you remove it. Clicking the charming little sweeping brush near the top of the Environment pane will remove everything that currently exists from your Environment. It'll even ask if you're sure–a rare instance of compassion on R's part. It's a good habit not to be precious about the objects in your Environment. Your code is the definite record and if the instructions to make something are in there it can always be recreated.
+Just as easily as you can bring an object into existence, so too can you remove it. Clicking the charming little sweeping brush near the top of the Environment pane will remove everything that currently exists from your Environment. It'll even ask if you're sure–a rare instance of compassion on RStudio's part.
+
+It's a good habit to keep an eye on your Global Environment and not to be precious about its contents. Your code is the definite record and if the instructions to make something are in there it can always be recreated.
 :::
-
-```{r}
-
-# removing objects from the Environment
-
-rm(numbers) # remove a particular object by name
-
-rm(list = ls()) # remove everything in the global environment
-
-# or you can click the charming little sweeping brush
-
-```
-
-### Overwriting
-
-::: {.content-hidden when-format="revealjs"}
-Note that R will allow you to reuse a name that you already assigned something to. It will simply replace the thing that the name refers to. It will not ask if you're sure you want to do that; it won't mention it at all.
-:::
-
-```{r}
-number <- 1
-
-number * 2
-
-number <- 2
-
-number * 2
-```
-
-::: {.content-hidden when-format="revealjs"}
-It is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence. You might also run a line of code more than once, modifying an object in a way that you might not intend.
-:::
-
-```{r}
-number <- 1
-
-number <- number * 2 # what if you run this a few times?
-
-number
-```
 
 ## Functions
 
@@ -254,7 +217,7 @@ When must you type argument names? Sometimes.
 ::: {.content-hidden when-format="revealjs"}
 A function generally has one or more "arguments", to which you supply parameters. For example, the `mean()` function's first argument is the set of numbers you want to compute the mean of.
 
-When there's more than one argument, they are separated by a comma. Arguments usually have names. You don't necessarily have to type the name of the argument, because of R's positional matching.
+When you need to specify more than one argument, they are separated by a comma. Arguments usually have names. You don't necessarily have to type the name of the argument, because of R's positional matching.
 
 The `seq()` function, for example, produces a sequence of numbers according to three arguments, `from`, `to`, and `by`.
 :::
@@ -286,16 +249,8 @@ When *should* you type argument names? Also sometimes.
 :::
 
 ::: {.content-hidden when-format="revealjs"}
-So when do you type the argument names explicitly? Definitely when you need to, and maybe when you don't: remember someone (including your future self, might eventually want to read and understand your code.
+So when do you type the argument names explicitly? Definitely when you need to, and maybe when you don't: remember someone (including your future self, might eventually want to read and understand your code. Seeing the argument names can help with that.
 :::
-
-### Nesting functions
-
-You can also nest functions inside one another. Make sure all the closing parentheses match up.
-
-```{r}
-sqrt(mean(seq(1, 10, 2)))
-```
 
 ### Getting help with functions
 
@@ -309,25 +264,22 @@ You can get help with a function (to see what arguments it accepts, for example)
 
 Running the code will bring up the function's help documentation in RStudio's Help pane.
 
-## Doing stuff with named vectors
+## Doing stuff with vectors
 
 ### Indexing
 
-You can access individual element of a vector by supplying an index within square brackets.
+You can access individual element of a vector by supplying an index within square brackets. Note that **indexing in R starts at 1** (the first element's index is 1). This differs from many other coding languages which are 0-indexed (the first element's index is 0).
 
 ```{r}
 
 numbers <- c(3, 1, 4, 1, 5, 9)
 
-numbers[1] # first element
+numbers[1] # first element, because R uses 1-indexing
 
 numbers[1:3] # multiple consecutive elements
 
 # can you pick out the 1st, 3rd, and 5th elements?
-
 ```
-
-Note that R uses 1-indexing: the first element's index is 1. This differs from many other coding languages which are 0-indexed.
 
 ### Doing math with vectors
 
@@ -339,8 +291,6 @@ numbers * 2
 
 6 - numbers
 
-numbers * c(1, 2)
-
 numbers * numbers
 
 ```
@@ -349,7 +299,7 @@ numbers * numbers
 
 ```{r}
 
-sd(numbers) / length(numbers) # standard error
+sd(numbers) / sqrt(length(numbers)) # standard error
 
 numbers - mean(numbers) # deviations
 
@@ -371,8 +321,6 @@ numbers <- c(1, 2, 3, 4, 5, 3)
 # check if a value is in a vector at least once
 3 %in% numbers
 
-6 %in% numbers
-
 # check if something is FALSE
 !6 %in% numbers
 
@@ -385,135 +333,9 @@ numbers <- c(1, 2, 3, 4, 5, 3)
 numbers[numbers > 3]
 ```
 
-## Other important things to know
+## **Missing Values**
 
-### Vector coercion {.incremental}
-
-Every element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.
-
-```{r}
-#| warning: true
-
-numbers <- c(1, 2, 3, 4, 5)
-numbers
-
-numbers <- c(1, 2, "three", 4, 5)
-numbers 
-
-numbers <- c(1, 2, "3", 4, 5)
-numbers
-
-mean(numbers)
-
-```
-
-### Coercion confusion
-
-Coercion can have some confusing consequences, if you are taken unawares by mixed data types.
-
-```{r}
-
-1 < "2"
-
-22 < "11"
-
-3 > "two"
-
-# why?
-```
-
-### Coercion side effects
-
-::: {.content-hidden when-format="revealjs"}
-Coercion can have some happy consequences. For instance, logical values (`TRUE` and `FALSE`) can be coerced into the numbers 1 and 0. A function that requires numeric input, such as `sum()` or `mean()`, if given logical input, will coerce the vector to numeric.
-:::
-
-```{r}
-# doing math with logicals
-
-bool <- c(TRUE, FALSE, FALSE, TRUE)
-bool 
-
-as.numeric(bool)
-
-sum(bool) # count of TRUEs
-
-mean(bool) # proportion of TRUEs
-```
-
-### Factors
-
-A factor is a special data type in R used to represent categorical data. Internally, it stores the data as integers, but each unique integer is associated with a text label (the *level*) for that category.
-
-```{r}
-
-data <- c("female", "male", "male", "female")
-
-data_factor <- factor(data)
-
-data_factor
-
-as.numeric(data_factor)
-```
-
-Perhaps our raw data coded a variable like this as numeric to begin with, and we want to add the category labels ourselves.
-
-```{r}
-
-data <- c(1, 2, 2, 1) # gender coded numerically
-
-factor(data, levels = c(1, 2), labels = c("female", "male"))
-```
-
-#### Ordered factors
-
-::: {.content-hidden when-format="revealjs"}
-For ordinal data, where the order of categories matters, we can specify the levels in order and use the `ordered = TRUE` argument.
-:::
-
-```{r}
-
-# with no order specified; levels are listed alphabetically
-
-data <- c("medium", "low", "high", "medium", "high", "high")
-
-unordered <- factor(data) 
-
-plot(unordered)
-
-```
-
-```{r}
-#| echo: false
-
-plot(unordered)
-```
-
-::: {.content-visible when-format="revealjs"}
-
-------------------------------------------------------------------------
-:::
-
-```{r}
-ordered <- factor(data, 
-                  levels = c("low", "medium", "high"), 
-                  ordered = TRUE)
-
-```
-
-```{r}
-#| echo: false
-
-plot(ordered)
-```
-
-::: {.content-hidden when-format="revealjs"}
-Note that this does not affect the raw data, but it means that if we plot a graph using this ordered factor later on, the values will appear in their correct, meaningful order, rather than just the default alphabetical order.
-:::
-
-### **Missing Values**
-
-To anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special representation for missing values: `NA`.
+To anticipate a problem we often run into when working with real data, sometimes our data includes missing values. R has a special placeholder for missing values: `NA`.
 
 ```{r}
 
@@ -534,12 +356,10 @@ Most commonly we have a data file already (a .csv or maybe an Excel file or some
 :::
 
 ```{r}
-df <- data.frame(a = c(1, 2, 3),
-                 b = c("one", "two", "three"),
-                 c = c(1, 2, "3"),
-                 d = c(1, 2, NA),
-                 e = c(TRUE, FALSE, FALSE),
-                 f = factor(c("female", "female", "male")))
+df <- data.frame(a = c(1, 2, 3, 4, 5),
+                 b = c(6, 7, 8, 9, 10),
+                 c = c("this", "is", "a", "text", "column"),
+                 d = c(TRUE, FALSE, FALSE, FALSE, TRUE))
 
 str(df)
 ```
@@ -573,12 +393,55 @@ Then we can use all the functions, mathematical operations and everything else w
 :::
 
 ```{r}
+#| warning: true
 
 # remember, a data.frame column is a vector like any other
 
 df$a * 2
 
+df$a * df$b
+
 mean(df$a)
 
-table(df$f)
+mean(df$c)
+
 ```
+
+## The Pipe: `|>`
+
+::: {.content-hidden when-format="revealjs"}
+When we start working with real data.frames, it will be convenient to string together different operations in an analytic pipeline using R's pipe operator: `|>`.[^2] Whatever is on the left of the pipe gets "piped" into the function on the next line as its first argument. That is very handy when a function is expecting a data.frame as its first argument. The `tidyverse` family of packages are all written with this syntax in mind, so they are great for building efficient and eloquent analytic pipelines.
+:::
+
+[^2]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
+
+```{r}
+#| eval: false
+
+df |> 
+  summary()
+
+# is equivalent to 
+
+summary(df)
+```
+
+::: {.content-hidden when-format="revealjs"}
+The real power of this becomes apparent when you need to conduct a more elaborate sequence of steps. We can pass a data.frame from function to function, modifying it along the way. The pipe allows the code to be neatly segmented and readable as a set of instructions from top to bottom.
+:::
+
+```{r}
+#| warning: false
+
+# building a more elaborate pipeline 
+# using the pipe operator and tidyverse functions
+
+library(tidyverse)
+
+df |> 
+  select(a, b) |> 
+  filter(a > 3) |> 
+  mutate(c = a + b) |> 
+  select(b, c)
+```
+

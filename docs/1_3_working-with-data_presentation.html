@@ -280,26 +280,6 @@
 </section>
 
 
-<section id="piping" class="title-slide slide level2 center">
-<h2>Piping</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(a <span class="sc">&gt;</span> <span class="dv">3</span>)</span>
-<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># is equivalent to </span></span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(my_data, a <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># building a more elaborate pipeline</span></span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
-<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(a <span class="sc">&gt;</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c =</span> a <span class="sc">+</span> b) <span class="sc">|&gt;</span> </span>
-<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(b, c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-
 <section id="data-cleaning" class="title-slide slide level2 center">
 <h2>Data cleaning</h2>
 
@@ -308,12 +288,22 @@
 <h3><code>Select</code>ing columns</h3>
 <p>Sometimes your raw data file has more columns that you need. <code>dplyr</code>’s <code>select()</code> function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.</p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, age, gender)</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># you can also rename as you select</span></span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">participant =</span> subject, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To drop a column, you can put a minus sign in front of its name. Other columns will be kept.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>classification, <span class="sc">-</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>tidyverse</code> has some helper functions to select columns as well, like <code>starts_with()</code>, <code>contains()</code>.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, age, gender)</span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># you can also rename as you select</span></span>
-<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">participant =</span> subject, age, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, <span class="fu">contains</span>(<span class="st">"_1"</span>)) <span class="co"># get each subject's first trials</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 

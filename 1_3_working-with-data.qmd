@@ -22,6 +22,20 @@ Once you have created the Project, save these files into your Project folder:
 Back in RStudio you should see those files appear in the Files pane in the bottom-right. Click `triplett_analysis.R` to open that code file in the Editor pane.
 :::
 
+::: {.content-hidden when-format="revealjs"}
+::: {.callout-tip}
+## Triplett (1898)
+
+The data we're working with here is from Normal Triplett's 1898 study of social facilitation, in which children played a game winding a flag around a track as fast as they could either alone or in competition with another child.
+
+![](images/triplett-machine.gif)
+
+![](images/triplett-table.gif)
+
+[I made a version you can play on your computer here](https://robbrotherton.github.io/psychstats/games/triplett/triplett.html).
+:::
+:::
+
 ### The working directory
 
 ::: {.content-hidden when-format="revealjs"}
@@ -54,7 +68,7 @@ read_csv(file = "triplett_data.csv")
 ## Getting packages ready
 
 ::: {.content-hidden when-format="revealjs"}
-One of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we'll lean heavily into the `tidyverse` ecosystem. We'll also use a few helpful function from other packages.
+One of the strengths of R as a language for data analysis is its ecosystem of additional packages that make common tasks easier and code more eloquent. For the demonstrations here we'll lean heavily into the `tidyverse` ecosystem. We'll also use a few helpful functions from other packages.
 
 The packages will need to be installed once, if they aren't already on your system. Once you have installed them, I recommend turning that code into a comment so it doesn't get executed again by accident.
 :::
@@ -94,7 +108,7 @@ triplett_data <- read_csv("resources/triplett_data.csv")
 ```
 
 ::: {.content-hidden when-format="revealjs"}
-The raw comma-separated-values data get interpreted as a data.frame object that exists in R's memory with the name `triplett_data`. You can click it's name in your Global Environment to inspect it.
+The raw comma-separated-values data get interpreted as a data.frame object that exists in R's memory with the name `triplett_data`. You can click its name in your Global Environment to inspect it.
 
 Note that as a data analysis project becomes more complicate it may be useful to keep data files in a subdirectory of the Project folder. If your data was inside a folder named `data_raw` inside your main Project folder, for example, you would change the `file` argument to reflect that path:
 :::
@@ -128,40 +142,6 @@ readxl::read_excel("excel_file.xlsx", sheet = "sheet name")
 
 ```
 
-## Piping
-
-::: {.content-hidden when-format="revealjs"}
-You can string together different operations in a pipeline using the pipe operator: `|>`.[^1] The result of each line of code gets "piped" into the function on the next line as its first argument. That is very handy when a function is expecting a data.frame as its first argument. The `tidyverse` family of packages are all written with this syntax in mind, so they are great for building efficient and eloquent analytic pipelines.
-:::
-
-[^1]: If you're looking at R code from elsewhere (e.g. looking up help online) you may see a different pipe: `%>%`. The `|>` pipe, called the "native" pipe, was only included as a feature of base R relatively recently. Until then, the `%>%` pipe was provided by an external package (called `magrittr`. [Get it?](https://magrittr.tidyverse.org/logo.png)). In practice the pipes work similarly, so you can often just replace `%>%` with `|>` and it'll work fine, but it's worth being aware of.
-
-```{r}
-#| eval: false
-
-my_data |> 
-  filter(a > 3)
-
-# is equivalent to 
-
-filter(my_data, a > 3)
-```
-
-::: {.content-hidden when-format="revealjs"}
-The real power of this become apparent when you need to conduct a more elaborate sequence of steps. We can pass a data.frame from function to function, modifying it along the way. The pipe allows the code to be neatly segmented and readable as a set of instruction from top to bottom.
-:::
-
-```{r}
-#| eval: false
-
-# building a more elaborate pipeline
-
-my_data |> 
-  filter(a > 3) |> 
-  mutate(c = a + b) |> 
-  select(b, c)
-```
-
 ## Data cleaning
 
 ### `Select`ing columns
@@ -179,11 +159,28 @@ triplett_data |>
   select(participant = subject, age, gender)
 ```
 
+To drop a column, you can put a minus sign in front of its name. Other columns will be kept.
+
+```{r}
+#| results: hide
+triplett_data |> 
+  select(-classification, -gender)
+```
+
+The `tidyverse` has some helper functions to select columns as well, like `starts_with()`, `contains()`.
+
+```{r}
+#| results: hide
+triplett_data |> 
+  select(subject, contains("_1")) # get each subject's first trials
+```
+
 ### `Filter`ing rows
 
 `select()` allows you to pick which columns you want; `filter()` allows you to pick which rows. Inside the function, you articulate a condition which can either be `TRUE` or `FALSE`. Each row will be checked, and those for which the condition is `TRUE` will be retained while those for which it is `FALSE` are dropped.
 
 ```{r}
+#| results: hide
 triplett_data_subset <- triplett_data |> 
   filter(group == "A")
 ```
@@ -191,6 +188,7 @@ triplett_data_subset <- triplett_data |>
 You can also specify multiple conditions as necessary. All conditions must evaluate to `TRUE` for a row to be retained.
 
 ```{r}
+#| results: hide
 triplett_data_subset <- triplett_data |> 
   filter(group == "A", age >= 10)
 ```

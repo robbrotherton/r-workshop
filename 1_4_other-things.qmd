@@ -1,0 +1,207 @@
+---
+format: 
+  html: default
+  revealjs: 
+    output-file: 1_4_other-things_presentation.html
+---
+
+# Other Important Things to Know
+
+## The Global Environment
+
+```{r}
+
+numbers <- c(1, 2, 3, 4, 5)
+
+# removing objects from the Environment
+
+rm(numbers) # remove a particular object by name
+
+rm(list = ls()) # remove everything in the global environment
+```
+
+### Overwriting
+
+::: {.content-hidden when-format="revealjs"}
+Note that R will allow you to reuse a name that you already assigned something to. It will simply replace the thing that the name refers to. It will not ask if you're sure you want to do that; it won't mention it at all.
+:::
+
+```{r}
+number <- 1
+
+number * 2
+
+number <- 2
+
+number * 2
+```
+
+::: {.content-hidden when-format="revealjs"}
+It is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence. You might also run a line of code more than once, modifying an object in a way that you might not intend.
+:::
+
+```{r}
+number <- 1
+
+number <- number * 2 # what if you run this a few times?
+
+number
+```
+
+## Doing Math with Vectors
+
+### Edge cases
+
+```{r}
+
+numbers <- c(1, 2, 3, 4, 5)
+
+numbers * c(1, 2)
+```
+
+## Other important things to know
+
+### Nesting functions
+
+You can also nest functions inside one another. Make sure all the closing parentheses match up.
+
+```{r}
+sqrt(mean(seq(1, 10, 2)))
+```
+
+### Vector coercion {.incremental}
+
+Every element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.
+
+```{r}
+#| warning: true
+
+numbers <- c(1, 2, 3, 4, 5)
+numbers
+
+numbers <- c(1, 2, "three", 4, 5)
+numbers 
+
+numbers <- c(1, 2, "3", 4, 5)
+numbers
+
+mean(numbers)
+
+```
+
+### Data.frame coercion
+
+```{r}
+df <- data.frame(a = c(1, 2, 3),
+                 b = c("one", "two", "three"),
+                 c = c(1, 2, "3"),
+                 d = c(1, 2, NA),
+                 e = c(TRUE, FALSE, FALSE),
+                 f = factor(c("female", "female", "male")))
+
+str(df)
+```
+
+### Coercion confusion
+
+Coercion can have some confusing consequences, if you are taken unawares by mixed data types.
+
+```{r}
+
+1 < "2"
+
+22 < "11"
+
+3 > "two"
+
+# why?
+```
+
+### Coercion side effects
+
+::: {.content-hidden when-format="revealjs"}
+Coercion can have some happy consequences. For instance, logical values (`TRUE` and `FALSE`) can be coerced into the numbers 1 and 0. A function that requires numeric input, such as `sum()` or `mean()`, if given logical input, will coerce the vector to numeric.
+:::
+
+```{r}
+# doing math with logicals
+
+bool <- c(TRUE, FALSE, FALSE, TRUE)
+bool 
+
+as.numeric(bool)
+
+sum(bool) # count of TRUEs
+
+mean(bool) # proportion of TRUEs
+```
+
+## Factors
+
+A factor is a special data type in R used to represent categorical data. Internally, it stores the data as integers, but each unique integer is associated with a text label (the *level*) for that category.
+
+```{r}
+
+data <- c("female", "male", "male", "female")
+
+data_factor <- factor(data)
+
+data_factor
+
+as.numeric(data_factor)
+```
+
+Perhaps our raw data coded a variable like this as numeric to begin with, and we want to add the category labels ourselves.
+
+```{r}
+
+data <- c(1, 2, 2, 1) # gender coded numerically
+
+factor(data, levels = c(1, 2), labels = c("female", "male"))
+```
+
+### Ordered factors
+
+::: {.content-hidden when-format="revealjs"}
+For ordinal data, where the order of categories matters, we can specify the levels in order and use the `ordered = TRUE` argument.
+:::
+
+```{r}
+
+# with no order specified; levels are listed alphabetically
+
+data <- c("medium", "low", "high", "medium", "high", "high")
+
+unordered <- factor(data) 
+
+plot(unordered)
+
+```
+
+```{r}
+#| echo: false
+
+plot(unordered)
+```
+
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
+```{r}
+ordered <- factor(data, 
+                  levels = c("low", "medium", "high"), 
+                  ordered = TRUE)
+
+```
+
+```{r}
+#| echo: false
+
+plot(ordered)
+```
+
+::: {.content-hidden when-format="revealjs"}
+Note that this does not affect the raw data, but it means that if we plot a graph using this ordered factor later on, the values will appear in their correct, meaningful order, rather than just the default alphabetical order.
+:::

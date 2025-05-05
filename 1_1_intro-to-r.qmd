@@ -199,13 +199,17 @@ E.g. maps (`sf`, `leaflet`)
 
 library(leaflet)
   
-  leaflet() |>
+leaflet() |>
   addProviderTiles("NASAGIBS.ViirsEarthAtNight2012") |>
   addMarkers(lng = -73.96339268916061,
              lat = 40.80949994182454, 
              popup = "Hello from Barnard!")
 
 ```
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
 
 ::: {.content-hidden when-format="pdf"}
 ```{r}
@@ -230,6 +234,88 @@ if (!rendering_pdf) {
 
 ```
 :::
+
+### Interactivity
+
+E.g. `plotly`
+
+```{r}
+#| echo: false
+#| message: false
+
+if (!rendering_pdf) {
+library(plotly)
+
+x <- seq(-5, 5, length.out = 1000)
+dfs <- 1:30
+
+aval <- list()
+for (df in dfs) {
+  aval[[df]] <- list(
+    visible = FALSE,
+    x = x,
+    y = dt(x, df)
+  )
+}
+aval[[1]]$visible <- TRUE  # show df = 1 initially
+
+steps <- list()
+fig <- plot_ly()
+
+# add t-distribution traces
+for (i in seq_along(dfs)) {
+  fig <- add_lines(fig,
+                   x = aval[[i]]$x,
+                   y = aval[[i]]$y,
+                   visible = aval[[i]]$visible,
+                   type = "scatter",
+                   mode = "lines",
+                   line = list(color = "red", width = 2),
+                   showlegend = FALSE)
+
+  step <- list(
+    args = list(
+      list(visible = c(rep(FALSE, length(dfs)), TRUE)),
+      list(xaxis = list(title = list(
+        text = paste("t-distribution (df =", dfs[i], ")"),
+        standoff = 5)))
+    ),
+    method = "update",
+    label = ""
+  )
+  step$args[[1]]$visible[i] <- TRUE
+  steps[[i]] <- step
+}
+
+# add normal curve (always visible)
+fig <- add_lines(fig,
+                 x = x,
+                 y = dnorm(x),
+                 visible = TRUE,
+                 line = list(dash = "dash", color = "black", width = 2),
+                 name = "Normal (μ=0, σ=1)",
+                 showlegend = TRUE)
+
+# layout
+fig <- layout(fig,
+              xaxis = list(title = list(
+                text = "t-distribution (df = 1)",
+    standoff = 5  # default is ~15; increase to lift label
+  )),
+              yaxis = list(title = "Density", range = c(0, 0.4)),
+              sliders = list(list(
+                active = 0,
+                currentvalue = list(visible = FALSE),  # hide df display
+                steps = steps,
+                y = -0.1,
+                tickwidth = 0  # no tick labels
+              )),
+              margin = list(b = 100))
+
+fig
+}
+
+```
 
 ### Installing packages
 
@@ -282,3 +368,4 @@ lmer(...)
 ::: {.content-hidden when-format="revealjs"}
 Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `library()` method to activate the package, it must be done every time you have a new 'session' in R.
 :::
+
