@@ -7,6 +7,16 @@ format:
 
 # Common causes of confusion
 
+::: callout-note
+## Resources
+
+Download this file to accompany this section:
+
+-   ![](images/r-logo.png){height="0.8em" style="vertical-align: baseline;"} [causes-of-confusion](resources/causes-of-confusion.R){download="causes-of-confusion.R"}[.R](resources/my_first_r_file.R){download="my_first_r_file.R"}
+
+After you save it, double click it and it should open in the Editor pane in RStudio.
+:::
+
 ## Typos
 
 ### Names
@@ -18,10 +28,24 @@ Any small typo in a name will case R to throw an error.
 
 numbers <- c(1, 2, 3, 4, 5)
 
+numbers # this shows the contents of 'numbers'
+
+# try typing the name wrong and see what error message you get
+
+```
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+```{r}
+#| error: true
+
+numbers <- c(1, 2, 3, 4, 5)
+
 Numbers
 
 nubmers
-
 ```
 
 ```{r}
@@ -30,14 +54,20 @@ nubmers
 rm(numbers)
 ```
 
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+::: {.content-hidden when-format="revealjs"}
 Even worse, you might have a typo in the original assignment, and then be very confused when the object you expect to exist doesn't.
+:::
 
 ```{r}
 #| error: true
 
 nummbers <- c(1, 2, 3, 4, 5)
 
-numbers
+numbers # oh dear, can you see the mistake here?
 
 ```
 
@@ -47,7 +77,13 @@ Nesting functions is a common necessity. Make sure all the closing parentheses m
 
 ```{r}
 sqrt(mean(seq(1, 10, 2)))
+
+# try adding/deleting/moving some closing parentheses
 ```
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
 
 ```{r}
 #| error: true
@@ -80,7 +116,7 @@ number <- 1
 
 number * 2
 
-number <- 2
+number <- 2 # no warning when you reuse a name
 
 number * 2
 ```
@@ -134,7 +170,9 @@ Generally speaking, it's a good habit to keep an eye on your Global Environment 
 
 numbers <- c(1, 2, 3, 4, 5)
 
-numbers * c(1, 2)
+numbers * c(1, 2, 3, 4, 5) # makes sense...
+
+numbers * c(1, 2) # what happens here?
 ```
 
 ### Vector coercion {.incremental}
@@ -281,3 +319,13 @@ plot(ordered)
 ::: {.content-hidden when-format="revealjs"}
 Note that this does not affect the raw data, but it means that if we plot a graph using this ordered factor later on, the values will appear in their correct, meaningful order, rather than just the default alphabetical order.
 :::
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+```{r}
+# can you make an ordered factor out of this ordinal data?
+
+survey_data <- c("agree", "agree", "disagree", "neutral", "disagree")
+```
