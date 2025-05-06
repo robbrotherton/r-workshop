@@ -433,6 +433,7 @@ The real power of this becomes apparent when you need to conduct a more elaborat
 
 ```{r}
 #| warning: false
+#| results: false
 
 # building a more elaborate pipeline 
 # using the pipe operator and tidyverse functions
