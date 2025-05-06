@@ -18,7 +18,7 @@ getwd()
 # Data import -------------------------------------------------------------
 
 # read the data file, assigning it to a name
-triplett_data <- read_csv("resources/triplett_data.csv")
+triplett_data <- read_csv("triplett_data.csv")
 
 
 # Data cleaning -----------------------------------------------------------

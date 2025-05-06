@@ -100,8 +100,6 @@ numbers * numbers
 
 ### Math and functions ----------------------------------------------------
 
-sd(numbers) / length(numbers) # standard error
-
 numbers - mean(numbers) # deviations
 
 (numbers - mean(numbers))^2 # squared deviations
