@@ -166,7 +166,7 @@ worse name <- "can't have spaces"
 ![](images/environment.png){fig-align="center" width="80%"}
 
 ::: {.content-hidden when-format="revealjs"}
-When you run the code `numbers <- c(1, 2, 3, 4, 5)` or any other assignment operation, you generally won't see any output in the console. What you will see, however, is something new appear in your Global Environment, the pane in the top-right of the RStudio window. You have brought your named object into being.
+When you run the code `numbers <- c(1, 2, 3, 4, 5)` or any other assignment operation, you generally won't see any output in the console. What you will see, however, is something new appear in your Global Environment, the pane in the top-right of the RStudio window.
 :::
 
 ## Functions

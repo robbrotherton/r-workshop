@@ -26,7 +26,7 @@ Back in RStudio you should see those files appear in the Files pane in the botto
 ::: callout-tip
 ## Triplett (1898)
 
-The data we're working with here is from Normal Triplett's 1898 study of social facilitation, in which children played a game winding a flag around a track as fast as they could either alone or in competition with another child.
+The data we're working with here is from Norman Triplett's 1898 study of social facilitation, in which children played a game winding a flag around a track as fast as they could either alone or in competition with another child.
 
 ![](images/triplett-machine.gif)
 
