@@ -18,6 +18,10 @@ Syntax, data types, assignment, functions
 
 Importing data, cleaning, graphs, analyses
 
+### [Common causes of confusion](1_4_other-things.qmd)
+
+Other things to look out for that can trip up new (and experienced) users
+
 ## Day 2: Teaching with R
 
 ### [General thoughts on teaching with R](2_1_general-approach.qmd)

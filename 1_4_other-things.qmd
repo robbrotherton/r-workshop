@@ -5,22 +5,71 @@ format:
     output-file: 1_4_other-things_presentation.html
 ---
 
-# Other Important Things to Know
+# Common causes of confusion
 
-## The Global Environment
+## Typos
+
+### Names
+
+Any small typo in a name will case R to throw an error.
 
 ```{r}
+#| error: true
 
 numbers <- c(1, 2, 3, 4, 5)
 
-# removing objects from the Environment
+Numbers
 
-rm(numbers) # remove a particular object by name
+nubmers
 
-rm(list = ls()) # remove everything in the global environment
 ```
 
-### Overwriting
+```{r}
+#| echo: false
+
+rm(numbers)
+```
+
+Even worse, you might have a typo in the original assignment, and then be very confused when the object you expect to exist doesn't.
+
+```{r}
+#| error: true
+
+nummbers <- c(1, 2, 3, 4, 5)
+
+numbers
+
+```
+
+### Parentheses
+
+Nesting functions is a common necessity. Make sure all the closing parentheses match up.
+
+```{r}
+sqrt(mean(seq(1, 10, 2)))
+```
+
+```{r}
+#| error: true
+
+sqrt(mean(seq(1, 10, 2)))) # too many!
+
+```
+
+```{r}
+#| error: true
+
+sqrt(mean(seq(1, 10, 2)) # not enough!
+
+```
+
+```{r}
+#| error: true
+
+sqrt(mean(seq(1, 10), 2)) # in the wrong place!
+```
+
+## Overwriting
 
 ::: {.content-hidden when-format="revealjs"}
 Note that R will allow you to reuse a name that you already assigned something to. It will simply replace the thing that the name refers to. It will not ask if you're sure you want to do that; it won't mention it at all.
@@ -37,7 +86,9 @@ number * 2
 ```
 
 ::: {.content-hidden when-format="revealjs"}
-It is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence. You might also run a line of code more than once, modifying an object in a way that you might not intend.
+It is entirely possible for you to run lines of code out of order and get potentially confusing results as a consequence.
+
+You might also run a line of code more than once, modifying an object in a way that you might not intend. This can be especially pernicious when you modify an object in a self-referential way.
 :::
 
 ```{r}
@@ -48,9 +99,36 @@ number <- number * 2 # what if you run this a few times?
 number
 ```
 
-## Doing Math with Vectors
+### Cleaning up the Global Environment
 
-### Edge cases
+```{r}
+numbers <- c(1, 2, 3, 4, 5)
+```
+
+![](images/environment.png){fig-align="center" width="80%"}
+
+::: {.content-hidden when-format="revealjs"}
+Just as easily as you can bring an object into existence, so too can you remove it. Clicking the charming little sweeping brush near the top of the Environment pane will remove everything that currently exists from your Environment. It'll even ask if you're sure–a rare instance of compassion on RStudio's part.
+
+Should the need arise, you can also remove objects from your environment using the `rm()` function.
+:::
+
+```{r}
+
+# removing objects from the Environment
+
+rm(numbers) # remove a particular object by name
+
+rm(list = ls()) # remove everything in the global environment
+```
+
+::: {.content-hidden when-format="revealjs"}
+Generally speaking, it's a good habit to keep an eye on your Global Environment and not to be precious about its contents. Your code is the definitive record; if the instructions to make something are in there it can always be recreated.
+:::
+
+## Vectors
+
+### Vector math: An edge case
 
 ```{r}
 
@@ -59,19 +137,11 @@ numbers <- c(1, 2, 3, 4, 5)
 numbers * c(1, 2)
 ```
 
-## Other important things to know
-
-### Nesting functions
-
-You can also nest functions inside one another. Make sure all the closing parentheses match up.
-
-```{r}
-sqrt(mean(seq(1, 10, 2)))
-```
-
 ### Vector coercion {.incremental}
 
-Every element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will coerce the data into a single type.
+::: {.content-hidden when-format="revealjs"}
+Every element in a vector must be of the same type (numeric, character, logical). If that is not the case, R will silently coerce the data into a single type.
+:::
 
 ```{r}
 #| warning: true
@@ -91,15 +161,18 @@ mean(numbers)
 
 ### Data.frame coercion
 
+The enforcement of the single-type rule for vectors can be especially confounding when importing data. It is not uncommon for coding errors or sneaky special characters to cause data to be imported in unexpected ways.
+
 ```{r}
+#| warning: true
+
 df <- data.frame(a = c(1, 2, 3),
                  b = c("one", "two", "three"),
-                 c = c(1, 2, "3"),
-                 d = c(1, 2, NA),
-                 e = c(TRUE, FALSE, FALSE),
-                 f = factor(c("female", "female", "male")))
+                 c = c(1, 2, "3"))
 
 str(df)
+
+mean(df$c)
 ```
 
 ### Coercion confusion
@@ -151,6 +224,10 @@ data_factor
 as.numeric(data_factor)
 ```
 
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
 Perhaps our raw data coded a variable like this as numeric to begin with, and we want to add the category labels ourselves.
 
 ```{r}
@@ -173,8 +250,6 @@ For ordinal data, where the order of categories matters, we can specify the leve
 data <- c("medium", "low", "high", "medium", "high", "high")
 
 unordered <- factor(data) 
-
-plot(unordered)
 
 ```
 

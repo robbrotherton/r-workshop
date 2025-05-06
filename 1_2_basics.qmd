@@ -167,10 +167,6 @@ worse name <- "can't have spaces"
 
 ::: {.content-hidden when-format="revealjs"}
 When you run the code `numbers <- c(1, 2, 3, 4, 5)` or any other assignment operation, you generally won't see any output in the console. What you will see, however, is something new appear in your Global Environment, the pane in the top-right of the RStudio window. You have brought your named object into being.
-
-Just as easily as you can bring an object into existence, so too can you remove it. Clicking the charming little sweeping brush near the top of the Environment pane will remove everything that currently exists from your Environment. It'll even ask if you're sure–a rare instance of compassion on RStudio's part.
-
-It's a good habit to keep an eye on your Global Environment and not to be precious about its contents. Your code is the definite record and if the instructions to make something are in there it can always be recreated.
 :::
 
 ## Functions
@@ -264,7 +260,7 @@ You can get help with a function (to see what arguments it accepts, for example)
 
 Running the code will bring up the function's help documentation in RStudio's Help pane.
 
-## Doing stuff with vectors
+## Working with vectors
 
 ### Indexing
 
@@ -279,6 +275,36 @@ numbers[1] # first element, because R uses 1-indexing
 numbers[1:3] # multiple consecutive elements
 
 # can you pick out the 1st, 3rd, and 5th elements?
+```
+
+### Checking conditions
+
+```{r}
+
+numbers <- c(1, 2, 3, 4, 5)
+
+numbers == 3
+
+numbers != 3
+
+numbers %in% c(1, 3)
+
+numbers < 3
+```
+
+### Combining conditions with indexing
+
+You can also select elements from a vector using a logical vector of the same length:
+
+```{r}
+numbers[c(TRUE, TRUE, FALSE, FALSE, FALSE)]
+```
+
+That's not useful by itself, but how might you create a logical vector like that? By testing the vector with some condition! So the condition can be used to pick out the relevant elements directly.
+
+```{r}
+
+numbers[numbers < 3]
 ```
 
 ### Doing math with vectors
@@ -306,31 +332,6 @@ numbers - mean(numbers) # deviations
 (numbers - mean(numbers))^2 # squared deviations
 
 # can you compute the sum of squared deviations?
-```
-
-### Checking conditions
-
-```{r}
-
-numbers <- c(1, 2, 3, 4, 5, 3)
-
-3 == numbers
-
-3 != numbers
-
-# check if a value is in a vector at least once
-3 %in% numbers
-
-# check if something is FALSE
-!6 %in% numbers
-
-3 >= numbers
-```
-
-### Combining conditions with indexing
-
-```{r}
-numbers[numbers > 3]
 ```
 
 ## **Missing Values**
@@ -441,7 +442,5 @@ library(tidyverse)
 df |> 
   select(a, b) |> 
   filter(a > 3) |> 
-  mutate(c = a + b) |> 
-  select(b, c)
+  mutate(c = a + b)
 ```
-

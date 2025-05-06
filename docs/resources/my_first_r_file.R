@@ -13,7 +13,7 @@
 
 
 
-# Data structures ---------------------------------------------------------
+# Vectors -----------------------------------------------------------------
 
 # numeric vectors
 
@@ -39,28 +39,11 @@ c(TRUE, FALSE)
 numbers <- c(1, 2, 3, 4, 5)
 
 
-### Overwriting -----------------------------------------------------------
-
-number <- 1
-
-number * 2
-
-number <- 2
-
-number * 2 # what answer will this give?
-
-
-number <- 1
-
-number <- number * 2 # what if you run this a few times?
-
-number
-
-
 # Functions ---------------------------------------------------------------
 
 sum(c(1, 2, 3, 4, 5))
 
+# assign a numeric vector then use as function input
 numbers <- c(1, 2, 3, 4, 5)
 
 sum(numbers)
@@ -77,7 +60,23 @@ max(numbers)
 
 
 
-# Doing stuff -------------------------------------------------------------
+## Arguments --------------------------------------------------------------
+
+seq(from = 1, to = 10, by = 2)
+
+seq(1, 10, 2)
+
+# try making a different sequence, with out without naming the arguments
+# make sure you get the sequence you're expecting
+
+# when in doubt, get some help
+?seq
+
+?mean
+
+# Doing stuff with vectors -------------------------------------------------
+
+## Indexing ----
 
 numbers <- c(3, 1, 4, 1, 5, 9)
 
@@ -88,15 +87,13 @@ numbers[1:3] # multiple consecutive elements
 # can you pick out the 1st, 3rd, and 5th elements?
 
 
-## Vector math ------------------------------------------------------------
+## Vector math ----
 
 numbers <- c(1, 2, 3, 4, 5)
 
 numbers * 2
 
 6 - numbers
-
-numbers * c(1, 2)
 
 numbers * numbers
 
@@ -112,3 +109,54 @@ numbers - mean(numbers) # deviations
 # can you compute the sum of squared deviations?
 
 
+### Indexing -------------------------------------------------------------
+
+numbers <- c(1, 2, 3, 4, 5)
+
+numbers == 3
+
+numbers != 3
+
+numbers %in% c(1, 3)
+
+numbers < 3
+
+# getting vector elements by condition
+
+numbers[numbers < 3]
+
+
+# Missing values ----------------------------------------------------------
+
+numbers <- c(1, 2, NA, 4, 5)
+
+mean(numbers)
+
+# can you solve the problem by looking at the help page for the mean function?
+
+
+
+# dataframes --------------------------------------------------------------
+
+df <- data.frame(a = c(1, 2, 3, 4, 5),
+                 b = c(6, 7, 8, 9, 10),
+                 c = c("this", "is", "a", "text", "column"),
+                 d = c(TRUE, FALSE, FALSE, FALSE, TRUE))
+
+# get a quick summary of each column
+
+summary(df)
+
+
+df$a * 2
+
+df$a * df$b
+
+df$a[df$d]
+
+
+
+# The pipe ----------------------------------------------------------------
+
+df |>
+  summary()

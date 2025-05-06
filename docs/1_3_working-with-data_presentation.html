@@ -97,6 +97,8 @@
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -282,11 +284,16 @@
 
 <section id="data-cleaning" class="title-slide slide level2 center">
 <h2>Data cleaning</h2>
-
+<p><code>tidyverse</code>’s <code>dplyr</code> and <code>tidyr</code> packages contain some of the most useful functions for common data cleaning tasks:</p>
+<ul>
+<li><p><code>select()</code></p></li>
+<li><p><code>filter()</code></p></li>
+<li><p><code>mutate()</code></p></li>
+<li><p><code>pivot_longer()</code> and <code>pivot_wider()</code></p></li>
+</ul>
 </section>
 <section id="selecting-columns" class="title-slide slide level3 center">
 <h3><code>Select</code>ing columns</h3>
-<p>Sometimes your raw data file has more columns that you need. <code>dplyr</code>’s <code>select()</code> function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, age, gender)</span>
@@ -300,30 +307,36 @@
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>classification, <span class="sc">-</span>gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>tidyverse</code> has some helper functions to select columns as well, like <code>starts_with()</code>, <code>contains()</code>.</p>
+<p><code>dplyr</code> has some helper functions to select columns as well, like <code>starts_with()</code>, <code>contains()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, <span class="fu">contains</span>(<span class="st">"_1"</span>)) <span class="co"># get each subject's first trials</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, <span class="fu">contains</span>(<span class="st">"_1"</span>)) <span class="co"># get each subject's first trials</span></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># try selecting just the "competition" trial columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
 <section id="filtering-rows" class="title-slide slide level3 center">
 <h3><code>Filter</code>ing rows</h3>
-<p><code>select()</code> allows you to pick which columns you want; <code>filter()</code> allows you to pick which rows. Inside the function, you articulate a condition which can either be <code>TRUE</code> or <code>FALSE</code>. Each row will be checked, and those for which the condition is <code>TRUE</code> will be retained while those for which it is <code>FALSE</code> are dropped.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_subset <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># rows which meet the filter condition are kept</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># rows which don't are dropped</span></span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>triplett_data_subset <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"A"</span>) <span class="co"># subset the dataframe keeping only Group A</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can also specify multiple conditions as necessary. All conditions must evaluate to <code>TRUE</code> for a row to be retained.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_subset <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"A"</span>, age <span class="sc">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># keep only children 10 or older in Group A</span></span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>triplett_data_subset <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"A"</span>, age <span class="sc">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
 <section id="mutate-some-data" class="title-slide slide level3 center">
 <h3><code>Mutate</code> some data</h3>
-
+<p>The <code>dplyr</code> function <code>mutate()</code> creates new columns or modifies existing columns.</p>
 </section>
 <section id="modify-an-existing-column" class="slide level4">
 <h4>Modify an existing column</h4>
@@ -341,41 +354,48 @@
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># produces NAs for some participants! oh no! why? can you fix it?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section class="slide level4">
+
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alone_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># can you add code to get the mean competition score, and a difference score?</span></span>
-<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb17-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alone_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-8"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">competition_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"competition"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">diff =</span> competition_mean <span class="sc">-</span> alone_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># can you add code to get the mean competition score, and a difference score?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level4">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alone_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"alone"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">competition_mean =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"competition"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">diff =</span> competition_mean <span class="sc">-</span> alone_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="mutate-and-case_when" class="slide level4">
 <h4>Mutate and <code>case_when()</code></h4>
-<p>What if you need to create a new variable which differs depending on the value of an existing variable? <code>case_when()</code> allows us to articulate a set of conditions, and what value to assign when the condition is met.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">effect =</span> <span class="fu">case_when</span>(</span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>    diff <span class="sc">&lt;</span> <span class="sc">-</span><span class="fu">sd</span>(diff) <span class="sc">~</span> <span class="st">"improved"</span>,</span>
-<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>    diff <span class="sc">&gt;</span> <span class="fu">sd</span>(diff) <span class="sc">~</span> <span class="st">"impaired"</span>,</span>
-<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"no difference"</span></span>
-<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="ot">&lt;-</span> triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">effect =</span> <span class="fu">case_when</span>(</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>    diff <span class="sc">&lt;</span> <span class="sc">-</span><span class="fu">sd</span>(diff) <span class="sc">~</span> <span class="st">"improved"</span>,</span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a>    diff <span class="sc">&gt;</span> <span class="fu">sd</span>(diff) <span class="sc">~</span> <span class="st">"impaired"</span>,</span>
+<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"no difference"</span></span>
+<span id="cb19-6"><a aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The conditions are checked in order. The final step, <code>TRUE ~ "no difference"</code> is the default value that will be assigned to any row which has not met any of the prior conditions (because <code>TRUE</code> will be true of every row).</p>
+<p>Conditions are checked in order. The final step, <code>TRUE ~ "no difference"</code> is the default value that will be assigned to any row which has not met any of the prior conditions (because <code>TRUE</code> will be true of every row).</p>
 </section>
 
 <section id="reshaping" class="title-slide slide level3 center">
 <h3>Reshaping</h3>
-<p>Sometimes it is useful to reshape data from wide to long format. The Triplett data in its initial .csv form is wide; each row contains multiple observations from a single participant. It will be helpful to have a long version of this, in which each row corresponds to a single observation.</p>
+<p>Wide: one row has contains multiple observations across columns</p>
+<p>Long: each row contains a single observation</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a>triplett_long <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"alone"</span>, <span class="st">"competition"</span>)),</span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"trial"</span>),</span>
-<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
-<span id="cb19-5"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"performance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>triplett_long <span class="ot">&lt;-</span> triplett_data <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="fu">c</span>(<span class="st">"alone"</span>, <span class="st">"competition"</span>)),</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"condition"</span>, <span class="st">"trial"</span>),</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"performance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -384,11 +404,11 @@
 <p>Once you have a new version of your data, you may wish to save it as a new file for easy sharing or reuse.</p>
 <p>One option is to save it as an R data file. Obviously this is specialized for R and cannot be opened in Excel, for example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(triplett_long, <span class="st">"triplett_long.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(triplett_long, <span class="st">"triplett_long.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Another option is to save it as a .csv file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(triplett_long, <span class="st">"triplett_long.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(triplett_long, <span class="st">"triplett_long.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -401,9 +421,9 @@
 <h3>Descriptive statistics</h3>
 <p>A quick and easy way to get some summary statistics for a data.frame is to use the <code>summary()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, gender, group, alone_mean, competition_mean, diff) <span class="sc">|&gt;</span> </span>
-<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, gender, group, alone_mean, competition_mean, diff) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      age        gender group    alone_mean    competition_mean
  Min.   : 8.00   f:26   A:20   Min.   :27.67   Min.   :27.20   
@@ -425,9 +445,9 @@
 <section id="frequencies" class="slide level4">
 <h4>Frequencies</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, classification) <span class="sc">|&gt;</span> </span>
-<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">.by =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender, classification) <span class="sc">|&gt;</span> </span>
+<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">.by =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -485,14 +505,15 @@
 
 <section id="summarize" class="title-slide slide level3 center">
 <h3>Summarize</h3>
-<p>The <code>dplyr</code> function <code>summarize()</code> is a powerful way of producing summary statistics from a data.frame. Its syntax is similar to that of <code>mutate()</code>: you specify the name of a column you would like to create, then an equals sign, then the operation(s) that will compute the desired value, e.g.&nbsp;<code>mean_score = mean(scores)</code>.</p>
-<p>The difference between <code>summarize()</code> and <code>mutate()</code> is that <code>mutate()</code> modifies the full dataset, whereas <code>summarize()</code> produces a new data.frame by reducing the values in the dataset down to a single summary value such as a mean, standard deviation, or whatever other summary statistic you might like to compute.</p>
+<p>Compute summary statistics</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
-<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
-<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
-<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
+<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">min =</span> <span class="fu">min</span>(diff),</span>
+<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(diff),</span>
+<span id="cb26-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> max <span class="sc">-</span> min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -501,6 +522,8 @@
 <th style="text-align: right;">n</th>
 <th style="text-align: right;">mean_diff</th>
 <th style="text-align: right;">sd_diff</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
 <th style="text-align: right;">range</th>
 </tr>
 </thead>
@@ -509,6 +532,8 @@
 <td style="text-align: right;">40</td>
 <td style="text-align: right;">-2.069417</td>
 <td style="text-align: right;">2.475617</td>
+<td style="text-align: right;">-6.4</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">8.4</td>
 </tr>
 </tbody>
@@ -518,16 +543,15 @@
 </div>
 </section>
 
-<section id="summarize-by-group" class="title-slide slide level3 center">
-<h3>Summarize by group</h3>
-<p><code>summarize()</code>’s superpower is it’s special argument, <code>.by</code>. This lets us specify a grouping variable. Whatever summary statistics you ask for will be computed separately for each level of the grouping variable.</p>
+<section id="summarize-.by-group" class="title-slide slide level3 center">
+<h3>Summarize <code>.by</code> group</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
-<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
-<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
-<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff),</span>
-<span id="cb26-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
+<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff),</span>
+<span id="cb27-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -559,60 +583,18 @@
 </table>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
-<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_diff =</span> <span class="fu">mean</span>(diff),</span>
-<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_diff =</span> <span class="fu">sd</span>(diff),</span>
-<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">range =</span> <span class="fu">max</span>(diff) <span class="sc">-</span> <span class="fu">min</span>(diff),</span>
-<span id="cb27-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> classification)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">classification</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">mean_diff</th>
-<th style="text-align: right;">sd_diff</th>
-<th style="text-align: right;">range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">-3.841667</td>
-<td style="text-align: right;">1.825137</td>
-<td style="text-align: right;">6.550000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">0.530000</td>
-<td style="text-align: right;">1.346344</td>
-<td style="text-align: right;">3.850000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">-1.124333</td>
-<td style="text-align: right;">1.494226</td>
-<td style="text-align: right;">4.793333</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># can you summarize by one of the other categorical variables?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
 <section id="lots-of-grouping-variables" class="title-slide slide level3 center">
 <h3>Lots of grouping variables</h3>
-<p>You can have any number of grouping variables; just collect them together with the <code>c()</code> function when using the <code>.by</code> argument. Summary statistics will be produced for all combination of the variables that you specify.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(performance),</span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(classification, condition, trial, group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a>complex_summary <span class="ot">&lt;-</span> triplett_long <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(performance),</span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(classification, condition, trial, group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -668,258 +650,6 @@
 <td style="text-align: left;">A</td>
 <td style="text-align: right;">39.28</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">36.30</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">48.20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">45.68</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">42.78</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">39.82</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">41.20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">39.04</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">40.84</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">39.72</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">39.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">43.32</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">41.48</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">37.40</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">39.08</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">36.48</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">34.76</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">34.56</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">36.36</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">36.44</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated adversely</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">31.80</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">30.80</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">31.52</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">30.24</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">31.56</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">31.32</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">39.44</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">33.64</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">32.16</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">32.56</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">32.84</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">32.96</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">little affected</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">B</td>
-<td style="text-align: right;">NA</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -932,110 +662,107 @@
 <h2>Data Visualization</h2>
 
 </section>
-<section id="using-built-in-plots" class="title-slide slide level3 center">
-<h3>Using built in <code>plot</code>s</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>age, </span>
-<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> triplett_data_recoded<span class="sc">$</span>alone_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-26-2.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(diff <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-26-3.png" width="960"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-26-4.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-
 <section id="using-ggplot" class="title-slide slide level3 center">
 <h3>Using <code>ggplot</code></h3>
-<p>As usual, there are many ways of visualizing data in R, but the most widely used and flexible is probably the <code>ggplot2</code> package. This package isn’t built-in to R; someone else created it and made it freely available as an add-on. For packages like that, we have to tell R we want to use them using the <code>library()</code> function.</p>
-<p>The “gg” in “ggplot” refers to the “grammar of graphics”. ggplot works by layering, using the <code>+</code> symbol. The first line specifies the name of the data.frame and the ‘aesthetics’: we want the scores (which are in a column conveniently named <code>scores</code> in the data.frame) on the x-axis. Then we add <code>geom_bar()</code> as the geometry layer. <code>geom_bar</code> is designed to take a set of scores and calculate the frequencies, which become the height of the bars on the <span class="math inline">\(y\)</span>-axis (which is why we don’t need to explicitly specific a <span class="math inline">\(y\)</span> aesthetic in the <code>aes()</code> function.</p>
+<p>The “gg” in “ggplot” refers to the “grammar of graphics”. ggplot works by layering, using the <code>+</code> symbol.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot syntax</span></span>
+<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>my_data <span class="sc">|&gt;</span> </span>
+<span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 1. start with data and aesthetic mappings</span></span>
+<span id="cb30-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x_var, <span class="at">y =</span> y_var)) <span class="sc">+</span></span>
+<span id="cb30-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 2. add geometry (e.g. points, columns, lines)</span></span>
+<span id="cb30-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb30-10"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 3. add more layers geometry if needed</span></span>
+<span id="cb30-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb30-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a aria-hidden="true" tabindex="-1"></a><span class="co"># 4. customize labels, themes, etc.</span></span>
+<span id="cb30-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"My Plot"</span>, <span class="at">x =</span> <span class="st">"X Label"</span>, <span class="at">y =</span> <span class="st">"Y Label"</span>) <span class="sc">+</span></span>
+<span id="cb30-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="histogram" class="slide level4">
 <h4>Histogram</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
-<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> diff)) <span class="sc">+</span></span>
-<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> diff)) <span class="sc">+</span> <span class="co"># only x aesthetic is required for histogram</span></span>
+<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-27-1.png" width="960" class="r-stretch"></section>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
+<section id="setting-the-theme" class="slide level4">
+<h4>Setting the theme</h4>
+<p>To change the deafult look of ggplot’s graphs you can modify many elements within the <code>theme()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>theme_apa <span class="ot">&lt;-</span> <span class="fu">theme</span>(</span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">panel.background =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.line =</span> <span class="fu">element_line</span>(),</span>
+<span id="cb32-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb32-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">22</span>),</span>
+<span id="cb32-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb32-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">22</span>)</span>
+<span id="cb32-8"><a aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This theme_apa object can then be added as a layer to subsequent graphs.</p>
+</section>
+<section class="slide level4">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> diff)) <span class="sc">+</span> <span class="co"># only x aesthetic is required for histogram</span></span>
+<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"></section>
 <section id="scatterplot" class="slide level4">
 <h4>Scatterplot</h4>
 <p>For a scatterplot, we would specify both <code>x</code> and <code>y</code> aesthetics, and use <code>geom_point()</code> for the geometry.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
 <span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> alone_0)) <span class="sc">+</span></span>
-<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
+<span id="cb34-4"><a aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"></section>
 <section id="scatterplot-with-grouping-variable" class="slide level4">
 <h4>Scatterplot with grouping variable</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data_recoded <span class="sc">|&gt;</span> </span>
 <span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> alone_0, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
 <span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb35-5"><a aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"></section>
 
 <section id="plotting-descriptives" class="title-slide slide level3 center">
 <h3>Plotting descriptives</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a>triplett_data <span class="sc">|&gt;</span> </span>
 <span id="cb36-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(age), <span class="at">y =</span> alone_0, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
-<span id="cb36-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
-</figure>
+<span id="cb36-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb36-4"><a aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</div>
-</div>
-<p>For more complex visuals, it can be useful to combine <code>summarize()</code> for computing summary stats with <code>ggplot</code> for visualizing the resulting results.</p>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-34-1.png" width="960" class="r-stretch"></section>
+<section class="slide level4">
+
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
 <span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">performance =</span> <span class="fu">mean</span>(performance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
 <span id="cb37-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(trial, condition)) <span class="sc">|&gt;</span> </span>
 <span id="cb37-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trial, <span class="at">y =</span> performance, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
-<span id="cb37-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
-</figure>
+<span id="cb37-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb37-6"><a aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</div>
-</div>
-</section>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch"></section>
 
 
 <section id="data-analysis" class="title-slide slide level2 center">
@@ -1045,7 +772,7 @@
 <section id="correlation" class="title-slide slide level3 center">
 <h3>Correlation</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(triplett_data<span class="sc">$</span>age, triplett_data<span class="sc">$</span>alone_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> triplett_data<span class="sc">$</span>age, <span class="at">y =</span> triplett_data<span class="sc">$</span>alone_0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -1071,7 +798,7 @@ sample estimates:
 <span id="cb40-4"><a aria-hidden="true" tabindex="-1"></a>  corrplot<span class="sc">::</span><span class="fu">corrplot</span>(<span class="at">method =</span> <span class="st">'shade'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"></section>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-37-1.png" width="960" class="r-stretch"></section>
 
 <section id="chi2-test" class="title-slide slide level3 center">
 <h3><span class="math inline">\(\chi^2\)</span> test</h3>
@@ -1096,11 +823,11 @@ X-squared = 1.978, df = 2, p-value = 0.3719</code></pre>
 </section>
 <section id="independent-samples" class="slide level4">
 <h4>Independent-samples</h4>
-<p>R has a <code>t.test()</code> function built in. When the DV is in one column and the IV grouping variable is in another, we can specify a formula using those column names in the generic format <code>DV ~ IV</code> (as in, ‘compare scores on the DV by the groups of the IV’).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># is there a difference between the genders?</span></span>
-<span id="cb43-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(alone_0 <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># t.test takes a 'formula' in the form 'DV ~ IV'</span></span>
+<span id="cb43-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(alone_0 <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -1114,7 +841,34 @@ sample estimates:
 mean in group f mean in group m 
        45.41923        37.98571 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(alone_0 <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="related-samples" class="slide level4">
+<h4>Related-samples</h4>
+<p>For a related-samples t-test we would generally need wide-format data, where each row of data contains two columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>alone_mean,</span>
+<span id="cb45-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> triplett_data_recoded<span class="sc">$</span>competition_mean,</span>
+<span id="cb45-3"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  triplett_data_recoded$alone_mean and triplett_data_recoded$competition_mean
+t = 5.2868, df = 39, p-value = 5.048e-06
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 1.277676 2.861157
+sample estimates:
+mean difference 
+       2.069417 </code></pre>
+</div>
+</div>
+</section>
+<section id="effect-size" class="slide level4">
+<h4>Effect size</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(alone_0 <span class="sc">~</span> gender, <span class="at">data =</span> triplett_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -1137,31 +891,9 @@ mean in group f mean in group m
 </table>
 </div>
 </div>
-</div>
-</section>
-<section id="related-samples" class="slide level4">
-<h4>Related-samples</h4>
-<p>For a related-samples t-test we would generally need wide-format data, where each row of data contains two columns</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(triplett_data_recoded<span class="sc">$</span>alone_mean,</span>
-<span id="cb46-2"><a aria-hidden="true" tabindex="-1"></a>       triplett_data_recoded<span class="sc">$</span>competition_mean,</span>
-<span id="cb46-3"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  triplett_data_recoded$alone_mean and triplett_data_recoded$competition_mean
-t = 5.2868, df = 39, p-value = 5.048e-06
-alternative hypothesis: true mean difference is not equal to 0
-95 percent confidence interval:
- 1.277676 2.861157
-sample estimates:
-mean difference 
-       2.069417 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(triplett_data_recoded<span class="sc">$</span>alone_mean,</span>
-<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>       triplett_data_recoded<span class="sc">$</span>competition_mean,</span>
-<span id="cb48-3"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">cohens_d</span>(<span class="at">x =</span> triplett_data_recoded<span class="sc">$</span>alone_mean,</span>
+<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> triplett_data_recoded<span class="sc">$</span>competition_mean,</span>
+<span id="cb48-3"><a aria-hidden="true" tabindex="-1"></a>                     <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top">
@@ -1193,9 +925,10 @@ mean difference
 </section>
 <section id="independent-samples-1" class="slide level4">
 <h4>Independent-samples</h4>
-<p>The <code>aov()</code> function computes an ANOVA model. It accepts a <code>formula</code> in the form <code>DV ~ IV</code>, just like the independent-samples <code>t.test()</code> example above.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># aov expects a 'formula' in the form 'DV ~ IV'</span></span>
+<span id="cb49-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
    aov(formula = diff ~ classification, data = triplett_data_recoded)
@@ -1209,11 +942,17 @@ Residual standard error: 1.641518
 Estimated effects may be unbalanced</code></pre>
 </div>
 </div>
-<p>Sometimes, like with <code>aov()</code>, the function that computes a model doesn’t tell us everything we typically want to know about that model. It is often useful to assign the model to a name, and then ask for a summary of the model:</p>
+</section>
+<section class="slide level4">
+
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-hidden="true" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># aov doesn't print useful output by itself, so assign to a name</span></span>
 <span id="cb51-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-3"><a aria-hidden="true" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(diff <span class="sc">~</span> classification, <span class="at">data =</span> triplett_data_recoded)</span>
+<span id="cb51-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># then get a summary</span></span>
+<span id="cb51-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 classification  2  139.3   69.66   25.85 9.44e-08 ***
@@ -1225,10 +964,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 <section id="related-samples-1" class="slide level4">
 <h4>Related-samples</h4>
-<p>The <code>aov()</code> and <code>summary()</code> approach also works for within-participants designs. We just need to articulate the <code>Error()</code> term, using a column which uniquely identifies participants, and the grouping variable column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(performance <span class="sc">~</span> condition <span class="sc">+</span> <span class="fu">Error</span>(subject<span class="sc">/</span>condition), <span class="at">data =</span> triplett_long) <span class="sc">|&gt;</span> </span>
-<span id="cb53-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># related-samples ANOVA requires Error term, using columns</span></span>
+<span id="cb53-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># for participant IDs and the IV grouping variable</span></span>
+<span id="cb53-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(performance <span class="sc">~</span> condition <span class="sc">+</span> <span class="fu">Error</span>(subject<span class="sc">/</span>condition), <span class="at">data =</span> triplett_long) <span class="sc">|&gt;</span> </span>
+<span id="cb53-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Error: subject
@@ -1253,129 +994,32 @@ Residuals 161   2346   14.57               </code></pre>
 <section id="regression" class="title-slide slide level3 center">
 <h3>Regression</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-hidden="true" tabindex="-1"></a>regression_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(diff <span class="sc">~</span> age <span class="sc">*</span> gender, <span class="at">data =</span> triplett_data_recoded)</span>
-<span id="cb55-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># the lm (linear model) function accepts a formula like t.test and aov</span></span>
+<span id="cb55-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># we can add as many predictors as we want with</span></span>
+<span id="cb55-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(diff <span class="sc">~</span> age <span class="sc">+</span> gender <span class="sc">+</span> group, <span class="at">data =</span> triplett_data_recoded) <span class="sc">|&gt;</span> </span>
+<span id="cb55-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = diff ~ age * gender, data = triplett_data_recoded)
+lm(formula = diff ~ age + gender + group, data = triplett_data_recoded)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--3.7626 -1.8964 -0.0238  1.7587  5.0268 
+-3.5875 -1.7558 -0.0978  1.5994  4.9705 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)  -5.4370     2.8466  -1.910   0.0641 .
-age           0.2456     0.2457   0.999   0.3243  
-genderm       3.2319     6.1234   0.528   0.6009  
-age:genderm  -0.1442     0.5236  -0.275   0.7846  
+(Intercept)  -5.0325     2.5089  -2.006   0.0524 .
+age           0.2385     0.2184   1.092   0.2821  
+genderm       1.4309     0.8163   1.753   0.0881 .
+groupB       -0.5619     0.7853  -0.716   0.4789  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 2.412 on 36 degrees of freedom
-Multiple R-squared:  0.1238,    Adjusted R-squared:  0.05075 
-F-statistic: 1.695 on 3 and 36 DF,  p-value: 0.1854</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(regression_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">term</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">std.error</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-5.4369621</td>
-<td style="text-align: right;">2.8465542</td>
-<td style="text-align: right;">-1.9100153</td>
-<td style="text-align: right;">0.0641236</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age</td>
-<td style="text-align: right;">0.2455702</td>
-<td style="text-align: right;">0.2457286</td>
-<td style="text-align: right;">0.9993555</td>
-<td style="text-align: right;">0.3242927</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">genderm</td>
-<td style="text-align: right;">3.2318877</td>
-<td style="text-align: right;">6.1234287</td>
-<td style="text-align: right;">0.5277905</td>
-<td style="text-align: right;">0.6008830</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">age:genderm</td>
-<td style="text-align: right;">-0.1442141</td>
-<td style="text-align: right;">0.5235967</td>
-<td style="text-align: right;">-0.2754298</td>
-<td style="text-align: right;">0.7845609</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(regression_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top" style="width:100%;">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 12%">
-<col style="width: 8%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 2%">
-<col style="width: 9%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 10%">
-<col style="width: 4%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">r.squared</th>
-<th style="text-align: right;">adj.r.squared</th>
-<th style="text-align: right;">sigma</th>
-<th style="text-align: right;">statistic</th>
-<th style="text-align: right;">p.value</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">logLik</th>
-<th style="text-align: right;">AIC</th>
-<th style="text-align: right;">BIC</th>
-<th style="text-align: right;">deviance</th>
-<th style="text-align: right;">df.residual</th>
-<th style="text-align: right;">nobs</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">0.1237728</td>
-<td style="text-align: right;">0.0507539</td>
-<td style="text-align: right;">2.411975</td>
-<td style="text-align: right;">1.695078</td>
-<td style="text-align: right;">0.1853631</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">-89.86817</td>
-<td style="text-align: right;">189.7363</td>
-<td style="text-align: right;">198.1807</td>
-<td style="text-align: right;">209.4345</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">40</td>
-</tr>
-</tbody>
-</table>
-</div>
+Residual standard error: 2.398 on 36 degrees of freedom
+Multiple R-squared:  0.1342,    Adjusted R-squared:  0.06209 
+F-statistic: 1.861 on 3 and 36 DF,  p-value: 0.1537</code></pre>
 </div>
 </div>
 </section>
@@ -1383,28 +1027,56 @@ F-statistic: 1.695 on 3 and 36 DF,  p-value: 0.1854</code></pre>
 <section id="mixed-effects" class="title-slide slide level3 center">
 <h3>Mixed-effects</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-hidden="true" tabindex="-1"></a>lmerTest<span class="sc">::</span><span class="fu">lmer</span>(performance <span class="sc">~</span> condition <span class="sc">*</span> age <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> subject), </span>
-<span id="cb59-2"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> triplett_long)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-hidden="true" tabindex="-1"></a>mixed_model <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(</span>
+<span id="cb57-2"><a aria-hidden="true" tabindex="-1"></a>  performance <span class="sc">~</span> condition <span class="sc">*</span> age <span class="sc">+</span> group <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> subject), </span>
+<span id="cb57-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> triplett_long</span>
+<span id="cb57-4"><a aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb57-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mixed_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Linear mixed model fit by REML ['lmerModLmerTest']
-Formula: performance ~ condition * age + (1 | subject)
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: performance ~ condition * age + group + (1 | subject)
    Data: triplett_long
-REML criterion at convergence: 1406.319
+
+REML criterion at convergence: 1403
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.1757 -0.6269 -0.1108  0.4602  3.4458 
+
 Random effects:
- Groups   Name        Std.Dev.
- subject  (Intercept) 5.109   
- Residual             3.667   
+ Groups   Name        Variance Std.Dev.
+ subject  (Intercept) 26.52    5.150   
+ Residual             13.44    3.667   
 Number of obs: 241, groups:  subject, 40
-Fixed Effects:
-             (Intercept)      conditioncompetition                       age  
-                 61.8905                   -4.6967                   -1.9463  
-conditioncompetition:age  
-                  0.2281  </code></pre>
+
+Fixed effects:
+                         Estimate Std. Error t value
+(Intercept)               61.8434     5.7664  10.725
+conditioncompetition      -4.6886     3.1964  -1.467
+age                       -1.9923     0.5002  -3.983
+groupB                     1.1393     1.7148   0.664
+conditioncompetition:age   0.2287     0.2753   0.831
+
+Correlation of Fixed Effects:
+            (Intr) cndtnc age    groupB
+cndtncmpttn -0.236                     
+age         -0.977  0.230              
+groupB      -0.013  0.005 -0.138       
+cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-hidden="true" tabindex="-1"></a>mixed_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(performance <span class="sc">~</span> condition <span class="sc">*</span> age <span class="sc">+</span> group <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> subject), </span>
-<span id="cb61-2"><a aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> triplett_long)</span>
-<span id="cb61-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mixed_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level4">
+
+<p><code>lmr4::lmer()</code> doesn’t give p-values (because they require some additional assumptions). The package <code>lmerTest</code> has wraps <code>lmer()</code> with some additional computation of p-values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-hidden="true" tabindex="-1"></a>mixed_model <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(</span>
+<span id="cb59-2"><a aria-hidden="true" tabindex="-1"></a>  performance <span class="sc">~</span> condition <span class="sc">*</span> age <span class="sc">+</span> group <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> subject), </span>
+<span id="cb59-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> triplett_long</span>
+<span id="cb59-4"><a aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb59-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mixed_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
 lmerModLmerTest]
@@ -1441,22 +1113,27 @@ groupB      -0.013  0.005 -0.138
 cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
 </div>
 </div>
+</section>
+<section id="visualizing-mixed-model-analysis" class="slide level4">
+<h4>Visualizing mixed-model analysis</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
-<span id="cb63-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trial =</span> <span class="fu">as.integer</span>(trial)) <span class="sc">|&gt;</span> </span>
-<span id="cb63-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trial, <span class="at">y =</span> performance, <span class="at">group =</span> subject, <span class="at">color =</span> condition)) <span class="sc">+</span></span>
-<span id="cb63-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb63-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">group =</span> condition), <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb63-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>condition) <span class="sc">+</span></span>
-<span id="cb63-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Performance over Trials by Condition"</span>,</span>
-<span id="cb63-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Trial"</span>, <span class="at">y =</span> <span class="st">"Reeling Speed (or whatever units)"</span>,</span>
-<span id="cb63-9"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Gray lines = individual subjects; bold line = group mean"</span>) <span class="sc">+</span></span>
-<span id="cb63-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-hidden="true" tabindex="-1"></a>triplett_long <span class="sc">|&gt;</span> </span>
+<span id="cb61-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> trial, <span class="at">y =</span> performance, <span class="at">group =</span> subject, <span class="at">color =</span> condition)) <span class="sc">+</span></span>
+<span id="cb61-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb61-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">group =</span> condition), <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"line"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb61-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>condition) <span class="sc">+</span></span>
+<span id="cb61-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Performance over Trials by Condition"</span>,</span>
+<span id="cb61-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Trial"</span>, <span class="at">y =</span> <span class="st">"Reeling Speed"</span>,</span>
+<span id="cb61-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Color lines = individual subjects; bold line = group mean"</span>) <span class="sc">+</span></span>
+<span id="cb61-9"><a aria-hidden="true" tabindex="-1"></a>  theme_apa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
 </div>
 
 
-<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-42-1.png" width="960" class="r-stretch"></section>
+<img data-src="1_3_working-with-data_files/figure-revealjs/unnamed-chunk-48-1.png" width="960" class="r-stretch"></section>
 
 </section>
     </div>
@@ -1473,6 +1150,7 @@ cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
   <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1494,7 +1172,8 @@ cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1665,7 +1344,7 @@ cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

@@ -22,8 +22,8 @@ Once you have created the Project, save these files into your Project folder:
 Back in RStudio you should see those files appear in the Files pane in the bottom-right. Click `triplett_analysis.R` to open that code file in the Editor pane.
 :::
 
-::: {.content-hidden when-format="revealjs"}
-::: {.callout-tip}
+:::: {.content-hidden when-format="revealjs"}
+::: callout-tip
 ## Triplett (1898)
 
 The data we're working with here is from Normal Triplett's 1898 study of social facilitation, in which children played a game winding a flag around a track as fast as they could either alone or in competition with another child.
@@ -34,7 +34,7 @@ The data we're working with here is from Normal Triplett's 1898 study of social 
 
 [I made a version you can play on your computer here](https://robbrotherton.github.io/psychstats/games/triplett/triplett.html).
 :::
-:::
+::::
 
 ### The working directory
 
@@ -144,9 +144,21 @@ readxl::read_excel("excel_file.xlsx", sheet = "sheet name")
 
 ## Data cleaning
 
+`tidyverse`'s `dplyr` and `tidyr` packages contain some of the most useful functions for common data cleaning tasks:
+
+-   `select()`
+
+-   `filter()`
+
+-   `mutate()`
+
+-   `pivot_longer()` and `pivot_wider()`
+
 ### `Select`ing columns
 
+::: {.content-hidden when-format="revealjs"}
 Sometimes your raw data file has more columns that you need. `dplyr`'s `select()` function lets you choose which columns you want by typing their names with commas between. No need for quotation marks.
+:::
 
 ```{r}
 #| results: hide
@@ -167,36 +179,49 @@ triplett_data |>
   select(-classification, -gender)
 ```
 
-The `tidyverse` has some helper functions to select columns as well, like `starts_with()`, `contains()`.
+`dplyr` has some helper functions to select columns as well, like `starts_with()`, `contains()`.
 
 ```{r}
 #| results: hide
 triplett_data |> 
   select(subject, contains("_1")) # get each subject's first trials
+
+# try selecting just the "competition" trial columns
 ```
 
 ### `Filter`ing rows
 
+::: {.content-hidden when-format="revealjs"}
 `select()` allows you to pick which columns you want; `filter()` allows you to pick which rows. Inside the function, you articulate a condition which can either be `TRUE` or `FALSE`. Each row will be checked, and those for which the condition is `TRUE` will be retained while those for which it is `FALSE` are dropped.
+:::
 
 ```{r}
 #| results: hide
+
+# rows which meet the filter condition are kept
+# rows which don't are dropped
+
 triplett_data_subset <- triplett_data |> 
-  filter(group == "A")
+  filter(group == "A") # subset the dataframe keeping only Group A
 ```
 
 You can also specify multiple conditions as necessary. All conditions must evaluate to `TRUE` for a row to be retained.
 
 ```{r}
 #| results: hide
+
+# keep only children 10 or older in Group A
+
 triplett_data_subset <- triplett_data |> 
   filter(group == "A", age >= 10)
 ```
 
 ### `Mutate` some data
 
+The `dplyr` function `mutate()` creates new columns or modifies existing columns.
+
 ::: {.content-hidden when-format="revealjs"}
-The `dplyr` function `mutate()` creates new columns or modifies existing columns. The general syntax is to specify the name of the column you want to create or modify, then an equals sign, then the operation which will compute the new values for that column. This will often be a function of existing variables, which you can refer to by name with no quotation marks. You can mutate more than one column at a time by separating the arguments with a comma.
+The general syntax is to specify the name of the column you want to create or modify, then an equals sign, then the operation which will compute the new values for that column. This will often be a function of existing variables, which you can refer to by name with no quotation marks. You can mutate more than one column at a time by separating the arguments with a comma.
 :::
 
 #### Modify an existing column
@@ -217,6 +242,11 @@ triplett_data_recoded <- triplett_data |>
 # produces NAs for some participants! oh no! why? can you fix it?
 ```
 
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
 ```{r}
 
 triplett_data_recoded <- triplett_data |> 
@@ -224,16 +254,25 @@ triplett_data_recoded <- triplett_data |>
 
 # can you add code to get the mean competition score, and a difference score?
 
+```
+
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
+```{r}
 triplett_data_recoded <- triplett_data |> 
   mutate(alone_mean = rowMeans(across(contains("alone")), na.rm = TRUE),
          competition_mean = rowMeans(across(contains("competition")), na.rm = TRUE),
          diff = competition_mean - alone_mean)
-
 ```
 
 #### Mutate and `case_when()`
 
+::: {.content-hidden when-format="revealjs"}
 What if you need to create a new variable which differs depending on the value of an existing variable? `case_when()` allows us to articulate a set of conditions, and what value to assign when the condition is met.
+:::
 
 ```{r}
 triplett_data_recoded <- triplett_data_recoded |> 
@@ -244,11 +283,19 @@ triplett_data_recoded <- triplett_data_recoded |>
   ))
 ```
 
-The conditions are checked in order. The final step, `TRUE ~ "no difference"` is the default value that will be assigned to any row which has not met any of the prior conditions (because `TRUE` will be true of every row).
+Conditions are checked in order. The final step, `TRUE ~ "no difference"` is the default value that will be assigned to any row which has not met any of the prior conditions (because `TRUE` will be true of every row).
 
 ### Reshaping
 
+::: {.content-visible when-format="revealjs"}
+Wide: one row has contains multiple observations across columns
+
+Long: each row contains a single observation
+:::
+
+::: {.content-hidden when-format="revealjs"}
 Sometimes it is useful to reshape data from wide to long format. The Triplett data in its initial .csv form is wide; each row contains multiple observations from a single participant. It will be helpful to have a long version of this, in which each row corresponds to a single observation.
+:::
 
 ```{r}
 triplett_long <- triplett_data |> 
@@ -300,9 +347,15 @@ triplett_data_recoded |>
 
 ### Summarize
 
+::: {.content-hidden when-format="revealjs"}
 The `dplyr` function `summarize()` is a powerful way of producing summary statistics from a data.frame. Its syntax is similar to that of `mutate()`: you specify the name of a column you would like to create, then an equals sign, then the operation(s) that will compute the desired value, e.g. `mean_score = mean(scores)`.
 
 The difference between `summarize()` and `mutate()` is that `mutate()` modifies the full dataset, whereas `summarize()` produces a new data.frame by reducing the values in the dataset down to a single summary value such as a mean, standard deviation, or whatever other summary statistic you might like to compute.
+:::
+
+::: {.content-visible when-format="revealjs"}
+Compute summary statistics
+:::
 
 ```{r}
 
@@ -310,12 +363,16 @@ triplett_data_recoded |>
   summarize(n = n(), 
             mean_diff = mean(diff),
             sd_diff = sd(diff),
-            range = max(diff) - min(diff))
+            min = min(diff),
+            max = max(diff),
+            range = max - min)
 ```
 
-### Summarize by group
+### Summarize `.by` group
 
+::: {.content-hidden when-format="revealjs"}
 `summarize()`'s superpower is it's special argument, `.by`. This lets us specify a grouping variable. Whatever summary statistics you ask for will be computed separately for each level of the grouping variable.
+:::
 
 ```{r}
 
@@ -326,54 +383,97 @@ triplett_data_recoded |>
             range = max(diff) - min(diff),
             .by = gender)
 
-triplett_data_recoded |> 
-  summarize(n = n(), 
-            mean_diff = mean(diff),
-            sd_diff = sd(diff),
-            range = max(diff) - min(diff),
-            .by = classification)
+# can you summarize by one of the other categorical variables?
 ```
 
 ### Lots of grouping variables
 
+::: {.content-hidden when-format="revealjs"}
 You can have any number of grouping variables; just collect them together with the `c()` function when using the `.by` argument. Summary statistics will be produced for all combination of the variables that you specify.
+:::
 
 ```{r}
-triplett_long |> 
+complex_summary <- triplett_long |> 
   summarize(average = mean(performance),
             .by = c(classification, condition, trial, group))
 ```
 
-## Data Visualization
-
-### Using built in `plot`s
-
 ```{r}
+#| echo: false
 
-hist(x = triplett_data_recoded$diff)
-
-plot(x = triplett_data_recoded$age, 
-     y = triplett_data_recoded$alone_0)
-
-plot(diff ~ gender, data = triplett_data_recoded)
-
-boxplot(diff ~ classification, data = triplett_data_recoded)
+head(complex_summary)
 ```
+
+## Data Visualization
 
 ### Using `ggplot`
 
-As usual, there are many ways of visualizing data in R, but the most widely used and flexible is probably the `ggplot2` package. This package isn't built-in to R; someone else created it and made it freely available as an add-on. For packages like that, we have to tell R we want to use them using the `library()` function.
+::: {.content-hidden when-format="revealjs"}
+As usual, there are many ways of visualizing data in R, but the most widely used and flexible is the `ggplot2` package. This package is part of the `tidyverse`.
+:::
 
-The "gg" in "ggplot" refers to the "grammar of graphics". ggplot works by layering, using the `+` symbol. The first line specifies the name of the data.frame and the 'aesthetics': we want the scores (which are in a column conveniently named `scores` in the data.frame) on the x-axis. Then we add `geom_bar()` as the geometry layer. `geom_bar` is designed to take a set of scores and calculate the frequencies, which become the height of the bars on the $y$-axis (which is why we don't need to explicitly specific a $y$ aesthetic in the `aes()` function.
+The "gg" in "ggplot" refers to the "grammar of graphics". ggplot works by layering, using the `+` symbol.
+
+```{r}
+#| eval: false
+# ggplot syntax
+
+my_data |> 
+  
+# 1. start with data and aesthetic mappings
+ggplot(aes(x = x_var, y = y_var)) +
+
+# 2. add geometry (e.g. points, columns, lines)
+  geom_point() +
+
+# 3. add more layers geometry if needed
+  geom_smooth(method = "lm") +
+
+# 4. customize labels, themes, etc.
+  labs(title = "My Plot", x = "X Label", y = "Y Label") +
+  theme_minimal()
+
+```
 
 #### Histogram
 
 ```{r}
 
 triplett_data_recoded |> 
-  ggplot(aes(x = diff)) +
+  ggplot(aes(x = diff)) + # only x aesthetic is required for histogram
   geom_histogram(bins = 10)
 
+```
+
+#### Setting the theme
+
+To change the deafult look of ggplot's graphs you can modify many elements within the `theme()` function.
+
+```{r}
+
+theme_apa <- theme(
+  panel.background = element_blank(),
+  axis.line = element_line(),
+  axis.text = element_text(size = 20),
+  axis.title = element_text(size = 22),
+  legend.text = element_text(size = 20),
+  legend.title = element_text(size = 22)
+)
+
+```
+
+This theme_apa object can then be added as a layer to subsequent graphs.
+
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
+```{r}
+triplett_data_recoded |> 
+  ggplot(aes(x = diff)) + # only x aesthetic is required for histogram
+  geom_histogram(bins = 10, color = "white") +
+  theme_apa
 ```
 
 #### Scatterplot
@@ -383,7 +483,8 @@ For a scatterplot, we would specify both `x` and `y` aesthetics, and use `geom_p
 ```{r}
 triplett_data_recoded |> 
   ggplot(aes(x = age, y = alone_0)) +
-  geom_point(position = "jitter")
+  geom_point(position = "jitter") +
+  theme_apa
 ```
 
 #### Scatterplot with grouping variable
@@ -396,7 +497,8 @@ There are other aesthetics beyond `x` and `y`. We can also map data to a `color`
 triplett_data_recoded |> 
   ggplot(aes(x = age, y = alone_0, color = gender)) +
   geom_point() +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm") +
+  theme_apa
 ```
 
 ### Plotting descriptives
@@ -404,10 +506,18 @@ triplett_data_recoded |>
 ```{r}
 triplett_data |> 
   ggplot(aes(x = factor(age), y = alone_0, color = gender)) +
-  geom_boxplot()
+  geom_boxplot() +
+  theme_apa
 ```
 
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
+::: {.content-hidden when-format="revealjs"}
 For more complex visuals, it can be useful to combine `summarize()` for computing summary stats with `ggplot` for visualizing the resulting results.
+:::
 
 ```{r}
 
@@ -415,16 +525,21 @@ triplett_long |>
   summarize(performance = mean(performance, na.rm = TRUE), 
             .by = c(trial, condition)) |> 
   ggplot(aes(x = trial, y = performance, fill = condition)) +
-  geom_col(position = "dodge")
+  geom_col(position = "dodge") +
+  theme_apa
 ```
 
 ## Data Analysis
+
+::: {.content-hidden when-format="revealjs"}
+I'll run show some basic–and some more advanced–analyses here. I won't dwell on the details, just show the basic format. Each function has its own help documentation should you need to refer to it.
+:::
 
 ### Correlation
 
 ```{r}
 
-cor.test(triplett_data$age, triplett_data$alone_0)
+cor.test(x = triplett_data$age, y = triplett_data$alone_0)
 
 ```
 
@@ -451,15 +566,16 @@ chisq.test(x = triplett_data_recoded$classification,
 
 #### Independent-samples
 
+::: {.content-hidden when-format="revealjs"}
 R has a `t.test()` function built in. When the DV is in one column and the IV grouping variable is in another, we can specify a formula using those column names in the generic format `DV ~ IV` (as in, 'compare scores on the DV by the groups of the IV').
+:::
 
 ```{r}
 
 # is there a difference between the genders?
+# t.test takes a 'formula' in the form 'DV ~ IV'
 
 t.test(alone_0 ~ gender, data = triplett_data)
-
-effectsize::cohens_d(alone_0 ~ gender, data = triplett_data)
 
 ```
 
@@ -469,41 +585,71 @@ For a related-samples t-test we would generally need wide-format data, where eac
 
 ```{r}
 
-t.test(triplett_data_recoded$alone_mean,
-       triplett_data_recoded$competition_mean,
+t.test(x = triplett_data_recoded$alone_mean,
+       y = triplett_data_recoded$competition_mean,
        paired = TRUE)
 
-effectsize::cohens_d(triplett_data_recoded$alone_mean,
-       triplett_data_recoded$competition_mean,
-       paired = TRUE)
+
+```
+
+#### Effect size
+
+```{r}
+
+effectsize::cohens_d(alone_0 ~ gender, data = triplett_data)
+
+
+effectsize::cohens_d(x = triplett_data_recoded$alone_mean,
+                     y = triplett_data_recoded$competition_mean,
+                     paired = TRUE)
 ```
 
 ### ANOVA
 
 #### Independent-samples
 
+::: {.content-hidden when-format="revealjs"}
 The `aov()` function computes an ANOVA model. It accepts a `formula` in the form `DV ~ IV`, just like the independent-samples `t.test()` example above.
+:::
 
 ```{r}
+
+# aov expects a 'formula' in the form 'DV ~ IV'
 
 aov(diff ~ classification, data = triplett_data_recoded)
 
 ```
 
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
+::: {.content-hidden when-format="revealjs"}
 Sometimes, like with `aov()`, the function that computes a model doesn't tell us everything we typically want to know about that model. It is often useful to assign the model to a name, and then ask for a summary of the model:
+:::
 
 ```{r}
 
+# aov doesn't print useful output by itself, so assign to a name
+
 anova <- aov(diff ~ classification, data = triplett_data_recoded)
+
+# then get a summary
 
 summary(anova)
 ```
 
 #### Related-samples
 
+::: {.content-hidden when-format="revealjs"}
 The `aov()` and `summary()` approach also works for within-participants designs. We just need to articulate the `Error()` term, using a column which uniquely identifies participants, and the grouping variable column.
+:::
 
 ```{r}
+
+# related-samples ANOVA requires Error term, using columns
+# for participant IDs and the IV grouping variable
 
 aov(performance ~ condition + Error(subject/condition), data = triplett_long) |> 
   summary()
@@ -514,36 +660,52 @@ aov(performance ~ condition + Error(subject/condition), data = triplett_long) |>
 
 ```{r}
 
-regression_model <- lm(diff ~ age * gender, data = triplett_data_recoded)
+# the lm (linear model) function accepts a formula like t.test and aov
+# we can add as many predictors as we want with
 
-summary(regression_model)
-
-broom::tidy(regression_model)
-broom::glance(regression_model)
+lm(diff ~ age + gender + group, data = triplett_data_recoded) |> 
+  summary()
 ```
 
 ### Mixed-effects
 
 ```{r}
 
-lmerTest::lmer(performance ~ condition * age + (1 | subject), 
-           data = triplett_long)
-
-mixed_model <- lmerTest::lmer(performance ~ condition * age + group + (1 | subject), 
-                          data = triplett_long)
+mixed_model <- lme4::lmer(
+  performance ~ condition * age + group + (1 | subject), 
+  data = triplett_long
+  )
 
 summary(mixed_model)
 ```
 
+::: {.content-visible when-format="revealjs"}
+
+------------------------------------------------------------------------
+:::
+
+`lmr4::lmer()` doesn't give p-values (because they require some additional assumptions). The package `lmerTest` has wraps `lmer()` with some additional computation of p-values.
+
 ```{r}
+mixed_model <- lmerTest::lmer(
+  performance ~ condition * age + group + (1 | subject), 
+  data = triplett_long
+  )
+
+summary(mixed_model)
+```
+
+#### Visualizing mixed-model analysis
+
+```{r}
+#| code-fold: true
 triplett_long |> 
-  mutate(trial = as.integer(trial)) |> 
   ggplot(aes(x = trial, y = performance, group = subject, color = condition)) +
   geom_line(alpha = 0.3) +
-  stat_summary(aes(group = condition), fun = mean, geom = "line", size = 1.2, color = "black") +
+  stat_summary(aes(group = condition), fun = mean, geom = "line", linewidth = 1.2, color = "black") +
   facet_wrap(~condition) +
   labs(title = "Performance over Trials by Condition",
-       x = "Trial", y = "Reeling Speed (or whatever units)",
-       caption = "Gray lines = individual subjects; bold line = group mean") +
-  theme_minimal()
+       x = "Trial", y = "Reeling Speed",
+       caption = "Color lines = individual subjects; bold line = group mean") +
+  theme_apa
 ```

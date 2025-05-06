@@ -16,6 +16,7 @@ website:
           - 1_1_intro-to-r.qmd
           - 1_2_basics.qmd
           - 1_3_working-with-data.qmd
+          - 1_4_other-things.qmd
       - section: "Day 2: Teaching with R"
         contents:
           - 2_1_general-approach.qmd
@@ -35,6 +36,7 @@ format:
     slide-level: 4
     code-line-numbers: false
     df-print: kable
+    chalkboard: true
 
 execute:
   echo: true
