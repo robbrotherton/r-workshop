@@ -225,7 +225,8 @@ as.numeric(data_factor)
 ```
 
 ::: {.content-visible when-format="revealjs"}
-----
+
+------------------------------------------------------------------------
 :::
 
 Perhaps our raw data coded a variable like this as numeric to begin with, and we want to add the category labels ourselves.
