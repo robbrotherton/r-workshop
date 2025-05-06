@@ -2,7 +2,7 @@
 # Setup -------------------------------------------------------------------
 
 # install, then comment out this line
-install.packages(c("tidyverse", "corrplot","effectsize", "lmerTest"))
+# install.packages(c("tidyverse", "corrplot","effectsize", "lmerTest"))
 
 # activate installed packages
 library(tidyverse)
@@ -18,7 +18,7 @@ getwd()
 # Data import -------------------------------------------------------------
 
 # read the data file, assigning it to a name
-triplett_data <- read_csv("triplett_data.csv")
+triplett_data <- read_csv("resources/triplett_data.csv")
 
 
 # Data cleaning -----------------------------------------------------------
@@ -48,16 +48,24 @@ triplett_data_subset <- triplett_data |>
 
 ## Mutating ----
 
+### change existing columns ----
+
 triplett_data <- triplett_data |>
   mutate(gender = factor(gender),
          group = factor(group))
+
+### add new columns ----
 
 triplett_data_recoded <- triplett_data |>
   mutate(alone_mean = rowMeans(across(contains("alone"))))
 
 # produces NAs for some participants! oh no! why? can you fix it?
 
-# can you add code to get the mean competition score, and a difference score?
+# can you add additional mutations to get
+# the mean competition score
+# and 'diff', the difference between the competition and alone means?
+
+### creating a categorical with case_when()
 
 triplett_data_recoded <- triplett_data_recoded |>
   mutate(effect = case_when(
@@ -233,7 +241,7 @@ aov(performance ~ condition + Error(subject/condition), data = triplett_long) |>
 ## Regression ------------------------------------------------------------
 
 lm(diff ~ age + gender + group, data = triplett_data_recoded) |>
-  summary(regression_model)
+  summary()
 
 
 ## Mixed-models ----------------------------------------------------------

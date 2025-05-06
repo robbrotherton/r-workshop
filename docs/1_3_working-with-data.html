@@ -744,68 +744,9 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>complex_summary <span class="ot">&lt;-</span> triplett_long <span class="sc">|&gt;</span> </span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average =</span> <span class="fu">mean</span>(performance),</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(classification, condition, trial, group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">classification</th>
-<th style="text-align: left;">condition</th>
-<th style="text-align: left;">trial</th>
-<th style="text-align: left;">group</th>
-<th style="text-align: right;">average</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">47.49</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">42.60</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">38.42</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">alone</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">41.88</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">stimulated positively</td>
-<td style="text-align: left;">competition</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">A</td>
-<td style="text-align: right;">39.28</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(classification, condition, trial, group))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect this new dataframe by click it in your Global Environment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -842,7 +783,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -870,7 +811,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -887,7 +828,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -908,7 +849,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -925,7 +866,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -941,7 +882,7 @@ dbl (8): age, alone_0, competition_1, alone_1, competition_2, alone_2, compe...
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -980,7 +921,7 @@ sample estimates:
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1324,7 +1265,7 @@ cndtncmptt:  0.232 -0.988 -0.233  0.002</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="1_3_working-with-data_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

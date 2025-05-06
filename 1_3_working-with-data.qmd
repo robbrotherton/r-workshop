@@ -396,12 +396,8 @@ You can have any number of grouping variables; just collect them together with t
 complex_summary <- triplett_long |> 
   summarize(average = mean(performance),
             .by = c(classification, condition, trial, group))
-```
 
-```{r}
-#| echo: false
-
-head(complex_summary)
+# inspect this new dataframe by click it in your Global Environment
 ```
 
 ## Data Visualization
