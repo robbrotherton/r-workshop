@@ -1,42 +1,41 @@
 ---
+title: Course Materials
 format: 
   html: default
-  revealjs: 
-    output-file: 2_4_course-materials_presentation.html
 ---
-
-# Course Materials
 
 ## Statistics
 
 ::: callout-note
 ## PSYC BC1101 Materials
 
-My Statistics materials are online here:
+I set up my R assignments as a posit.cloud project:
+
+<https://posit.cloud/spaces/647833/content/10318551>
+
+I also have a version with my suggested solutions which I share with TAs:
+
+<https://posit.cloud/spaces/647833/content/10310731>
+
+I organize the rest of my course materials (lectures etc) as a Quarto website with a mix of text web pages and presentation slides.
 
 <https://robbrotherton.github.io/bc1101/>
+
+Lastly, I put together some interactive stats visualization and games here as a Quarto website (though the interactive elements mostly use javascript rather than R code)
+
+<https://robbrotherton.github.io/psychstats/>
 :::
-
-Structure of recitation:
-
--   I talk through a topic hands-on for around 10 or 15 minutes, noting the new functions and ideas students will encounter, how they map on to content we covered in lectures, and flagging up potential sticking points in advance.
-
--   Then I let students continue working. I encourage them to work independently, to collaborate, and/or to seek help from me or their TA as and when the need arises.
-
--   The students are working in a single Quarto document for each problem set. The doc contains Instructional blocks and questions with space for students to answer using text and/or code. Instructions contain hints that show the general structure of the solution; students adapt those hints to get the final solution.
-
--   Feedback: Following submission of their attempt, students receive full, detailed feedback noting both what they did well and what they could have done differently.
 
 ## Labs
 
 ::: callout-note
 ## Social lab materials
 
-My Social lab manual is online here:
+My Social lab manual, which walks students through 3 R coding projects, is prepared as a Quarto Book:
 
 <https://robbrotherton.github.io/bc2137/>
+
+In conjunction with that, I have a posit.cloud Project for students containing the required data files for analysis and report templates.
+
+<https://posit.cloud/spaces/647833/content/10310693>
 :::
-
-For my labs, I have put my materials together as a Quarto website. Every lab session has its own page (including the syllabus on the site's home page).
-
-In conjunction with that, I have a posit.cloud Project containing the required data files, and report templates.

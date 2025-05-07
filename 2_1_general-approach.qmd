@@ -10,78 +10,88 @@ format:
 ::: callout-note
 ## ![](images/posit-cloud-logo.png){style="height: 1em;"}  
 
-In this session we'll start working in Posit Cloud. I've created a 'Space' for this workshop. You can join using this link:
+In this session we'll start working in Posit Cloud. You'll need to sign up for a free account if you don't already have one: <https://login.posit.cloud/register>
+
+I've created a 'Space' for this workshop. You can join using this link:
 
 <https://posit.cloud/spaces/647833/join?access_code=d044OrLrWY83pbYiQXdsnuYbxO1_vDN_rN1Q7pYx>
 
 I'll link you to the actual R materials in due course.
 :::
 
-## Start with something cool
-
-[posit.cloud/spaces/647833/content/10308914](https://posit.cloud/spaces/647833/content/10308914)
-
 ## Justify using R
 
--   Skill Development: Proficiency in R is increasingly sought after in both academic and industry settings, enhancing students' career prospects. See : <https://r4stats.com/articles/popularity/>
+::: {.content-hidden when-format="revealjs"}
+Requiring students to learn both statistical concepts (or research methods or whatever) *and* coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset.
+
+Some benefits to point out:
+:::
+
+-   Valuable skills: R is increasingly sought after in both academic and industry settings, enhancing students' career prospects. See : <https://r4stats.com/articles/popularity/>
+
+-   Makes sense for the course: Coding statistical procedures reinforces comprehension of concepts; practice analyzing data reinforces understanding of research best practices.
 
 -   Reproducibility: R promotes transparent and reproducible research practices, aligning with open science principles.
 
--   Cost-Effectiveness: R is free and open-source, making it accessible to all students regardless of financial resources.
+-   Cost-effective: R is free and open-source, making it accessible to all students regardless of financial resources.
 
--   Conceptual Understanding: Coding statistical procedures reinforces comprehension of underlying concepts. For example, writing functions to compute z-scores or simulate sampling distributions deepens understanding.
-
-Requiring students to learn both statistical concepts (or research methods or whatever) *and* coding is a lot to ask in a single semester. Setting expectations and stating goals can help students see learning R as worthwhile from the outset.
-
-## Grading
-
-::: {.content-hidden when-format="revealjs"}
-Learning R can be challenging, especially for students new to programming. In R, there is often more than one way to do things. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery. Making mistakes and learning how to resolve them is a crucial part of learning to code. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.
+::: {.content-visible when-format="revealjs"}
+----
 :::
 
-```{=html}
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code</p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/589068687669243905?ref_src=twsrc%5Etfw">April 17, 2015</a></blockquote>
-```
+-   Pirate jokes: What is a pirate's favorite statistical coding language? R. (Arrr).
 
-To foster a supportive learning environment:
+## Start with something fun
 
--   Effort-Based Grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.
+I like to show students something fun and interesting to begin with. Then students build the skills over the course of the semester to produce something like it themselves.
 
--   Feedback-Oriented: Provide constructive feedback to guide improvement, focusing on the learning process over the final product.
+Here's an example:
 
-My grading scheme:
-
--   0 points: No submission
-
--   1 point: Incomplete attempt
-
--   2 point: Complete, valid attempt
-
-::: {.content-hidden when-format="revealjs"}
-That's it. Every student gets full credit for a valid attempt. Even if every answer is wrong, they get full credit for the effort. It is entirely possible for every student to get full credit for the coding assignments across the semester, even if they never get a single correct answer–as long as they try. Of course, generally students will learn from their mistakes and improve along the way.
-
-The drawback to this is that it does not differentiate the students who put in great effort, going above and beyond expectations, from those who simply meet the minimum requirements of the assignments. I feel that is a worthwhile trade-off, especially since such efforts can be rewarded as part of a participation grade, for example.
-:::
+[posit.cloud/spaces/647833/content/10308914](https://posit.cloud/spaces/647833/content/10308914)
 
 ## Most common problems
 
-Students often encounter specific hurdles when learning R:
+There are certain hurdles students and other new users often encounter when learning R:
 
 -   Annoying technical problems: Forgetting to install or load necessary packages leads to errors.
 
 -   Syntax Errors: Missing commas, parentheses, or quotation marks are common. Encourage the use of RStudio's syntax highlighting and error messages to identify issues.
 
--   Understanding Data Structures: Differentiating between vectors, data frames, and lists can be confusing. Use analogies and visual aids to clarify these concepts.
+-   Function arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.
 
--   Annoying technical problems: Forgetting to install or load necessary packages leads to errors.
-
--   Function Arguments: Misunderstanding default arguments or the order of parameters can cause unexpected results. Demonstrate how to find and read function documentation effectively.
+::: {.content-visible when-format="revealjs"}
+----
+:::
 
 To address these challenges:
 
--   Incremental Learning: Introduce concepts gradually, building upon previous knowledge.
+::: incremental
+-   Actively anticipate issues: Warn about the issues generally in advance, and deliberately have students encounter specific instances.
 
--   Active Practice: Incorporate hands-on exercises that allow students to apply new skills immediately.
+-   Build skills incrementally: Introduce concepts gradually, building upon previous knowledge. The basic skills are reinforced as they are repeatedly practiced in new contexts.
+
+-   Make the process of discovery as stress-free and rewarding as possible, for example through grading and feedback
+
+-   Encourage collaboration: normalize being stuck or frustrated; sharing the joy of debugging; comfort with not knowing answers but knowing when and where to seek help
+:::
+
+## Grading
+
+```{=html}
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code</p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/589068687669243905?ref_src=twsrc%5Etfw">April 17, 2015</a></blockquote>
+```
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+::: {.content-hidden when-format="revealjs"}
+Learning R can be challenging, especially for students new to programming. In R, there is often more than one way to do things. Some approaches may be more effective and straightforward than others, but there is value in the process of discovery through trial and error. In setting coding assignments, I want to emphasize that the value is in the effort, even if it does not immediately produce the ideal outcome.
+:::
+
+-   Effort-based grading: Assign grades based on the completeness and sincerity of attempts rather than correctness. This encourages experimentation and reduces anxiety.
+
+-   Feedback-oriented: Provide constructive feedback, focusing on the process rather than the product.
 
 ## Additional resources
 
@@ -95,7 +105,13 @@ One of the nice things about R is that many academic users have developed great 
 
 ## Generative AI
 
-In its latest version RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code. Here, I typed the comment and the function name, and Copilot completed the function body.
+::: {.content-hidden when-format="revealjs"}
+We cannot avoid the fact that LLMs (like chatGPT) are freely accessible. Neither should we; they can both enhance and inhibit learning. Rather than banning the use of LLMs outright, we should help students navigate the changing landscape as best we can.
+
+In its latest version, RStudio has Github Copilot, an LLM interface, built-in. It suggests code that might come after what you have typed so far. You can even just type a comment about what you would like to achieve, and Copilot will suggest code.
+:::
+
+Here, I typed the comment and the function name, and RStudio's Copilot completed the function body:
 
 ```{r}
 # a function to compute the sum of squared deviations
@@ -109,3 +125,41 @@ sum_squares <- function(x) {
 sum_squares(c(1, 2, 3, 4, 5))
 
 ```
+
+In a sense, this is a success: the function produces the correct answer. But it is not great code! Maybe you can list all the problems with it.
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+LLMs capabilities and uses are evolving rapidly. What's true today might not be next year. But for now, my approach is:
+
+-   Make students aware of LLMs strengths and weaknesses
+
+-   Permit but do not encourage their use early in a course when skills are being developed
+
+-   Provide opportunities to integrate LLM use when skills are developed
+
+### An example from the final R problem set of my stats course:
+
+::: {.callout-note collapse="true"}
+## Instructions
+
+For this question you will work with some real data from the [World Happiness Report](https://worldhappiness.report/).
+
+Look at the data after you read it into R to get an idea of what variables it contains. The column names generally give a clear indication of what the scores are, but some may be unclear or unfamiliar. There's a full explanation at [in the WHR appendix here.](https://happiness-report.s3.amazonaws.com/2024/Ch2+Appendix.pdf){.uri}
+
+You'll be using `cor()` and/or `cor.test()` to examine correlations. The only new thing to be aware of is that, if you try to correlate two variables and there is even a single missing data point (indicated by `NA`), you will get an answer of `NA`. To avoid this, you can specify `use = "pairwise.complete.obs` as an argument within either function. That will cause R to ignore cases where one data point is missing, and use however many have complete data for both variables.
+:::
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+::: callout-tip
+## Or...
+
+Since you're coming to the end of this journey with R, and you're becoming an expert at doing so many things with it, I want to give you the chance to spread your wings and fly. If you want to put your skills to the test and push your limits, please ignore the following questions and just do something cool with the world happiness data. You might produce a visual ranking the happiness of every country, make a map showing happiness around the world (yes, R can do maps!), graph changes over time (`10_world_happiness_all_years.csv` has data for multiple years whereas `10_world_happiness_2023.csv` is just that one year), or something else that I haven't even thought of. Maybe chatGPT can help get you started with ideas and code. Prof B would love to help as well. This is your chance to shine!
+
+Or you can just ignore this and play it safe with the questions below. Your choice; no judgement 😊
+:::

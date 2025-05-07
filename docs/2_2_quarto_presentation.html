@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <title>R Faculty Workshop – quarto</title>
+  <title>R Faculty Workshop – Quarto</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -192,18 +192,35 @@
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Quarto</h1>
 
-<section>
-<section id="quarto" class="title-slide slide level1 center">
-<h1>Quarto</h1>
+<div class="quarto-title-authors">
+</div>
 
 </section>
+<section class="slide level4">
+
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Resources</strong></p>
+</div>
+<div class="callout-content">
+<p>I prepared an example of a Quarto document in a posit.cloud project you can access here:</p>
+<p><a href="https://posit.cloud/spaces/647833/content/10318198" class="uri">https://posit.cloud/spaces/647833/content/10318198</a></p>
+</div>
+</div>
+</div>
+</section>
+<section>
 <section id="what-is-quarto" class="title-slide slide level2 center">
 <h2>What is Quarto?</h2>
 <p>“<strong>An open-source scientific and technical publishing system”</strong></p>
-<p>Works seamlessly within RStudio</p>
-<p>Next generation version of R Markdown.</p>
-<p>Provides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.</p>
+<p>Quarto documents provide an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or a cohesive collection of documents. Raw text and code are “Rendered” into a final format; code gets executed and the output results displayed alongside text. Creating, editing, and rendering Quarto <code>.qmd</code> documents works seamlessly within RStudio (locally or via posit.cloud).</p>
 </section>
 <section id="output-formats" class="title-slide slide level3 center">
 <h3>Output formats</h3>
@@ -213,7 +230,7 @@
 <li><p>PDF article</p></li>
 <li><p>Word document</p></li>
 <li><p>HTML article</p></li>
-<li><p>HTML presentation</p></li>
+<li><p>Presentation slides (html, ppt, beamer)</p></li>
 </ul></li>
 <li><p>Collection of documents</p>
 <ul>
@@ -226,98 +243,170 @@
 <section id="benefits-of-using-quarto-over-just-r" class="title-slide slide level3 center">
 <h3>Benefits of using Quarto over just R</h3>
 <ul>
-<li><p>Reproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.</p></li>
-<li><p>Engaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.</p></li>
-<li><p>Efficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.</p></li>
-<li><p>Professional Reporting: Generate publication-ready reports and presentations directly from your analyses.</p></li>
+<li><p>Transparency: Bundles data, analysis, and interpretation together; good for open science and reproducibility.</p></li>
+<li><p>Teaching materials: Create self-contained documents that combine theoretical explanations with coding instruction and examples.</p></li>
+<li><p>Assignments: Students can execute and modify code and answer narrative questions within the same document, or create self-contained research reports combining narrative, code, and results.</p></li>
+<li><p>Professional reporting: Generate publication-ready reports and presentations directly from your analyses.</p></li>
 </ul>
 </section>
-
-
+</section>
+<section>
 <section id="working-with-quarto-documents" class="title-slide slide level2 center">
 <h2>Working with Quarto documents</h2>
 
 </section>
-
-<section id="getting-started" class="title-slide slide level2 center">
-<h2>Getting started</h2>
-
+<section id="getting-started" class="title-slide slide level3 center">
+<h3>Getting started</h3>
+<p>Within a Project, click <code>File &gt; New File &gt; Quarto Document</code></p>
 </section>
-<section id="a-single-document" class="title-slide slide level3 center">
-<h3>A single document</h3>
-<p>File &gt; New File &gt; Quarto Document</p>
-<p>YAML section</p>
+
+<section id="features-of-.qmd-files" class="title-slide slide level3 center">
+<h3>Features of <code>.qmd</code> files</h3>
+<p>A <code>.qmd</code> will usually begin with a ‘YAML’ section. This is where various features of the document can be specified, like a title, author, output format, and various other things. This section is delineated with three dashes at the top and bottom.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Untitled"</span></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Text.</p>
-<p>Code chunks.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># hello!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Example of a Quarto document"</span></span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Your Name</span></span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section id="typing-text" class="title-slide slide level3 center">
 <h3>Typing text</h3>
-<p>Source vs Visual</p>
+<p>Below the YAML, you can type regular text, just like in any other text editor.</p>
 </section>
+<section id="source-vs-visual-view" class="slide level4">
+<h4>Source vs Visual view</h4>
+<div>
 
-<section id="code-chunks" class="title-slide slide level3 center">
-<h3>Code chunks</h3>
-
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/quarto-source.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/quarto-visual.png"></p>
+</div>
+</div>
+</div>
+<p>Clicking between the “Source” and “Visual” modes (at the top-left of the editor) gives you an idea of what this document format does behind the scenes. “Source” mode shows you the raw document contents. Things like headers are created with a number of <code>#</code> symbols, and words are italicised by surrounding them with *asterisks*. for example. “Visual” mode hides much of this away and formats things more like Microsoft Word or Google Docs: headers are different sizes, words are actually italicized, etc.</p>
+<p>Note that how the document looks in Visual mode is not necessarily exactly how it will look once rendered; Visual mode is just a pleasant and convenient way to edit the <code>.qmd</code> content.</p>
 </section>
 
 <section id="rendering" class="title-slide slide level3 center">
 <h3>Rendering</h3>
-<p>Use the “Render” button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.</p>
+<p>The process of turning this raw, editable document into a finished, formatted version is called ‘Rendering’. There are a lot of formats you can render to, including html (webpage), pdf, docx for example. Look for the “Render” button at the top of the editor and click it to try it out.</p>
+<p>By default, when rendering is complete the rendered version will open in a new tab or window. Often a pop-up warns you about this and you have to click “Try Again”.</p>
+<p>My preference is to click the settings dropdown next to Render and select “Preview in Viewer Pane”. That way you get to see the Rendered version right next to the editor.</p>
 </section>
 
-<section id="a-quarto-project" class="title-slide slide level3 center">
-<h3>A Quarto Project</h3>
+<section id="code-chunks" class="title-slide slide level3 center">
+<h3>Code chunks</h3>
+<p>A Quarto document can include code (and its results) as well as text. To insert a code ‘chunk’ click Insert, then Executable Cell &gt; R. You’ll see a grey cell into which you can type code, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>You can run lines of code interactively by clicking on a line and pressing cmd + return. You can run an entire code chunk by clicking the green ‘play’ button and the top-right of the chunk. When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code.</p>
+</section>
+</section>
+<section>
+<section id="other-nice-features" class="title-slide slide level2 center">
+<h2>Other nice features</h2>
 
 </section>
-<section id="project-features" class="slide level4">
-<h4>Project Features</h4>
-<p>The <code>_quarto.yml</code> file.</p>
-<p>Contains rendering instructions for the entire project, and things that will apply to each file.</p>
+<section id="cross-references" class="title-slide slide level3 center">
+<h3>Cross-references</h3>
+<p>Did you notice the <code>|# label:</code> I gave to the graph I made using ggplot earlier? That allows be to cross-reference it (see <strong>?@fig-graph-of-descriptives</strong>).</p>
+</section>
+
+<section id="citations" class="title-slide slide level3 center">
+<h3>Citations</h3>
+<p>You can include citations. From the Visual editor, click ‘Insert’, then ‘@ Citation’, then ‘From DOI’, and paste in your journal article’s DOI (something like https://doi.org/10.3389/fpsyg.2021.644657).</p>
+<p>By default, the renderer will use the <a href="https://chicagomanualofstyle.org/">Chicago Manual of Style</a> author-date format, but you can specify a custom formatting using CSL (<a href="https://citationstyles.org/">Citation Style Language</a>). Download <code>apa.csl</code> from the <a href="https://github.com/citation-style-language/styles">CSL style repository</a> on GitHub and add <code>csl: apa.csl</code> to the ‘YAML’ options at the top of your document to format citations and references according to the latest APA style conventions.</p>
+</section>
+
+<section id="controlling-the-display-of-code-and-output" class="title-slide slide level3 center">
+<h3>Controlling the display of code and output</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># since eval is set to false, this code won't be evaluated</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># the code will be shown but there will be no output</span></span>
+<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+
+<section id="in-line-code" class="title-slide slide level3 center">
+<h3>In-line code</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To report a result in-text, you can use in-line code. For example, the number I computed in that last code chunk was 2. I showed it here by typing “r number” with backticks around it instead of quotes.</p>
+</section>
+</section>
+<section>
+<section id="a-quarto-book-or-website" class="title-slide slide level2 center">
+<h2>A Quarto book or website</h2>
+<p>To collect a number of <code>.qmd</code> documents together into a cohesive collection, a project and be turned into a Quarto book or website. Rather than each individual <code>.qmd</code> file that makes up the collection having its own individual YAML section to determine its format, the project as a whole gets a new file: <code>_quarto.yml</code>.</p>
+</section>
+<section id="project-_quarto.yml" class="title-slide slide level3 center">
+<h3>Project <code>_quarto.yml</code></h3>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>_quarto.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">book</span><span class="kw">:</span></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto Book Demonstration"</span></span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Rob Brotherton"</span></span>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"5/7/2025"</span></span>
+<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chapters</span><span class="kw">:</span></span>
+<span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> index.qmd</span></span>
+<span id="cb9-10"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> section_1.qmd</span></span>
+<span id="cb9-11"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> section_2.qmd</span></span>
+<span id="cb9-12"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> section_3.qmd</span></span>
+<span id="cb9-13"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb9-15"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb9-16"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb9-17"><a aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> cosmo</span></span>
+<span id="cb9-18"><a aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> brand</span></span>
+<span id="cb9-19"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb9-20"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> scrreprt</span></span>
+<span id="cb9-21"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a aria-hidden="true" tabindex="-1"></a><span class="fu">format-links</span><span class="kw">:</span><span class="at"> pdf</span></span>
+<span id="cb9-23"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a aria-hidden="true" tabindex="-1"></a><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb9-25"><a aria-hidden="true" tabindex="-1"></a><span class="fu">df-print</span><span class="kw">:</span><span class="at"> kable</span></span>
+<span id="cb9-26"><a aria-hidden="true" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
-
-<section id="advanced-features" class="title-slide slide level2 center">
-<h2>Advanced Features</h2>
-
+<section id="rendering-the-book-or-website" class="title-slide slide level3 center">
+<h3>Rendering the book or website</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/quarto-build.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<p><img data-src="images/quarto-book.png" style="border: 1px solid grey;"></p>
 </section>
-<section id="citations-and-references" class="title-slide slide level3 center">
-<h3>Citations and References</h3>
-<p>Manage bibliographies using .bib files.</p>
-<p>Insert citations using <span class="citation" data-cites="citation_key">@citation_key</span>.</p>
-<p>Automatically generate reference sections.</p>
 </section>
-
-<section id="cross-referencing" class="title-slide slide level3 center">
-<h3>Cross-referencing</h3>
-<p>Label figures and tables for easy cross-referencing within the text.</p>
-<p>An image can be give an ID when inserted, e.g.</p>
-<pre><code>![The R Logo](images/r-logo.png){#fig-logo}</code></pre>
-
-<img data-src="images/r-logo.png" class="r-stretch quarto-figure-center" id="fig-logo"><p class="caption">
-Figure&nbsp;1: The R Logo
-</p><p>Typing “<code>As shown in @fig-logo, R has a perfectly pleasant logo."</code> becomes:</p>
-<p>As shown in <a href="#/fig-logo" class="quarto-xref">Figure&nbsp;1</a>, R has a perfectly pleasant logo.</p>
-</section>
-
-
 <section id="additional-resources" class="title-slide slide level2 center">
 <h2>Additional Resources</h2>
 <ul>
@@ -329,7 +418,6 @@ Figure&nbsp;1: The R Logo
 </ul>
 
 
-</section>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

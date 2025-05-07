@@ -17,20 +17,20 @@ format:
 -   **posit.cloud** is the browser-based version of RStudio, hosted and managed by Posit
 
 ::: {.content-hidden when-format="revealjs"}
-As we've seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things immensely when it comes to using R in the classroom. It substantially lowers the barrier to entry; frees us to focus on statistical fluency rather than tool fluency.
+As we've seen, you can install R and RStudio on your own computer for free and do things that way, but using posit.cloud simplifies things quite a bit when it comes to using R in the classroom. It lowers the barrier to entry; reducing the time spent on basic installation and setup frees us to focus on statistical fluency rather than tool fluency.
 :::
 
 ## Cloud vs local: main differences
 
 ::: {.table-small when-format="revealjs"}
 | Feature | Local RStudio | Posit Cloud |
-|---------------------|----------------------|------------------------------|
-| Setup required | Yes — install R + RStudio | None — runs in browser |
+|---------------------|----------------------|-----------------------------|
+| Installation required | Yes — R + RStudio | No — Create free posit.cloud account |
 | Platform consistency | Varies by OS (Mac/Win/etc) | Identical for all students |
 | File storage | On user’s machine | In the cloud — per project |
-| Package installation | Manual per machine | Bundled with assignments |
-| Instructor access to work | Only if student sends files | Instructor can directly view projects |
-| Collaboration | Tricky / manual | Easy via shared projects |
+| Package installation | Manual per machine | Bundled with projects |
+| Instructor access to work | Only if student sends files | Instructor can directly view student copies of projects |
+| Collaboration / reproducibility | Tricky / manual | Easy via shared projects |
 :::
 
 ### Downsides / Limitations
@@ -49,13 +49,14 @@ No cost to students. Potentially cost to instructor/department.
 
 ::: {.table-smaller when-format="revealjs"}
 | Tier: | Free | Instructor (pay per compute hour) | Instructor (pay per student) |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Cost | \$0 | \$15/month up to 300 compute hours, \$0.10 per hour over 300 | \$15 per instructor + \$5 per student per month |
 | Compute hours included | 25 (once you reach the cap, you can no longer open or create projects during your current month) | 300 (pay for overage) | Unlimited |
 | Shared Spaces | 1 shared space with up to 5 members and 10 content items in the space | Unlimited | Unlimited |
 | Projects | 25 | Unlimited | Unlimited |
 :::
 
+```{=html}
 <style>
 
 .slide .table-small {
@@ -71,22 +72,69 @@ font-size: 0.5em;
 }
 
 </style>
+```
 
-## Projects and assignments
+## Cloud Projects and assignments
 
-### Projects (cloud vs local)
+### Projects
+
+::: table-small
+| Feature | **Local RStudio** | **Posit Cloud** |
+|------------------|---------------------------|----------------------------|
+| Environment | Semi-contained; shares global libraries/settings | Fully self-contained per project |
+| Package installation | Installed once, available across projects | Must install per project |
+| File system scope | Full access to local filesystem | Isolated per project; manual file upload |
+| Collaboration | Requires Git, Dropbox, etc | Share via link; built-in |
+:::
+
+::: {.content-hidden when-format="revealjs"}
+#### Cloud vs local
 
 Projects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.
 
-Locally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.
+Locally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project effectively runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.
 
-Any cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.
+#### Sharing cloud projects
+
+Any cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy. Note also that changes you make to your Project after someone has created a copy will not be reflected in their copy: it becomes its own separate entity.
+:::
 
 ### Assignments
 
-Any posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an **Assignment**. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.
+::: {.content-visible when-format="revealjs"}
+Instructor view:
+:::
 
-#### Instructor workflow:
+::: {layout-ncol="2"}
+
+![](images/assignment-create.png){width="450"}
+
+![](images/assignment-instructor.png){width="300"}
+:::
+
+::: {.content-hidden when-format="revealjs"}
+Any posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an **Assignment** (by clicking into the Setting for the Project and adjusting the Access settings. This doesn't change anything about the Project content, but it slightly changes how users see and interact with it the project in general.
+
+Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.
+
+As assignment also looks a little different. Students with either see a "Start" button before clicking into an Assignment for the first time, or a "Continue" button after their copy has been created.
+:::
+
+::: {.content-visible when-format="revealjs"}
+----
+:::
+
+::: {.content-visible when-format="revealjs"}
+Student view:
+:::
+
+::: {layout-ncol="2"}
+![](images/assignment-start.png){width="400"}
+
+![](images/assignment-continue.png){width="400"}
+:::
+
+## Instructor workflow
 
 -   Create a Space for your course (potentially a new Space each semester)
 
@@ -100,7 +148,7 @@ Any posit.cloud Project in a Space you have created (but not in Your Workspace) 
 
 -   Each student gets their own private copy when they click into it
 
-#### You (the instructor) can:
+### You (the instructor) can:
 
 -   View their copies
 
@@ -110,7 +158,7 @@ Any posit.cloud Project in a Space you have created (but not in Your Workspace) 
 
 -   Leave feedback in-line
 
-#### Benefits:
+### Benefits:
 
 -   No setup required by students
 

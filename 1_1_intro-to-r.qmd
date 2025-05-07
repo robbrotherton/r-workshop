@@ -208,7 +208,8 @@ leaflet() |>
 ```
 
 ::: {.content-visible when-format="revealjs"}
-----
+
+------------------------------------------------------------------------
 :::
 
 ::: {.content-hidden when-format="pdf"}
@@ -368,4 +369,3 @@ lmer(...)
 ::: {.content-hidden when-format="revealjs"}
 Note that a package only needs to be installed once on your system (or in a new posit.cloud project), but if you are using the `library()` method to activate the package, it must be done every time you have a new 'session' in R.
 :::
-

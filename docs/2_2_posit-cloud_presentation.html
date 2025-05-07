@@ -146,11 +146,11 @@
 <section id="cloud-vs-local-main-differences" class="title-slide slide level2 center">
 <h2>Cloud vs local: main differences</h2>
 <div class="table-small" data-when-format="revealjs">
-<table class="caption-top" style="width:100%;">
+<table class="caption-top">
 <colgroup>
-<col style="width: 28%">
+<col style="width: 29%">
 <col style="width: 30%">
-<col style="width: 41%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -161,9 +161,9 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>Setup required</td>
-<td>Yes — install R + RStudio</td>
-<td>None — runs in browser</td>
+<td>Installation required</td>
+<td>Yes — R + RStudio</td>
+<td>No — Create free posit.cloud account</td>
 </tr>
 <tr class="even">
 <td>Platform consistency</td>
@@ -178,15 +178,15 @@
 <tr class="even">
 <td>Package installation</td>
 <td>Manual per machine</td>
-<td>Bundled with assignments</td>
+<td>Bundled with projects</td>
 </tr>
 <tr class="odd">
 <td>Instructor access to work</td>
 <td>Only if student sends files</td>
-<td>Instructor can directly view projects</td>
+<td>Instructor can directly view student copies of projects</td>
 </tr>
 <tr class="even">
-<td>Collaboration</td>
+<td>Collaboration / reproducibility</td>
 <td>Tricky / manual</td>
 <td>Easy via shared projects</td>
 </tr>
@@ -269,23 +269,90 @@ font-size: 0.5em;
 </section>
 
 
-<section id="projects-and-assignments" class="title-slide slide level2 center">
-<h2>Projects and assignments</h2>
+<section id="cloud-projects-and-assignments" class="title-slide slide level2 center">
+<h2>Cloud Projects and assignments</h2>
 
 </section>
-<section id="projects-cloud-vs-local" class="title-slide slide level3 center">
-<h3>Projects (cloud vs local)</h3>
-<p>Projects in the cloud function much like local R Projects: they provide a somewhat self-contained environment for collecting together R files, data files, etc relating to a particular project. However, Projects in the cloud are even more encapsulated than local Projects.</p>
-<p>Locally, all your projects will be able to make use of any external packages installed on your system. In the cloud, each project essentially runs on its own system; packages must be installed in every new Project. A cloud-based Project also has its own filesystem; data files stored in one project in the cloud cannot be accessed in another Project; the file must be manually uploaded to each Project.</p>
-<p>Any cloud Project in Your Workspace can be shared with All Posit Cloud users. When you share the link, a user can click into it. They will initially be working with a temporary copy of the project. They can click a button to save their own permanent copy. Note that sharing a Project this way does not allow other users to modify your copy of the Project in any way; they will always be working on their own copy.</p>
+<section id="projects" class="title-slide slide level3 center">
+<h3>Projects</h3>
+<div class="table-small">
+<table class="caption-top">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 36%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th><strong>Local RStudio</strong></th>
+<th><strong>Posit Cloud</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Environment</td>
+<td>Semi-contained; shares global libraries/settings</td>
+<td>Fully self-contained per project</td>
+</tr>
+<tr class="even">
+<td>Package installation</td>
+<td>Installed once, available across projects</td>
+<td>Must install per project</td>
+</tr>
+<tr class="odd">
+<td>File system scope</td>
+<td>Full access to local filesystem</td>
+<td>Isolated per project; manual file upload</td>
+</tr>
+<tr class="even">
+<td>Collaboration</td>
+<td>Requires Git, Dropbox, etc</td>
+<td>Share via link; built-in</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 
 <section id="assignments" class="title-slide slide level3 center">
 <h3>Assignments</h3>
-<p>Any posit.cloud Project in a Space you have created (but not in Your Workspace) can be made an <strong>Assignment</strong>. This has some advantages over just sharing Projects in the way described above. Primarily, as soon as a user opens the Assignment, the system creates a copy for them in the Space. The user does not have to click manually to save their own version.</p>
+<p>Instructor view:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<p><img data-src="images/assignment-create.png" width="450"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p><img data-src="images/assignment-instructor.png" width="300"></p>
+</div>
+</div>
+</div>
 </section>
-<section id="instructor-workflow" class="slide level4">
-<h4>Instructor workflow:</h4>
+<section class="slide level4">
+
+<p>Student view:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/assignment-start.png" width="400"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="images/assignment-continue.png" width="400"></p>
+</div>
+</div>
+</div>
+</section>
+
+
+<section id="instructor-workflow" class="title-slide slide level2 center">
+<h2>Instructor workflow</h2>
 <ul>
 <li><p>Create a Space for your course (potentially a new Space each semester)</p></li>
 <li><p>Create a Project with all required files and packages</p></li>
@@ -295,8 +362,8 @@ font-size: 0.5em;
 <li><p>Each student gets their own private copy when they click into it</p></li>
 </ul>
 </section>
-<section id="you-the-instructor-can" class="slide level4">
-<h4>You (the instructor) can:</h4>
+<section id="you-the-instructor-can" class="title-slide slide level3 center">
+<h3>You (the instructor) can:</h3>
 <ul>
 <li><p>View their copies</p></li>
 <li><p>Open their Projects directly</p></li>
@@ -304,8 +371,9 @@ font-size: 0.5em;
 <li><p>Leave feedback in-line</p></li>
 </ul>
 </section>
-<section id="benefits" class="slide level4">
-<h4>Benefits:</h4>
+
+<section id="benefits" class="title-slide slide level3 center">
+<h3>Benefits:</h3>
 <ul>
 <li><p>No setup required by students</p></li>
 <li><p>No broken paths, version mismatches, or install errors</p></li>

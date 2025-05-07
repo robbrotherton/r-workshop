@@ -1,21 +1,25 @@
 ---
+title: Quarto
 format: 
-  html: default
+  html:
+    lightbox: true
   revealjs: 
     output-file: 2_2_quarto_presentation.html
 ---
 
-# Quarto
+::: callout-note
+## Resources
+
+I prepared an example of a Quarto document in a posit.cloud project you can access here:
+
+<https://posit.cloud/spaces/647833/content/10318198>
+:::
 
 ## What is Quarto?
 
 "**An open-source scientific and technical publishing system"**
 
-Works seamlessly within RStudio
-
-Next generation version of R Markdown.
-
-Provides an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or cohesive collection of documents.
+Quarto documents provide an integrated workflow: Combines narrative text with code, output and visualizations in a single document, or a cohesive collection of documents. Raw text and code are "Rendered" into a final format; code gets executed and the output results displayed alongside text. Creating, editing, and rendering Quarto `.qmd` documents works seamlessly within RStudio (locally or via posit.cloud).
 
 ### Output formats
 
@@ -27,7 +31,7 @@ Provides an integrated workflow: Combines narrative text with code, output and v
 
     -   HTML article
 
-    -   HTML presentation
+    -   Presentation slides (html, ppt, beamer)
 
 -   Collection of documents
 
@@ -37,99 +41,176 @@ Provides an integrated workflow: Combines narrative text with code, output and v
 
 ### Benefits of using Quarto over just R
 
--   Reproducibility: Ensures that analyses and results can be consistently replicated, fostering transparency in research and teaching.
+-   Transparency: Bundles data, analysis, and interpretation together; good for open science and reproducibility.
 
--   Engaging Teaching Materials: Create interactive documents that combine theoretical explanations with practical code examples.
+-   Teaching materials: Create self-contained documents that combine theoretical explanations with coding instruction and examples.
 
--   Efficient Assignment Management: Design assignments where students can execute and modify code within the same document, streamlining grading and feedback.
+-   Assignments: Students can execute and modify code and answer narrative questions within the same document, or create self-contained research reports combining narrative, code, and results.
 
--   Professional Reporting: Generate publication-ready reports and presentations directly from your analyses.
+-   Professional reporting: Generate publication-ready reports and presentations directly from your analyses.
 
 ## Working with Quarto documents
 
-## Getting started
+### Getting started
 
-### A single document
+Within a Project, click `File > New File > Quarto Document`
 
-File \> New File \> Quarto Document
+### Features of `.qmd` files
 
-YAML section
+A `.qmd` will usually begin with a 'YAML' section. This is where various features of the document can be specified, like a title, author, output format, and various other things. This section is delineated with three dashes at the top and bottom.
 
 ``` yaml
 ---
-title: "Untitled"
+title: "Example of a Quarto document"
+author: Your Name
+
+format: html
+bibliography: references.bib
 ---
-```
-
-Text.
-
-Code chunks.
-
-```{r}
-# hello!
 ```
 
 ### Typing text
 
-Source vs Visual
+Below the YAML, you can type regular text, just like in any other text editor.
 
-### Code chunks
+#### Source vs Visual view
 
-```{r}
-#| label: example chunk
-```
+::: {layout-ncol="2"}
+![](images/quarto-source.png)
+
+![](images/quarto-visual.png)
+:::
+
+Clicking between the "Source" and "Visual" modes (at the top-left of the editor) gives you an idea of what this document format does behind the scenes. "Source" mode shows you the raw document contents. Things like headers are created with a number of `#` symbols, and words are italicised by surrounding them with \*asterisks\*. for example. "Visual" mode hides much of this away and formats things more like Microsoft Word or Google Docs: headers are different sizes, words are actually italicized, etc.
+
+Note that how the document looks in Visual mode is not necessarily exactly how it will look once rendered; Visual mode is just a pleasant and convenient way to edit the `.qmd` content.
 
 ### Rendering
 
-Use the "Render" button in RStudio to execute all code and generate the final output. Each render starts from a clean environment, ensuring that all results are reproducible; all code gets executed from scratch.
+The process of turning this raw, editable document into a finished, formatted version is called 'Rendering'. There are a lot of formats you can render to, including html (webpage), pdf, docx for example. Look for the "Render" button at the top of the editor and click it to try it out.
 
-### A Quarto Project
+By default, when rendering is complete the rendered version will open in a new tab or window. Often a pop-up warns you about this and you have to click "Try Again".
 
-#### Project Features
+My preference is to click the settings dropdown next to Render and select "Preview in Viewer Pane". That way you get to see the Rendered version right next to the editor.
 
-The `_quarto.yml` file.
+### Code chunks
 
-Contains rendering instructions for the entire project, and things that will apply to each file.
+A Quarto document can include code (and its results) as well as text. To insert a code 'chunk' click Insert, then Executable Cell \> R. You'll see a grey cell into which you can type code, like this:
+
+```{r}
+1 + 1
+
+(-3)^2
+
+```
+
+You can run lines of code interactively by clicking on a line and pressing cmd + return. You can run an entire code chunk by clicking the green 'play' button and the top-right of the chunk. When you click the **Render** button a document will be generated that includes both content and the output of embedded code.
+
+## Other nice features
+
+### Cross-references
+
+Did you notice the `|# label:` I gave to the graph I made using ggplot earlier? That allows be to cross-reference it (see @fig-graph-of-descriptives).
+
+### Citations
+
+You can include citations. From the Visual editor, click 'Insert', then '\@ Citation', then 'From DOI', and paste in your journal article's DOI (something like https://doi.org/10.3389/fpsyg.2021.644657).
+
+By default, the renderer will use the [Chicago Manual of Style](https://chicagomanualofstyle.org/) author-date format, but you can specify a custom formatting using CSL ([Citation Style Language](https://citationstyles.org/)). Download `apa.csl` from the [CSL style repository](https://github.com/citation-style-language/styles) on GitHub and add `csl: apa.csl` to the 'YAML' options at the top of your document to format citations and references according to the latest APA style conventions.
+
+### Controlling the display of code and output
+
+```{r}
+#| echo: false
+
+# since echo is set to false, this code won't be shown in the rendered document
+# but the result will
+
+2 * 2
+```
+
+```{r}
+#| eval: false
+
+# since eval is set to false, this code won't be evaluated
+# the code will be shown but there will be no output
+
+2 * 2
+```
+
+```{r}
+#| include: false
+
+# setting include: false mean the code will be run, but neither
+# code nor output will appear in the rendered document
+
+2 * 2
+
+```
+
+### In-line code
+
+```{r}
+number <- 1 + 1
+```
+
+To report a result in-text, you can use in-line code. For example, the number I computed in that last code chunk was `r number`. I showed it here by typing "r number" with backticks around it instead of quotes.
+
+## A Quarto book or website
+
+To collect a number of `.qmd` documents together into a cohesive collection, a project and be turned into a Quarto book or website. Rather than each individual `.qmd` file that makes up the collection having its own individual YAML section to determine its format, the project as a whole gets a new file: `_quarto.yml`.
+
+### Project `_quarto.yml`
+
+::: {.content-hidden when-format="revealjs"}
+The `_quarto.yml` file contains rendering instructions for the entire project: options things that will apply to every file and which will determine how the rendered website is organized and how users will navigate it.
+
+Here's an example, assuming you have 4 individual files: `index.qmd`; `section_1.qmd`; `section_2.qmd`; `section_3.qmd`. (Of course you can have as many as you need for your project.)
+:::
 
 ``` {.yaml filename="_quarto.yml"}
 project:
-  type: website
+  type: book
+
+book:
+  title: "Quarto Book Demonstration"
+  author: "Rob Brotherton"
+  date: "5/7/2025"
+  chapters:
+    - index.qmd
+    - section_1.qmd
+    - section_2.qmd
+    - section_3.qmd
 
 format:
   html:
-    toc: true
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+format-links: pdf
+
+number-sections: false
+df-print: kable
+editor: visual
 ```
 
-## Advanced Features
+### Rendering the book or website
 
-### Citations and References
+::: {.content-hidden when-format="revealjs"}
+As you work on individual documents you can still render them to check what the output looks like. But you can also Build the entire project. That means every document gets rendered and the whole project gets packaged according to the specification created in `_quarto.yml`.
+:::
 
-Manage bibliographies using .bib files.
+![](images/quarto-build.png){fig-align="center" width="50%"}
 
-Insert citations using @citation_key.
-
-Automatically generate reference sections.
-
-### Cross-referencing
-
-Label figures and tables for easy cross-referencing within the text.
-
-An image can be give an ID when inserted, e.g.
-
-```         
-![The R Logo](images/r-logo.png){#fig-logo}
-```
-
-![The R Logo](images/r-logo.png){#fig-logo}
-
-Typing "`As shown in @fig-logo, R has a perfectly pleasant logo."` becomes:
-
-As shown in @fig-logo, R has a perfectly pleasant logo.
+![](images/quarto-book.png){style="border: 1px solid grey;"}
 
 ## Additional Resources
 
 -   [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
--   [Quarto Official ](https://quarto.org/docs/)[Documentation](https://quarto.org/docs/guide/)
+-   [Quarto Official](https://quarto.org/docs/)[Documentation](https://quarto.org/docs/guide/)
 -   [Carpentries: Reproducible Publications with Quarto](https://carpentries-incubator.github.io/reproducible-publications-quarto/)
 -   [Quarto Manuscripts](https://quarto.org/docs/manuscripts/)
 -   [Quarto Gallery (Examples)](https://quarto.org/docs/gallery/)
